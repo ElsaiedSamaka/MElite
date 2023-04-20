@@ -1,4 +1,9 @@
 <p>
 inbox home works!
 </p>
+<ul>
+    <li *ngFor="let treatment of (treatments$|async)">
+        {{treatment.subject}}
+    </li>
+</ul>
 <router-outlet></router-outlet>
