@@ -7,17 +7,14 @@ import { PlaceholderComponent } from './components/placeholder/placeholder.compo
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent,
+    path: '',
+    component: HomeComponent,
     children: [
       { path: 'not-found', component: NotFoundComponent },
-      {
-        path: ':id',
-        component: DetailedComponent,
-        resolve: {}
-      },
-      {path:'',component:PlaceholderComponent}
-    ]
-  }
+      { path: ':id', component: DetailedComponent },
+      { path: '', component: PlaceholderComponent },
+    ],
+  },
 ];
 
 @NgModule({
