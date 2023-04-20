@@ -1,0 +1,22 @@
+{
+  "treatments": [
+    {
+      "id": 1,
+      "subject": "lorem ipsum",
+      "description": "lorem ipsum dolar submit",
+      "date": "12-2-2023"
+    },
+    {
+      "subject": "lorem ipsum",
+      "description": "lorem ipsum dolar submit",
+      "date": "12-2-2024",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "subject": "lorem ipsum",
+      "description": "lorem ipsum dolar submit",
+      "date": "12-2-2023"
+    }
+  ]
+}
