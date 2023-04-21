@@ -2,21 +2,27 @@
   "treatments": [
     {
       "id": 1,
-      "subject": "lorem ipsum",
-      "description": "lorem ipsum dolar submit",
+      "subject": "امانة عسير",
+      "description": "هذا مثال لنص يمكن استبداله",
       "date": "12-2-2023"
     },
     {
-      "subject": "lorem ipsum",
+      "subject": "امانة مكة",
       "description": "lorem ipsum dolar submit",
       "date": "12-2-2024",
       "id": 3
     },
     {
       "id": 4,
-      "subject": "lorem ipsum",
+      "subject": "امانة الحدود الشمالية",
       "description": "lorem ipsum dolar submit",
       "date": "12-2-2023"
+    },
+    {
+      "subject": "امانة جدة",
+      "description": "lorem ipsum dolar submit",
+      "date": "12-2-2024",
+      "id": 5
     }
   ]
 }

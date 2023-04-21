@@ -1,0 +1,14 @@
+.search-bar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin: 20px;
+
+}
+/* *{
+    border: 1px solid #ccc;
+} */
+.main-content{
+    display: flex;
+    flex-direction: row-reverse;
+}

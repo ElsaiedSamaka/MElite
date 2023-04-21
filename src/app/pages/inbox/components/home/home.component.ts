@@ -9,6 +9,7 @@ import { TreatmentsService } from 'src/core/services/treatments.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  
   treatments$!: Observable<Treatment[]>;
   constructor(private treatmentsService: TreatmentsService) {
     this.treatments$ = this.treatmentsService.getAll();
