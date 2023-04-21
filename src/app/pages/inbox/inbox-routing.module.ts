@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TreatmentResolverService } from 'src/core/resolvers/treatment-resolver.service';
 import { DetailedComponent } from './components/detailed/detailed.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -11,7 +12,11 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'not-found', component: NotFoundComponent },
-      { path: ':id', component: DetailedComponent },
+      {
+        path: ':id',
+        component: DetailedComponent,
+        resolve: { treatment: TreatmentResolverService },
+      },
       { path: '', component: PlaceholderComponent },
     ],
   },

@@ -12,10 +12,10 @@ export class TreatmentsService {
     return this.apiService.get('/treatments');
   }
   getById(id: string): Observable<Treatment> {
-    return this.apiService.get(id);
+    return this.apiService.get(`/treatments/${id}`);
   }
   deleteById(id: string): Observable<any> {
-    return this.apiService.delete(id);
+    return this.apiService.delete(`/treatments/${id}`);
   }
   post(treatment: Treatment): Observable<Treatment> {
     return this.apiService.post('/treatments', treatment);
