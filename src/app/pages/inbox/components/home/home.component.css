@@ -5,9 +5,7 @@
     margin: 20px;
 
 }
-/* *{
-    border: 1px solid #ccc;
-} */
+
 .main-content{
     display: flex;
     flex-direction: row-reverse;
