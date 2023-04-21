@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { EMPTY, catchError } from 'rxjs';
 import { Treatment } from '../models/treatment';
 import { TreatmentsService } from '../services/treatments.service';
 
@@ -7,9 +8,17 @@ import { TreatmentsService } from '../services/treatments.service';
   providedIn: 'root',
 })
 export class TreatmentResolverService implements Resolve<Treatment> {
-  constructor(private treatmentsService: TreatmentsService) {}
+  constructor(
+    private treatmentsService: TreatmentsService,
+    private router: Router
+  ) {}
   resolve(route: ActivatedRouteSnapshot) {
     const { id } = route.params;
-    return this.treatmentsService.getById(id);
+    return this.treatmentsService.getById(id).pipe(
+      catchError((err) => {
+        this.router.navigateByUrl('/inbox/not-found');
+        return EMPTY;
+      })
+    );
   }
 }
