@@ -39,24 +39,24 @@
           </p>
         </div>
 
-        <form class="mt-8 grid grid-cols-6 gap-6">
+        <form class="mt-8 grid grid-cols-6 gap-6" [formGroup]="authForm" (ngSubmit)="onSubmit()">
           <div class="col-span-6">
-            <label for="FirstName" class="block text-sm font-semibold text-gray-700">
+                    <label for="EmpNumber" class="block text-sm font-semibold text-gray-700">
               الرقم الوظيفي
             </label>
 
-            <input type="text" id="FirstName" name="first_name"
-              class="mt-1 w-80 rounded-s border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" />
+            <input type="text" id="EmpNumber" name="emp_number"
+              class="mt-1 w-80 rounded-s border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" disabled />
           </div>
           <div class="col-span-6">
-            <label for="Password" class="block text-sm font-semibold text-gray-700 ">
-              كلمة المرور
-            </label>
-
-            <input type="password" id="Password" name="password"
-              class="mt-1 w-80 rounded-md border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" />
-          </div>
-          <div class="col-span-6">
+            <app-input [control]="authForm.get('email')" placeholder="lorem@ipsum.com" type="email"
+              label="البريد الالكتروني"></app-input>
+            </div>
+            <div class="col-span-6">
+              <app-input [control]="authForm.get('password')" placeholder="********" type="password" label="كلمة المرور">
+                ></app-input>
+            </div>
+            <div class="col-span-6">
             <label for="MarketingAccept" class="flex flex-row-reverse gap-4">
               <input type="checkbox" id="MarketingAccept" name="marketing_accept"
                 class="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm" />
@@ -66,9 +66,20 @@
               </span>
             </label>
           </div>
-          <div class="col-span-6  ">
+          <div *ngIf="authForm.errors" class="col-span-6">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors.credentials">
+              البريد الالكتروني او كلمة المرور غير صحيحة
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['noConnection']">
+              عفوا, يرجى التحقق من اتصال الانترنت
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['unknownError']">
+              خطأ غير متوقع
+            </p>
+          </div>
+          <div class="col-span-6">
             <button
-              class="inline-block w-80 shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white transition hover:bg-gradient-to-br hover:text-gray-50 focus:outline-none active:text-white">
+              class="inline-block w-80 shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white transition hover:bg-gradient-to-br hover:text-gray-50 focus:outline-none active:text-white"  type="submit">
               تسجيل الدخول </button>
           </div>
           <div class="col-span-6">
@@ -77,9 +88,8 @@
                 استعادة كلمة المرور </a>
             </p>
           </div>
-          </form>
-          </div>
-          </main>
-          </div>
-          </section>
-
+        </form>
+        </div>
+        </main>
+        </div>
+        </section>

@@ -1,0 +1,22 @@
+<div [ngClass]="control.invalid && showErrors() ? 'error' : ''">
+  <label class="block text-sm font-semibold text-gray-700">{{label}}</label>
+  <input [formControl]="control" [placeholder]="placeholder" [type]="type"
+    class="mt-1 w-80 rounded-s border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" />
+  <div *ngIf="showErrors()">
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['required']">
+      هذا الحقل مطلوب
+    </p>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['minlength']">
+      الحد الأدنى للحروف هو {{control.errors['minlength'].requiredLength}}
+    </p>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['maxlength']">
+      الحد الأقصى للحروف هو {{control.errors['maxlength'].requiredLength}}
+    </p>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['pattern']">
+      البريد الالكتروني الذي تم ادخاله غير صالح
+    </p>
+    <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['notEmailUnique']">
+      هذا البريد الالكتروني مستخدم من قبل
+    </p>
+  </div>
+</div>
