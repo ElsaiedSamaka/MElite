@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/index/index.module').then((m) => m.IndexModule),
   },
+  {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./pages/tasks/tasks.module').then((m) => m.TasksModule),
+  },
 ];
 
 @NgModule({
