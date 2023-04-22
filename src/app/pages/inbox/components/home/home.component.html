@@ -18,18 +18,21 @@
 <!-- main-content -->
 <div class="main-content">
     <div class="columns-1 mr-5">
-        <div class="text-green-700 border-solid border-2 border-gray-200 font-semibold bg-white inline-block w-80 py-5 px-3">
+        <div
+            class="text-green-700 border-solid border-2 border-gray-200 rounded-s font-semibold bg-white inline-block w-80 p-2">
             المعاملات</div>
         <ul>
-        <div class=" font-semibold bg-white  w-80 p-1 my-1 overflow-y-scroll">
+            <!--TODO: this class name is supposed to make the below column scrollable on y axis (overflow-y-scroll) -->
+            <div class="w-80 p-2 my-1">
             <li *ngFor="let treatment of (treatments$|async)">
                     <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50"
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
-                            <h5 class="mb-2 text-gray-900"> {{treatment.subject}}</h5>
+                            <h5 class="mb-2 font-semibold text-gray-900"> {{treatment.subject}}</h5>
                             <p>{{treatment.date}}</p>
                         </div>
-                <p class="font-normal text-gray-400 ">{{treatment.description}}</p>
+                        <p class="font-normal text-gray-400 ">{{(treatment.description.length > 45)? (treatment.description | slice:0:45):
+                            treatment.description}}</p>
                 <div class="flex flex-wrap pt-2">
                     <span
                         class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">خطاب#</span>
