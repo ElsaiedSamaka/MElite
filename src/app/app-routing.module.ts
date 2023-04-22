@@ -8,7 +8,7 @@ const routes: Routes = [
       import('./pages/inbox/inbox.module').then((m) => m.InboxModule),
   },
   {
-    path: '',
+    path: 'index',
     // canLoad:[],
     loadChildren: () =>
       import('./pages/index/index.module').then((m) => m.IndexModule),
