@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SortDirective } from 'src/utils/directives/sort.directive';
 import { DataGridComponent } from './data-grid/data-grid.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { TasksCreateComponent } from './tasks-create/tasks-create.component';
@@ -13,6 +14,7 @@ import { TasksDeleteComponent } from './tasks-delete/tasks-delete.component';
     TasksDeleteComponent,
     DataGridComponent,
     PaginationComponent,
+    SortDirective,
   ],
   exports: [
     TasksCreateComponent,

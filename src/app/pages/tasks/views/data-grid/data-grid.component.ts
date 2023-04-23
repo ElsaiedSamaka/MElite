@@ -11,6 +11,7 @@ export class DataGridComponent implements OnInit {
   onTaskChange(id: string) {
     this.taskCheck.emit(id);
   }
+
   constructor() {}
 
   ngOnInit() {}

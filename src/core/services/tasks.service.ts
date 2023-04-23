@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -7,9 +7,11 @@ import { ApiService } from './api.service';
 })
 export class TasksService {
   constructor(private apiService: ApiService) {}
-
+  tasksSubject$ = new BehaviorSubject<any>([]);
   getAllTasks(title: string, page: number): Observable<any[]> {
-    return this.apiService.get(`/api/tasks?title=${title}&page=${page}`);
+    return this.apiService
+      .get(`/api/tasks?title=${title}&page=${page}`)
+      .pipe(tap((res) => this.tasksSubject$.next(res['tasks'])));
   }
   getCurrentUserTasks(): Observable<any[]> {
     return this.apiService.get(`/api/tasks/user-tasks`);

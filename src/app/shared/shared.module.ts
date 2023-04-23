@@ -5,6 +5,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
+import { SortIconComponent } from './sort-icon/sort-icon.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
@@ -13,12 +14,14 @@ import { ModalComponent } from './modal/modal.component';
     InputComponent,
     ModalComponent,
     ConfirmModalComponent,
+    SortIconComponent,
   ],
   exports: [
     BreadcrumbComponent,
     InputComponent,
     ModalComponent,
     ConfirmModalComponent,
+    SortIconComponent,
   ],
 })
 export class SharedModule {}

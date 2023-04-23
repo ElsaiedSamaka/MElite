@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { TasksService } from 'src/core/services/tasks.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { TasksService } from 'src/core/services/tasks.service';
 })
 export class TasksListComponent implements OnInit {
   tasks$;
+  data;
   title: string = '';
   //pagination related vars
   current = 0;
@@ -25,10 +26,14 @@ export class TasksListComponent implements OnInit {
         this.totalItems = res['totalItems'];
         this.totalPages = res['totalPages'];
         return res['tasks'];
-      })
+      }),
+      tap((res) => this.tasksService.tasksSubject$.next(res))
     );
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.data = this.tasksService.tasksSubject$.value;
+    console.log(this.data);
+  }
 
   //pagination functionality
   onGoTo(page: number): void {
