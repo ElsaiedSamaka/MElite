@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { TasksService } from 'src/core/services/tasks.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-data-grid',
@@ -9,8 +7,10 @@ import { TasksService } from 'src/core/services/tasks.service';
 })
 export class DataGridComponent implements OnInit {
   @Input() data = [];
-
-
+  @Output() taskCheck = new EventEmitter<any>();
+  onTaskChange(id: string) {
+    this.taskCheck.emit(id);
+  }
   constructor() {}
 
   ngOnInit() {}

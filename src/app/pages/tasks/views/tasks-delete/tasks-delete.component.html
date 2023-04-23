@@ -1,6 +1,6 @@
 <button
   class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300"
-  [disabled]="isTasksChecked" (click)="openConfirmationModal([])">
+  [disabled]="true" (click)="openConfirmationModal([])">
   حذف
 </button>
 <app-confirm-modal *ngIf="showConfiramtionModel">

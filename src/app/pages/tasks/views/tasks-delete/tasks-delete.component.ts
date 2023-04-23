@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tasks-delete',
@@ -8,7 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TasksDeleteComponent implements OnInit {
   showConfiramtionModel = false;
   empIds;
-  @Input() isTasksChecked: boolean;
   constructor() {}
 
   ngOnInit() {}

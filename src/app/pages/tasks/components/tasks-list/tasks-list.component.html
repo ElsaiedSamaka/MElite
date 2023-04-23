@@ -5,7 +5,7 @@
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl ">
         ادارة المهام</h1>
         <div class="flex flex-row space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-        <app-tasks-delete [isTasksChecked]=""></app-tasks-delete>
+        <app-tasks-delete></app-tasks-delete>
         <app-tasks-create></app-tasks-create>
       </div>
     </div>
@@ -16,7 +16,7 @@
 <!-- Data Grid Component -->
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10">
-  <app-data-grid [data]="tasks$"></app-data-grid>
+  <app-data-grid [data]="tasks$" (taskCheck)="onTaskChange($event)"></app-data-grid>
   <!-- PaginationComponent -->
   <app-pagination [current]="current" [total]="totalItems" [totalPages]="totalPages" (goTo)="onGoTo($event)" (next)="onNext($event)"
   (previous)="onPrevious($event)"></app-pagination>
