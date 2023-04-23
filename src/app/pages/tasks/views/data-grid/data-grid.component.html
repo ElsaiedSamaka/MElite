@@ -64,8 +64,8 @@
       </th>
     </tr>
   </thead>
-  <tbody *ngIf="tasks$['length'] != 0; else notFound ">
-    <tr class="bg-white border-b  hover:bg-gray-50 " *ngFor="let task of (tasks$|async)">
+  <tbody *ngIf="data['length'] != 0; else notFound ">
+    <tr class="bg-white border-b  hover:bg-gray-50 " *ngFor="let task of (data|async)">
       <td class="w-4 p-4">
         <div class="flex items-center">
           <input id="checkbox-table-search-1" type="checkbox"
