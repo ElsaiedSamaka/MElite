@@ -2,12 +2,23 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
-  declarations: [BreadcrumbComponent, InputComponent, ModalComponent],
-  exports: [BreadcrumbComponent, InputComponent, ModalComponent],
+  declarations: [
+    BreadcrumbComponent,
+    InputComponent,
+    ModalComponent,
+    ConfirmModalComponent,
+  ],
+  exports: [
+    BreadcrumbComponent,
+    InputComponent,
+    ModalComponent,
+    ConfirmModalComponent,
+  ],
 })
 export class SharedModule {}
