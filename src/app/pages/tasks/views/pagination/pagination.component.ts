@@ -13,17 +13,16 @@ import {
   styleUrls: ['./pagination.component.css'],
 })
 export class PaginationComponent implements OnInit {
-  ngOnInit() {}
   @Input() current: number = 0;
   @Input() total: number = 0;
   @Input() totalPages: number = 0;
-
   @Output() goTo: EventEmitter<number> = new EventEmitter<number>();
   @Output() next: EventEmitter<number> = new EventEmitter<number>();
   @Output() previous: EventEmitter<number> = new EventEmitter<number>();
 
   public pages: number[] = [];
   constructor() {}
+  ngOnInit() {}
   ngOnChanges(changes: SimpleChanges): void {
     if (
       (changes['current'] && changes['current'].currentValue) ||
@@ -33,17 +32,14 @@ export class PaginationComponent implements OnInit {
     }
   }
   public onGoTo(page: number): void {
-    console.log(page);
     this.goTo.emit(page);
   }
 
   public onNext(): void {
-    console.log(this.current);
     this.next.emit(this.current);
   }
 
   public onPrevious(): void {
-    console.log(this.current);
     this.previous.next(this.current);
   }
   // right now we are getting our pages in the following format:

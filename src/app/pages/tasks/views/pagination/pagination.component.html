@@ -1,7 +1,8 @@
 <nav class="flex items-center justify-between py-2 mr-2 " aria-label="Table navigation">
-  <span class="text-sm font-normal text-gray-500 ml-2">Showing <span class="font-semibold text-gray-900 ">1-10</span>
-    of
-    <span class="font-semibold text-gray-900 ">1000</span></span>
+  <span class="text-sm font-normal text-gray-500 ml-2">Page No: <span
+      class="font-semibold text-gray-900 ">{{current}}</span>
+    of total
+    <span class="font-semibold text-gray-900 ">{{totalPages}} pages </span></span>
   <ul class="inline-flex items-center -space-x-px">
     <li>
       <button [disabled]="current <= 0" (click)="onPrevious()" type="button"
