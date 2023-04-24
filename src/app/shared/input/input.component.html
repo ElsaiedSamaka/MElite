@@ -1,6 +1,6 @@
 <div [ngClass]="control.invalid && showErrors() ? 'error' : ''">
   <label class="block text-sm font-semibold text-gray-700">{{label}}</label>
-  <input [formControl]="control" [placeholder]="placeholder" [type]="type"
+  <input [formControl]="control" [placeholder]="placeholder" [type]="type" [value]="value"
     class="mt-1 w-80 rounded-s border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" />
   <div *ngIf="showErrors()">
     <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="control.errors['required']">

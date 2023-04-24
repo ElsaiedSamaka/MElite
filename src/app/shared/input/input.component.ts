@@ -11,6 +11,7 @@ export class InputComponent implements OnInit {
   @Input() control: FormControl;
   @Input() placeholder: string;
   @Input() type: string;
+  @Input() value: string = '';
 
   showErrors() {
     const { dirty, touched, errors } = this.control;

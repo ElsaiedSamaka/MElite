@@ -16,4 +16,7 @@ export class TasksCreateComponent {
   onCloseHandled() {
     this.showModel = !this.showModel;
   }
+  addTask(task: any) {
+    console.log(task);
+  }
 }

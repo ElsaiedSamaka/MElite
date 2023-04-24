@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
 export class TasksService {
   constructor(private apiService: ApiService) {}
   tasksSubject$ = new BehaviorSubject<any>([]);
-  getAllTasks(title: string, page: number): Observable<any[]> {
+  getAllTasks(title: string = '', page: number = 0): Observable<any[]> {
     return this.apiService
       .get(`/api/tasks?title=${title}&page=${page}`)
       .pipe(tap((res) => this.tasksSubject$.next(res['tasks'])));
