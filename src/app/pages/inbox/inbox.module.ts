@@ -6,7 +6,7 @@ import { InboxRoutingModule } from './inbox-routing.module';
 import { ViewsModule } from './views/views.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, ViewsModule, InboxRoutingModule],
+  imports: [InboxRoutingModule, CommonModule, SharedModule, ViewsModule],
   declarations: [HomeComponent],
 })
 export class InboxModule {}
