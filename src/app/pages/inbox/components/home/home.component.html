@@ -9,8 +9,14 @@
 <div class="search-bar mr-5 ">
 <app-tab-bar></app-tab-bar>
 <app-search-bar></app-search-bar>
-    <div class=" rounded-s text-green-700">
-        البحث المتقدم
+    <div class="flex items-center text-green-700">
+        <span class="font-semibold mr-2"> البحث المتقدم</span>
+        <svg fill="none" class="w-5 h-5" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75">
+            </path>
+        </svg>
     </div>
 </div>
 <!-- search-bar -->
@@ -29,7 +35,15 @@
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
                             <h5 class="mb-2 font-semibold text-gray-900"> {{treatment.subject}}</h5>
-                            <p>{{treatment.date}}</p>
+                            <p>
+                                <svg color="green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13">
+                                    </path>
+                                </svg>
+                                {{treatment.date}}
+                            </p>
                         </div>
                         <p class="font-normal text-gray-400 ">{{(treatment.description.length > 45)? (treatment.description | slice:0:45):
                             treatment.description}}</p>

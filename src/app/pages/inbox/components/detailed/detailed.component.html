@@ -1,6 +1,14 @@
 <div class="bg-white mr-4 pb-12 rounded-s shadow-lg">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{treatment$.subject}}</div>
+    <div class="font-bold text-xl mb-2 flex flex-row-reverse justify-between">
+      {{treatment$.subject}}
+      <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15">
+        </path>
+      </svg>
+    </div>
     <p class="text-gray-700 text-base">
       {{treatment$.description}}
     </p>
@@ -43,19 +51,19 @@
     <div id="dropdown" class="z-10 hidden  divide-y divide-gray-100 rounded-s shadow w-44">
       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
         <li>
-          <a href="#"
+          <a
             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
         </li>
         <li>
-          <a href="#"
+          <a
             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
         </li>
         <li>
-          <a href="#"
+          <a
             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
         </li>
         <li>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+          <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
             out</a>
         </li>
       </ul>
@@ -64,7 +72,16 @@
   <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20">
     <div class="flex flex-row-reverse justify-between mb-8">
       <h3 class="font-semibold">خطاب</h3>
-      <p>icon</p>
+        <button type="button"
+          class="text-white bg-gradient-to-bl from-green-500 to-green-800 hover:bg-gradient-to-r focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md shadow-lg text-sm p-2.5 text-center inline-flex items-center mr-2 ">
+          <svg fill="none" class="w-5 h-5" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125">
+            </path>
+          </svg>
+          <span class="sr-only">Icon description</span>
+        </button>
     </div>
     <div>
       <h4>بسم الله</h4>
