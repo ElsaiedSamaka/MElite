@@ -7,6 +7,7 @@ import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
@@ -17,6 +18,7 @@ import { SortIconComponent } from './sort-icon/sort-icon.component';
     ConfirmModalComponent,
     SortIconComponent,
     NavBarComponent,
+    ToastComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -25,6 +27,7 @@ import { SortIconComponent } from './sort-icon/sort-icon.component';
     ConfirmModalComponent,
     SortIconComponent,
     NavBarComponent,
+    ToastComponent,
   ],
 })
 export class SharedModule {}

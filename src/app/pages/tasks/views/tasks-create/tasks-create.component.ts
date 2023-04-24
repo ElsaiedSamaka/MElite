@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class TasksCreateComponent {
   showModel = false;
   editMode: boolean = false;
+  showToast: boolean = false;
   constructor() {}
 
   onClick() {
@@ -17,6 +18,10 @@ export class TasksCreateComponent {
     this.showModel = !this.showModel;
   }
   addTask(task: any) {
+    this.showToast = !this.showToast;
     console.log(task);
+  }
+  dismissToast(dismissed: boolean) {
+    this.showToast = !this.showToast;
   }
 }

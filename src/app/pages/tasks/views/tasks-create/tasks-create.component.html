@@ -22,3 +22,6 @@
         (addNewTask)="addTask($event)"></app-task-form>
           </div>
   </app-modal>
+  <!-- app-toast -->
+  <app-toast *ngIf="showToast" (dismiss)="dismissToast($event)" toastMessage="task deleted" toastType="success" toastTitle=""></app-toast>
+  <!-- app-toast -->
