@@ -20,7 +20,6 @@ export class TaskFormComponent implements OnInit {
   @Output() dismiss = new EventEmitter<void>();
   @Output() addNewTask = new EventEmitter<any>();
 
-  taskDetails: any;
   taskForm: FormGroup;
   // loading$;
 
@@ -59,13 +58,10 @@ export class TaskFormComponent implements OnInit {
   }
   initForm() {
     this.taskForm = this.fb.group({
-      taskName: [this.taskDetails?.title || '', [Validators.required]],
-      taskDescription: [
-        this.taskDetails?.description || '',
-        [Validators.required],
-      ],
-      taskUser: [this.taskDetails?.userId || 1, [Validators.required]],
-      taskDeadline: [this.taskDetails?.deadline || '', [Validators.required]],
+      taskName: ['', [Validators.required]],
+      taskDescription: ['', [Validators.required]],
+      taskUser: [1, [Validators.required]],
+      taskDeadline: ['', [Validators.required]],
     });
     this.taskForm.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
       console.log(value);
@@ -96,50 +92,50 @@ export class TaskFormComponent implements OnInit {
       userId: this.taskForm.controls['taskUser'].value,
       deadline: this.taskForm.controls['taskDeadline'].value,
     };
-    if (this.editMode === true) {
-      const updatedTask: Task = {
-        ...task,
-        id: this.taskId,
-      };
+    // if (this.editMode === true) {
+    //   const updatedTask: Task = {
+    //     ...task,
+    //     id: this.taskId,
+    //   };
 
-      this.taskService
-        .updateTask(this.taskId, updatedTask)
-        .pipe()
-        .subscribe({
-          next: (response) => {
-            this.dismiss.emit();
-            console.log(response);
-          },
-          error: (err) => {
-            this.dismiss.emit();
-            console.log(err);
-          },
-          complete: () => {
-            this.getTasks();
-            console.log('complete');
-          },
-        });
-    } else {
-      this.taskService.createTask(task).subscribe({
-        next: (response) => {
-          this.addNewTask.emit(response);
-          this.dismiss.emit();
-        },
-        error: (err) => {
-          this.dismiss.emit();
-          console.log(err);
-        },
-        complete: () => {
-          console.log('complete');
-          this.getTasks();
-        },
-      });
-    }
+    //   this.taskService
+    //     .updateTask(this.taskId, updatedTask)
+    //     .pipe()
+    //     .subscribe({
+    //       next: (response) => {
+    //         this.dismiss.emit();
+    //         console.log(response);
+    //       },
+    //       error: (err) => {
+    //         this.dismiss.emit();
+    //         console.log(err);
+    //       },
+    //       complete: () => {
+    //         this.getTasks();
+    //         console.log('complete');
+    //       },
+    //     });
+    // } else {
+    this.taskService.createTask(task).subscribe({
+      next: (response) => {
+        this.addNewTask.emit(response);
+        this.dismiss.emit();
+      },
+      error: (err) => {
+        this.dismiss.emit();
+        console.log(err);
+      },
+      complete: () => {
+        console.log('complete');
+        this.getTasks();
+      },
+    });
+    // }
   }
 
   getTaskByID(id) {
     this.taskService.getTaskById(id).subscribe((res) => {
-      this.taskDetails = res;
+      // this.taskDetails = res;
     });
   }
   getTasks() {

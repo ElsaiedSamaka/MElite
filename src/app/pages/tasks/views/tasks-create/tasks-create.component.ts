@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TasksCreateComponent {
   showModel = false;
-
+  editMode: boolean = false;
   constructor() {}
 
   onClick() {
