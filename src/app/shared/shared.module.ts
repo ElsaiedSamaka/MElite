@@ -5,6 +5,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { InputComponent } from './input/input.component';
 import { ModalComponent } from './modal/modal.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SortIconComponent } from './sort-icon/sort-icon.component';
     ModalComponent,
     ConfirmModalComponent,
     SortIconComponent,
+    NavBarComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -22,6 +24,7 @@ import { SortIconComponent } from './sort-icon/sort-icon.component';
     ModalComponent,
     ConfirmModalComponent,
     SortIconComponent,
+    NavBarComponent,
   ],
 })
 export class SharedModule {}

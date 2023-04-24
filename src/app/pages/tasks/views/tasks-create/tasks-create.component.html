@@ -9,56 +9,52 @@
     </h3>
     <button type="button"
       class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mr-auto inline-flex items-center "
-      data-modal-hide="defaultModal">
-      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg" (click)="onCloseHandled()">
-        <path fill-rule="evenodd"
-          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-          clip-rule="evenodd"></path>
-      </svg>
+     >
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true" (click)="onCloseHandled()">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
       <span class="sr-only" (click)="onCloseHandled()">Close modal</span>
       </button>
     </div>
     <div class="p-6 space-y-6 " modal-body>
-      <form class="space-y-6">
+      <form class="flex flex-col flex-shrink items-stretch justify-center">
         <div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
-          <input type="email" name="email" id="email"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-            placeholder="name@company.com" required>
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 "> عنوان المهمة</label>
+          <input type="text" name="name" id="name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
+            placeholder="" required>
         </div>
         <div>
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your
-            password</label>
-          <input type="password" name="password" id="password" placeholder="••••••••"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+          <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">
+            وصف المهمة</label>
+          <input type="text" name="description" id="description" placeholder=""
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
             required>
         </div>
-        <div class="flex justify-between">
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input id="remember" type="checkbox" value=""
-                class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required>
-            </div>
-            <label for="remember" class="ml-2 text-sm font-medium text-gray-900 ">Remember
-              me</label>
+        <div>
+          <label for="user" class="block mb-2 text-sm font-medium text-gray-900 ">
+            المستخدم</label>
+          <select name="user" id="user" class="bg-white divide-y divide-gray-100 rounded-lg shadow py-2  w-full">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+          <div>
+            <label for="deadline" class="block mb-2 text-sm font-medium text-gray-900 ">
+              تاريخ الانتهاء</label>
+            <input type="date" name="deadline" id="deadline" placeholder=""
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
+              required>
           </div>
-          <a class="text-sm text-blue-700 hover:underline ">Lost Password?</a>
-          </div>
+        <div class=" flex items-center justify-center flex-shrink-0 mt-5">
+          <button
+            class="w-1/2 m-4 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">الغاء</button>
           <button type="submit"
-            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login
-            to your account</button>
-          <div class="text-sm font-medium text-gray-500 ">
-          Not registered? <a class="text-blue-700 hover:underline ">Create account</a>
-          </div>
+              class="w-1/2 m-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">حفظ</button>
+            </div>
           </form>
           </div>
-  <div class=" flex-row-reverse items-center p-6 space-x-2 border-t border-gray-200 rounded-b " modal-footer>
-    <button data-modal-hide="defaultModal" type="button"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">I
-      accept</button>
-    <button data-modal-hide="defaultModal" type="button"
-      class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 "
-      (click)="onCloseHandled()">Decline</button>
-    </div>
   </app-modal>
