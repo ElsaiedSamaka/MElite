@@ -22,6 +22,6 @@ export class TasksCreateComponent {
     console.log(task);
   }
   dismissToast(dismissed: boolean) {
-    this.showToast = !this.showToast;
+    this.showToast = dismissed;
   }
 }
