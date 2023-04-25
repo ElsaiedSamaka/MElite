@@ -13,6 +13,7 @@ export class DataGridComponent implements OnInit {
   showConfiramtionModel: boolean = false;
   showToast: boolean = false;
   toastType: string;
+  showActions: boolean = false;
   taskId;
 
   onTaskChange(id: string) {
@@ -30,6 +31,9 @@ export class DataGridComponent implements OnInit {
 
   closeToast(dismissed) {
     this.showToast = dismissed;
+  }
+  toggleActionsDDL() {
+    this.showActions = !this.showActions;
   }
   constructor(private tasksService: TasksService) {}
 
