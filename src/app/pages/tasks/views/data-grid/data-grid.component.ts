@@ -8,8 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class DataGridComponent implements OnInit {
   @Input() data = [];
   @Output() taskCheck = new EventEmitter<any>();
+  showConfiramtionModel: boolean= false;
   onTaskChange(id: string) {
     this.taskCheck.emit(id);
+  }
+  openConfirmModal() {
+    this.showConfiramtionModel = true;
+  }
+  closeConfirmModal() {
+    this.showConfiramtionModel =false
   }
 
   constructor() {}

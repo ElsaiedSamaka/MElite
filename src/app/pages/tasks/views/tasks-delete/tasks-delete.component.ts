@@ -7,22 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksDeleteComponent implements OnInit {
   showConfiramtionModel = false;
-  empIds;
+  tasksIds;
   constructor() {}
 
   ngOnInit() {}
 
   openConfirmationModal(ids: any[]) {
     this.showConfiramtionModel = !this.showConfiramtionModel;
-    this.empIds = ids;
+    this.tasksIds = ids;
   }
   onConfirmationCloseHandled() {
     this.showConfiramtionModel = false;
   }
 
-  // TODO: ADD API CALL TO DELETE EMPLOYEEs
+  // TODO: ADD API CALL TO DELETE tasks
   deleteALLCheckedTasks() {
     this.onConfirmationCloseHandled();
-    console.log('employees have been deleted');
+    console.log('tasks have been deleted');
   }
 }
