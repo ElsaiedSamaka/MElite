@@ -127,7 +127,7 @@
 </app-confirm-modal>
 <!-- confirm-modal -->
 <!-- toast-modal -->
-<app-toast *ngIf="showToast" (dismiss)="dismissToast($event)" toastMessage="عملية ناجحة" toastType="success"
+<app-toast *ngIf="showToast" (dismiss)="dismissToast($event)" [toastType]="toastType"
   toastTitle="">
 </app-toast>
 <!-- toast-modal -->

@@ -53,6 +53,9 @@ export class TasksListComponent implements OnInit {
     }
   }
   paginate(current: number, perPage: number) {
+    this.getTasks();
+  }
+  getTasks() {
     this.tasks$ = this.tasksService.getAllTasks(this.title, this.current).pipe(
       map((res) => {
         this.totalItems = res['totalItems'];
@@ -99,5 +102,13 @@ export class TasksListComponent implements OnInit {
       this.selectedItemsList.push(taskId);
     }
     console.log('selectedItemsList', this.selectedItemsList);
+  }
+  onTaskDeleted(deletedTask) {
+    // ideally we would recieve that emitted deleted task and filter out our displayed tasks with that task id
+    // now since there an issue filter displayed tasks$
+    // im gonna simply make another api call to get the updated tasks list
+    // this.tasks$.filter((task) => task.id === deletedTask.id);
+    // console.log(deletedTask);
+    this.getTasks();
   }
 }
