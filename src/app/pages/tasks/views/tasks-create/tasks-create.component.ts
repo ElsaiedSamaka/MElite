@@ -20,6 +20,9 @@ export class TasksCreateComponent {
   addTask(task: any) {
     this.showToast = !this.showToast;
     console.log(task);
+    setTimeout(() => {
+      this.showToast = false;
+    }, 5000);
   }
   dismissToast(dismissed: boolean) {
     this.showToast = dismissed;
