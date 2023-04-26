@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab-bar',
-  templateUrl: './tab-bar.component.html',
-  styleUrls: ['./tab-bar.component.css'],
+  selector: 'app-filter-bar',
+  templateUrl: './filter-bar.component.html',
+  styleUrls: ['./filter-bar.component.css'],
 })
-export class TabBarComponent implements OnInit {
+export class FilterBarComponent implements OnInit {
   tabs = [
     { id: 1, label: 'الجميع' },
     { id: 2, label: 'الجديد' },
