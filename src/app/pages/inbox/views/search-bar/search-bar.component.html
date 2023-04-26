@@ -2,32 +2,35 @@
 
   <form class="">
     <div class="flex flex-row-reverse ">
-      <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only">Your
-      </label>
-      <button id="dropdown-button" data-dropdown-toggle="dropdown"
+      <button (click)="toggleDDL()" id="dropdown-button" data-dropdown-toggle="dropdown"
         class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-r-sm hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100  "
         type="button">كل المعاملات
         <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
         </svg></button>
-      <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
-        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
+      <div [ngClass]="(showDDL === true)? 'absolute':'hidden'" id="dropdown"
+        class="z-10 mt-12 bg-white divide-y divide-gray-100 rounded-sm shadow w-44 ">
+        <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdown-button">
           <li>
             <button type="button"
-              class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mockups</button>
+              class="inline-flex flex-row-reverse w-full px-4 py-2 hover:bg-gray-100 ">الجديد</button>
           </li>
           <li>
             <button type="button"
-              class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Templates</button>
+              class="inline-flex flex-row-reverse w-full px-4 py-2 hover:bg-gray-100 ">المؤجل</button>
           </li>
           <li>
             <button type="button"
-              class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Design</button>
+              class="inline-flex flex-row-reverse w-full px-4 py-2 hover:bg-gray-100 ">عاجلة</button>
           </li>
           <li>
             <button type="button"
-              class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logos</button>
+              class="inline-flex flex-row-reverse w-full px-4 py-2 hover:bg-gray-100">للتوقيع</button>
+          </li>
+          <li>
+            <button type="button"
+              class="inline-flex flex-row-reverse w-full px-4 py-2 hover:bg-gray-100 ">الطلبات</button>
           </li>
         </ul>
       </div>
