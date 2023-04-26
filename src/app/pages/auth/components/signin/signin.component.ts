@@ -41,7 +41,7 @@ export class SigninComponent implements OnInit {
       .signin(this.authForm.value.email, this.authForm.value.password)
       .subscribe({
         next: () => {
-          this.loadingService.loading$.next(false);
+          this.loadingService.loading$.next(true);
         },
         error: (err) => {
           if (!err.status) {
@@ -54,6 +54,7 @@ export class SigninComponent implements OnInit {
         },
         complete: () => {
           this.router.navigateByUrl('/index');
+          this.loadingService.loading$.next(false);
         },
       });
   }

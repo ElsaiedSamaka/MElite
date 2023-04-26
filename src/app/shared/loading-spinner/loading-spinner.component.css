@@ -1,16 +1,16 @@
 .spinner {
- width: 44px;
- height: 44px;
+ width: 100px;
+ height: 100px;
  animation: spinner-y0fdc1 2s infinite ease;
  transform-style: preserve-3d;
 }
 
 .spinner > div {
- background-color: rgba(0,77,255,0.2);
+ background-color: rgba(0, 255, 128, 0.2);
  height: 100%;
  position: absolute;
  width: 100%;
- border: 2px solid #004dff;
+ border: 2px solid #00ffcc;
 }
 
 .spinner div:nth-of-type(1) {
