@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 import { AuthService } from 'src/core/services/auth.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AuthService } from 'src/core/services/auth.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
+  loading$;
   authForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -22,7 +24,13 @@ export class SigninComponent implements OnInit {
       Validators.maxLength(25),
     ]),
   });
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {
+    this.loading$ = this.loadingService.loading$;
+  }
   ngOnInit(): void {}
   onSubmit() {
     if (this.authForm.invalid) {
@@ -33,7 +41,7 @@ export class SigninComponent implements OnInit {
       .signin(this.authForm.value.email, this.authForm.value.password)
       .subscribe({
         next: () => {
-          this.router.navigateByUrl('/index');
+          this.loadingService.loading$.next(false);
         },
         error: (err) => {
           if (!err.status) {
@@ -43,6 +51,9 @@ export class SigninComponent implements OnInit {
           } else {
             this.authForm.setErrors({ unknownError: true });
           }
+        },
+        complete: () => {
+          this.router.navigateByUrl('/index');
         },
       });
   }
