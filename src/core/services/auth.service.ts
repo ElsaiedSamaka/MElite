@@ -13,6 +13,7 @@ export class AuthService {
   // This is not the best way to do this, but it is the easiest way to get started
   // We will need to change this public property to a private property
   signedin$ = new BehaviorSubject<boolean>(null);
+  USER = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 
@@ -43,7 +44,8 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        tap(() => {
+        tap((res) => {
+          this.USER.next(res);
           this.signedin$.next(true);
         })
       );
