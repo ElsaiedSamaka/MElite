@@ -4,7 +4,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openExternalLetterTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'خطاب تغطية') ? 'active':''">
         خطاب تغطية
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
@@ -18,7 +18,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openOfferTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'عروض') ? 'active':''">
         عروض
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
@@ -32,7 +32,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openMemoTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'مذكرة') ? 'active':''">
         مذكرة
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
@@ -46,7 +46,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openCommitteeMinutesTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'محاضر اللجان') ? 'active':''">
         محاضر اللجان
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
@@ -60,7 +60,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openExplanationsTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'الشروحات') ? 'active':''">
         الشروحات
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
@@ -74,7 +74,7 @@
     <li class="mr-2" role="presentation">
       <a
       (click)="openAttachmentTab()"
-        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
+        class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group" [ngClass]="(activeTab == 'المرفقات') ? 'active':''">
         المرفقات
 
         <svg class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor"
