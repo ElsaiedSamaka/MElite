@@ -3,6 +3,7 @@
     data-tabs-toggle="#myTabContent" role="tablist">
     <li class="mr-2" role="presentation">
       <a
+      (click)="openExternalLetterTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         خطاب تغطية
 
@@ -16,6 +17,7 @@
     </li>
     <li class="mr-2" role="presentation">
       <a
+      (click)="openOfferTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         عروض
 
@@ -29,6 +31,7 @@
     </li>
     <li class="mr-2" role="presentation">
       <a
+      (click)="openMemoTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         مذكرة
 
@@ -42,6 +45,7 @@
     </li>
     <li class="mr-2" role="presentation">
       <a
+      (click)="openCommitteeMinutesTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         محاضر اللجان
 
@@ -55,6 +59,7 @@
     </li>
     <li class="mr-2" role="presentation">
       <a
+      (click)="openExplanationsTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         الشروحات
 
@@ -68,6 +73,7 @@
     </li>
     <li class="mr-2" role="presentation">
       <a
+      (click)="openAttachmentTab()"
         class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group">
         المرفقات
 
@@ -81,8 +87,9 @@
     </li>
   </ul>
   <!-- tab -->
-  <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20">
-    <div class="flex flex-row-reverse justify-between mb-8">
+  <section [ngSwitch]="activeTab">
+    <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20" *ngSwitchCase="'خطاب تغطية'">
+      <div class="flex flex-row-reverse justify-between mb-8">
       <h3 class="font-semibold">خطاب</h3>
       <button type="button"
         class="text-white bg-gradient-to-bl from-green-500 to-green-800 hover:bg-gradient-to-r focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md shadow-lg text-sm p-2.5 text-center inline-flex items-center mr-2 ">
@@ -105,9 +112,9 @@
       </p>
     </div>
   </div>
-  <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20">
+  <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20" *ngSwitchCase="'عروض'">
     <div class="flex flex-row-reverse justify-between mb-8">
-      <h3 class="font-semibold">خطاب</h3>
+      <h3 class="font-semibold">عروض</h3>
       <button type="button"
         class="text-white bg-gradient-to-bl from-green-500 to-green-800 hover:bg-gradient-to-r focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md shadow-lg text-sm p-2.5 text-center inline-flex items-center mr-2 ">
         <svg fill="none" class="w-5 h-5" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
@@ -129,9 +136,9 @@
       </p>
     </div>
   </div>
-  <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20">
+  <div class="bg-white shadow-md rounded-s m-5 p-4 pb-20" *ngSwitchCase="'الشروحات'">
     <div class="flex flex-row-reverse justify-between mb-8">
-      <h3 class="font-semibold">خطاب</h3>
+      <h3 class="font-semibold">الشروحات</h3>
       <button type="button"
         class="text-white bg-gradient-to-bl from-green-500 to-green-800 hover:bg-gradient-to-r focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-md shadow-lg text-sm p-2.5 text-center inline-flex items-center mr-2 ">
         <svg fill="none" class="w-5 h-5" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
@@ -153,5 +160,9 @@
       </p>
     </div>
   </div>
+  <div *ngSwitchDefault>
+    default
+  </div>
+  </section>
   <!-- tab -->
 </div>
