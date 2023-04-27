@@ -351,7 +351,7 @@
     <!-- tab header -->
     <!-- tab body -->
     <div class="flex flex-row-reverse" [ngSwitch]="selectedTabId">
-      <div class="flex-none">
+      <div class="flex-none w-full">
         <ul class="flex flex-nowrap flex-row-reverse text-sm font-medium text-center text-gray-500 ">
           <li class="" *ngFor="let tab of tabs">
             <a [ngClass]="(selectedTabId === tab.id)? 'mx-1 bg-gradient-to-bl from-green-400 to-green-700 inline-block px-4 py-2 my-1 text-white border-solid border-1 border-gray-200 rounded-sm shadow-inner':'mx-1 inline-block px-4 py-2 my-1 border-solid border-2 border-gray-200 rounded-sm hover:text-gray-900 hover:bg-gray-200' "
@@ -398,7 +398,32 @@
           </div>
         </div>
         <div *ngSwitchCase="'2'">test2</div>
-        <div *ngSwitchCase="'3'">test3</div>
+        <div *ngSwitchCase="'3'">
+          <div class="mangment flex flex-row-reverse flex-grow justify-between w-full">
+            <div class="flex flex-col w-full ml-1">
+              <label for="mangment-ddl">
+                اسم الادارة
+              </label>
+              <select name="mangment-ddl" id="" class="h-12 text-right bg-slate-50">
+                <option value="" [defaultSelected]="true">اختر الادارة</option>
+                <option value="2">فلان الفلان الفلاني ادارة</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="flex flex-col w-full mr-1">
+              <label for="emp-ddl">
+                اسم الموظف
+              </label>
+              <select name="mangment-ddl" id="" class="h-12 text-right bg-slate-50">
+                <option value="" [defaultSelected]="true">اختر الموظف</option>
+                <option value="2">فلان الفلان الفلاني</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div *ngSwitchDefault>default</div>
       </div>
     </div>
