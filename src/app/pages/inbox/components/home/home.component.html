@@ -30,13 +30,12 @@
 <div class="main-content">
     <div class="columns-1 mr-5">
         <div
-            class="text-green-700 border-solid border-2 border-gray-200 rounded-s font-semibold bg-white inline-block w-80 p-2">
+            class="text-green-700 border-solid border-2 border-gray-200 rounded-s font-semibold bg-white inline-block w-96 p-2 ">
             المعاملات</div>
-        <ul>
-            <!--TODO: this class name is supposed to make the below column scrollable on y axis (overflow-y-scroll) -->
-            <div class="treatments w-80 p-2 my-1" *ngIf="(treatments$|async); else placeholder">
+        <ul class="">
+            <div class="treatments w-96 p-2 my-1 h-96 overflow-y-scroll" *ngIf="(treatments$|async); else placeholder">
                 <li *ngFor="let treatment of (treatments$|async)">
-                    <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50"
+                    <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50 "
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
                             

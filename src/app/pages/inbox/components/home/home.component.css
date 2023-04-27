@@ -14,3 +14,10 @@
 .active{
     background-color: #f0fdf4;
 }
+.scroll{
+    overflow-x: hidden;
+        overflow-y: auto;
+}
+.treatments{
+  height: 36rem;
+}
