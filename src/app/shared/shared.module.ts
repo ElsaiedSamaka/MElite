@@ -8,6 +8,7 @@ import { InputComponent } from './input/input.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ModalComponent } from './modal/modal.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
 import { ToastComponent } from './toast/toast.component';
 
@@ -22,6 +23,7 @@ import { ToastComponent } from './toast/toast.component';
     NavBarComponent,
     ToastComponent,
     LoadingSpinnerComponent,
+    SideBarComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -32,6 +34,7 @@ import { ToastComponent } from './toast/toast.component';
     NavBarComponent,
     ToastComponent,
     LoadingSpinnerComponent,
+    SideBarComponent,
   ],
 })
 export class SharedModule {}
