@@ -354,7 +354,7 @@
       <div class="flex-none w-full">
         <ul class="flex flex-nowrap flex-row-reverse text-sm font-medium text-center text-gray-500 ">
           <li class="" *ngFor="let tab of tabs">
-            <a [ngClass]="(selectedTabId === tab.id)? 'mx-1 bg-gradient-to-bl from-green-400 to-green-700 inline-block px-4 py-2 my-1 text-white border-solid border-1 border-gray-200 rounded-sm shadow-inner':'mx-1 inline-block px-4 py-2 my-1 border-solid border-2 border-gray-200 rounded-sm hover:text-gray-900 hover:bg-gray-200' "
+            <a [ngClass]="(selectedTabId === tab.id)? 'mx-1 bg-gradient-to-bl from-green-400 to-green-700 inline-block px-4 py-2 my-1 text-white border-solid border-2 border-gray-200 rounded-md shadow-inner':'mx-1 inline-block px-4 py-2 my-1 border-solid border-2 border-gray-200 rounded-md hover:text-gray-900 hover:bg-gray-200' "
               class="" (click)="selectTab(tab.id)">{{tab.label}}</a>
           </li>
         </ul>
