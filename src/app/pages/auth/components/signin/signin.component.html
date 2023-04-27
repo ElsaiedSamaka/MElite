@@ -79,7 +79,7 @@
           </div>
           <div class="col-span-6">
             <button
-              class="inline-block w-80 shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white transition hover:bg-gradient-to-br hover:text-gray-50 focus:outline-none active:text-white"  type="submit">
+              class="inline-block w-80 shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white hover:text-gray-50 focus:outline-none active:text-white disabled:cursor-not-allowed"  type="submit" [disabled]="authForm.invalid">
               تسجيل الدخول </button>
           </div>
           <div class="col-span-6">
