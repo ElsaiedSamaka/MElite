@@ -13,6 +13,7 @@ export class TabBarComponent implements OnInit {
     { id: 3, label: 'موظف محدد' },
   ];
   selectedTabId = 1;
+  empddl: boolean = false;
   constructor() {}
 
   ngOnInit() {}
@@ -39,5 +40,8 @@ export class TabBarComponent implements OnInit {
   }
   selectTab(id) {
     this.selectedTabId = id;
+  }
+  openEmpDDL() {
+    this.empddl = !this.empddl;
   }
 }
