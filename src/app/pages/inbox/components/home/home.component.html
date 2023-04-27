@@ -34,8 +34,8 @@
             المعاملات</div>
         <ul>
             <!--TODO: this class name is supposed to make the below column scrollable on y axis (overflow-y-scroll) -->
-            <div class="w-80 p-2 my-1">
-            <li *ngFor="let treatment of (treatments$|async)">
+            <div class="treatments w-80 p-2 my-1" *ngIf="(treatments$|async); else placeholder">
+                <li *ngFor="let treatment of (treatments$|async)">
                     <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50"
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
@@ -63,6 +63,17 @@
             </a>
             </li>
     </div>
+    <ng-template #placeholder>
+        <div role="status" class="max-w-sm animate-pulse mt-5 ">
+            <div class="h-2.5 bg-gray-200 rounded-full  w-48 mb-4"></div>
+            <div class="h-2 bg-gray-200 rounded-full max-w-[360px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full max-w-[330px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full max-w-[300px] mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full max-w-[360px]"></div>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </ng-template>
     </ul>
 </div>
 <!-- main-content -->
