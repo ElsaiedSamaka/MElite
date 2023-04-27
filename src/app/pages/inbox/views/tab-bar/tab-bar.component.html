@@ -350,7 +350,7 @@
     </div>
     <!-- tab header -->
     <!-- tab body -->
-    <div class="flex flex-row-reverse   ">
+    <div class="flex flex-row-reverse" [ngSwitch]="selectedTabId">
       <div class="flex-none">
         <ul class="flex flex-nowrap flex-row-reverse text-sm font-medium text-center text-gray-500 ">
           <li class="" *ngFor="let tab of tabs">
@@ -358,6 +358,48 @@
               class="" (click)="selectTab(tab.id)">{{tab.label}}</a>
           </li>
         </ul>
+        <div *ngSwitchCase="'1'">
+          <div class="relative  overflow-x-auto shadow-md sm:rounded-lg">
+            <table class=" w-full text-sm text-right text-gray-500">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3" [ngstyle]="'width:70%'">
+                    الاسم
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    صورة
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    اصل
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white border-b hover:bg-gray-50">
+                  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                    احمد محمد السيد المرسي
+                  </th>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center justify-end">
+                      <input type="checkbox"
+                        class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2">
+                      <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center justify-end">
+                      <input type="radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded">
+                      <label class="sr-only">radio</label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngSwitchCase="'2'">test2</div>
+        <div *ngSwitchCase="'3'">test3</div>
+        <div *ngSwitchDefault>default</div>
       </div>
     </div>
     <!-- tab body -->
