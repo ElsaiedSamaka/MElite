@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-bar.component.css'],
 })
 export class TabBarComponent implements OnInit {
-  activeTab = 'خطاب تغطية';
+  activeTab = 'الاحالة';
+  tabs = [
+    { id: 1, label: 'عموم الامارة' },
+    { id: 2, label: 'المفضلة' },
+    { id: 3, label: 'موظف محدد' },
+  ];
+  selectedTabId = 1;
   constructor() {}
 
   ngOnInit() {}
@@ -27,5 +33,11 @@ export class TabBarComponent implements OnInit {
   }
   openCommitteeMinutesTab() {
     this.activeTab = 'محاضر اللجان';
+  }
+  openAssignmentTab() {
+    this.activeTab = 'الاحالة';
+  }
+  selectTab(id) {
+    this.selectedTabId = id;
   }
 }
