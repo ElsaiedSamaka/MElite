@@ -36,4 +36,12 @@ export class TreatmentsService {
       })
     );
   }
+  search(term: any): Observable<Treatment[]> {
+    // TODO: make sure the backend is ready for this
+    return this.apiService.get(`/treatments?search=${term}`).pipe(
+      tap((treatments) => {
+        this.treatments$.next(treatments);
+      })
+    );
+  }
 }

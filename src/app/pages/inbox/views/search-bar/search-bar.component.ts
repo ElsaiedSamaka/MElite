@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs';
+import { TreatmentsService } from 'src/core/services/treatments.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,10 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
   showDDL: boolean = false;
-  constructor() {}
+  @Output() searchTreatment = new EventEmitter<any>();
+  searchForm = new FormGroup({
+    search: new FormControl(''),
+  });
+  constructor(private treatmentsService: TreatmentsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchTreatments();
+  }
   toggleDDL() {
     this.showDDL = !this.showDDL;
+  }
+  searchTreatments() {
+    this.searchForm.valueChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        switchMap((searchString) => {
+          console.log('search string', searchString);
+          return this.treatmentsService.search(searchString);
+        }),
+        tap((treats) => {
+          this.searchTreatment.emit(treats);
+        })
+      )
+      .subscribe();
   }
 }

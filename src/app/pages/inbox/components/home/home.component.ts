@@ -36,4 +36,8 @@ export class HomeComponent implements OnInit {
     console.log(treatments);
     this.treatments = treatments;
   }
+  onTreatmentsSearch(treatments: Treatment[]) {
+    console.log(treatments);
+    this.treatments = treatments;
+  }
 }

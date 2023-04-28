@@ -12,12 +12,12 @@
 
 <!-- search-bar -->
 <div class="search-bar mr-5 ">
-<app-filter-bar (treatmentsFilter)="onTreatmentsFilter($event)"></app-filter-bar>
-<app-search-bar></app-search-bar>
+    <app-filter-bar (treatmentsFilter)="onTreatmentsFilter($event)"></app-filter-bar>
+    <app-search-bar (searchTreatment)="onTreatmentsSearch($event)"></app-search-bar>
     <div class="flex items-center text-green-700">
         <span class="font-semibold ml-9 mr-2"> البحث المتقدم</span>
-        <svg fill="none" class="w-5 h-5 hover:text-green-900" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg fill="none" class="w-5 h-5 hover:text-green-900" stroke="currentColor" stroke-width="2.5"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round"
                 d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75">
             </path>
@@ -33,31 +33,31 @@
             class="text-green-700 border-solid border-2 border-gray-200 rounded-s font-semibold bg-white w-96 p-2.5  flex justify-between items-center">
             <!-- refresh icon  -->
             <span class="mx-1">
-                <svg (click)="refreshTreatments()" class="mx-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3">
-                </path>
-            </svg>
-            <!-- refresh icon -->
-            <!-- sort icon -->
-            <svg [appSort]="(treatments)" data-order="desc" data-name="date" class="mx-1"
-                fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path>
-            </svg>
-            <!-- sort icon -->
+                <svg (click)="refreshTreatments()" class="mx-1" fill="none" stroke="currentColor" stroke-width="2.5"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3">
+                    </path>
+                </svg>
+                <!-- refresh icon -->
+                <!-- sort icon -->
+                <svg [appSort]="(treatments)" data-order="desc" data-name="date" class="mx-1" fill="none"
+                    stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5"></path>
+                </svg>
+                <!-- sort icon -->
             </span>
-            المعاملات</div>
+            المعاملات
+        </div>
         <ul class="">
             <div class="treatments w-96 p-2 my-1 h-96 overflow-y-scroll" *ngIf="(treatments); else placeholder">
                 <li *ngFor="let treatment of (treatments)">
                     <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50 "
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
-                            
+
                             <h5 class="mb-2 font-semibold text-gray-900"> {{treatment.subject}}</h5>
                             <div class="indicator inline-flex items-start justify-around">
                                 <span class="flex w-3 h-3 mx-0.5 bg-gray-200 rounded-full"></span>
@@ -65,8 +65,8 @@
                                 <span class="flex w-3 h-3 mx-0.5 bg-red-500 rounded-full"></span>
                             </div>
                             <p>
-                                <svg color="green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <svg color="green" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13">
                                     </path>
@@ -74,37 +74,38 @@
                                 {{treatment.date | date: 'dd/MM/yyyy' }}
                             </p>
                         </div>
-                        <p class=" text-gray-400 ">{{(treatment.description.length > 70)? (treatment.description | slice:0:70):
+                        <p class=" text-gray-400 ">{{(treatment.description.length > 70)? (treatment.description |
+                            slice:0:70):
                             treatment.description}}</p>
-                <div class="flex flex-row-reverse flex-wrap pt-2">
-                    <span
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">خطاب#</span>
-                    <span
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">مذكرة#</span>
-                    <span
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">عرض#</span>
+                        <div class="flex flex-row-reverse flex-wrap pt-2">
+                            <span
+                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">خطاب#</span>
+                            <span
+                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">مذكرة#</span>
+                            <span
+                                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">عرض#</span>
+                        </div>
+                    </a>
+                </li>
+            </div>
+            <ng-template #placeholder>
+                <div role="status" class="max-w-sm animate-pulse mt-5 ">
+                    <div class="h-2.5 bg-gray-200 rounded-full  w-48 mb-4"></div>
+                    <div class="h-2 bg-gray-200 rounded-full max-w-[360px] mb-2.5"></div>
+                    <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
+                    <div class="h-2 bg-gray-200 rounded-full max-w-[330px] mb-2.5"></div>
+                    <div class="h-2 bg-gray-200 rounded-full max-w-[300px] mb-2.5"></div>
+                    <div class="h-2 bg-gray-200 rounded-full max-w-[360px]"></div>
+                    <span class="sr-only">Loading...</span>
                 </div>
-            </a>
-            </li>
+            </ng-template>
+        </ul>
     </div>
-    <ng-template #placeholder>
-        <div role="status" class="max-w-sm animate-pulse mt-5 ">
-            <div class="h-2.5 bg-gray-200 rounded-full  w-48 mb-4"></div>
-            <div class="h-2 bg-gray-200 rounded-full max-w-[360px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full max-w-[330px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full max-w-[300px] mb-2.5"></div>
-            <div class="h-2 bg-gray-200 rounded-full max-w-[360px]"></div>
-            <span class="sr-only">Loading...</span>
-        </div>
-    </ng-template>
-    </ul>
-</div>
-<!-- main-content -->
+    <!-- main-content -->
 
-<!-- side-content -->
-<div class="container">
-<router-outlet></router-outlet>
-</div>
+    <!-- side-content -->
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </div>
 <!-- side-content -->
