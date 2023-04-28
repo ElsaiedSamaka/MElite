@@ -1,6 +1,7 @@
-<div [ngSwitch]="toastType" class="fixed top-5 right-5  ">
+<div [ngSwitch]="toastType"
+  class="fixed bottom-11 left-5 rounded-3xl flex items-center justify-center backdrop-blur-md ">
   <div *ngSwitchCase="'success'"
-    class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow "
+    class="flex items-center w-full max-w-xs p-2 mb-4 border-2 border-green-400 text-gray-500 rounded-lg shadow "
   role="alert">
   <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg "
     >
@@ -23,7 +24,7 @@
   </button>
 </div>
 <div *ngSwitchCase="'error'"
-  class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow "
+  class="flex items-center w-full max-w-xsp-2 p-2 border-2 border-red-400 mb-4 text-gray-500 bg-white rounded-lg shadow "
   role="alert">
   <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg ">
   <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +45,8 @@
     </svg>
   </button>
 </div>
-<div *ngSwitchCase="'warning'" class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow "
+<div *ngSwitchCase="'warning'"
+  class="flex items-center w-full max-w-xs p-2 border-2 border-orange-400 text-gray-500 bg-white rounded-lg shadow "
   role="alert">
   <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg ">
     <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
