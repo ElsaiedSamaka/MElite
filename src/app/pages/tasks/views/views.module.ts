@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SortDirective } from 'src/utils/directives/sort.directive';
 import { DataGridComponent } from './data-grid/data-grid.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { TaskFormComponent } from './task-form/task-form.component';
@@ -17,7 +16,7 @@ import { TasksDeleteComponent } from './tasks-delete/tasks-delete.component';
     DataGridComponent,
     PaginationComponent,
     TaskFormComponent,
-    SortDirective,
+    // SortDirective,
   ],
   exports: [
     TasksCreateComponent,

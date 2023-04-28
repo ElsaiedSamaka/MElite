@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SortDirective } from 'src/utils/directives/sort.directive';
 import { DetailedComponent } from './components/detailed/detailed.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -15,6 +16,7 @@ import { ViewsModule } from './views/views.module';
     NotFoundComponent,
     PlaceholderComponent,
     DetailedComponent,
+    SortDirective,
   ],
 })
 export class InboxModule {}
