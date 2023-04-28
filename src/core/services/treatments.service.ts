@@ -38,9 +38,9 @@ export class TreatmentsService {
   }
   search(term: any): Observable<Treatment[]> {
     // TODO: make sure the backend is ready for this
-    return this.apiService.get(`/api/treatments?search=${term}`).pipe(
-      tap((treatments) => {
-        this.treatments$.next(treatments);
+    return this.apiService.get(`/api/treatments?subject=${term}`).pipe(
+      tap((res) => {
+        this.treatments$.next(res.treatments);
       })
     );
   }

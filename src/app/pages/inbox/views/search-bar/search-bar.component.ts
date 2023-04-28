@@ -33,7 +33,7 @@ export class SearchBarComponent implements OnInit {
           return this.treatmentsService.search(searchString);
         }),
         tap((treats) => {
-          this.searchTreatment.emit(treats);
+          this.searchTreatment.emit(this.treatmentsService.treatments$.value);
         })
       )
       .subscribe();
