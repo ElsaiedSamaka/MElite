@@ -30,7 +30,7 @@ export class DetailedComponent implements OnInit {
   submitAssignment(treatId: any) {
     // TODO: make sure that the backend have setup an endpoint for submiting  assignment and then call it here
     console.log('treatment id', treatId);
-    console.log('submitted');
+    console.log('المعاملة برقم', treatId, 'تمت احالتها بنجاح');
     this.showConfirmModal = false;
   }
 }
