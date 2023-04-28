@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-bar.component.css'],
 })
 export class TabBarComponent implements OnInit {
-  activeTab = 'الاحالة';
+  activeTab = 'خطاب تغطية';
   tabs = [
     { id: 1, label: 'عموم الامارة' },
     { id: 2, label: 'المفضلة' },
