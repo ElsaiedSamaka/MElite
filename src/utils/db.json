@@ -3,62 +3,102 @@
     {
       "subject": "امانة مكة المكرمة",
       "description": "هذا مثال لنص يمكن استبداله لورم ابيسم دولار سبميت ممكن اقصى سنوية مصير هذا مثال",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-2-2024",
-      "id": 1
+      "id": 1,
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "subject": "امانة مكة",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-2-2024",
-      "id": 3
+      "id": 3,
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "id": 4,
+      "archId": 1,
+      "archdate": "12-2-2024",
       "subject": "امانة الحدود الشمالية",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-3-2023"
     },
     {
       "subject": "امانة جدة",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "1-2-2024",
-      "id": 5
+      "id": 5,
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "id": 4,
       "subject": "امانة الحدود الشمالية",
       "description": "lorem ipsum dolar submit",
-      "date": "11-2-2023"
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
+      "date": "11-2-2023",
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "subject": "امانة جدة",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-5-2024",
-      "id": 5
+      "id": 5,
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "id": 6,
       "subject": "امانة الحدود الشمالية",
       "description": "lorem ipsum dolar submit",
-      "date": "12-7-2023"
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
+      "date": "12-7-2023",
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "subject": "امانة جدة",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-2-2024",
-      "id": 7
+      "id": 7,
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "id": 8,
       "subject": "امانة الحدود الشمالية",
       "description": "lorem ipsum dolar submit",
-      "date": "12-1-2023"
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
+      "date": "12-1-2023",
+      "archId": 1,
+      "archdate": "12-2-2024"
     },
     {
       "subject": "امانة جدة",
       "description": "lorem ipsum dolar submit",
+      "treatmentsource": "مصدر المعاملة",
+      "treatmentat": "userId",
       "date": "12-12-2024",
-      "id": 9
+      "id": 9,
+      "archId": 1,
+      "archdate": "12-2-2024"
     }
   ]
 }
