@@ -27,7 +27,9 @@ export class DetailedComponent implements OnInit {
   onConfirmationCloseHandled() {
     this.showConfirmModal = false;
   }
-  submitAssignment() {
+  submitAssignment(treatId: any) {
+    // TODO: make sure that the backend have setup an endpoint for submiting  assignment and then call it here
+    console.log('treatment id', treatId);
     console.log('submitted');
     this.showConfirmModal = false;
   }
