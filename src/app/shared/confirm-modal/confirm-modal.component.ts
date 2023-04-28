@@ -12,7 +12,7 @@ import {
   styleUrls: ['./confirm-modal.component.css'],
 })
 export class ConfirmModalComponent implements OnInit {
-  @Output() dismiss = new EventEmitter<void>();
+  @Output() dismiss = new EventEmitter<boolean>();
 
   constructor(private el: ElementRef) {}
 
@@ -23,6 +23,6 @@ export class ConfirmModalComponent implements OnInit {
     this.el.nativeElement.remove();
   }
   onDismissClick() {
-    this.dismiss.emit();
+    this.dismiss.emit(false);
   }
 }
