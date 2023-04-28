@@ -9,14 +9,19 @@ import { TreatmentsService } from 'src/core/services/treatments.service';
 })
 export class HomeComponent implements OnInit {
   // treatments$!: Observable<Treatment[]>;
-  treatments: Treatment[] = [];
+  treatments!: Treatment[];
   constructor(private treatmentsService: TreatmentsService) {
     // this.treatments$ =
     this.treatmentsService.getAll().subscribe((treatments) => {
       this.treatments = treatments;
     });
-    // this.treatmentsService.getAll());
+    console.log(this.treatments)
   }
 
   ngOnInit() {}
+  refreshTreatments() {
+    this.treatmentsService.getAll().subscribe((treatments) => {
+      this.treatments = treatments;
+    });
+  }
 }

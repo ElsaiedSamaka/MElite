@@ -33,7 +33,7 @@
             class="text-green-700 border-solid border-2 border-gray-200 rounded-s font-semibold bg-white w-96 p-2.5  flex justify-between items-center">
             <!-- refresh icon  -->
             <span class="mx-1">
-                <svg class="mx-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+                <svg (click)="refreshTreatments()" class="mx-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -74,7 +74,7 @@
                                 {{treatment.date | date: 'dd/MM/yyyy' }}
                             </p>
                         </div>
-                        <p class="font-normal text-gray-400 ">{{(treatment.description.length > 45)? (treatment.description | slice:0:45):
+                        <p class=" text-gray-400 ">{{(treatment.description.length > 70)? (treatment.description | slice:0:70):
                             treatment.description}}</p>
                 <div class="flex flex-row-reverse flex-wrap pt-2">
                     <span
