@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { tap } from 'rxjs';
+import { TreatmentsService } from 'src/core/services/treatments.service';
 
 @Component({
   selector: 'app-filter-bar',
@@ -15,10 +17,20 @@ export class FilterBarComponent implements OnInit {
     { id: 6, label: 'الطلبات' },
   ];
   selectedTabId = 1;
-  constructor() {}
+  @Output() treatmentsFilter = new EventEmitter<any>();
+  constructor(private treatmentsService: TreatmentsService) {}
 
   ngOnInit() {}
   selectTab(id: number) {
     this.selectedTabId = id;
+    console.log(this.tabs[id - 1].label);
+    this.treatmentsService
+      .filter(this.tabs[id - 1].label.toString().trim())
+      .pipe(
+        tap((treats) => {
+          this.treatmentsFilter.emit(treats);
+        })
+      )
+      .subscribe();
   }
 }

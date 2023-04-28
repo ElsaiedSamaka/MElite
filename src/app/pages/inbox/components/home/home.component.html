@@ -12,7 +12,7 @@
 
 <!-- search-bar -->
 <div class="search-bar mr-5 ">
-<app-filter-bar></app-filter-bar>
+<app-filter-bar (treatmentsFilter)="onTreatmentsFilter($event)"></app-filter-bar>
 <app-search-bar></app-search-bar>
     <div class="flex items-center text-green-700">
         <span class="font-semibold ml-9 mr-2"> البحث المتقدم</span>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Treatment } from '../models/treatment';
 import { ApiService } from './api.service';
 
@@ -7,9 +7,14 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class TreatmentsService {
+  treatments$ = new BehaviorSubject<Treatment[]>([]);
   constructor(private apiService: ApiService) {}
   getAll(): Observable<Treatment[]> {
-    return this.apiService.get('/treatments');
+    return this.apiService.get('/treatments').pipe(
+      tap((treatments) => {
+        this.treatments$.next(treatments);
+      })
+    );
   }
   getById(id: string): Observable<Treatment> {
     return this.apiService.get(`/treatments/${id}`);
@@ -22,5 +27,13 @@ export class TreatmentsService {
   }
   put(id: string, treatment: Treatment): Observable<Treatment> {
     return this.apiService.put(`/treatments/${id}`, treatment);
+  }
+  filter(filter: string): Observable<Treatment[]> {
+    // TODO: make sure the backend is ready for this
+    return this.apiService.get(`/treatments?filter=${filter}`).pipe(
+      tap((treatments) => {
+        this.treatments$.next(treatments);
+      })
+    );
   }
 }
