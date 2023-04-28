@@ -9,7 +9,7 @@ import { TasksService } from 'src/core/services/tasks.service';
 })
 export class TasksListComponent implements OnInit {
   tasks$;
-  data;
+  data: any = [];
   title: string = '';
   //pagination related vars
   current = 0;
@@ -65,45 +65,45 @@ export class TasksListComponent implements OnInit {
     );
   }
   //selection of tasks
-  onTasksCheck(tasksIds: string[]) {
-    this.isTasksChecked = !this.isTasksChecked;
-    if (this.isTasksChecked === true) {
-      let isSelected = this.selectedItemsList.includes(
-        tasksIds[0] ||
-          tasksIds[1] ||
-          tasksIds[2] ||
-          tasksIds[3] ||
-          tasksIds[4] ||
-          tasksIds[5] ||
-          tasksIds[6] ||
-          tasksIds[7] ||
-          tasksIds[8] ||
-          tasksIds[9]
-      );
-      if (isSelected) {
-        console.log('includes task - will not appendTask');
-      } else {
-        this.selectedItemsList = [...this.selectedItemsList, ...tasksIds];
-        console.log('not includes task - appendTask');
-      }
-      console.log('selectedItemsList', this.selectedItemsList);
-    } else {
-      this.selectedItemsList.length = 0;
-      console.log('selectedItemsList', this.selectedItemsList);
-    }
-  }
+  // onTasksCheck(tasksIds: string[]) {
+  //   this.isTasksChecked = !this.isTasksChecked;
+  //   if (this.isTasksChecked === true) {
+  //     let isSelected = this.selectedItemsList.includes(
+  //       tasksIds[0] ||
+  //         tasksIds[1] ||
+  //         tasksIds[2] ||
+  //         tasksIds[3] ||
+  //         tasksIds[4] ||
+  //         tasksIds[5] ||
+  //         tasksIds[6] ||
+  //         tasksIds[7] ||
+  //         tasksIds[8] ||
+  //         tasksIds[9]
+  //     );
+  //     if (isSelected) {
+  //       console.log('includes task - will not appendTask');
+  //     } else {
+  //       this.selectedItemsList = [...this.selectedItemsList, ...tasksIds];
+  //       console.log('not includes task - appendTask');
+  //     }
+  //     console.log('selectedItemsList', this.selectedItemsList);
+  //   } else {
+  //     this.selectedItemsList.length = 0;
+  //     console.log('selectedItemsList', this.selectedItemsList);
+  //   }
+  // }
 
-  onTaskChange(taskId: string) {
-    if (this.selectedItemsList.includes(taskId)) {
-      this.selectedItemsList = this.selectedItemsList.filter(
-        (emp) => emp !== taskId
-      );
-    } else {
-      this.selectedItemsList.push(taskId);
-    }
-    console.log('selectedItemsList', this.selectedItemsList);
-  }
-  onTaskDeleted(deletedTask) {
+  // onTaskChange(taskId: any) {
+  //   if (this.selectedItemsList.includes(taskId)) {
+  //     this.selectedItemsList = this.selectedItemsList.filter(
+  //       (emp) => emp !== taskId
+  //     );
+  //   } else {
+  //     this.selectedItemsList.push(taskId);
+  //   }
+  //   console.log('selectedItemsList', this.selectedItemsList);
+  // }
+  onTaskDeleted(deletedTask: any) {
     // ideally we would recieve that emitted deleted task and filter out our displayed tasks with that task id
     // now since there an issue filter displayed tasks$
     // im gonna simply make another api call to get the updated tasks list

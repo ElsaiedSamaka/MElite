@@ -12,7 +12,7 @@ export class AuthService {
   // TODO: Right now we are using a BehaviorSubject to store the signed in status of the user
   // This is not the best way to do this, but it is the easiest way to get started
   // We will need to change this public property to a private property
-  signedin$ = new BehaviorSubject<boolean>(null);
+  signedin$ = new BehaviorSubject<boolean>(false);
   USER = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}

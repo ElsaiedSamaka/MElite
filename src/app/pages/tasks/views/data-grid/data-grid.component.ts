@@ -7,14 +7,14 @@ import { TasksService } from 'src/core/services/tasks.service';
   styleUrls: ['./data-grid.component.css'],
 })
 export class DataGridComponent implements OnInit {
-  @Input() data = [];
+  @Input() data: any = [];
   @Output() taskCheck = new EventEmitter<any>();
   @Output() deleteTaskEmitter = new EventEmitter<any>();
   showConfiramtionModel: boolean = false;
   showToast: boolean = false;
-  toastType: string;
+  toastType: string = '';
   showActions: boolean = false;
-  taskId;
+  taskId: any = '';
 
   onTaskChange(id: string) {
     this.taskCheck.emit(id);
@@ -29,7 +29,7 @@ export class DataGridComponent implements OnInit {
     this.showConfiramtionModel = false;
   }
 
-  closeToast(dismissed) {
+  closeToast(dismissed: any) {
     this.showToast = dismissed;
   }
   toggleActionsDDL() {

@@ -11,7 +11,7 @@ import { Sort } from '../sort';
   selector: '[appSort]',
 })
 export class SortDirective {
-  @Input() appSort: Array<any>;
+  @Input() appSort: Array<any> = [];
   constructor(private renderer: Renderer2, private targetElem: ElementRef) {}
 
   @HostListener('click')

@@ -7,10 +7,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./input.component.css'],
 })
 export class InputComponent implements OnInit {
-  @Input() label: string;
-  @Input() control: FormControl;
-  @Input() placeholder: string;
-  @Input() type: string;
+  @Input() label: string = '';
+  @Input() control!: FormControl;
+  @Input() placeholder: string = '';
+  @Input() type: string = 'text';
   @Input() value: string = '';
 
   showErrors() {

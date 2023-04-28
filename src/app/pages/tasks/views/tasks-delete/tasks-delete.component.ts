@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksDeleteComponent implements OnInit {
   showConfiramtionModel = false;
-  tasksIds;
+  tasksIds: any[] = [];
   constructor() {}
 
   ngOnInit() {}

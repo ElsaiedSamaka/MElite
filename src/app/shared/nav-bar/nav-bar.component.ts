@@ -7,7 +7,7 @@ import { AuthService } from 'src/core/services/auth.service';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  user;
+  user: any;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {

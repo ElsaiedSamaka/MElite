@@ -38,7 +38,7 @@ export class TabBarComponent implements OnInit {
   openAssignmentTab() {
     this.activeTab = 'الاحالة';
   }
-  selectTab(id) {
+  selectTab(id: any) {
     this.selectedTabId = id;
   }
   openEmpDDL() {

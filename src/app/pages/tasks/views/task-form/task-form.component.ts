@@ -20,7 +20,7 @@ export class TaskFormComponent implements OnInit {
   @Output() dismiss = new EventEmitter<void>();
   @Output() addNewTask = new EventEmitter<any>();
 
-  taskForm: FormGroup;
+  taskForm!: FormGroup;
   // loading$;
 
   constructor(
@@ -133,7 +133,7 @@ export class TaskFormComponent implements OnInit {
     // }
   }
 
-  getTaskByID(id) {
+  getTaskByID(id: string) {
     this.taskService.getTaskById(id).subscribe((res) => {
       // this.taskDetails = res;
     });

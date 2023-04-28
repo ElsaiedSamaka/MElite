@@ -38,7 +38,7 @@ export class SigninComponent implements OnInit {
     }
           this.loadingService.loading$.next(true);
           this.authService
-            .signin(this.authForm.value.email, this.authForm.value.password)
+            .signin(this.authForm.value.email!, this.authForm.value.password!)
             .subscribe({
               next: () => {},
               error: (err) => {

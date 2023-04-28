@@ -18,7 +18,7 @@ export class FilterBarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  selectTab(id) {
+  selectTab(id: number) {
     this.selectedTabId = id;
   }
 }
