@@ -42,6 +42,7 @@ export class SigninComponent implements OnInit {
             .subscribe({
               next: () => {},
               error: (err) => {
+                console.log(err);
                 if (!err.status) {
                   this.authForm.setErrors({ noConnection: true });
                 } else if (err.message) {
