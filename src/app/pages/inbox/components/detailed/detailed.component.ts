@@ -10,6 +10,9 @@ import { Treatment } from 'src/core/models/treatment';
 export class DetailedComponent implements OnInit {
   treatment$!: Treatment;
   showConfirmModal: boolean = false;
+  showToast: boolean = false;
+  toastType: string = '';
+
   constructor(private route: ActivatedRoute) {
     this.route.data.subscribe((res) => {
       this.treatment$ = res['treatment'];
@@ -32,5 +35,16 @@ export class DetailedComponent implements OnInit {
     console.log('treatment id', treatId);
     console.log('المعاملة برقم', treatId, 'تمت احالتها بنجاح');
     this.showConfirmModal = false;
+    this.openToast();
+  }
+  closeToast(dismissed: any) {
+    this.showToast = dismissed;
+  }
+  openToast() {
+    this.showToast = true;
+    this.toastType = 'success';
+    setTimeout(() => {
+      this.showToast = false;
+    }, 5000);
   }
 }

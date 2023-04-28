@@ -64,3 +64,7 @@
       </div>
     </app-confirm-modal>
     <!-- confirmation modal  -->
+    <!-- toast  -->
+  <app-toast *ngIf="showToast" (dismiss)="closeToast($event)" [toastType]="toastType" toastTitle="">
+  </app-toast>
+    <!-- toast  -->
