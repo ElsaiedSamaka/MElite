@@ -13,6 +13,7 @@ export class SearchBarComponent implements OnInit {
   @Output() searchTreatment = new EventEmitter<any>();
   searchForm = new FormGroup({
     search: new FormControl(''),
+    searchTag: new FormControl(''),
   });
   constructor(private treatmentsService: TreatmentsService) {}
 
@@ -36,5 +37,9 @@ export class SearchBarComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+  onSubmit() {
+    console.log(this.searchForm.value);
+    this.searchForm.reset();
   }
 }
