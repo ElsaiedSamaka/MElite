@@ -7,12 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabBarComponent implements OnInit {
   activeTab = 'خطاب تغطية';
-  tabs = [
-    { id: 1, label: 'عموم الامارة' },
-    { id: 2, label: 'المفضلة' },
-    { id: 3, label: 'موظف محدد' },
-  ];
-  selectedTabId = 1;
+
   empddl: boolean = false;
   showSpeedDial: boolean = false;
   constructor() {}
@@ -38,9 +33,6 @@ export class TabBarComponent implements OnInit {
   }
   openAssignmentTab() {
     this.activeTab = 'الاحالة';
-  }
-  selectTab(id: any) {
-    this.selectedTabId = id;
   }
   openEmpDDL() {
     this.empddl = !this.empddl;
