@@ -28,7 +28,7 @@ export class FilterBarComponent implements OnInit {
       .filter(this.tabs[id - 1].label.toString().trim())
       .pipe(
         tap((treats) => {
-          this.treatmentsFilter.emit(treats);
+          this.treatmentsFilter.emit(this.treatmentsService.treatments$.value);
         })
       )
       .subscribe();

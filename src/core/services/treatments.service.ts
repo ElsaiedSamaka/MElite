@@ -31,8 +31,8 @@ export class TreatmentsService {
   filter(filter: string): Observable<Treatment[]> {
     // TODO: make sure the backend is ready for this
     return this.apiService.get(`/api/treatments?filter=${filter}`).pipe(
-      tap((treatments) => {
-        this.treatments$.next(treatments);
+      tap((res) => {
+        this.treatments$.next(res.treatments);
       })
     );
   }
