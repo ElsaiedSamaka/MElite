@@ -23,9 +23,9 @@ export class SearchBarComponent implements OnInit {
     this.showDDL = !this.showDDL;
   }
   searchTreatments() {
-    this.searchForm.valueChanges
+    this.searchForm.controls.search.valueChanges
       .pipe(
-        debounceTime(1000),
+        debounceTime(3000),
         distinctUntilChanged(),
         switchMap((searchString) => {
           console.log('search string', searchString);
