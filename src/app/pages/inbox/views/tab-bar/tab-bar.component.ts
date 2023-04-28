@@ -14,6 +14,7 @@ export class TabBarComponent implements OnInit {
   ];
   selectedTabId = 1;
   empddl: boolean = false;
+  showSpeedDial: boolean = false;
   constructor() {}
 
   ngOnInit() {}
@@ -43,5 +44,9 @@ export class TabBarComponent implements OnInit {
   }
   openEmpDDL() {
     this.empddl = !this.empddl;
+  }
+  openSpeedDial() {
+    this.showSpeedDial = !this.showSpeedDial;
+    console.log('speed dial');
   }
 }
