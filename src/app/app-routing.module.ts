@@ -5,7 +5,7 @@ import { AuthGuard } from 'src/core/guards/AuthGaurd.guard';
 const routes: Routes = [
   {
     path: 'inbox',
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/inbox/inbox.module').then((m) => m.InboxModule),
   },

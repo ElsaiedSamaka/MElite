@@ -54,7 +54,8 @@
         <ul class="">
             <div class="treatments w-96 p-2 my-1 h-96 overflow-y-scroll" *ngIf="(treatments); else placeholder">
                 <li *ngFor="let treatment of (treatments)">
-                    <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50 "
+                    <!-- TODO: add some class to handle the read and unread treatments -->
+                    <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50 visited:"
                         [routerLink]="treatment.id" routerLinkActive="active">
                         <div class="flex flex-row-reverse justify-between">
 
