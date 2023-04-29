@@ -16,6 +16,7 @@ export class TreatmentResolverService implements Resolve<Treatment> {
     const { id } = route.params;
     return this.treatmentsService.getById(id).pipe(
       catchError((err) => {
+        console.log(err);
         this.router.navigateByUrl('/inbox/not-found');
         return EMPTY;
       })

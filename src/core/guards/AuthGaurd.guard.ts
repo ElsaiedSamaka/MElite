@@ -17,7 +17,7 @@ export class AuthGuard implements CanLoad {
     | boolean
     | UrlTree {
     return this.authservice.signedin$.pipe(
-      skipWhile((value) => value === null),
+      skipWhile((value) => value === false),
       take(1),
       tap((authenticated) => {
         if (!authenticated) {
