@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
 import { Treatment } from 'src/core/models/treatment';
 import { TreatmentsService } from 'src/core/services/treatments.service';
@@ -10,7 +11,13 @@ import { TreatmentsService } from 'src/core/services/treatments.service';
 })
 export class HomeComponent implements OnInit {
   treatments!: Treatment[];
-  constructor(private treatmentsService: TreatmentsService) {
+  isOpened: boolean = false;
+  id: string = '';
+  treatmentIds = [];
+  constructor(
+    private treatmentsService: TreatmentsService,
+    route: ActivatedRoute
+  ) {
     this.treatmentsService
       .getAll()
       .pipe(
@@ -19,6 +26,7 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe();
+    const id = route.snapshot.params['id'];
   }
 
   ngOnInit() {}
@@ -39,5 +47,11 @@ export class HomeComponent implements OnInit {
   onTreatmentsSearch(treatments: Treatment[]) {
     console.log(treatments);
     this.treatments = treatments;
+  }
+  onTreatmentOpen(id: string) {
+    if (this.id !== id) {
+      this.isOpened = true;
+      this.treatmentIds.push(id);
+    }
   }
 }

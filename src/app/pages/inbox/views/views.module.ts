@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { AssignmentTabComponent } from './assignment-tab/assignment-tab.component';
 import { AttachmentsTabComponent } from './attachments-tab/attachments-tab.component';
 import { CommitteeReportsTabComponent } from './committee-reports-tab/committee-reports-tab.component';
@@ -13,7 +15,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TabBarComponent } from './tab-bar/tab-bar.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, ReactiveFormsModule],
   declarations: [
     FilterBarComponent,
     SearchBarComponent,
@@ -25,6 +27,7 @@ import { TabBarComponent } from './tab-bar/tab-bar.component';
     ExplanationsTabComponent,
     AttachmentsTabComponent,
     AssignmentTabComponent,
+    AdvancedSearchComponent,
   ],
   exports: [
     FilterBarComponent,
@@ -37,6 +40,7 @@ import { TabBarComponent } from './tab-bar/tab-bar.component';
     ExplanationsTabComponent,
     AttachmentsTabComponent,
     AssignmentTabComponent,
+    AdvancedSearchComponent,
   ],
 })
 export class ViewsModule {}

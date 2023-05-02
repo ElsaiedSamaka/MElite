@@ -11,6 +11,7 @@ import { AuthService } from 'src/core/services/auth.service';
 })
 export class SigninComponent implements OnInit {
   loading$;
+  showPassword: boolean = false;
   authForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -36,25 +37,28 @@ export class SigninComponent implements OnInit {
     if (this.authForm.invalid) {
       return;
     }
-          this.loadingService.loading$.next(true);
-          this.authService
-            .signin(this.authForm.value.email!, this.authForm.value.password!)
-            .subscribe({
-              next: () => {},
-              error: (err) => {
-                console.log(err);
-                if (!err.status) {
-                  this.authForm.setErrors({ noConnection: true });
-                } else if (err.message) {
-                  this.authForm.setErrors({ credentials: true });
-                } else {
-                  this.authForm.setErrors({ unknownError: true });
-                }
-              },
-              complete: () => {
-                this.router.navigateByUrl('/index');
-                this.loadingService.loading$.next(false);
-              },
-            });
+    this.loadingService.loading$.next(true);
+    this.authService
+      .signin(this.authForm.value.email!, this.authForm.value.password!)
+      .subscribe({
+        next: () => {},
+        error: (err) => {
+          console.log(err);
+          if (!err.status) {
+            this.authForm.setErrors({ noConnection: true });
+          } else if (err.message) {
+            this.authForm.setErrors({ credentials: true });
+          } else {
+            this.authForm.setErrors({ unknownError: true });
+          }
+        },
+        complete: () => {
+          this.router.navigateByUrl('/index');
+          this.loadingService.loading$.next(false);
+        },
+      });
+  }
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 }
