@@ -13,4 +13,7 @@ export class AdvancedSearchComponent implements OnInit {
   openSearchModal() {
     this.showSearchModal = !this.showSearchModal;
   }
+  onSearchModalDismiss() {
+    this.showSearchModal = false;
+  }
 }

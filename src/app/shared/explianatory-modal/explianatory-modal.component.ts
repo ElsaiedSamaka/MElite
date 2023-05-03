@@ -7,11 +7,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
+  selector: 'app-explianatory-modal',
+  templateUrl: './explianatory-modal.component.html',
+  styleUrls: ['./explianatory-modal.component.css'],
 })
-export class ModalComponent implements OnInit {
+export class ExplianatoryModalComponent implements OnInit {
   @Output() dismiss = new EventEmitter<boolean>();
 
   constructor(private el: ElementRef) {}

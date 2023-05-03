@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AdvancedSearchBarComponent } from './advanced-search-bar/advanced-search-bar.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { AssignmentTabComponent } from './assignment-tab/assignment-tab.component';
 import { AttachmentsTabComponent } from './attachments-tab/attachments-tab.component';
@@ -28,6 +29,7 @@ import { TabBarComponent } from './tab-bar/tab-bar.component';
     AttachmentsTabComponent,
     AssignmentTabComponent,
     AdvancedSearchComponent,
+    AdvancedSearchBarComponent,
   ],
   exports: [
     FilterBarComponent,
@@ -41,6 +43,7 @@ import { TabBarComponent } from './tab-bar/tab-bar.component';
     AttachmentsTabComponent,
     AssignmentTabComponent,
     AdvancedSearchComponent,
+    AdvancedSearchBarComponent,
   ],
 })
 export class ViewsModule {}

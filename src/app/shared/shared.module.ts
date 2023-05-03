@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import { ExplianatoryModalComponent } from './explianatory-modal/explianatory-modal.component';
 import { InputComponent } from './input/input.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ModalComponent } from './modal/modal.component';
@@ -24,6 +25,7 @@ import { ToastComponent } from './toast/toast.component';
     ToastComponent,
     LoadingSpinnerComponent,
     SideBarComponent,
+    ExplianatoryModalComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -35,6 +37,7 @@ import { ToastComponent } from './toast/toast.component';
     ToastComponent,
     LoadingSpinnerComponent,
     SideBarComponent,
+    ExplianatoryModalComponent,
   ],
 })
 export class SharedModule {}

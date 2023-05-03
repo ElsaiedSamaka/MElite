@@ -4,9 +4,9 @@
 <!-- nav-bar -->
 
 <!-- breadcrumb and header -->
-<div class="m-5 ">
+<div class="mx-5 my-2">
     <app-breadcrumb [supProgramName]="'البريد'" [childSubProgramName]="'الوارد'"></app-breadcrumb>
-    <h3 class="font-bold mt-2 mr-1">الفلترة والبحث</h3>
+    <h3 class="font-bold mt-1 mr-1">الفلترة والبحث</h3>
 </div>
 <!-- breadcrumb and header -->
 
@@ -14,10 +14,19 @@
 <div class="search-bar mr-5 flex items-center">
     <app-filter-bar (treatmentsFilter)="onTreatmentsFilter($event)"></app-filter-bar>
     <app-search-bar (searchTreatment)="onTreatmentsSearch($event)"></app-search-bar>
+    <svg fill="none" class="w-5 h-5 hover:text-green-900" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+        (click)="toggleAdvancedSearchBar()"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75">
+        </path>
+    </svg>
     <app-advanced-search></app-advanced-search>
 </div>
 <!-- search-bar -->
-
+<!-- advanced-search bar  -->
+<app-advanced-search-bar *ngIf="showAdvancedSearchBar"></app-advanced-search-bar>
+<!-- advanced-search bar  -->
 <!-- main-content -->
 <div class="main-content">
     <div class="columns-1 mr-5">
@@ -46,7 +55,6 @@
         <ul class="">
             <div class="treatments w-96 p-2 my-1 h-96 overflow-y-scroll" *ngIf="(treatments); else placeholder">
                 <li *ngFor="let treatment of (treatments)">
-                    <!-- TODO: add some class to handle the read and unread treatments -->
                     <a class="block max-w-sm p-2 my-1 bg-white border border-gray-200 rounded-s shadow hover:bg-gray-50 "
                         [ngClass]="({'border-2 border-r-red-600': treatment.treatmenttype === 'عاجلة', 'border-2 border-r-yellow-600': treatment.treatmenttype === 'رسائل', 'border-2 border-r-teal-500': treatment.treatmenttype === 'طلبات', 'border-2 border-r-blue-500': treatment.treatmenttype === 'معاملات', 'border-2 border-r-purple-600': treatment.treatmenttype === 'للتوقيع', 'border-2 border-r-blue-600': treatment.treatmenttype === 'جديد'})"
                         [routerLink]="treatment.id" routerLinkActive="active" (click)="onTreatmentOpen(treatment.id)">

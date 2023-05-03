@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   isOpened: boolean = false;
   id: string = '';
   treatmentIds = [];
+  showAdvancedSearchBar: boolean = false;
   constructor(
     private treatmentsService: TreatmentsService,
     route: ActivatedRoute
@@ -53,5 +54,8 @@ export class HomeComponent implements OnInit {
       this.isOpened = true;
       this.treatmentIds.push(id);
     }
+  }
+  toggleAdvancedSearchBar() {
+    this.showAdvancedSearchBar = !this.showAdvancedSearchBar;
   }
 }
