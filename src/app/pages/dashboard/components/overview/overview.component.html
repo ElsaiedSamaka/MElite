@@ -1,0 +1,89 @@
+<!-- info cards  -->
+<app-info-cards></app-info-cards>
+<!-- info cards  -->
+<!-- data grid  -->
+<section class="border-2 border-dashed border-gray-200 rounded-3xl w-full p-3 sm:p-5 ">
+  <div class="relative rounded-3xl border-2 border-dashed border-gray-200 mx-auto h-96 overflow-y-scroll">
+    <table class="w-full text-sm text-left text-gray-500 ">
+      <thead class=" text-xs text-gray-700 uppercase bg-gray-50 :bg-gray-700 :text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            <span class="sr-only">Image</span>
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Order Id
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Products List
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Customer
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Status
+          </th>
+          <th scope="col" class="px-6 py-3 mx-1">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr class="border-b hover:bg-gray-50" *ngFor="let order of orders">
+          <td class="w-20 p-2 flex gap-x-1">
+            <img [src]="order.products[0]?.product_img" alt="">
+            <img [src]="order.products[1]?.product_img" alt="">
+
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+            #{{order.id}}
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+            <!-- Apple Watch , HeadPhone -->
+            {{order.products[0]?.name}} {{order.products[1]?.name}} {{order.products[2]?.name}}
+            {{order.products[3]?.name}}
+            {{order.products[4]?.name}}
+            {{order.products[5]?.name}} {{order.products[6]?.name}}
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex items-center space-x-3">
+              <div>
+                <label
+                  class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">{{order.user.username}}</label>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+            {{(order.orderStatus===0 ? 'proccessed' : (order.orderStatus=== 1?'delivered':(order.orderStatus=== 2?
+            'shipped':'unkwon')))}}
+          </td>
+          <td class="px-6 py-4">
+            <button type="button" (click)="true" *ngIf="order.orderStatus === 0"
+              class="text-red-700 px-2 py-1 border hover:border-gray-400  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium hover:bg-gray-200 rounded-3xl text-sm text-center inline-flex items-center">
+              <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- data grid  -->
+<!-- summery content  -->
+<div class="grid grid-cols-3 gap-4 mb-4">
+  <!-- latest orders products -->
+  <!-- <app-latest-products-card></app-latest-products-card> -->
+  <!-- latest orders products -->
+  <!-- latest users  -->
+  <!-- <app-latest-users-card></app-latest-users-card> -->
+  <!-- latest users  -->
+  <div class="col-span-3 rounded-3xl bg-gray-50 ">
+    <!-- footer  -->
+  <app-footer></app-footer>
+    <!-- footer  -->
+  </div>
+</div>
+<!-- summery content  -->

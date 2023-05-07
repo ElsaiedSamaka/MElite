@@ -1,17 +1,251 @@
-<header class="flex flex-nowrap flex-row-reverse py-5 bg-white shadow-md sticky">
-  <nav class="w-full  mx-auto px-2 sm:flex sm:items-center sm:justify-between" aria-label="Global">
-    <div class="flex flex-row-reverse items-left justify-center gap-2 mt-5 ml-5 hover:text-gray-400">
-      {{user?.username || ' مستخدم مجهول'}}
+<header
+  class="flex flex-nowrap flex-row-reverse items-center fixed top-2 right-3 left-3 py-5 z-20 backdrop-blur-xl shadow-md rounded-3xl border">
+  <nav class="w-full flex items-center justify-between mx-auto px-2 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+    <ng-container *ngIf="signedin$ |async">
+      <div class="flex flex-row-reverse items-left justify-center gap-2 mt-5 ml-5 hover:text-gray-400"
+        (click)="toggleNavDropdown()">
+        {{user?.username || ' مستخدم مجهول'}}
         <svg class="w-5 h-5 hover:text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z">
           </path>
         </svg>
+      </div>
+      <!-- Dropdown menu -->
+      <div id="dropdownAvatarName" class="z-10  bg-white divide-y divide-gray-100 rounded-3xl shadow w-44 absolute top-20"
+        *ngIf="showNavDropdown">
+        <div class="px-4 py-3 text-sm text-gray-900 ">
+          <div class="font-medium ">{{user?.username || ' مستخدم مجهول'}}</div>
+          <div class="truncate">{{user?.email || ' '}}</div>
+        </div>
+        <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+          <li class="flex items-center justify-between px-2 hover:bg-gray-100">
+            <a class="block px-4 py-2 hover:bg-gray-100 " routerLink="/dashboard">لوحة التحكم</a>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z">
+              </path>
+            </svg>
+          </li>
+          <li class="flex items-center justify-between px-2 hover:bg-gray-100">
+            <a class="block px-4 py-2 hover:bg-gray-100 " routerLink="/settings">الاعدادات</a>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z">
+              </path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </li>
+          <li class="flex items-center justify-between px-2 hover:bg-gray-100">
+            <a class="block px-4 py-2 hover:bg-gray-100 " routerLink="/profile">الملف الشخصي</a>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
+              </path>
+            </svg>
+          </li>
+        </ul>
+        <div class="py-2 flex items-center justify-around hover:bg-gray-100">
+          <a class="block px-4 py-2 text-sm text-gray-700  " routerLink="/signout">تسجيل خروج</a>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"></path>
+          </svg>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!(signedin$ |async)">
+      <div class="flex gap-2">
+        <a role="button" routerLink="/"
+          class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">تسجيل
+          الدخول</a>
+          <a role="button" routerLink="/signup"
+            class="text-gray-100 bg-black hover:text-black border border-gray-800 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">تسجيل
+        جديد<svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z">
+          </path>
+        </svg></a>
+      </div>
+    </ng-container>
+    <div class="flex flex-row-reverse items-center gap-5 mr-10 sm:justify-end sm:mt-0 sm:pl-5">
+      <svg class="cart-icon w-7 h-7 hover:text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5"
+        (click)="toggleCartDropDown()"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z">
+        </path>
+      </svg>
+  <div class="fixed z-20 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block" *ngIf="showCartDropdown"
+    (click)="toggleCartDropDown()">
+  </div>
+      <div *ngIf="showCartDropdown" id="dropdownCard"
+        class="z-20 absolute top-16 right-1 w-full  max-w-[30%] bg-white divide-y divide-gray-100 rounded-3xl shadow p-1"
+        aria-labelledby="dropdownCardButton">
+        <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 :bg-gray-800 :text-white">
+          السلة
+        </div>
+        <div class="divide-y divide-gray-100 max-h-64 overflow-scroll">
+          <div class="relative overflow-x-auto shadow-md sm:rounded-3xl">
+            <table class="w-full text-sm text-center text-gray-500 ">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Image</span>
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    المنتج
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    الكمية
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    السعر
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    الاجراء
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white border-b :bg-gray-800 :border-gray-700 hover:bg-gray-50 :hover:bg-gray-600">
+                  <td class="w-32 p-4">
+                    <img src="" alt="Apple Watch">
+                  </td>
+                  <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                    Apple Watch
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center space-x-3">
+                      <button
+                        class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:bg-gray-700 :hover:border-gray-600 :focus:ring-gray-700"
+                        type="button">
+                        <span class="sr-only">Quantity button</span>
+                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                      </button>
+                      <div>
+                        <input type="number" id="first_product"
+                          class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                          placeholder="1" required>
+                      </div>
+                      <button
+                        class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:bg-gray-700 :hover:border-gray-600 :focus:ring-gray-700"
+                        type="button">
+                        <span class="sr-only">Quantity button</span>
+                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                    $599
+                  </td>
+                  <td class="px-6 py-4">
+                    <a class="font-medium text-red-600 hover:underline">حذف</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+        </div>
+        <a
+          class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 :bg-gray-800 :hover:bg-gray-700 :text-white">
+          <div class="inline-flex items-center ">
+            <svg class="w-4 h-4 mr-2 text-gray-500 :text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+              <path fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            عرض الكل
+          </div>
+        </a>
+      </div>
+      <button *ngIf="(signedin$ |async)" id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+        (click)="toggleNotfiDropDown()"
+        class="inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none :hover:text-white :text-gray-400"
+        type="button">
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z">
+          </path>
+        </svg>
+        <div class="relative flex">
+          <div
+            class="relative inline-flex w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-2 right-3 :border-gray-900">
+          </div>
+        </div>
+      </button>
+      <!-- Dropdown menu -->
+  <div class="fixed z-30 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block" *ngIf="showNotfiDropdown"
+    (click)="toggleNotfiDropDown()">
+  </div>
+
+      <div *ngIf="showNotfiDropdown" id="dropdownNotification"
+        class="z-30 absolute top-16 right-5 w-full  max-w-sm bg-white divide-y divide-gray-100 rounded-3xl shadow p-1"
+        aria-labelledby="dropdownNotificationButton">
+        <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 :bg-gray-800 :text-white">
+          الاشعارات
+        </div>
+        <div class="divide-y divide-gray-100 max-h-64 overflow-scroll">
+          <a class="flex px-4 py-3 hover:bg-gray-100 :hover:bg-gray-700">
+            <div class="flex-shrink-0">
+              <img class="rounded-full w-11 h-11" src="/docs/images/people/profile-picture-1.jpg" alt=" ">
+              <div
+                class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-blue-600 border border-white rounded-full :border-gray-800">
+                <svg class="w-3 h-3 text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
+                  </path>
+                  <path
+                    d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div class="w-full pl-3 text-left">
+              <div class="text-gray-500 text-sm mb-1.5 :text-gray-400">New message from <span
+                  class="font-semibold text-gray-900 :text-white">Jese Leos</span>:
+                  <br>
+                  "Hey, what's up? All set for the
+                presentation?"</div>
+              <div class="text-xs text-blue-600 :text-blue-500">a few moments ago</div>
+            </div>
+          </a>
+        </div>
+        <a
+          class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 :bg-gray-800 :hover:bg-gray-700 :text-white">
+          <div class="inline-flex items-center ">
+            <svg class="w-4 h-4 mr-2 text-gray-500 :text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+              <path fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+عرض الكل </div>
+        </a>
+      </div>
+
     </div>
-    <div class="flex flex-row-reverse items-center gap-5 mt-5 mr-5 sm:justify-end sm:mt-0 sm:pl-5">
-      <img src="../assets/asir_logo.jpg" class="w-40 h-10">
-    </div>
+
   </nav>
+
 </header>
-  

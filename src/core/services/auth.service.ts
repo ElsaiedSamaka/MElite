@@ -16,7 +16,42 @@ export class AuthService {
   USER = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
-
+  // emailAvailable will be called whenever the user types in the email field
+  // we will send the email to the server and check if it is available
+  emailAvailable(email: string) {
+    return this.http.post<any>(`${this.api_url}/api/auth/username`, {
+      email: email,
+    });
+  }
+  // signup will be called when the user submits the signup form
+  // we will send the user's credentials to the server
+  signup(
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string,
+    phonenumber: string
+  ) {
+    return this.http
+      .post<any>(
+        `${this.api_url}/api/auth/signup`,
+        {
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
+          password: password,
+          passwordConfirmation: passwordConfirmation,
+          phonenumber: phonenumber,
+        },
+        { withCredentials: true }
+      )
+      .pipe(
+        tap(() => {
+          this.signedin$.next(true);
+        })
+      );
+  }
   // checkAuth will be called whenever our app component is initialized
   // we can use this to check if the user is authenticated
   checkAuth() {
@@ -49,5 +84,20 @@ export class AuthService {
           this.signedin$.next(true);
         })
       );
+  }
+
+  googleLogin() {
+    return this.http.get(`${this.api_url}/api/auth/google`).pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    );
+  }
+  facebookLogin() {
+    return this.http.get(`${this.api_url}/api/auth/facebook`).pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    );
   }
 }

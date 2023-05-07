@@ -1,3 +1,47 @@
-<p>
-  index works!
-</p>
+<!-- nav-bar -->
+<app-nav-bar></app-nav-bar>
+<app-side-bar></app-side-bar>
+<!-- nav-bar -->
+<div class="mr-12 mt-24">
+<!-- app-breadcrumb -->
+<app-breadcrumb></app-breadcrumb>
+<!-- app-breadcrumb -->
+
+<section class="dashboard rounded-3xl">
+  <!-- container  -->
+  <div class="p-4 ">
+    <!-- content  -->
+    <div class="h-full rounded-3xl p-4 border-2 border-gray-200 border-dashed ">
+      <h3 class="text-bold text-3xl mb-2">لوحة التحكم</h3>
+      <!-- tab-bar -->
+      <div class="inline-flex  bg-gray-100 border-2 border-gray-200 border-dashed rounded-3xl px-2 my-4  ml-auto">
+        <ul
+          class="flex flex-wrap flex-row-reverse items-center justify-center md:gap-2 text-sm font-medium text-center text-gray-500 ">
+          <li class="">
+            <a
+            [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{'exact':true}" class="mx-0.5 inline-block px-8 py-2 my-1 text-black text-lg  font-semibold rounded-3xl hover:bg-gray-300 ">ملخص</a>
+          </li>
+          <li class="">
+            <a
+             routerLink="products" routerLinkActive="active" class="mx-0.5 inline-block px-8 py-2 my-1 text-black text-lg  font-semibold rounded-3xl hover:bg-gray-300 ">منتجات</a>
+          </li>
+            <li class="">
+              <a
+               routerLink="users" routerLinkActive="active"  class="mx-0.5 inline-block px-8 py-2 my-1 text-black text-lg  font-semibold rounded-3xl hover:bg-gray-300 ">مستخدمين</a>
+            </li>
+            <li class="">
+              <a
+              routerLink="orders" routerLinkActive="active" class="mx-0.5 inline-block px-8 py-2 my-1 text-black text-lg  font-semibold rounded-3xl hover:bg-gray-300 ">طلبات</a>
+            </li>
+        </ul>
+      </div>
+      <!-- tab-bar -->
+      <main>
+      <router-outlet></router-outlet>
+    </main>
+      </div>
+    <!-- content  -->
+  </div>
+  <!-- container  -->
+</section>
+</div>

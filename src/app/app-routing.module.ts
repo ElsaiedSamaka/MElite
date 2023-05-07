@@ -23,14 +23,27 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'tasks',
+    path: 'profile',
+    // canLoad: [AuthGuard],
     loadChildren: () =>
-      import('./pages/tasks/tasks.module').then((m) => m.TasksModule),
+      import('./pages/profile/profile.module').then((m) => m.ProfileModule),
+  },
+  {
+    path: 'settings',
+    // canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/settings/settings.module').then((m) => m.SettingsModule),
+  },
+  {
+    path: 'cart',
+    // canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/cart/cart.module').then((m) => m.CartModule),
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
