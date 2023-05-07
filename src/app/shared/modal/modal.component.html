@@ -1,15 +1,19 @@
 <!-- Main modal -->
+  <!-- dimmed bg  -->
+  <!-- <div class="fixed z-30 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block"></div> -->
+  <!-- blured bg  -->
+  <div class="fixed z-30 inset-0 backdrop-blur-sm md:block" (click)="onDismissClick()"></div>
+
   <div
-    class="w-1/3 z-20 absolute top-16 left-1/4 rounded-md shadow-md border-2 border-green-500 px-5 py-5 backdrop-blur-md " >
+    class="w-1/3  z-40 absolute top-1/4 left-1/3 rounded-3xl shadow-2xl  px-5 py-5 backdrop-blur-md bg-white" >
     <div class="flex flex-col w-full max-w-3xl ">
     <!-- Modal content -->
-    
       <!-- Modal header -->
       <div class="modal-header">
         <ng-content select="[modal-header]"></ng-content>
       </div>
       <!-- Modal body -->
-      <div class="modal-body">
+      <div class="modal-body overflow-scroll mx-auto">
 
         <ng-content select="[modal-body]"></ng-content>
 

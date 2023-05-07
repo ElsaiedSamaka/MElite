@@ -1,11 +1,10 @@
 <!-- component -->
-<div class="h-screen w-screen">
+<div class="">
     <!-- TODO: add side bar code to the shared module -->
 <app-loading-spinner *ngIf="loading$ | async"></app-loading-spinner>
    
-    <main class="mr-12" *ngIf="!(loading$ | async)">
+    <main class="" *ngIf="!(loading$ | async)">
 
     <router-outlet></router-outlet>
-    
     </main>
 </div>

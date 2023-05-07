@@ -1,0 +1,244 @@
+<!-- nav-bar -->
+<app-nav-bar></app-nav-bar>
+<!-- nav-bar -->
+<section class="relative mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200">
+  <div class="relative overflow-hidden my-4 ">
+    <!-- animated blured divs -->
+    <div
+      class="absolute top-[0%] left-8 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+    </div>
+    <div
+      class="absolute top-[25%] -right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
+    </div>
+    <div
+      class="absolute bottom-0 right-8 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+    </div>
+    <div class=" pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+      <div class="relative mx-auto max-w-screen-2xl px-4 sm:static sm:px-6 lg:px-8">
+        <div class="sm:max-w-lg ">
+          <h1 class="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">تصفح اخر واحدث المنتجات</h1>
+          <p class="mt-4 text-xl text-gray-500 hidden">هذا مثال لنص يمكن استبداله فيما بعد.</p>
+        </div>
+        <div>
+          <div class="mt-10">
+            <!-- Decorative image grid -->
+            <div aria-hidden="true"
+              class="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-screen-2xl">
+              <div
+                class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                <div class="flex items-center space-x-6 lg:space-x-8">
+                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl sm:opacity-0 lg:opacity-100">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                  </div>
+                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                  </div>
+                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
+                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg" alt=""
+                        class="h-full w-full object-cover object-center">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="antialiased relative">
+    <!-- Sidebar -->
+    <aside
+      class="sticky top-[40%] left-[2%] rounded-3xl z-20 w-60   transition-transform -translate-x-full  border-2 border-gray-200 border-dashed md:translate-x-0"
+      aria-label="Sidenav" id="drawer-navigation">
+      <div class="overflow-y-auto py-5 px-3 h-full">
+        <form>
+          <div class=" px-2 py-6 ">
+            <h3 class=" -my-3 flow-root">
+              <!-- Expand/collapse section button -->
+              <button type="button"
+                class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
+                aria-controls="filter-section-mobile-0" aria-expanded="false">
+                <span class="font-medium text-gray-900">الفئة</span>
+                <span class=" flex items-center">
+                  <!-- Expand icon, show/hide based on section open state. -->
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                  </svg>
+                  <!-- Collapse icon, show/hide based on section open state. -->
+                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <!-- Filter section, show/hide based on section state. -->
+            <div class="pt-2 px-2" id="filter-section-mobile-0">
+              <div class="space-y-6">
+                <div class="flex items-center">
+                  <input id="filter-mobile-color-0" name="color[]" value="white" type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <label for="filter-mobile-color-0" class="ml-3 min-w-0 flex-1 text-gray-500">White</label>
+                </div>
+                <div class="flex items-center">
+                  <input id="filter-mobile-color-1" name="color[]" value="beige" type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                  <label for="filter-mobile-color-1" class="ml-3 min-w-0 flex-1 text-gray-500">Beige</label>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class=" px-2 py-6 border-t border-gray-400 ">
+              <h3 class=" -my-3 flow-root">
+                <!-- Expand/collapse section button -->
+                <button type="button"
+                  class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
+                  aria-controls="filter-section-mobile-0" aria-expanded="false">
+                  <span class="font-medium text-gray-900">السعر</span>
+                  <span class=" flex items-center">
+                    <!-- Expand icon, show/hide based on section open state. -->
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                    </svg>
+                    <!-- Collapse icon, show/hide based on section open state. -->
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-2 px-2" id="filter-section-mobile-0">
+                <div class="space-y-6">
+                  <div class="flex items-center">
+                    <input id="minmax-range" type="range" min="0" max="10" value="5" step="0.5"
+                      class="w-full h-2 bg-gray-200 rounded-3xl appearance-none cursor-pointer ">
+
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </form>
+      </div>
+
+    </aside>
+
+    <main class="p-4 md:ml-64 h-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <a class="group p-3  relative border-2 border-dashed rounded-3xl border-gray-300 " [routerLink]="['../8']">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+              <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+                alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                class="h-full w-full object-cover object-center hover:opacity-75">
+            </div>
+            <div class="flex flex-row-reverse items-center justify-between">
+              <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+              <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+            </div>
+            <h4>جامد اخر حاجة جداا</h4>
+            <a role="button" class="bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+              <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                </path>
+              </svg>
+              <p>اضافة الى السلة</p>
+            </a>
+          </a>
+          <a class="group p-3  relative border-2 border-dashed rounded-3xl border-gray-300 " [routerLink]="['../8']">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+              <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+                alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                class="h-full w-full object-cover object-center hover:opacity-75">
+            </div>
+            <div class="flex flex-row-reverse items-center justify-between">
+              <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+              <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+            </div>
+            <h4>جامد اخر حاجة جداا</h4>
+            <a role="button" class="bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+              <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                </path>
+              </svg>
+              <p>اضافة الى السلة</p>
+            </a>
+          </a>
+          <a class="group p-3  relative border-2 border-dashed rounded-3xl border-gray-300 " [routerLink]="['../8']">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+              alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+              class="h-full w-full object-cover object-center hover:opacity-75">
+          </div>
+          <div class="flex flex-row-reverse items-center justify-between">
+            <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+            <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+          </div>
+          <h4>جامد اخر حاجة جداا</h4>
+          <a role="button" class="bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+              </path>
+            </svg>
+            <p>اضافة الى السلة</p>
+          </a>
+        </a>
+        <a class="group p-3  relative border-2 border-dashed rounded-3xl border-gray-300 " [routerLink]="['../8']">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+              alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+              class="h-full w-full object-cover object-center hover:opacity-75">
+          </div>
+          <div class="flex flex-row-reverse items-center justify-between">
+            <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+            <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+          </div>
+          <h4>جامد اخر حاجة جداا</h4>
+          <a role="button" class="bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+              </path>
+            </svg>
+            <p>اضافة الى السلة</p>
+          </a>
+        </a>
+      </div>
+    </main>
+  </div>
+</section>
+<app-footer></app-footer>

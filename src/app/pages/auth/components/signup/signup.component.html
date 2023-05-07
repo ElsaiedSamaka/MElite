@@ -1,0 +1,196 @@
+<section class="container m-auto mt-20 relative">
+  <div
+    class="absolute top-[0%] -right-8 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+  </div>
+  <div
+    class="absolute top-[25%] -right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
+  </div>
+  <div
+    class="absolute top-[50%] right-8 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+  </div>
+  <div class="lg:grid lg:grid-cols-12 rounded-3xl  ">
+    <section class="header-img relative flex h-40 items-end lg:col-span-5 lg:h-full xl:col-span-6">
+      <img alt="Night" src="../../../../../assets/images/side.jpg"
+        class="absolute inset-0 h-full w-full object-cover brightness-75 lg:rounded-l-3xl " />
+
+      <div class="hidden lg:relative lg:block lg:p-12">
+        <a class="block text-white">
+          <span class="sr-only">Home</span>
+          <img src="../../../../../assets/images/angular.png" class="h-8 sm:h-10 rounded-full" alt="">
+        </a>
+
+        <h2 class="mt-6 text-2xl font-bold text-white text-left sm:text-3xl md:text-4xl bg-black px-2">
+          tools used
+        </h2>
+
+        <p class="mt-4 leading-relaxed text-white text-left bg-black px-2">
+          <span class="bg-red-500">Angular</span> - <span class="bg-blue-300"> Tailwind </span> - <span class="bg-green-700">
+            Node </span> - <span class="bg-white text-black"> Express </span> - <span class="bg-orange-500"> MySql
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <main aria-label="Main"
+      class="flex items-center justify-center px-8 py-8 sm:px-12  lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6  lg:rounded-r-3xl backdrop-blur-lg opacity-95">
+      <div class="max-w-xl lg:max-w-3xl">
+        <div class="relative block lg:hidden">
+          <a
+            class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white shadow text-blue-600 sm:h-20 sm:w-20">
+            <span class="sr-only">Home</span>
+            <!-- <img src="../../../../../assets/logo_2.jpg" class="h-max  rounded-full" alt=""> -->
+            <svg class="w-1/4 h-1/4 mx-auto block text-black" fill="none" stroke="currentColor" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z">
+              </path>
+            </svg>
+          </a>
+
+          <h1 class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+            مرحبا بك
+          </h1>
+  <p class="mt-4  text-gray-500 ">
+    made with ❤️ by <i class="hover:underline bg-white"> <a href="https://www.linkedin.com/in/saied-samaka-513a0518b"
+        target="_blank"> Saied Samaka </a></i>
+  </p>
+        </div>
+
+        <form class="mt-4 grid grid-cols-6 gap-3 " [formGroup]="authForm" (ngSubmit)="onSubmit()">
+          <div class="col-span-6 hidden lg:block">
+            <svg class="w-1/2 h-1/2 mx-auto block text-black" fill="current" stroke="currentColor" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z">
+              </path>
+            </svg>
+            <p class="text-center font-extrabold"> مرحبا بك </p>
+            <p class=" text-center text-gray-500 ">
+              made with ❤️ by <i class="hover:underline bg-white"> <a href="https://www.linkedin.com/in/saied-samaka-513a0518b"
+                  target="_blank"> Saied Samaka </a></i>
+            </p>
+          </div>
+          
+          <div class="col-span-3 mx-auto">
+            <app-input [control]="authForm.get('lastname')" placeholder="الاسم الاخير" type="text" label="" size="25" maxlength="50"
+              autofocus="true" required="true"></app-input>
+          </div>
+          <div class="col-span-3 mx-auto">
+            <app-input [control]="authForm.get('firstname')" placeholder="الاسم الاول" type="email" label="" size="25"
+              maxlength="50" autofocus="true" required="true"></app-input>
+          </div>
+          <div class="col-span-4 mx-auto">
+            <app-input [control]="authForm.get('email')" placeholder="البريد الالكتروني" type="email" label="" size="37"
+              maxlength="50" autofocus="true" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></app-input>
+          </div>
+          <div class="col-span-2 mx-auto">
+            <app-input [control]="authForm.get('phonenumber')" placeholder=" رقم الجوال" type="email" label="" size="12"
+              maxlength="50" autofocus="true" required="true"></app-input>
+          </div>
+          <div class="col-span-6 mx-auto">
+            <app-input [control]="authForm.get('password')" placeholder="كلمة المرور" [type]="showPassword ? 'text':'password'"
+              label="" minlength="8" maxlength="18" required="true" pattern=".{8,}" title="8 حروف او اكثر" size="60">
+              <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
+                stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                (click)="togglePassword()" *ngIf="!showPassword" input-icon>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
+                stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                (click)="togglePassword()" *ngIf="showPassword" input-icon>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88">
+                </path>
+              </svg>
+            </app-input>
+          </div>
+            <div class="col-span-6 mx-auto">
+              <app-input [control]="authForm.get('passwordConfirmation')" placeholder="كلمة المرور التأكيدية"
+                [type]="showPassword ? 'text':'password'" label="" minlength="8" maxlength="18" required="true" pattern=".{8,}"
+                title="8 حروف او اكثر" size="60">
+              <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
+                stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                (click)="togglePassword()" *ngIf="!showPassword" input-icon>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
+                stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                (click)="togglePassword()" *ngIf="showPasswordConfirmation" input-icon>
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88">
+                </path>
+              </svg>
+            </app-input>
+          </div>
+          <div class="col-span-6">
+            <label for="RememberAccept" class="flex flex-row-reverse gap-4">
+              <input type="checkbox" id="RememberAccept" name="remembering_accept"
+                class="h-5 w-5 rounded-3xl border-gray-200 bg-white shadow-sm" />
+
+              <span class="text-s text-gray-700 hover:underline">
+                تذكرني
+              </span>
+            </label>
+          </div>
+          <div *ngIf="authForm.errors" class="col-span-6">
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors.credentials">
+              البريد الالكتروني او كلمة المرور غير صحيحة
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['passwordsDontMatch']">
+              كلمة المرور غير متطابقة
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['noConnection']">
+              عفوا, يرجى التحقق من اتصال الانترنت
+            </p>
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['unknownError']">
+              خطأ غير متوقع
+            </p>
+          </div>
+          <div class="col-span-6">
+            <button
+              class="signup-button inline-block w-full shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white hover:text-gray-50 focus:outline-none active:text-white disabled:cursor-not-allowed"
+              type="submit" [disabled]="authForm.invalid">
+              تسجيل جديد </button>
+          </div>
+          <div class="col-span-6">
+            <hr class="w-1/2 h-px my-2 bg-gray-200 border-0 mx-auto">
+          </div>
+        
+        </form>
+        <div class="flex justify-between items-center">
+          <button type="button"
+            class="mx-auto text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-3xl text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mb-2">
+            <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
+              role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+              <path fill="currentColor"
+                d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z">
+              </path>
+            </svg>
+            Sign in with Facebook
+          </button>
+          <button type="button"
+            class="mx-auto text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-3xl text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mb-2">
+            <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+              <path fill="currentColor"
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
+              </path>
+            </svg>
+            Sign in with Google
+          </button>
+        </div>
+        <div class="text-center">
+          <span class="mt-2">
+            لديك حساب بالفعل ؟
+            <a class="text-blue-500 font-bold underline hover:text-blue-800 " routerLink="/">
+              تسجيل الدخول </a>
+          </span>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>

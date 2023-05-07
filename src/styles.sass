@@ -4,6 +4,12 @@
 @tailwind components
 @tailwind utilities
 
+@layer utilities 
+  .animation-delay-2000
+    animation-delay:2s
+  .animation-delay-4000
+    animation-delay:4s
+
 body
   font-family: 'Almarai', sans-serif
   background-color: #f8f8f8
@@ -15,12 +21,17 @@ svg
   cursor: pointer
 a 
   cursor: pointer
+::selection
+  color: white
+  background: gray
+
 *
+  //outline: 1px red dotted
   scrollbar-width: thin
   scrollbar-color: gray white
 
   &::-webkit-scrollbar
-    width: 12px
+    width: 5px
 
   &::-webkit-scrollbar-track
     background: white
@@ -28,4 +39,4 @@ a
   &::-webkit-scrollbar-thumb
     background-color: gray
     border-radius: 20px
-    border: 3px solid white
+    border: 2px solid white

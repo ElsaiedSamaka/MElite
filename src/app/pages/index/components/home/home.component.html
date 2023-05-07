@@ -3,9 +3,588 @@
 <app-side-bar></app-side-bar>
 <!-- nav-bar -->
 
-<section class="flex items-center justify-center ">
-  <div class="px-5 py-5">
-    <a [routerLink]="['/inbox']" class="m-5 underline hover:text-green-500">البريد الوارد </a>
-    <a [routerLink]="['/']" class="m-5 underline hover:text-green-500">الاحصائيات</a>
+<section class="mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200 relative">
+
+  <section class="rounded-3xl max-w-screen-3xl border-2 border-dashed border-gray-200 mx-5 my-5 ">
+    
+    <div
+      class="grid broder-2 border-dashed border-gray-200  px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <div class="mr-auto place-self-center lg:col-span-6 relative">
+        <!-- animated blured divs -->
+        <div
+          class="absolute top-[0%] left-8 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+        </div>
+        <div
+          class="absolute top-[25%] -right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
+        </div>
+        <div
+          class="absolute bottom-0 right-8 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+        </div>
+        <h1
+          class="max-w-2xl mb-4 text-4xl text-gray-400 font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
+          Isn't wierd that </h1>
+          <p class="max-w-2xl mb-6 text-gray-500 font-light lg:mb-8 md:text-lg lg:text-xl ">The same thing that
+            pring you joy pring you anxity.</p>
+        <a
+        routerLink="/signup"
+          class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-3xl bg-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 ">
+          Get started
+          <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a
+        routerLink="/signup"
+          class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-3xl hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 :text-white :border-gray-700 :hover:bg-gray-700 :focus:ring-gray-800">
+          Contact with the developer
+        </a>
+      </div>
+      <div class="hidden lg:mt-0 lg:col-span-6 lg:flex">
+        <video class="w-full  h-auto max-w-full border border-gray-200 rounded-lg" autoplay controls>
+          <source src="https://res.cloudinary.com/dwi0qvtbe/video/upload/v1685292786/samples/sea-turtle.mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+  <h2
+    class="mx-8 my-4 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900  md:text-4xl">
+    تصفح احدث المنتجات</h2>
+  <section class="flex items-center my-2 ">
+    <div class="w-full rounded-3xl border-2 border-dashed border-gray-200 max-w-screen-3xl px-4 mx-5 lg:px-12 ">
+      <!-- Start coding here -->
+      <div class="relative overflow-hidden md:rounded-3xl">
+        <div class="flex flex-col items-center justify-between  p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+          <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
+            <button type="button"
+              class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-t-lg md:rounded-tr-none md:rounded-l-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 :bg-gray-700 :border-gray-600 :text-white :hover:text-white :hover:bg-gray-600 :focus:ring-primary-500 :focus:text-white">
+              رجال
+            </button>
+            <button type="button"
+              class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-gray-200 border-x md:border-x-0 md:border-t md:border-b hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 :bg-gray-700 :border-gray-600 :text-white :hover:text-white :hover:bg-gray-600 :focus:ring-primary-500 :focus:text-white">
+              نساء
+            </button>
+            <button type="button"
+              class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-gray-200 border-x md:border-x-0 md:border-l md:border-b hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 :bg-gray-700 :border-gray-600 :text-white :hover:text-white :hover:bg-gray-600 :focus:ring-primary-500 :focus:text-white">
+              اطفال
+            </button>
+            <button type="button"
+              class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-b-lg md:rounded-bl-none md:rounded-r-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 :bg-gray-700 :border-gray-600 :text-white :hover:text-white :hover:bg-gray-600 :focus:ring-primary-500 :focus:text-white">
+              الجميع
+            </button>
+          </div>
+        <button type="button"
+          class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-black rounded-3xl md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 :bg-primary-600 :hover:bg-primary-700 focus:outline-none :focus:ring-primary-800">
+          فلتر المنتجات
+        </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="my-4 ">
+    <div
+      class="mx-5 rounded-3xl border-2 border-dashed border-gray-200 max-w-screen-3xl px-4 py-10 sm:px-6 sm:py-12 lg:max-w-screen-3xl lg:px-8 ">
+      <h2 class="sr-only">المنتجات</h2>
+      <h2 class="text-start font-semibold underline py-3 hover:text-blue-300 hover:cursor-pointer hover:no-underline">
+        <a routerLink="all-products"> عرض الكل</a>
+      </h2>
+      <div
+        class=" grid grid-cols-1 gap-x-6 gap-y-10  w-full sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
+        <!-- TODO: <a *ngFor="let product of products"> -->
+        <!-- TODO: [routerLink]="product.id" -->
+        <a class="group border-2 border-dashed border-gray-200 rounded-3xl p-2">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+            [routerLink]="8">
+            <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+              alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+              class="h-full w-full object-cover object-center hover:opacity-75">
+          </div>
+          <div class="flex flex-row-reverse items-center justify-between" [routerLink]="8">
+            <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+            <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+          </div>
+          <h4>جامد اخر حاجة جداا</h4>
+          <div class="flex flex-row-reverse items-center justify-between gap-x-2">
+            <a role="button"
+              class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+              </path>
+            </svg>
+            <p>اضافة الى السلة</p>
+          </a>
+          <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              (click)="toggleQuickViewModal()"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59">
+              </path>
+            </svg>
+          </span>
+            <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z">
+                </path>
+              </svg>
+            </span>
+          </div>
+        </a>
+      <a class="group border-2 border-dashed border-gray-200 rounded-3xl p-2" [routerLink]="8">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+            class="h-full w-full object-cover object-center hover:opacity-75">
+        </div>
+        <div class="flex flex-row-reverse items-center justify-between">
+          <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+          <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+        </div>
+        <h4>جامد اخر حاجة جداا</h4>
+        <div class="flex flex-row-reverse items-center justify-between gap-x-2">
+          <a role="button"
+            class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+              </path>
+            </svg>
+            <p>اضافة الى السلة</p>
+          </a>
+          <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              (click)="toggleQuickViewModal()" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59">
+              </path>
+            </svg>
+          </span>
+          </div>
+      </a>
+      <a class="group border-2 border-dashed border-gray-200 rounded-3xl p-2" [routerLink]="8">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+            class="h-full w-full object-cover object-center hover:opacity-75">
+        </div>
+        <div class="flex flex-row-reverse items-center justify-between">
+          <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+          <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+        </div>
+        <h4>جامد اخر حاجة جداا</h4>
+        <div class="flex flex-row-reverse items-center justify-between gap-x-2">
+          <a role="button"
+            class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+              </path>
+            </svg>
+            <p>اضافة الى السلة</p>
+          </a>
+          <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+            <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              (click)="toggleQuickViewModal()" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59">
+              </path>
+            </svg>
+          </span>
+          </div>
+      </a>
+    <a class="group border-2 border-dashed border-gray-200 rounded-3xl p-2" [routerLink]="8">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+          alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+          class="h-full w-full object-cover object-center hover:opacity-75">
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between">
+        <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+        <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+      </div>
+      <h4>جامد اخر حاجة جداا</h4>
+      <div class="flex flex-row-reverse items-center justify-between gap-x-2">
+        <a role="button"
+          class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+          <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+            </path>
+          </svg>
+          <p>اضافة الى السلة</p>
+        </a>
+        <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+          <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+            (click)="toggleQuickViewModal()" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59">
+            </path>
+          </svg>
+        </span>
+        </div>
+    </a>
+    <a class="group border-2 border-dashed border-gray-200 rounded-3xl p-2" [routerLink]="8">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-3xl bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
+          alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+          class="h-full w-full object-cover object-center hover:opacity-75">
+      </div>
+      <div class="flex flex-row-reverse items-center justify-between">
+        <h3 class="mt-4 text-sm font-semibold text-gray-700">تيشيرت رجالي</h3>
+        <p class="mt-4 text-lg font-medium text-gray-900">$48</p>
+      </div>
+      <h4>جامد اخر حاجة جداا</h4>
+      <div class="flex flex-row-reverse items-center justify-between gap-x-2">
+        <a role="button"
+          class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200">
+          <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+            </path>
+          </svg>
+          <p>اضافة الى السلة</p>
+        </a>
+        <span class="bg-gray-100 border px-4 py-2 rounded-full hover:bg-gray-200">
+          <svg class="w-5 h-5 hover:text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+            (click)="toggleQuickViewModal()" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59">
+            </path>
+          </svg>
+        </span>
+        </div>
+    </a>
+
+        <!-- More products... -->
+      </div>
+    </div>
   </div>
+  
+          <div class="my-4">
+    <div class="mx-auto">
+      <div
+        class="mx-5 max-w-screen-3xl px-6 py-16 sm:py-24 lg:max-w-screen-3xl lg:py-32  border-2 border-dashed border-gray-200 rounded-3xl">
+        <h2 class="text-2xl font-bold text-gray-900 ">مجموعات</h2>
+  
+        <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+          <div class="group relative">
+            <div
+              class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
+                alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-6 text-sm text-gray-500">
+              <a>
+                <span class="absolute inset-0"></span>
+                Mens
+              </a>
+            </h3>
+            <p class="text-base font-semibold text-gray-900">Mens and males products collection</p>
+          </div>
+          <div class="group relative">
+            <div
+              class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
+                alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
+                class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-6 text-sm text-gray-500">
+              <a>
+                <span class="absolute inset-0"></span>
+                Womens
+              </a>
+            </h3>
+            <p class="text-base font-semibold text-gray-900">Womens and girls products collection</p>
+          </div>
+          <div class="group relative">
+            <div
+              class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
+                alt="Collection of four insulated travel bottles on wooden shelf."
+                class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-6 text-sm text-gray-500">
+              <a>
+                <span class="absolute inset-0"></span>
+                Kids
+              </a>
+            </h3>
+            <p class="text-base font-semibold text-gray-900">Kids products collection</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+
+
+  
+
+  <app-footer></app-footer>
 </section>
+<!-- Quick View  -->
+  <!-- dimmed bg  -->
+  <!-- <div class="fixed z-30 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block"></div> -->
+<!-- blured bg  -->
+<div class="fixed z-30 inset-0  backdrop-blur-sm md:block " *ngIf="showQuickViewModal" (click)="toggleQuickViewModal()">
+</div>
+
+<div class="fixed inset-0 z-30 overflow-y-auto rounded-3xl " *ngIf="showQuickViewModal">
+  <div class="flex min-h-full items-stretch justify-center text-center rounded-3xl md:items-center md:px-2 lg:px-4">
+    <div
+      class="flex w-full transform text-left text-base  transition-shadow md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl rounded-3xl">
+      <div
+        class="relative flex w-full items-center overflow-hidden bg-white  px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8 rounded-3xl">
+        <button type="button" (click)="toggleQuickViewModal()"
+          class="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+          <div class="aspect-h-3 aspect-w-2 overflow-hidden rounded-3xl bg-gray-100 sm:col-span-4 lg:col-span-5">
+            <img src="https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg"
+              alt="Two each of gray, white, and black shirts arranged on table." class="object-cover object-center">
+          </div>
+          <div class="sm:col-span-8 lg:col-span-7">
+            <h2 class="text-2xl font-bold text-gray-900 sm:pr-12">Basic Tee 6-Pack</h2>
+
+            <section aria-labelledby="information-heading" class="mt-2">
+              <h3 id="information-heading" class="sr-only">Product information</h3>
+
+              <p class="text-2xl text-gray-900">$192</p>
+
+              <!-- Reviews -->
+              <div class="mt-6">
+                <h4 class="sr-only">Reviews</h4>
+                <div class="flex items-center">
+                  <div class="flex items-center">
+                    <!-- Active: "text-gray-900", Default: "text-gray-200" -->
+                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg class="text-gray-200 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <p class="sr-only">3.9 out of 5 stars</p>
+                  <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 reviews</a>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="options-heading" class="mt-10">
+              <h3 id="options-heading" class="sr-only">Product options</h3>
+
+              <form>
+                <!-- Colors -->
+                <div>
+                  <h4 class="text-sm font-medium text-gray-900">Color</h4>
+
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Choose a color</legend>
+                    <span class="flex items-center space-x-3">
+                      <!--
+                          Active and Checked: "ring ring-offset-1"
+                          Not Active and Checked: "ring-2"
+                        -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
+                        <input type="radio" name="color-choice" value="White" class="sr-only"
+                          aria-labelledby="color-choice-0-label">
+                        <span id="color-choice-0-label" class="sr-only">White</span>
+                        <span aria-hidden="true"
+                          class="h-8 w-8 bg-white rounded-full border border-black border-opacity-10"></span>
+                      </label>
+                      <!--
+                          Active and Checked: "ring ring-offset-1"
+                          Not Active and Checked: "ring-2"
+                        -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
+                        <input type="radio" name="color-choice" value="Gray" class="sr-only"
+                          aria-labelledby="color-choice-1-label">
+                        <span id="color-choice-1-label" class="sr-only">Gray</span>
+                        <span aria-hidden="true"
+                          class="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10"></span>
+                      </label>
+                      <!--
+                          Active and Checked: "ring ring-offset-1"
+                          Not Active and Checked: "ring-2"
+                        -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
+                        <input type="radio" name="color-choice" value="Black" class="sr-only"
+                          aria-labelledby="color-choice-2-label">
+                        <span id="color-choice-2-label" class="sr-only">Black</span>
+                        <span aria-hidden="true"
+                          class="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"></span>
+                      </label>
+                    </span>
+                  </fieldset>
+                </div>
+
+                <!-- Sizes -->
+                <div class="mt-10">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-sm font-medium text-gray-900">Size</h4>
+                    <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+                  </div>
+
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Choose a size</legend>
+                    <div class="grid grid-cols-4 gap-4">
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="XXS" class="sr-only"
+                          aria-labelledby="size-choice-0-label">
+                        <span id="size-choice-0-label">XXS</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="XS" class="sr-only"
+                          aria-labelledby="size-choice-1-label">
+                        <span id="size-choice-1-label">XS</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="S" class="sr-only"
+                          aria-labelledby="size-choice-2-label">
+                        <span id="size-choice-2-label">S</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="M" class="sr-only"
+                          aria-labelledby="size-choice-3-label">
+                        <span id="size-choice-3-label">M</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="L" class="sr-only"
+                          aria-labelledby="size-choice-4-label">
+                        <span id="size-choice-4-label">L</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="XL" class="sr-only"
+                          aria-labelledby="size-choice-5-label">
+                        <span id="size-choice-5-label">XL</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
+                        <input type="radio" name="size-choice" value="XXL" class="sr-only"
+                          aria-labelledby="size-choice-6-label">
+                        <span id="size-choice-6-label">XXL</span>
+                        <!--
+                            Active: "border", Not Active: "border-2"
+                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                          -->
+                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                      </label>
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-not-allowed bg-gray-50 text-gray-200">
+                        <input type="radio" name="size-choice" value="XXXL" disabled class="sr-only"
+                          aria-labelledby="size-choice-7-label">
+                        <span id="size-choice-7-label">XXXL</span>
+                        <span aria-hidden="true"
+                          class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                          <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100"
+                            preserveAspectRatio="none" stroke="currentColor">
+                            <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+                          </svg>
+                        </span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <button type="submit"
+                  class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add
+                  to bag</button>
+              </form>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
