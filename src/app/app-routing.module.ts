@@ -15,6 +15,14 @@ const routes: Routes = [
       import('./pages/index/index.module').then((m) => m.IndexModule),
   },
   {
+    path: 'dashboard',
+    // canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
     path: 'tasks',
     loadChildren: () =>
       import('./pages/tasks/tasks.module').then((m) => m.TasksModule),
