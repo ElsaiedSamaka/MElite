@@ -1,0 +1,108 @@
+<div class="flex flex-row-reverse items-center gap-5 mr-10 sm:justify-end sm:mt-0 sm:pl-5">
+  <svg class="cart-icon w-7 h-7 hover:text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5"
+    (click)="toggleCartDropDown()" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z">
+    </path>
+  </svg>
+  <div class="fixed z-20 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block" *ngIf="showCartDropdown"
+    (click)="toggleCartDropDown()">
+  </div>
+  <div *ngIf="showCartDropdown" id="dropdownCard"
+    class="z-20 absolute top-16 right-1 w-full  max-w-[30%] bg-white divide-y divide-gray-100 rounded-3xl shadow p-1"
+    aria-labelledby="dropdownCardButton">
+    <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 :bg-gray-800 :text-white">
+      السلة
+    </div>
+    <div class="divide-y divide-gray-100 max-h-64 overflow-scroll">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-3xl">
+        <table class="w-full text-sm text-center text-gray-500 ">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                <span class="sr-only">Image</span>
+              </th>
+              <th scope="col" class="px-6 py-3">
+                المنتج
+              </th>
+              <th scope="col" class="px-6 py-3">
+                الكمية
+              </th>
+              <th scope="col" class="px-6 py-3">
+                السعر
+              </th>
+              <th scope="col" class="px-6 py-3">
+                الاجراء
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b hover:bg-gray-50" *ngFor="let item of cartItems">
+              <td class="w-32 p-4">
+                <img [src]="item.product?.product_img" [alt]="item.product?.description">
+              </td>
+              <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                {{item.product?.name? item.product.name : 'N/A'}}
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center space-x-3">
+                  <button
+                  (click)="decreaseCartItemQty(item.id,item)"
+                    class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:bg-gray-700 :hover:border-gray-600 :focus:ring-gray-700"
+                    type="button">
+                    <span class="sr-only">Quantity button</span>
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd">
+                      </path>
+                    </svg>
+                  </button>
+                  <div>
+                    <!-- <input type="number" id="first_product"
+                      class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
+                      [value]="item.quantity"
+                      [placeholder]="item.quantity" required> -->
+                      <label  class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1   " >{{item.quantity}}</label>
+                  </div>
+                  <button
+                  (click)="increaseCartItemQty(item.id,item)"
+                    class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:bg-gray-700 :hover:border-gray-600 :focus:ring-gray-700"
+                    type="button">
+                    <span class="sr-only">Quantity button</span>
+                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+              <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                ${{item.product?.price ? item.product.price :"N/A"}}
+              </td>
+              <td class="px-6 py-4">
+                <a class="font-medium text-red-600 hover:underline" (click)="deleteCartItem(item.id)">حذف</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <a
+      class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 :bg-gray-800 :hover:bg-gray-700 :text-white">
+      <div class="inline-flex items-center ">
+        <svg class="w-4 h-4 mr-2 text-gray-500 :text-gray-400" aria-hidden="true" fill="currentColor"
+          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+          <path fill-rule="evenodd"
+            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+            clip-rule="evenodd"></path>
+        </svg>
+        عرض الكل
+      </div>
+    </a>
+  </div>
+</div>

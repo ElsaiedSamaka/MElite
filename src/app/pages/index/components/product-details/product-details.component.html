@@ -1,26 +1,22 @@
 <app-nav-bar></app-nav-bar>
-<div class="product-details my-8">
+<div class="product-details my-20">
   <div class="pt-6">
     
     <!-- Image gallery -->
     <div class="mx-auto mt-6 max-w-screen-2xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
       <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-3xl lg:block">
-        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg"
-          alt="Two each of gray, white, and black shirts laying flat." class="h-full w-full object-cover object-center">
+        <img [src]="product.product_img" [alt]="product.description" class="h-full w-full object-center">
       </div>
       <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
         <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
-            alt="Model wearing plain black basic tee." class="h-full w-full object-cover object-center">
+          <img [src]="product.product_img" [alt]="product.description" class="h-full w-full object-cover object-center">
         </div>
         <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl">
-          <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
-            alt="Model wearing plain gray basic tee." class="h-full w-full object-cover object-center">
+          <img [src]="product.product_img" [alt]="product.description" class="h-full w-full object-cover object-center">
         </div>
       </div>
       <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-3xl">
-        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-          alt="Model wearing plain white basic tee." class="h-full w-full object-cover object-center">
+        <img [src]="product.product_img" [alt]="product.description" class="h-full w-full object-cover object-center">
       </div>
     </div>
 
@@ -38,13 +34,13 @@
         class="absolute bottom-0 right-8 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
       </div>
       <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Basic Tee 6-Pack</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{product.name}}</h1>
       </div>
 
       <!-- Options -->
       <div class="mt-4 lg:row-span-3 lg:mt-0">
-        <h2 class="sr-only">Product information</h2>
-        <p class="text-3xl tracking-tight text-gray-900">$192</p>
+        <h2 class="sr-only">{{product.description}}</h2>
+        <p class="text-3xl tracking-tight text-gray-900">${{product.price}}</p>
 
         <!-- Reviews -->
         <div class="mt-6">
@@ -248,8 +244,8 @@
             </fieldset>
           </div>
 
-          <button type="submit"
-            class="add-to-cart-button mt-10 flex w-full items-center justify-center rounded-3xl border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">اضافة الى السلة</button>
+          <button 
+            class="add-to-cart-button mt-10 flex w-full items-center justify-center rounded-3xl border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" (click)=" postCartItem(product)">اضافة الى السلة</button>
         </form>
       </div>
 
@@ -259,17 +255,15 @@
           <h3 class="sr-only">Description</h3>
 
           <div class="space-y-6">
-            <p class="text-base text-gray-900">The Basic Tee 6-Pack allows you to fully express your vibrant personality
-              with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter?
-              Try our exclusive colorway: &quot;Black&quot;. Need to add an extra pop of color to your outfit? Our white
-              tee has you covered.</p>
+            <p class="text-base text-gray-900">{{product.description}}</p>
           </div>
         </div>
         <div class="mt-10">
           <h2 class="text-sm font-medium text-gray-900">Details</h2>
 
           <div class="mt-4 space-y-6">
-            <p class="text-sm text-gray-600">The 6-Pack includes two black, two white, and two heather gray Basic Tees.
+            <p class="text-sm text-gray-600">[Hard Coded text] The 6-Pack includes two black, two white, and two heather gray Basic
+              Tees.
               Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming
               &quot;Charcoal Gray&quot; limited release.</p>
           </div>

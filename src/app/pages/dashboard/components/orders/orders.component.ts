@@ -8,6 +8,7 @@ import { OrdersService } from 'src/core/services/orders.service';
 })
 export class OrdersComponent implements OnInit {
   orders: any[] = [];
+  productsPerOrder: any[] = [];
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
@@ -22,7 +23,7 @@ export class OrdersComponent implements OnInit {
         console.log('err while returning orders', err);
       },
       complete: () => {
-        console.log('complete');
+        this.productPerOrder();
       },
     });
   }
@@ -38,6 +39,12 @@ export class OrdersComponent implements OnInit {
         this.getOrders();
         console.log('complete');
       },
+    });
+  }
+  productPerOrder(): void {
+    this.productsPerOrder = this.orders.map((order) => {
+      const products = order.products.map((product) => product);
+      return { orderId: order.id, products };
     });
   }
 }

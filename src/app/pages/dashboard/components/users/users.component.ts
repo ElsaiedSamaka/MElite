@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { RolesService } from 'src/core/services/roles.service';
 import { UsersService } from 'src/core/services/users.service';
 
 @Component({
@@ -10,16 +11,22 @@ import { UsersService } from 'src/core/services/users.service';
 })
 export class UsersComponent implements OnInit {
   users: any[] = [];
+  roles: any[] = [];
+  roleId: string;
   usersToDisplay: any[] = [];
   selecteduserId: string;
   selectedusersIds: any[] = [];
   showFiltersDDL: boolean = false;
+  showRoleDDL: boolean = false;
   showConfirmationModal: boolean = false;
   showUpdateUserModal: boolean = false;
   currentPage = 1;
   totalPages: number = 0;
   perPage = 10;
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private rolesService: RolesService
+  ) {}
 
   ngOnInit() {
     this.getUsers();
@@ -98,6 +105,20 @@ export class UsersComponent implements OnInit {
       },
     });
   }
+  getUsersByRole(id: string): void {
+    this.roleId = id;
+    this.usersService.getByRole(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.users = this.usersService.users$.value;
+        this.usersToDisplay = this.paginate(this.currentPage, this.perPage);
+      },
+      error: (err) => {
+        console.log('err', err);
+      },
+      complete: () => {},
+    });
+  }
 
   handleSearchOverUsers() {
     this.searchForm.controls.searchControl.valueChanges
@@ -133,7 +154,6 @@ export class UsersComponent implements OnInit {
     this.usersService.patch(id).subscribe({
       next: (res) => {
         this.getUsers();
-        console.log('res', res);
       },
       error: (err) => {
         console.log('err', err);
@@ -159,8 +179,29 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  getRoles(): void {
+    this.rolesService.getRoles().subscribe({
+      next: (res) => {
+        this.roles = res;
+        console.log('roles', res);
+      },
+      error: (err) => {
+        console.log('err', err);
+      },
+      complete: () => {},
+    });
+  }
   toggleFiltersDDL() {
     this.showFiltersDDL = !this.showFiltersDDL;
+    if (this.showFiltersDDL) {
+      this.getRoles();
+    }
+  }
+  toggleRolesDDL() {
+    this.showRoleDDL = !this.showRoleDDL;
+    if (this.showRoleDDL) {
+      this.getRoles();
+    }
   }
   toggleConfirmationModal() {
     this.showConfirmationModal = !this.showConfirmationModal;
@@ -168,6 +209,7 @@ export class UsersComponent implements OnInit {
   toggleUpdateModal(userId?) {
     let user: any;
     this.showUpdateUserModal = !this.showUpdateUserModal;
+    this.showRoleDDL = false;
     if (this.showUpdateUserModal) {
       this.usersService.getById(this.selecteduserId).subscribe({
         next: (res) => {

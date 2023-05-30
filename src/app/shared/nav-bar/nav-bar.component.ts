@@ -10,13 +10,11 @@ import { AuthService } from 'src/core/services/auth.service';
 export class NavBarComponent implements OnInit {
   user: any;
   showNavDropdown = false;
-  showNotfiDropdown = false;
   showCartDropdown = false;
   signedin$: BehaviorSubject<boolean>;
 
   constructor(private authService: AuthService) {
     this.signedin$ = authService.signedin$;
-    console.log(authService.signedin$.value);
   }
 
   ngOnInit() {
@@ -26,12 +24,7 @@ export class NavBarComponent implements OnInit {
   toggleNavDropdown() {
     this.showNavDropdown = !this.showNavDropdown;
   }
-  toggleNotfiDropDown() {
-    this.showNotfiDropdown = !this.showNotfiDropdown;
-    this.showCartDropdown = false;
-  }
   toggleCartDropDown() {
     this.showCartDropdown = !this.showCartDropdown;
-    this.showNotfiDropdown = false;
   }
 }

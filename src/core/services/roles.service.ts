@@ -9,7 +9,7 @@ export class RolesService {
   roles$ = new BehaviorSubject<any[]>([]);
 
   constructor(private apiService: ApiService) {}
-  getCategories(): Observable<any[]> {
+  getRoles(): Observable<any[]> {
     return this.apiService.get('/api/roles').pipe(
       tap((res) => {
         this.roles$.next(res);

@@ -8,6 +8,7 @@ import { OrdersService } from 'src/core/services/orders.service';
 })
 export class OverviewComponent implements OnInit {
   orders: any[] = [];
+
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {

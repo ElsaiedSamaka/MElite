@@ -25,6 +25,8 @@ export class OrdersService {
   post(product: any): Observable<any> {
     return this.apiService.post('/api/orders', product);
   }
+  // TODO: not implemented on the backend need check
+  // you can't update on order once been proceed
   put(id: string, product: any): Observable<any> {
     return this.apiService.put(`/api/orders/${id}`, product);
   }

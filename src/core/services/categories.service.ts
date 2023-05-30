@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ApiService } from './api.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CategoriesService {
   categories$ = new BehaviorSubject<any[]>([]);
 

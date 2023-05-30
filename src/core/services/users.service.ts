@@ -18,6 +18,13 @@ export class UsersService {
   getById(id: string): Observable<any> {
     return this.apiService.get(`/api/users/${id}`);
   }
+  getByRole(id: string): Observable<any[]> {
+    return this.apiService.get(`/api/users/by-role/${id}`).pipe(
+      tap((res) => {
+        this.users$.next(res);
+      })
+    );
+  }
   deleteById(id: string): Observable<any> {
     return this.apiService.delete(`/api/users/${id}`);
   }
