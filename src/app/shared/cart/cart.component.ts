@@ -8,10 +8,12 @@ import { CartService } from 'src/core/services/cart.service';
 })
 export class CartComponent implements OnInit {
   showCartDropdown = false;
-  cartItems;
+  cartItems: any[] = [];
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCartItems();
+  }
   getCartItems(): void {
     this.cartService.getAll().subscribe({
       next: (cartItems) => {
