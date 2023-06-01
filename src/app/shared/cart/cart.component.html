@@ -42,7 +42,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr class=" border-b hover:bg-gray-50" *ngFor="let item of cartItems">
+            <ng-container *ngIf="cartItems.length > 0; else nocartItems">
+              <tr class=" border-b hover:bg-gray-50" *ngFor="let item of cartItems">
               <td class="w-32 p-4">
                 <img [src]="item.product?.product_img" [alt]="item.product?.description">
               </td>
@@ -97,15 +98,22 @@
                   </svg>
                 </a>
               </td>
-            </tr>
+            </tr></ng-container>
+            <ng-template #nocartItems>
+              <tr>
+                <td></td>
+                <td></td>
+                <h3 class="font-semibold text-center">لا توجد عناصر بالسلة</h3>
+              </tr>
+            </ng-template>
           </tbody>
         </table>
       </div>
 
     </div>
-    <a
+    <button [disabled]="cartItems.length<=0"
      routerLink="/checkout"
-      class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 :bg-gray-800 :hover:bg-gray-700 :text-white">
+      class="w-full py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-900">
       <div class="inline-flex items-center text-gray-300 hover:text-gray-500">
         <svg class="w-5 h-5 mr-1 " fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -115,6 +123,6 @@
         </svg>
         متابعة للشراء
       </div>
-    </a>
+    </button>
   </div>
 </div>

@@ -53,7 +53,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <ng-container *ngIf="cartItems >0 else noCartItems">
+                  <ng-container *ngIf="cartItems.length > 0 ; else noCartItems">
                   <tr class=" border-b hover:bg-gray-50" *ngFor="let item of cartItems">
                     <td class="w-32 p-4">
                       <img [src]="item.product?.product_img" [alt]="item.product?.description">
