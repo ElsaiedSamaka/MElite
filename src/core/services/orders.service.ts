@@ -11,8 +11,22 @@ export class OrdersService {
   constructor(private apiService: ApiService) {}
   getAll(): Observable<any[]> {
     return this.apiService.get('/api/orders').pipe(
-      tap((res) => {
-        this.orders$.next(res);
+      tap((orders) => {
+        this.orders$.next(orders);
+      })
+    );
+  }
+  getOrdersByUser(userId: string): Observable<any[]> {
+    return this.apiService.get(`/api/orders/by-user/${userId}`).pipe(
+      tap((orders) => {
+        this.orders$.next(orders);
+      })
+    );
+  }
+  getOrdersOfCurrentUser(): Observable<any[]>{
+    return this.apiService.get(`/api/orders/current-user`).pipe(
+      tap((orders) => {
+        this.orders$.next(orders);
       })
     );
   }
