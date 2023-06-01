@@ -60,7 +60,7 @@
               class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700" *ngFor="let category of categories" >
               {{category.name}}
             </button>
-            <button type="button"
+            <button type="button" (click)="getProducts()"
               class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 :bg-gray-700 :border-gray-600 :text-white :hover:text-white :hover:bg-gray-600 :focus:ring-primary-500 :focus:text-white">
               الجميع
             </button>
