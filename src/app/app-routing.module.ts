@@ -35,10 +35,10 @@ const routes: Routes = [
       import('./pages/settings/settings.module').then((m) => m.SettingsModule),
   },
   {
-    path: 'cart',
+    path: 'checkout',
     // canLoad: [AuthGuard],
     loadChildren: () =>
-      import('./pages/cart/cart.module').then((m) => m.CartModule),
+      import('./pages/checkout/cart.module').then((m) => m.CheckoutModule),
   },
 ];
 
