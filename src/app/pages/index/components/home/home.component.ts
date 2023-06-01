@@ -17,12 +17,15 @@ export class HomeComponent implements OnInit {
   product: any;
   size: number = 5;
   showQuickViewModal: boolean = false;
+  cartItems: any = this.cartService.items$.value;
 
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private cartService: CartService
-  ) {}
+  ) {
+    this.cartItems = this.cartService.items$.value;
+  }
 
   ngOnInit() {
     this.getProducts();
@@ -73,21 +76,24 @@ export class HomeComponent implements OnInit {
       quantity: 1,
       userId: 1,
     };
-    if (cartItem.productId == this.productId) {
-      console.log("repeat")
+    this.productId = product.id;
+    if (this.checkIfCartItemExists(this.cartItems, cartItem.productId)) {
+      return;
     } else {
-      console.log("not repeat")
+      this.cartService.post(cartItem).subscribe({
+        next: (cartItem) => {
+          this.cartItems = this.cartService.items$.value;
+        },
+        error: (err) => {
+          console.log('error while posting cart item', err);
+        },
+        complete: () => {},
+      });
     }
-    this.productId = product.id
-    this.cartService.post(cartItem).subscribe({
-      next: (cartItem) => {},
-      error: (err) => {
-        console.log('error while posting cart item', err);
-      },
-      complete: () => {},
-    });
   }
-
+  checkIfCartItemExists(cartItems, productId) {
+    return cartItems.some((cartItem) => cartItem.productId === productId);
+  }
   toggleQuickViewModal(product: any) {
     this.product = product;
     this.showQuickViewModal = !this.showQuickViewModal;
