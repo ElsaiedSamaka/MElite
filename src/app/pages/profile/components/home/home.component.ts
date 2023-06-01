@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
     { id: 1, label: 'منتجات بالمفضلة' },
     { id: 2, label: 'السلة' },
   ];
-  selectedTabId = 1;
+  selectedTabId = 2;
   constructor() {}
 
   ngOnInit() {}
