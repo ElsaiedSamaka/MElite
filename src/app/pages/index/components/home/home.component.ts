@@ -87,21 +87,7 @@ export class HomeComponent implements OnInit {
       complete: () => {},
     });
   }
-  increaseCartItemQty(id: string, cartItem: any): void {
-    const updatedCartItem = {
-      ...cartItem,
-      quantity: cartItem.quantity + 1,
-    };
-    this.cartService.put(id, updatedCartItem).subscribe({
-      next: (updatedCartItem) => {
-        // this.cartItems = this.cartService.items$.value;
-      },
-      error: (err) => {
-        console.log('error while updateCartItem', err);
-      },
-      complete: () => {},
-    });
-  }
+
   toggleQuickViewModal(product: any) {
     this.product = product;
     this.showQuickViewModal = !this.showQuickViewModal;
