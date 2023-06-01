@@ -73,10 +73,31 @@ export class HomeComponent implements OnInit {
       quantity: 1,
       userId: 1,
     };
+    if (cartItem.productId == this.productId) {
+      console.log("repeat")
+    } else {
+      console.log("not repeat")
+    }
+    this.productId = product.id
     this.cartService.post(cartItem).subscribe({
       next: (cartItem) => {},
       error: (err) => {
         console.log('error while posting cart item', err);
+      },
+      complete: () => {},
+    });
+  }
+  increaseCartItemQty(id: string, cartItem: any): void {
+    const updatedCartItem = {
+      ...cartItem,
+      quantity: cartItem.quantity + 1,
+    };
+    this.cartService.put(id, updatedCartItem).subscribe({
+      next: (updatedCartItem) => {
+        // this.cartItems = this.cartService.items$.value;
+      },
+      error: (err) => {
+        console.log('error while updateCartItem', err);
       },
       complete: () => {},
     });
