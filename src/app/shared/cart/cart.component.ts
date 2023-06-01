@@ -11,9 +11,7 @@ export class CartComponent implements OnInit {
   cartItems;
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {
-    this.getCartItems();
-  }
+  ngOnInit() {}
   getCartItems(): void {
     this.cartService.getAll().subscribe({
       next: (cartItems) => {
@@ -76,6 +74,10 @@ export class CartComponent implements OnInit {
     });
   }
   toggleCartDropDown() {
+    if (!this.showCartDropdown) {
+      this.getCartItems();
+    }
+
     this.showCartDropdown = !this.showCartDropdown;
   }
 }
