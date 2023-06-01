@@ -14,8 +14,8 @@
     <div class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 :bg-gray-800 :text-white">
       السلة
     </div>
-    <div class="divide-y divide-gray-100 max-h-64 overflow-scroll">
-      <div class="relative overflow-x-auto shadow-md sm:rounded-3xl">
+    <div class="divide-y divide-gray-100 max-h-96 overflow-scroll">
+      <div class="relative overflow-x-auto shadow-md ">
         <table class="w-full text-sm text-center text-gray-500 ">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
@@ -37,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b hover:bg-gray-50" *ngFor="let item of cartItems">
+            <tr class=" border-b hover:bg-gray-50" *ngFor="let item of cartItems">
               <td class="w-32 p-4">
                 <img [src]="item.product?.product_img" [alt]="item.product?.description">
               </td>
@@ -92,16 +92,16 @@
 
     </div>
     <a
+     routerLink="/checkout"
       class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 :bg-gray-800 :hover:bg-gray-700 :text-white">
-      <div class="inline-flex items-center ">
-        <svg class="w-4 h-4 mr-2 text-gray-500 :text-gray-400" aria-hidden="true" fill="currentColor"
-          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-          <path fill-rule="evenodd"
-            d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-            clip-rule="evenodd"></path>
+      <div class="inline-flex items-center text-gray-300 hover:text-gray-500">
+        <svg class="w-5 h-5 mr-1 " fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
+          </path>
         </svg>
-        عرض الكل
+        متابعة للشراء
       </div>
     </a>
   </div>
