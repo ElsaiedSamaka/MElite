@@ -64,8 +64,9 @@ export class HomeComponent implements OnInit {
   }
   postCartItem(product: any): void {
     this.product = product;
+    // TODO: if the product already exist in the cart items update its quantity instead
     // TODO: check the availablity of product and if it's not available will prevent posting cartItem
-    // TODO: reach to the current user through usersService or authSerivce and get current user 
+    // TODO: reach to the current user through usersService or authSerivce and get current user
     // and replace the hard coded userId with current user id
     let cartItem = {
       productId: product.id,
