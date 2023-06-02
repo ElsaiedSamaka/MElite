@@ -9,7 +9,7 @@ import { OrdersService } from 'src/core/services/orders.service';
 })
 export class IndexComponent implements OnInit {
   cartItems: any[] = [];
-
+  showConfirmationModal: boolean = false;
   constructor(
     private cartService: CartService,
     private ordersService: OrdersService
@@ -92,9 +92,14 @@ export class IndexComponent implements OnInit {
       };
     });
     this.ordersService.post(order).subscribe({
-      next: () => {},
+      next: (res) => {
+        this.toggleConfirmationModal();
+      },
       error: () => {},
       complete: () => {},
     });
+  }
+  toggleConfirmationModal(): void {
+    this.showConfirmationModal = !this.showConfirmationModal;
   }
 }
