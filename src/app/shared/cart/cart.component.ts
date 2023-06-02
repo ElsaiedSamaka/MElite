@@ -25,56 +25,6 @@ export class CartComponent implements OnInit {
       complete: () => {},
     });
   }
-  deleteCartItem(id: string): void {
-    this.cartService.deleteById(id).subscribe({
-      next: (deletedCartItem) => {
-        this.cartItems = this.cartService.items$.value;
-      },
-      error: (err) => {
-        console.log('error while deleteCartItem', err);
-      },
-      complete: () => {},
-    });
-  }
-  updateCartItem(id: string, cartItem: any): void {
-    this.cartService.put(id, cartItem).subscribe({
-      next: (updatedCartItem) => {},
-      error: (err) => {
-        console.log('error while updateCartItem', err);
-      },
-      complete: () => {},
-    });
-  }
-  increaseCartItemQty(id: string, cartItem: any): void {
-    const updatedCartItem = {
-      ...cartItem,
-      quantity: cartItem.quantity + 1,
-    };
-    this.cartService.put(id, updatedCartItem).subscribe({
-      next: (updatedCartItem) => {
-        this.cartItems = this.cartService.items$.value;
-      },
-      error: (err) => {
-        console.log('error while updateCartItem', err);
-      },
-      complete: () => {},
-    });
-  }
-  decreaseCartItemQty(id: string, cartItem: any): void {
-    const updatedCartItem = {
-      ...cartItem,
-      quantity: cartItem.quantity - 1,
-    };
-    this.cartService.put(id, updatedCartItem).subscribe({
-      next: (updatedCartItem) => {
-        this.cartItems = this.cartService.items$.value;
-      },
-      error: (err) => {
-        console.log('error while updateCartItem', err);
-      },
-      complete: () => {},
-    });
-  }
   toggleCartDropDown() {
     if (!this.showCartDropdown) {
       this.getCartItems();
