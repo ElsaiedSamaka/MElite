@@ -284,7 +284,8 @@
                 </tr>
               </thead>
               <tbody class=" ">
-                <tr class=" border-b hover:bg-gray-50" *ngFor="let order of orders">
+                <ng-container *ngIf="orders.length > 0; else noorders">
+                  <tr class=" border-b hover:bg-gray-50" *ngFor="let order of orders">
                   <td class="w-32 p-4">
                     <img [src]="order.products[0]?.product_img" [alt]="order.products[0]?.name">
                     <img *ngIf="order.products[1]?.product_img" [src]="order.products[1]?.product_img" [alt]="order.products[1]?.name">
@@ -320,7 +321,16 @@
                       Cancel
                     </button>
                   </td>
-                </tr>
+                </tr></ng-container>
+                <ng-template #noorders>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <h3 class="font-semibold text-2xl"> سجل الدخول للتمكن من الاطلاع على طلباتك</h3>
+                    </td>
+                  </tr>
+                </ng-template>
               </tbody>
             </table>
           </div>

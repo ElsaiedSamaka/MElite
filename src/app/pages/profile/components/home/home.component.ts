@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   getMyOrders(): void {
     this.ordersService.getOrdersOfCurrentUser().subscribe({
       next: (orders) => {
-        console.log('orders', orders);
         this.orders = this.ordersService.orders$.value;
         this.productPerOrder();
       },
@@ -35,13 +34,15 @@ export class HomeComponent implements OnInit {
     });
   }
   productPerOrder(): void {
-    this.productsPerOrder = this.orders.map((order) => {
-      const products = order.products.map((product) => product);
-      return { orderId: order.id, products };
-    });
+    if (this.productsPerOrder.length > 0) {
+      this.productsPerOrder = this.orders?.map((order) => {
+        const products = order.products?.map((product) => product);
+        return { orderId: order.id, products };
+      });
+    }
   }
   getTotalPriceByOrders(): void {
-    this.totalPriceByOrder = this.orders.map((order) => {
+    this.totalPriceByOrder = this.orders?.map((order) => {
       const totalPrice = order.products.reduce(
         (sum, product) => +sum + +product.price,
         0

@@ -30,7 +30,7 @@ export class OrdersComponent implements OnInit {
   cancelOrder(id: string): void {
     this.ordersService.cancel(id).subscribe({
       next: (res) => {
-        // console.log('res', res);
+        this.getOrders();
       },
       error: (err) => {
         console.log('err', err);
