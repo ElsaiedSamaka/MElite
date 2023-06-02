@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,55 @@ export class HomeComponent implements OnInit {
     { id: 2, label: 'السلة' },
   ];
   selectedTabId = 2;
-  constructor() {}
+  orders: any[] = [];
+  productsPerOrder: any[] = [];
+  totalPriceByOrder: any;
+  constructor(private ordersService: OrdersService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getMyOrders();
+    this.getTotalPriceByOrders();
+  }
+  getMyOrders(): void {
+    this.ordersService.getOrdersOfCurrentUser().subscribe({
+      next: (orders) => {
+        console.log('orders', orders);
+        this.orders = this.ordersService.orders$.value;
+        this.productPerOrder();
+      },
+      error: (err) => {
+        console.log('error while retreiving user orders', err);
+      },
+      complete: () => {},
+    });
+  }
+  productPerOrder(): void {
+    this.productsPerOrder = this.orders.map((order) => {
+      const products = order.products.map((product) => product);
+      return { orderId: order.id, products };
+    });
+  }
+  getTotalPriceByOrders(): void {
+    this.totalPriceByOrder = this.orders.map((order) => {
+      const totalPrice = order.products.reduce(
+        (sum, product) => +sum + +product.price,
+        0
+      );
+      return { orderId: order.id, totalPrice };
+    });
+  }
+  cancelOrder(id: string): void {
+    this.ordersService.cancel(id).subscribe({
+      next: (updatedOrder) => {
+        this.getMyOrders();
+      },
+      error: (err) => {
+        console.log('error while caneling an order', err);
+      },
+      complete: () => {},
+    });
+  }
   selectTab(id: number) {
     this.selectedTabId = id;
-    console.log('selectedTabId', id);
   }
 }
