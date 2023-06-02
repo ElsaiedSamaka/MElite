@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/core/services/cart.service';
+import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,12 @@ import { CartService } from 'src/core/services/cart.service';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  cartItems;
+  cartItems: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private ordersService: OrdersService
+  ) {}
 
   ngOnInit() {
     this.getCartItems();
@@ -72,6 +76,22 @@ export class IndexComponent implements OnInit {
       error: (err) => {
         console.log('error while updateCartItem', err);
       },
+      complete: () => {},
+    });
+  }
+  createOrder(cartItems: any): void {
+    let order = cartItems.map((item) => {
+      return {
+        // currently on the backend we are using the current user id for placeing an order
+        // so we don't really need to pass userId like the line below and we can remove it
+        userId: item.userId,
+        productIds: item.productId,
+        quantity: item.quantity,
+      };
+    });
+    this.ordersService.post(order).subscribe({
+      next: () => {},
+      error: () => {},
       complete: () => {},
     });
   }

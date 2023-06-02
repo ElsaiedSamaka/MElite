@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <section class="mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200">
-  <div class="antialiased bg-gray-50 :bg-gray-900 rounded-3xl">
+  <div class="antialiased bg-gray-50 rounded-3xl">
     <main class="p-4  h-auto pt-20 relative">
       <div
         class="absolute top-[0%] left-0 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
@@ -157,6 +157,7 @@
           </div>
           <div class="flex items-center gap-x-3">
             <button type="submit" class="place-order-button  px-5 py-2.5 disabled:cursor-not-allowed"
+              (click)="createOrder(cartItems)"
               [disabled]="cartItems.length <=0">
               تأكيد الطلب
             </button>
