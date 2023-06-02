@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/core/services/cart.service';
 import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
@@ -15,11 +16,16 @@ export class HomeComponent implements OnInit {
   orders: any[] = [];
   productsPerOrder: any[] = [];
   totalPriceByOrder: any;
-  constructor(private ordersService: OrdersService) {}
+  cartItems: any[] = [];
+  constructor(
+    private ordersService: OrdersService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.getMyOrders();
     this.getTotalPriceByOrders();
+    this.cartItems = this.cartService.items$.value;
   }
   getMyOrders(): void {
     this.ordersService.getOrdersOfCurrentUser().subscribe({
