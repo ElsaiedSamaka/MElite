@@ -23,7 +23,7 @@ export class OrdersService {
       })
     );
   }
-  getOrdersOfCurrentUser(): Observable<any[]>{
+  getOrdersOfCurrentUser(): Observable<any[]> {
     return this.apiService.get(`/api/orders/current-user`).pipe(
       tap((orders) => {
         this.orders$.next(orders);
@@ -34,10 +34,21 @@ export class OrdersService {
     return this.apiService.get(`/api/orders/${id}`);
   }
   deleteById(id: string): Observable<any> {
-    return this.apiService.delete(`/api/orders/${id}`);
+    return this.apiService.delete(`/api/orders/${id}`).pipe(
+      tap((deletedOrder) => {
+        let updatedOrders = this.orders$.value.filter(
+          (order) => order.id !== deletedOrder.id
+        );
+        this.orders$.next(updatedOrders);
+      })
+    );
   }
-  post(product: any): Observable<any> {
-    return this.apiService.post('/api/orders', product);
+  post(order: any): Observable<any> {
+    return this.apiService.post('/api/orders', order).pipe(
+      tap((newOrder) => {
+        this.orders$.value.push(newOrder);
+      })
+    );
   }
   // TODO: not implemented on the backend need check
   // you can't update on order once been proceed
