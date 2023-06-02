@@ -87,6 +87,8 @@ export class IndexComponent implements OnInit {
         userId: item.userId,
         productIds: item.productId,
         quantity: item.quantity,
+        // TODO: make sure that the backend is setuped for this else remove it
+        price: item.product.price,
       };
     });
     this.ordersService.post(order).subscribe({
