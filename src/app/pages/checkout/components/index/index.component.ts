@@ -10,6 +10,7 @@ import { OrdersService } from 'src/core/services/orders.service';
 export class IndexComponent implements OnInit {
   cartItems: any[] = [];
   showConfirmationModal: boolean = false;
+  selectedCardID = 0;
   constructor(
     private cartService: CartService,
     private ordersService: OrdersService
@@ -98,6 +99,13 @@ export class IndexComponent implements OnInit {
       error: () => {},
       complete: () => {},
     });
+  }
+  onCardSelect(id: any): void {
+    if (this.selectedCardID === id) {
+      this.selectedCardID = 0;
+    } else {
+      this.selectedCardID = id;
+    }
   }
   toggleConfirmationModal(): void {
     this.showConfirmationModal = !this.showConfirmationModal;
