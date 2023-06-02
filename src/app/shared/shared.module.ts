@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { CartItemsComponent } from './cart-items/cart-items.component';
 import { CartComponent } from './cart/cart.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { ExplianatoryModalComponent } from './explianatory-modal/explianatory-modal.component';
@@ -28,6 +29,7 @@ import { ToastComponent } from './toast/toast.component';
     SideBarComponent,
     ExplianatoryModalComponent,
     CartComponent,
+    CartItemsComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -41,6 +43,7 @@ import { ToastComponent } from './toast/toast.component';
     SideBarComponent,
     ExplianatoryModalComponent,
     CartComponent,
+    CartItemsComponent,
   ],
 })
 export class SharedModule {}
