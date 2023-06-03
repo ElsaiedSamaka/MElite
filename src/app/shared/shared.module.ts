@@ -14,6 +14,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
 import { ToastComponent } from './toast/toast.component';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
@@ -30,6 +31,7 @@ import { ToastComponent } from './toast/toast.component';
     ExplianatoryModalComponent,
     CartComponent,
     CartItemsComponent,
+    UserCardComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -44,6 +46,7 @@ import { ToastComponent } from './toast/toast.component';
     ExplianatoryModalComponent,
     CartComponent,
     CartItemsComponent,
+    UserCardComponent,
   ],
 })
 export class SharedModule {}

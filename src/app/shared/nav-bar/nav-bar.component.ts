@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.authService.USER.getValue();
+    this.user = this.authService.USER$.value;
     this.authService.checkAuth().subscribe(() => {});
   }
   toggleNavDropdown() {

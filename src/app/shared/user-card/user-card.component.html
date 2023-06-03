@@ -1,0 +1,18 @@
+<div class="border-2 border-dashed rounded-3xl border-gray-300 md:max-w-2xl col-span-full sm:col-span-1 min-h-full">
+  <a class="flex flex-col items-center  rounded-3xl  md:flex-row min-h-full ">
+    <img class="object-cover w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="" alt="">
+    <div class="flex flex-col justify-between p-4 leading-normal text-left">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+        {{user?
+        user?.username:
+        'Your user name'}}</h5>
+      <p class=" font-normal text-gray-700 ">Email</p>
+      <h3 class=" text-xl  tracking-tight ">{{user?user?.email: 'your.mail@example.com' }}</h3>
+      <p class=" font-normal text-gray-700 ">Phone Number</p>
+      <h3 class=" text-xl  tracking-tight ">{{user? user?.phonenumber : "011-50567130" }}</h3>
+      <p class=" font-normal text-gray-700 ">Role</p>
+      <h3 class=" text-xl  tracking-tight ">{{user ? user.role?.name: 'user' }}</h3>
+    </div>
+  </a>
+
+</div>
