@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   product: any;
   size: number = 5;
   showQuickViewModal: boolean = false;
+  showToastMssg: boolean = false;
   cartItems: any[] = [];
 
   constructor(
@@ -68,8 +69,6 @@ export class HomeComponent implements OnInit {
     this.product = product;
     // TODO: if the product already exist in the cart items update its quantity instead
     // TODO: check the availablity of product and if it's not available will prevent posting cartItem
-    // TODO: reach to the current user through usersService or authSerivce and get current user
-    // and replace the hard coded userId with current user id
     let cartItem = {
       productId: product.id,
       quantity: 1,
@@ -84,6 +83,7 @@ export class HomeComponent implements OnInit {
         },
         error: (err) => {
           console.log('error while posting cart item', err);
+          this.toggleToastMssg();
         },
         complete: () => {},
       });
@@ -95,5 +95,8 @@ export class HomeComponent implements OnInit {
   toggleQuickViewModal(product: any) {
     this.product = product;
     this.showQuickViewModal = !this.showQuickViewModal;
+  }
+  toggleToastMssg(): void {
+    this.showToastMssg = !this.showToastMssg;
   }
 }

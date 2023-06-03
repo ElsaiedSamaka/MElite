@@ -446,3 +446,6 @@
     </div>
   </div>
 </div>
+<!-- Toast -->
+<app-toast *ngIf="showToastMssg" (dismiss)="toggleToastMssg()" toastType="warning"
+  toastMessage="يلزم تسجيل الدخول لاضافة عناصر بالسله"></app-toast>
