@@ -5,20 +5,18 @@
     <main class="p-4  h-auto pt-20">
 
       <div class="grid grid-cols-3 gap-4 mb-4">
-  <!-- animated blured divs -->
-  <div
-    class="absolute top-[0%] left-0 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
-  </div>
-  <div
-    class="absolute top-[25%] right-0 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
-  </div>
-  <div
-    class="absolute bottom-0 right-12 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
-  </div>
-      <app-user-card></app-user-card>
+        <!-- animated blured divs -->
+        <div
+          class="absolute top-[0%] left-0 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+        </div>
+        <div
+          class="absolute top-[25%] right-0 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
+        </div>
+        <div
+          class="absolute bottom-0 right-12 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+        </div>
+        <app-user-card></app-user-card>
         <div class="col-span-3 border-2 border-dashed rounded-3xl border-gray-300  sm:col-span-2">
-          <!-- Fav Products  -->
-
           <section class="border-2 border-dashed border-gray-200 rounded-3xl my-2 mx-2 p-4 sm:p-5">
             <!-- tab-bar -->
             <div class="inline-flex  bg-gray-100 border-2 border-gray-200 border-dashed rounded-3xl px-2 my-4  mx-auto">
@@ -35,49 +33,14 @@
             <!-- tab-bar -->
             <!-- Fav Products \ Cart Products -->
             <div class="rounded-3xl" [ngSwitch]="selectedTabId">
-              <div class="rounded-3xl" *ngSwitchCase="1">
-                <div class="relative overflow-x-auto rounded-3xl p-4 border-2 border-dashed border-gray-200">
-                  <table class="w-full text-sm text-left text-gray-500 rounded-3xl border-2 border-dashed border-gray-200">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 rounded-3xl">
-                      <tr>
-                        <th scope="col" class="px-6 py-3 ">
-                          Product name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          Category
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          More
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class=" border-b hover:bg-gray-50 ">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                          Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                          Silver
-                        </td>
-                        <td class="px-6 py-4">
-                          Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                          $2999
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+              <div class="" *ngSwitchCase="1">
+                <app-fav-products *ngSwitchCase="1"></app-fav-products>
               </div>
               <div class="" *ngSwitchCase="2">
-                      <app-cart-items *ngSwitchCase="2"></app-cart-items>
-                      </div>
-                      <div *ngSwitchDefault>default</div>
-                      </div>
+                <app-cart-items *ngSwitchCase="2"></app-cart-items>
+                </div>
+                <div *ngSwitchDefault>default</div>
+                </div>
           </section>
         </div>
       </div>
@@ -112,42 +75,43 @@
               <tbody class=" ">
                 <ng-container *ngIf="orders.length > 0; else noorders">
                   <tr class=" border-b hover:bg-gray-50" *ngFor="let order of orders">
-                  <td class="w-32 p-4">
-                    <img [src]="order.products[0]?.product_img" [alt]="order.products[0]?.name">
-                    <img *ngIf="order.products[1]?.product_img" [src]="order.products[1]?.product_img" [alt]="order.products[1]?.name">
-                  </td>
-                  <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
-                    #{{order.id}}
-                  </td>
-                  <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
-                    <b *ngFor="let product of productsPerOrder">
-                      {{order.products[product.orderId]?.name ? order.products[product.orderId]?.name : '' }}
-                    </b>
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex items-center space-x-3">
-                      <label
-                        class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 "
-                        [ngClass]="order.orderStatus===3?'bg-red-500 text-white':''">{{(order.orderStatus===0
-                        ? 'proccessed' : (order.orderStatus===
-                        1?'delivered':(order.orderStatus=== 2?
-                        'shipped':(order.orderStatus===3? 'canceled': "unkown"))))}}</label>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
-                    $599
-                  </td>
-                  <td class="px-6 py-4">
-                    <button type="button" (click)="cancelOrder(order.id)" *ngIf="order.orderStatus === 0"
-                      class="text-red-700 px-2 py-1 border hover:border-gray-400  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium hover:bg-gray-200 rounded-3xl text-sm text-center inline-flex items-center">
-                      <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                      Cancel
-                    </button>
-                  </td>
-                </tr></ng-container>
+                    <td class="w-32 p-4">
+                      <img [src]="order.products[0]?.product_img" [alt]="order.products[0]?.name">
+                      <img *ngIf="order.products[1]?.product_img" [src]="order.products[1]?.product_img" [alt]="order.products[1]?.name">
+                    </td>
+                    <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                      #{{order.id}}
+                    </td>
+                    <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                      <b *ngFor="let product of productsPerOrder">
+                        {{order.products[product.orderId]?.name ? order.products[product.orderId]?.name : '' }}
+                      </b>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center space-x-3">
+                        <label
+                          class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 "
+                          [ngClass]="order.orderStatus===3?'bg-red-500 text-white':''">{{(order.orderStatus===0
+                          ? 'proccessed' : (order.orderStatus===
+                          1?'delivered':(order.orderStatus=== 2?
+                          'shipped':(order.orderStatus===3? 'canceled': "unkown"))))}}</label>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
+                      $599
+                    </td>
+                    <td class="px-6 py-4">
+                      <button type="button" (click)="cancelOrder(order.id)" *ngIf="order.orderStatus === 0"
+                        class="text-red-700 px-2 py-1 border hover:border-gray-400  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium hover:bg-gray-200 rounded-3xl text-sm text-center inline-flex items-center">
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        Cancel
+                      </button>
+                    </td>
+                  </tr>
+                  </ng-container>
                 <ng-template #noorders>
                   <tr>
                     <td></td>
