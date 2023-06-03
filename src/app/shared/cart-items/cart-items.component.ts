@@ -51,7 +51,7 @@ export class CartItemsComponent implements OnInit {
     };
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
-        this.cartItems = this.cartService.items$.value;
+        this.getCartItems();
       },
       error: (err) => {
         console.log('error while updateCartItem', err);
@@ -66,7 +66,7 @@ export class CartItemsComponent implements OnInit {
     };
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
-        this.cartItems = this.cartService.items$.value;
+         this.getCartItems();
       },
       error: (err) => {
         console.log('error while updateCartItem', err);
