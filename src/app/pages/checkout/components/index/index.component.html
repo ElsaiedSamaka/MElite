@@ -107,14 +107,17 @@
         </div>
       </div>
       <div class="border-2 border-dashed rounded-3xl border-gray-300  mb-4 p-5">
-        <h3 class="mb-2 text-lg font-semibold leading-none text-gray-900"> تفاصيل الدفع</h3>
+        <h3>
+          <span class="mb-2 mx-1 text-lg font-semibold leading-none text-gray-900"> تفاصيل الدفع</span>
+          <span class="mx-1 text-red-400">خدمة الدفع غير مدعومة بعد</span>
+        </h3>
         <div class="grid grid-cols-3 gap-4  p-2">
           <div class="col-span-3 ">
             <p class="text-gray-700">استخدم احدى البطاقات المحفوظة</p>
             <div class="flex justify-center items-center">
               <div (click)="onCardSelect(1)"
                 [ngClass]="selectedCardID ===1?'transition-transform transform scale-110 border border-blue-300':''"
-                class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+                class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white  transition-transform transform hover:scale-110">
               
                 <img class="relative object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png">
               
@@ -173,7 +176,7 @@
 
               <div (click)="onCardSelect(2)"
                 [ngClass]="selectedCardID ===2?'transition-transform transform scale-110 border border-blue-300':''"
-                class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+                class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white  transition-transform transform hover:scale-110">
               
                 <img class="relative object-cover w-full h-full rounded-xl" src="https://i.imgur.com/Zi6v09P.png">
               
