@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavService } from 'src/core/services/fav.service';
 
 @Component({
   selector: 'app-fav-products',
@@ -6,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fav-products.component.css'],
 })
 export class FavProductsComponent implements OnInit {
-  constructor() {}
+  favProducts: any[] = [];
+  constructor(private favService: FavService) {}
 
   ngOnInit() {
-    console.log('favProduct');
+    this.getFavProducts();
+  }
+  getFavProducts(): void {
+    this.favService.getFavProducts().subscribe({
+      next: (favProducts) => {
+        this.favProducts = this.favService.favProducts$.value;
+      },
+      error: (err) => {
+        console.log('error while returning fav products', err);
+      },
+      complete: () => {},
+    });
   }
 }
