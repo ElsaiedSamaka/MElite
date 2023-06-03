@@ -14,7 +14,7 @@ export class CartItemsComponent implements OnInit {
     this.getCartItems();
   }
   getCartItems(): void {
-    this.cartService.getAll().subscribe({
+    this.cartService.getUserCarts().subscribe({
       next: (cartItems) => {
         this.cartItems = this.cartService.items$.value;
       },

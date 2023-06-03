@@ -110,7 +110,8 @@
           </div>
           <h4>{{product.description}}</h4>
           <div class="flex flex-row-reverse items-center justify-between gap-x-2">
-            <button role="button" (click)="postCartItem(product)" [disabled]="checkIfCartItemExists(cartItems,product.id)"
+            <!-- [disabled]="checkIfCartItemExists(cartItems,product.id)" -->
+            <button role="button" (click)="postCartItem(product)"
               class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200 disabled:cursor-not-allowed">
             <svg class="w-5 h-5 " fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

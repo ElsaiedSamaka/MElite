@@ -17,19 +17,18 @@ export class HomeComponent implements OnInit {
   product: any;
   size: number = 5;
   showQuickViewModal: boolean = false;
-  cartItems: any = this.cartService.items$.value;
+  cartItems: any[] = [];
 
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private cartService: CartService
-  ) {
-    this.cartItems = this.cartService.items$.value;
-  }
+  ) {}
 
   ngOnInit() {
     this.getProducts();
     this.getCategories();
+    this.cartItems = this.cartService.items$.value;
   }
   getProducts(): void {
     this.productsService.getAll().subscribe((res) => {
@@ -74,11 +73,10 @@ export class HomeComponent implements OnInit {
     let cartItem = {
       productId: product.id,
       quantity: 1,
-      userId: 1,
     };
     this.productId = product.id;
-    if (this.checkIfCartItemExists(this.cartItems, cartItem.productId)) {
-      return;
+    // this.checkIfCartItemExists(this.cartItems, cartItem.productId);
+    if (false) {
     } else {
       this.cartService.post(cartItem).subscribe({
         next: (cartItem) => {
@@ -91,9 +89,9 @@ export class HomeComponent implements OnInit {
       });
     }
   }
-  checkIfCartItemExists(cartItems, productId) {
-    return cartItems.some((cartItem) => cartItem.productId === productId);
-  }
+  // checkIfCartItemExists(cartItems, productId) {
+  //   return cartItems.some((cartItem) => cartItem.productId === productId);
+  // }
   toggleQuickViewModal(product: any) {
     this.product = product;
     this.showQuickViewModal = !this.showQuickViewModal;

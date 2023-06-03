@@ -16,6 +16,13 @@ export class CartService {
       })
     );
   }
+  getUserCarts(): Observable<any[]> {
+    return this.apiService.get('/api/cart/user-carts').pipe(
+      tap((cartItems) => {
+        this.items$.next(cartItems);
+      })
+    );
+  }
   getById(id: string): Observable<any> {
     return this.apiService.get(`/api/cart/${id}`);
   }
