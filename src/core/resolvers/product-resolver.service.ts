@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { EMPTY, catchError } from 'rxjs';
 import { ProductsService } from '../services/products.service';
 
@@ -16,12 +11,12 @@ export class ProductResolverService implements Resolve<any> {
     private productsService: ProductsService,
     private router: Router
   ) {}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve(route: ActivatedRouteSnapshot) {
     const { id } = route.params;
     return this.productsService.getById(id).pipe(
       catchError((err) => {
         console.log(err);
-        this.router.navigateByUrl('/index/not-found');
+        this.router.navigateByUrl('index/not-found');
         return EMPTY;
       })
     );

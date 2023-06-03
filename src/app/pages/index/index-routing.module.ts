@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductResolverService } from 'src/core/resolvers/product-resolver.service';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
     component: AllProductsComponent,
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
     path: ':id',
     component: ProductDetailsComponent,
     resolve: { product: ProductResolverService },
@@ -25,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InboxRoutingModule {}
+export class IndexRoutingModule {}

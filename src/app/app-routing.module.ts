@@ -5,7 +5,7 @@ import { AuthGuard } from 'src/core/guards/AuthGaurd.guard';
 const routes: Routes = [
   {
     path: 'inbox',
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/inbox/inbox.module').then((m) => m.InboxModule),
   },
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/checkout/cart.module').then((m) => m.CheckoutModule),
   },
+  // {
+  //   path: '**',
+  //   redirectTo: '/not-found',
+  // },
 ];
 
 @NgModule({

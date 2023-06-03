@@ -5,8 +5,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ViewsModule } from '../dashboard/views/views.module';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { InboxRoutingModule } from './index-routing.module';
+import { IndexRoutingModule } from './index-routing.module';
 
 @NgModule({
   imports: [
@@ -14,8 +15,13 @@ import { InboxRoutingModule } from './index-routing.module';
     ViewsModule,
     SharedModule,
     RouterModule,
-    InboxRoutingModule,
+    IndexRoutingModule,
   ],
-  declarations: [HomeComponent, AllProductsComponent, ProductDetailsComponent],
+  declarations: [
+    HomeComponent,
+    AllProductsComponent,
+    ProductDetailsComponent,
+    NotFoundComponent,
+  ],
 })
 export class IndexModule {}
