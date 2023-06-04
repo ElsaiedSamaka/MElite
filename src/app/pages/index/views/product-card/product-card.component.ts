@@ -22,19 +22,17 @@ export class ProductCardComponent implements OnInit {
       productId: product.id,
       quantity: 1,
     };
-    if (false) {
-    } else {
-      this.cartService.post(cartItem).subscribe({
-        next: (cartItem) => {
-          // this.cartItems = this.cartService.items$.value;
-        },
-        error: (err) => {
-          console.log('error while posting cart item', err);
-          this.toggleToastMssg();
-        },
-        complete: () => {},
-      });
-    }
+
+    this.cartService.post(cartItem).subscribe({
+      next: (cartItem) => {
+        // this.cartItems = this.cartService.items$.value;
+      },
+      error: (err) => {
+        console.log('error while posting cart item', err);
+        this.toggleToastMssg();
+      },
+      complete: () => {},
+    });
   }
   toggleQuickViewModal(product?: any) {
     this.showQuickViewModal = !this.showQuickViewModal;

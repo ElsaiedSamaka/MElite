@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   categoryId: string = '';
   productId: string = '';
   productsToDisplay: any[] = [];
-  product: any;
   size: number = 5;
   cartItems: any[] = [];
 
