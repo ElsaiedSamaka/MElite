@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit {
   productsToDisplay: any[] = [];
   product: any;
   size: number = 5;
-  showQuickViewModal: boolean = false;
-  showToastMssg: boolean = false;
   cartItems: any[] = [];
 
   constructor(
@@ -65,38 +63,7 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-  postCartItem(product: any): void {
-    this.product = product;
-    // TODO: if the product already exist in the cart items update its quantity instead
-    // TODO: check the availablity of product and if it's not available will prevent posting cartItem
-    let cartItem = {
-      productId: product.id,
-      quantity: 1,
-    };
-    this.productId = product.id;
-    // this.checkIfCartItemExists(this.cartItems, cartItem.productId);
-    if (false) {
-    } else {
-      this.cartService.post(cartItem).subscribe({
-        next: (cartItem) => {
-          this.cartItems = this.cartService.items$.value;
-        },
-        error: (err) => {
-          console.log('error while posting cart item', err);
-          this.toggleToastMssg();
-        },
-        complete: () => {},
-      });
-    }
-  }
   // checkIfCartItemExists(cartItems, productId) {
   //   return cartItems.some((cartItem) => cartItem.productId === productId);
   // }
-  toggleQuickViewModal(product: any) {
-    this.product = product;
-    this.showQuickViewModal = !this.showQuickViewModal;
-  }
-  toggleToastMssg(): void {
-    this.showToastMssg = !this.showToastMssg;
-  }
 }

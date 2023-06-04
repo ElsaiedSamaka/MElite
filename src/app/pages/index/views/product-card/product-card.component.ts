@@ -22,7 +22,6 @@ export class ProductCardComponent implements OnInit {
       productId: product.id,
       quantity: 1,
     };
-    // this.productId = product.id;
     if (false) {
     } else {
       this.cartService.post(cartItem).subscribe({
@@ -37,9 +36,12 @@ export class ProductCardComponent implements OnInit {
       });
     }
   }
-  toggleQuickViewModal(product: any) {
+  toggleQuickViewModal(product?: any) {
     this.showQuickViewModal = !this.showQuickViewModal;
     this.product = product;
+  }
+  dismissQuickViewModal() {
+    this.showQuickViewModal = !this.showQuickViewModal;
   }
   toggleToastMssg(): void {
     this.showToastMssg = !this.showToastMssg;

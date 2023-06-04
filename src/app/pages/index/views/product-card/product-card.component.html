@@ -1,4 +1,5 @@
-<a class="group relative border-2 border-dashed border-gray-200 rounded-3xl p-2 ">
+<div class="relative group  rounded-3xl p-1 border-2 border-dashed">
+  <a class="  ">
   <span class="absolute left-0 z-30  px-4 py-4 rounded-full ">
     <svg class="w-7 h-7 text-transparent hover:text-gray-500" (click)="toggleQuickViewModal(product)" fill="none"
       stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -40,21 +41,23 @@
   </div>
 
 </a>
+</div>
 <!-- Quick View Modal -->
 <!-- Quick View  -->
 <!-- dimmed bg  -->
 <!-- <div class="fixed z-30 inset-0 hidden bg-gray-50 bg-opacity-0 transition-opacity md:block"></div> -->
 <!-- blured bg  -->
-<div class="fixed z-30 inset-0  backdrop-blur-sm md:block " *ngIf="showQuickViewModal" (click)="toggleQuickViewModal()">
+<div class="fixed z-30 inset-0  backdrop-blur-sm md:block " *ngIf="this.showQuickViewModal"
+  (click)="dismissQuickViewModal()">
 </div>
 
-<div class="fixed inset-0 z-30 overflow-y-auto rounded-3xl " *ngIf="showQuickViewModal">
+<div class="fixed inset-0 z-30 overflow-y-auto rounded-3xl " *ngIf="this.showQuickViewModal">
   <div class="flex min-h-full items-stretch justify-center text-center rounded-3xl md:items-center md:px-2 lg:px-4">
     <div
       class="flex w-full transform text-left text-base  transition-shadow md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl rounded-3xl">
       <div
         class="relative flex w-full items-center overflow-hidden bg-white  px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8 rounded-3xl">
-        <button type="button" (click)="toggleQuickViewModal()"
+        <button type="button" (click)="dismissQuickViewModal()"
           class="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8">
           <span class="sr-only">Close</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
