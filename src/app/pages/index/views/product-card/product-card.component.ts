@@ -45,10 +45,11 @@ export class ProductCardComponent implements OnInit {
       productId: product.id,
     };
     this.favService.post(favItem).subscribe({
-      next: (favProduct) => {},
+      next: (res) => {
+        if (res.authentication == false) this.toggleToastMssg();
+      },
       error: (err) => {
         console.log('error while fav a product', err);
-        this.toggleToastMssg();
       },
       complete: () => {},
     });

@@ -9,7 +9,7 @@ import { ProductsService } from 'src/core/services/products.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  products: any[];
+  products: any[]=[];
   categories: any[] = [];
   categoryId: string = '';
   productId: string = '';
