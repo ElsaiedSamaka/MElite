@@ -12,6 +12,7 @@ import { AuthService } from 'src/core/services/auth.service';
 export class SigninComponent implements OnInit {
   loading$;
   showPassword: boolean = false;
+  showToastMssg: boolean = false;
   authForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -37,13 +38,11 @@ export class SigninComponent implements OnInit {
     if (this.authForm.invalid) {
       return;
     }
-    this.loadingService.loading$.next(true);
     this.authService
       .signin(this.authForm.value.email!, this.authForm.value.password!)
       .subscribe({
-        next: () => {},
+        next: (res) => {},
         error: (err) => {
-          console.log(err);
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
           } else if (err.message) {
