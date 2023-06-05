@@ -52,19 +52,19 @@ export class ProductCardComponent implements OnInit {
       complete: () => {},
     });
   }
-  unFavProduct(productId: string): void {
-    this.favService.delete({ productId }).subscribe({
-      next: (favProduct) => {
-        this.productId = 0;
-        console.log(favProduct);
-      },
-      error: (err) => {
-        console.log('error while fav a product', err);
-        this.toggleToastMssg();
-      },
-      complete: () => {},
-    });
-  }
+  // unFavProduct(productId: string): void {
+  //   this.favService.delete({ productId }).subscribe({
+  //     next: (favProduct) => {
+  //       this.productId = 0;
+  //       console.log(favProduct);
+  //     },
+  //     error: (err) => {
+  //       console.log('error while fav a product', err);
+  //       this.toggleToastMssg();
+  //     },
+  //     complete: () => {},
+  //   });
+  // }
   toggleQuickViewModal(product?: any) {
     this.showQuickViewModal = !this.showQuickViewModal;
     this.product = product;

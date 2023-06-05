@@ -24,4 +24,15 @@ export class FavProductsComponent implements OnInit {
       complete: () => {},
     });
   }
+  unfavProduct(favProductId: string): void {
+    this.favService.delete(favProductId).subscribe({
+      next: (res) => {
+        this.favProducts = this.favService.favProducts$.value;
+      },
+      error: (err) => {
+        console.log('error while unfav product', err);
+      },
+      complete: () => {},
+    });
+  }
 }
