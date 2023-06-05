@@ -34,9 +34,12 @@ export class ProductCardComponent implements OnInit {
       },
       error: (err) => {
         console.log('error while posting cart item', err);
+        this.showQuickViewModal = false;
         this.toggleToastMssg();
       },
-      complete: () => {},
+      complete: () => {
+        this.showQuickViewModal = false;
+      },
     });
   }
   favProduct(product: any): void {
