@@ -2,17 +2,7 @@
 <app-nav-bar></app-nav-bar>
 <!-- nav-bar -->
 <section class="relative mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200">
-  <div class="antialiased ">
-    <!-- animated blured divs -->
-    <div
-        class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
-      </div>
-      <div
-        class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animate-blob  animation-delay-4000">
-      </div>
-      <div
-        class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
-      </div>
+  <div class="antialiased relative">
     <!-- Sidebar -->
     <aside
       class="sticky  top-[40%] left-[2%] rounded-3xl z-20 w-60   transition-transform -translate-x-full  border-2 border-gray-200 border-dashed md:translate-x-0"
@@ -28,12 +18,12 @@
                 <span class="font-medium text-gray-900">الفئة</span>
                 <span class=" flex items-center">
                   <!-- Expand icon, show/hide based on section open state. -->
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg *ngIf="!showCategoryFilterDDL" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path
                       d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                   </svg>
                   <!-- Collapse icon, show/hide based on section open state. -->
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <svg *ngIf="showCategoryFilterDDL" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
                       clip-rule="evenodd" />
                   </svg>
@@ -89,6 +79,16 @@
     </aside>
 
     <main class="p-4 md:ml-64 h-auto">
+        <!-- animated blured divs -->
+        <div
+          class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+        </div>
+        <div
+          class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animate-blob  animation-delay-4000">
+        </div>
+        <div
+          class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+        </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
     <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
       </div>
