@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/core/services/cart.service';
+import { FavService } from 'src/core/services/fav.service';
 
 @Component({
   selector: 'app-product-card',
@@ -11,7 +12,10 @@ export class ProductCardComponent implements OnInit {
   showQuickViewModal: boolean = false;
   showToastMssg: boolean = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private favService: FavService
+  ) {}
 
   ngOnInit() {}
   postCartItem(product: any): void {
@@ -29,6 +33,18 @@ export class ProductCardComponent implements OnInit {
       },
       error: (err) => {
         console.log('error while posting cart item', err);
+        this.toggleToastMssg();
+      },
+      complete: () => {},
+    });
+  }
+  favProduct(productId: any): void {
+    this.favService.post({ productId }).subscribe({
+      next: (favProduct) => {
+        console.log(favProduct);
+      },
+      error: (err) => {
+        console.log('error while fav a product', err);
         this.toggleToastMssg();
       },
       complete: () => {},

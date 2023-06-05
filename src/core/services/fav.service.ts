@@ -16,8 +16,8 @@ export class FavService {
       })
     );
   }
-  post(favProduct: any): Observable<any> {
-    return this.apiService.post('/api/fav-products', favProduct).pipe(
+  post(favProductId: any): Observable<any> {
+    return this.apiService.post('/api/fav-products', favProductId).pipe(
       tap((favProduct) => {
         this.favProducts$.value.push(favProduct);
       })
