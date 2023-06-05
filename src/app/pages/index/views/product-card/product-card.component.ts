@@ -39,10 +39,13 @@ export class ProductCardComponent implements OnInit {
       complete: () => {},
     });
   }
-  favProduct(productId: any): void {
-    this.favService.post({ productId }).subscribe({
+  favProduct(product: any): void {
+    this.product = product;
+    let favItem = {
+      productId: product.id,
+    };
+    this.favService.post(favItem).subscribe({
       next: (favProduct) => {
-        this.productId = productId;
         console.log(favProduct);
       },
       error: (err) => {
@@ -52,19 +55,15 @@ export class ProductCardComponent implements OnInit {
       complete: () => {},
     });
   }
-  // unFavProduct(productId: string): void {
-  //   this.favService.delete({ productId }).subscribe({
-  //     next: (favProduct) => {
-  //       this.productId = 0;
-  //       console.log(favProduct);
-  //     },
-  //     error: (err) => {
-  //       console.log('error while fav a product', err);
-  //       this.toggleToastMssg();
-  //     },
-  //     complete: () => {},
-  //   });
-  // }
+  unfavProduct(favProductId: string): void {
+    this.favService.delete(favProductId).subscribe({
+      next: (res) => {},
+      error: (err) => {
+        console.log('error while unfav product', err);
+      },
+      complete: () => {},
+    });
+  }
   toggleQuickViewModal(product?: any) {
     this.showQuickViewModal = !this.showQuickViewModal;
     this.product = product;
