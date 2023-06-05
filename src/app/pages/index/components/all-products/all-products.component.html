@@ -34,7 +34,8 @@
             <div class="pt-2 px-2" id="filter-section-mobile-0" *ngIf="showCategoryFilterDDL">
               <div class="space-y-6">
                 <div class="flex items-center" *ngFor="let category of categories;">
-                  <input id="filter-mobile-color-0" name="category" type="checkbox"
+                  <input id="filter-mobile-color-0" name="category" type="checkbox" [checked]="categoryId === category.id"
+                    (change)="getProductsByCategory(category.id)"
                     class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                   <label for="filter-mobile-color-0" class="ml-3 min-w-0 flex-1 text-gray-500">{{category.name}}</label>
                 </div>
@@ -78,19 +79,26 @@
 
     </aside>
 
-    <main class="p-4 md:ml-64 h-auto">
+    <main class="p-4 md:ml-64 h-auto ">
         <!-- animated blured divs -->
         <div
-          class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+          class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl">
         </div>
         <div
-          class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animate-blob  animation-delay-4000">
+          class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl ">
         </div>
         <div
-          class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+          class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl ">
         </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
-    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+        <ng-container *ngIf="products.length >0; else noproductsfound">
+            <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+        </ng-container>
+        <ng-template #noproductsfound>
+          <div class="w-full col-span-full ">
+            <h3 class="font-semibold text-3xl text-center p-52">لا توجد نتائج متاحة</h3>
+          </div>
+        </ng-template>
       </div>
     </main>
   </div>

@@ -10,6 +10,7 @@ import { ProductsService } from 'src/core/services/products.service';
 export class AllProductsComponent implements OnInit {
   products: any[] = [];
   categories: any[] = [];
+  categoryId: string = '';
   showCategoryFilterDDL: boolean = false;
   showPriceSlider: boolean = false;
 
@@ -34,6 +35,20 @@ export class AllProductsComponent implements OnInit {
       },
       error: (err) => {
         console.log('err while returning categories :', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
+  }
+  getProductsByCategory(id: string) {
+    this.categoryId = id;
+    this.productsService.getByCategory(id).subscribe({
+      next: (res) => {
+        this.products = res['rows'];
+      },
+      error: (err) => {
+        console.log('error', err);
       },
       complete: () => {
         console.log('complete');
