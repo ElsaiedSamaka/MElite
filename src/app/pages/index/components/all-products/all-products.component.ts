@@ -10,6 +10,7 @@ import { ProductsService } from 'src/core/services/products.service';
 export class AllProductsComponent implements OnInit {
   products: any[] = [];
   categories: any[] = [];
+  showCategoryFilterDDL: boolean = false;
 
   constructor(
     private productsService: ProductsService,
@@ -37,5 +38,8 @@ export class AllProductsComponent implements OnInit {
         console.log('complete');
       },
     });
+  }
+  collapseCategries(): void {
+    this.showCategoryFilterDDL = !this.showCategoryFilterDDL;
   }
 }

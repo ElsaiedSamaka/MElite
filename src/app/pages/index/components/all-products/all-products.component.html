@@ -22,7 +22,7 @@
           <div class=" px-2 py-6 ">
             <h3 class=" -my-3 flow-root">
               <!-- Expand/collapse section button -->
-              <button type="button"
+              <button type="button" (click)="collapseCategries()"
                 class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
                 aria-controls="filter-section-mobile-0" aria-expanded="false">
                 <span class="font-medium text-gray-900">الفئة</span>
@@ -41,17 +41,12 @@
               </button>
             </h3>
             <!-- Filter section, show/hide based on section state. -->
-            <div class="pt-2 px-2" id="filter-section-mobile-0">
+            <div class="pt-2 px-2" id="filter-section-mobile-0" *ngIf="showCategoryFilterDDL">
               <div class="space-y-6">
-                <div class="flex items-center">
-                  <input id="filter-mobile-color-0" name="color[]" value="white" type="checkbox"
+                <div class="flex items-center" *ngFor="let category of categories;">
+                  <input id="filter-mobile-color-0" name="category" type="checkbox"
                     class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                  <label for="filter-mobile-color-0" class="ml-3 min-w-0 flex-1 text-gray-500">White</label>
-                </div>
-                <div class="flex items-center">
-                  <input id="filter-mobile-color-1" name="color[]" value="beige" type="checkbox"
-                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                  <label for="filter-mobile-color-1" class="ml-3 min-w-0 flex-1 text-gray-500">Beige</label>
+                  <label for="filter-mobile-color-0" class="ml-3 min-w-0 flex-1 text-gray-500">{{category.name}}</label>
                 </div>
               </div>
             </div>
