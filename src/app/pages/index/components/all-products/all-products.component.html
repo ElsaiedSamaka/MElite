@@ -44,18 +44,18 @@
             <div class=" px-2 py-6 border-t border-gray-400 ">
               <h3 class=" -my-3 flow-root">
                 <!-- Expand/collapse section button -->
-                <button type="button"
+                <button type="button" (click)="collapsePrice()"
                   class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
                   aria-controls="filter-section-mobile-0" aria-expanded="false">
                   <span class="font-medium text-gray-900">السعر</span>
                   <span class=" flex items-center">
                     <!-- Expand icon, show/hide based on section open state. -->
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg *ngIf="!showPriceSlider" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path
                         d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                     </svg>
                     <!-- Collapse icon, show/hide based on section open state. -->
-                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg *ngIf="showPriceSlider" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
                         clip-rule="evenodd" />
                     </svg>
@@ -63,7 +63,7 @@
                 </button>
               </h3>
               <!-- Filter section, show/hide based on section state. -->
-              <div class="pt-2 px-2" id="filter-section-mobile-0">
+              <div class="pt-2 px-2" id="filter-section-mobile-0" *ngIf="showPriceSlider">
                 <div class="space-y-6">
                   <div class="flex items-center">
                     <input id="minmax-range" type="range" min="0" max="10" value="5" step="0.5"

@@ -11,6 +11,7 @@ export class AllProductsComponent implements OnInit {
   products: any[] = [];
   categories: any[] = [];
   showCategoryFilterDDL: boolean = false;
+  showPriceSlider: boolean = false;
 
   constructor(
     private productsService: ProductsService,
@@ -41,5 +42,8 @@ export class AllProductsComponent implements OnInit {
   }
   collapseCategries(): void {
     this.showCategoryFilterDDL = !this.showCategoryFilterDDL;
+  }
+  collapsePrice(): void {
+    this.showPriceSlider = !this.showPriceSlider;
   }
 }
