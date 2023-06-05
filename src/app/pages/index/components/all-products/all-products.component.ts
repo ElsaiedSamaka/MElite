@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from 'src/core/services/categories.service';
 import { ProductsService } from 'src/core/services/products.service';
 
 @Component({
@@ -8,14 +9,33 @@ import { ProductsService } from 'src/core/services/products.service';
 })
 export class AllProductsComponent implements OnInit {
   products: any[] = [];
-  constructor(private productsService: ProductsService) {}
+  categories: any[] = [];
+
+  constructor(
+    private productsService: ProductsService,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit() {
     this.getAllProducts();
+    this.getCategories();
   }
   getAllProducts(): void {
     this.productsService.getAll().subscribe((res) => {
       this.products = this.productsService.products$.value;
+    });
+  }
+  getCategories() {
+    this.categoriesService.getCategories().subscribe({
+      next: (res) => {
+        this.categories = res;
+      },
+      error: (err) => {
+        console.log('err while returning categories :', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
     });
   }
 }

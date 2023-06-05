@@ -2,78 +2,20 @@
 <app-nav-bar></app-nav-bar>
 <!-- nav-bar -->
 <section class="relative mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200">
-  <div class="relative overflow-hidden my-4 ">
+  <div class="antialiased ">
     <!-- animated blured divs -->
     <div
-      class="absolute top-[0%] left-8 w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
-    </div>
-    <div
-      class="absolute top-[25%] -right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animation-delay-4000">
-    </div>
-    <div
-      class="absolute bottom-0 right-8 w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
-    </div>
-    <div class=" pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
-      <div class="relative mx-auto max-w-screen-2xl px-4 sm:static sm:px-6 lg:px-8">
-        <div class="sm:max-w-lg ">
-          <h1 class="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">تصفح اخر واحدث المنتجات</h1>
-          <p class="mt-4 text-xl text-gray-500 hidden">هذا مثال لنص يمكن استبداله فيما بعد.</p>
-        </div>
-        <div>
-          <div class="mt-10">
-            <!-- Decorative image grid -->
-            <div aria-hidden="true"
-              class="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-screen-2xl">
-              <div
-                class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                <div class="flex items-center space-x-6 lg:space-x-8">
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl sm:opacity-0 lg:opacity-100">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-3xl">
-                      <img src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg" alt=""
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-          </div>
-        </div>
+        class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
       </div>
-    </div>
-  </div>
-  <div class="antialiased ">
+      <div
+        class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animate-blob  animation-delay-4000">
+      </div>
+      <div
+        class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+      </div>
     <!-- Sidebar -->
     <aside
-      class="sticky  top-[40%] left-[2%] rounded-3xl z-20 w-60 bg-red-50  transition-transform -translate-x-full  border-2 border-gray-200 border-dashed md:translate-x-0"
+      class="sticky  top-[40%] left-[2%] rounded-3xl z-20 w-60   transition-transform -translate-x-full  border-2 border-gray-200 border-dashed md:translate-x-0"
       aria-label="Sidenav" id="drawer-navigation">
       <div class="overflow-y-auto py-5 px-3 h-full">
         <form>
@@ -152,7 +94,7 @@
     </aside>
 
     <main class="p-4 md:ml-64 h-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
     <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
       </div>
     </main>
