@@ -41,10 +41,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/checkout/cart.module').then((m) => m.CheckoutModule),
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '/not-found',
-  // },
 ];
 
 @NgModule({
