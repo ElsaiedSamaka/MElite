@@ -28,4 +28,9 @@ export class ToastComponent implements OnInit {
   onDismissClick() {
     this.dismiss.emit(false);
   }
+  automaticDismiss() {
+    setTimeout(() => {
+      this.dismiss.emit(false);
+    }, 3000);
+  }
 }

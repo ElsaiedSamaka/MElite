@@ -67,5 +67,8 @@ export class ProductCardComponent implements OnInit {
   }
   toggleToastMssg(): void {
     this.showToastMssg = !this.showToastMssg;
+    setTimeout(() => {
+      this.showToastMssg = false;
+    }, 3000);
   }
 }
