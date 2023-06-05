@@ -11,6 +11,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product: any;
   showQuickViewModal: boolean = false;
   showToastMssg: boolean = false;
+  productId: any;
 
   constructor(
     private cartService: CartService,
@@ -41,6 +42,20 @@ export class ProductCardComponent implements OnInit {
   favProduct(productId: any): void {
     this.favService.post({ productId }).subscribe({
       next: (favProduct) => {
+        this.productId = productId;
+        console.log(favProduct);
+      },
+      error: (err) => {
+        console.log('error while fav a product', err);
+        this.toggleToastMssg();
+      },
+      complete: () => {},
+    });
+  }
+  unFavProduct(productId: string): void {
+    this.favService.delete({ productId }).subscribe({
+      next: (favProduct) => {
+        this.productId = 0;
         console.log(favProduct);
       },
       error: (err) => {
