@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/core/services/cart.service';
+import { FavService } from 'src/core/services/fav.service';
 import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
@@ -17,9 +18,11 @@ export class HomeComponent implements OnInit {
   productsPerOrder: any[] = [];
   totalPriceByOrder: any;
   cartItems: any[] = [];
+  favProducts: any[] = [];
   constructor(
     private ordersService: OrdersService,
-    private cartService: CartService
+    private cartService: CartService,
+    private favService: FavService
   ) {}
 
   ngOnInit() {

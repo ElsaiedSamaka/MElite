@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto rounded-3xl p-4 border-2 border-dashed border-gray-200">
+<div class="relative overflow-auto max-h-64 rounded-3xl p-4 border-2 border-dashed border-gray-200">
   <table class="w-full text-sm text-left text-gray-500 rounded-3xl border-2 border-dashed border-gray-200">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 rounded-3xl">
       <tr>
@@ -6,31 +6,42 @@
           Product name
         </th>
         <th scope="col" class="px-6 py-3">
-          Category
+          Description
         </th>
         <th scope="col" class="px-6 py-3">
           Price
         </th>
         <th scope="col" class="px-6 py-3">
-          More
+          
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=" border-b hover:bg-gray-50 " *ngFor="let favItem of favProducts">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-          Apple MacBook Pro 17"
-        </th>
-        <td class="px-6 py-4">
-          Silver
-        </td>
-        <td class="px-6 py-4">
-          Laptop
-        </td>
-        <td class="px-6 py-4">
-          $2999
-        </td>
-      </tr>
+      <ng-container *ngIf="favProducts.length > 0 else nofavproducts">
+        <tr class=" border-b hover:bg-gray-50 " *ngFor="let favItem of favProducts">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+            {{favItem.product.name}}"
+            </th>
+            <td class="px-6 py-4">
+            {{favItem.product.description}}
+            </td>
+            <td class="px-6 py-4">
+          $ {{favItem.product.price}}
+          </td>
+          <td class="px-6 py-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            </td>
+            </tr>
+      </ng-container>
+      <ng-template #nofavproducts>
+        <tr>
+          <td></td>
+          <td> لا توجد عناصر بالمفضلة</td>
+        </tr>
+      </ng-template>
     </tbody>
   </table>
 </div>
