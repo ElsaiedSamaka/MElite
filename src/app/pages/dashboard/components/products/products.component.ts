@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/core/services/categories.service';
+import { ColorsService } from 'src/core/services/colors.service';
 import { ProductsService } from 'src/core/services/products.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ProductsService } from 'src/core/services/products.service';
 export class ProductsComponent implements OnInit {
   products: any[];
   categories: any[] = [];
+  colors: any[] = [];
   categoryId: string = '';
   showCategoryFilterDDL: boolean = false;
   showAddProductModal: boolean = false;
@@ -25,11 +27,10 @@ export class ProductsComponent implements OnInit {
   totalPages: number = 0;
   totalItems: number = 0;
   available: any;
-  @ViewChild('product_img') fileInput: ElementRef;
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
-    private el: ElementRef
+    private colorsService: ColorsService
   ) {}
 
   ngOnInit() {
@@ -54,7 +55,7 @@ export class ProductsComponent implements OnInit {
         this.itemsToDisplay = this.products.slice(0, this.size);
       });
   }
-  getCategories() {
+  getCategories(): void {
     this.categoriesService.getCategories().subscribe({
       next: (res) => {
         this.categories = res;
@@ -67,7 +68,20 @@ export class ProductsComponent implements OnInit {
       },
     });
   }
-  getProductsByCategory(id: string) {
+  getColors(): void {
+    this.colorsService.getAll().subscribe({
+      next: (colors) => {
+        this.colors = this.colorsService.colors$.value;
+      },
+      error: (err) => {
+        console.log('err while returning colors :', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
+  }
+  getProductsByCategory(id: string): void {
     this.categoryId = id;
     this.productsService.getByCategory(id).subscribe({
       next: (res) => {
@@ -207,7 +221,10 @@ export class ProductsComponent implements OnInit {
     this.showCategoryFilterDDL = !this.showCategoryFilterDDL;
   }
   toggleAddProductModal() {
-    this.getCategories();
+    if (!this.showAddProductModal) {
+      this.getCategories();
+      this.getColors();
+    }
     this.showAddProductModal = !this.showAddProductModal;
   }
   toggleEditProductModal(product?) {
