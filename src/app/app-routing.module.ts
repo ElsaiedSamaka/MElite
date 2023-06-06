@@ -48,6 +48,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/noperm/noperm.module').then((m) => m.NopermModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./pages/notfound/notfound.module').then((m) => m.NotfoundModule),
+  },
 ];
 
 @NgModule({
