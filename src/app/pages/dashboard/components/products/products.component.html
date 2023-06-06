@@ -273,11 +273,21 @@
           <textarea formControlName="description" class="border border-gray-300 rounded-3xl p-2 text-right"></textarea>
         </div>
         <div class="flex flex-col col-span-2">
-          <label class="block mb-2 text-sm font-medium text-gray-900 " for="product_img"> رفع صورة للمنتج</label>
+          <label
+            class=" w-full text-s p-4 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 :text-gray-400 focus:outline-none :bg-gray-700 :border-gray-600 :placeholder-gray-400 "
+            for="product_img">
+            <span><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13">
+                </path>
+              </svg></span>
+            <span> رفع صورة للمنتج</span>
+          </label>
           <input
-            class=" w-full text-sm text-gray-900 border border-gray-300 rounded-3xl cursor-pointer bg-gray-50 focus:outline-none p-2  "
-        (change)="onFileChange($event)"    name="product_img" aria-describedby="file_input_help" id="product_img" type="file">
-          <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG (MAX. 1024x1024px).</p>
+            class="  w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 :text-gray-400 focus:outline-none :bg-gray-700 :border-gray-600 :placeholder-gray-400 "
+        (change)="onFileChange($event)" hidden accept="image/png, image/jpeg, image/jpg ,image/raw " maxlength="2097152" name="product_img" aria-describedby="file_input_help" id="product_img" type="file">
+          <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG, Jpeg ,Raw (MAX. 2 Megabytes).</p>
         </div>
       </div>
       <div class="flex flex-col p-2 border-2 border-gray-200 border-dashed border-t-0 w-full h-full rounded-b-3xl">
