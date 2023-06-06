@@ -26,6 +26,7 @@ export class ProductCardComponent implements OnInit {
     let cartItem = {
       productId: product.id,
       quantity: 1,
+      price: product.price,
     };
 
     this.cartService.post(cartItem).subscribe({
