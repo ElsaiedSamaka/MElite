@@ -5,9 +5,15 @@ import { SignoutComponent } from './components/signout/signout.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
-  { path: 'signout', component: SignoutComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: '', component: SigninComponent },
+  { path: 'signout', pathMatch: 'full', component: SignoutComponent },
+  { path: 'signup', pathMatch: 'full', component: SignupComponent },
+  { path: '', pathMatch: 'full', component: SigninComponent },
+  {
+    path: '**',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('../notfound/notfound.module').then((m) => m.NotfoundModule),
+  },
 ];
 
 @NgModule({
