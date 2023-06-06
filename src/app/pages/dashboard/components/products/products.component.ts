@@ -140,20 +140,9 @@ export class ProductsComponent implements OnInit {
     }
   }
   onAddProductSubmit() {
-    const formData = new FormData();
-    formData.append(
-      'product_img',
-      this.addProductForm.get('product_img').value
-    );
-    formData.append('name', this.addProductForm.get('name').value);
-    formData.append('category', this.addProductForm.get('category').value);
-    formData.append('stock', this.addProductForm.get('stock').value);
-    formData.append('price', this.addProductForm.get('price').value);
-    formData.append('description', this.addProductForm.get('description').value);
-    
-
+    let model = this.prepareForm();
     if (this.addProductForm.invalid) return;
-    this.productsService.post(formData).subscribe({
+    this.productsService.post(model).subscribe({
       next: () => {
         this.toggleToast();
         this.addProductForm.reset();
@@ -165,7 +154,6 @@ export class ProductsComponent implements OnInit {
         this.toggleAddProductModal();
       },
     });
-    console.log('addProductForm', this.addProductForm.value);
   }
   onEditProductSubmit(): void {
     const product = {
@@ -188,6 +176,13 @@ export class ProductsComponent implements OnInit {
         this.toggleEditProductModal();
       },
     });
+  }
+  prepareForm() {
+    let formData = new FormData();
+    Object.entries(this.addProductForm.value).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    return formData;
   }
   onDeleteProductSubmit() {
     this.productsService.deleteById(this.productId).subscribe({
