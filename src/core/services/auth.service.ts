@@ -81,9 +81,9 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        tap((res) => {
+        tap((user) => {
           this.signedin$.next(true);
-          this.USER$.next(res);
+          this.USER$.next(user);
         })
       );
   }

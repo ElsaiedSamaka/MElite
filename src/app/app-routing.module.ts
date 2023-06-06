@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGaurd } from 'src/core/guards/AdminGaurd.guard';
 import { AuthGuard } from 'src/core/guards/AuthGaurd.guard';
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
+    canActivate: [AdminGaurd],
     loadChildren: () =>
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -25,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/profile/profile.module').then((m) => m.ProfileModule),
   },
@@ -40,6 +42,11 @@ const routes: Routes = [
     canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/checkout/cart.module').then((m) => m.CheckoutModule),
+  },
+  {
+    path: 'noperm',
+    loadChildren: () =>
+      import('./pages/noperm/noperm.module').then((m) => m.NopermModule),
   },
 ];
 
