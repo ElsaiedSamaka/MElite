@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/core/services/categories.service';
 import { ProductsService } from 'src/core/services/products.service';
@@ -25,10 +25,11 @@ export class ProductsComponent implements OnInit {
   totalPages: number = 0;
   totalItems: number = 0;
   available: any;
-
+  @ViewChild('product_img') fileInput: ElementRef;
   constructor(
     private productsService: ProductsService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private el: ElementRef
   ) {}
 
   ngOnInit() {
@@ -91,7 +92,6 @@ export class ProductsComponent implements OnInit {
     stock: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
-    image: new FormControl('', [Validators.required]),
     product_img: new FormControl('', [Validators.required]),
   });
   editProductForm = new FormGroup({
@@ -104,8 +104,7 @@ export class ProductsComponent implements OnInit {
     stock: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
-    image: new FormControl('', [Validators.required]),
-    product_img: new FormControl('', [Validators.required]),
+    product_img: new FormControl([Validators.required]),
   });
   showOnlyForm = new FormGroup({
     available: new FormControl('All'),
@@ -141,18 +140,26 @@ export class ProductsComponent implements OnInit {
     }
   }
   onAddProductSubmit() {
-    // const formData = new FormData();
-    // formData.append('image', this.addProductForm.get('product_img').value);
+    const formData = new FormData();
+    formData.append(
+      'product_img',
+      this.addProductForm.get('product_img').value
+    );
+    formData.append('name', this.addProductForm.get('name').value);
+    formData.append('category', this.addProductForm.get('category').value);
+    formData.append('stock', this.addProductForm.get('stock').value);
+    formData.append('price', this.addProductForm.get('price').value);
+    formData.append('description', this.addProductForm.get('description').value);
+    
 
     if (this.addProductForm.invalid) return;
-    this.productsService.post(this.addProductForm.value).subscribe({
+    this.productsService.post(formData).subscribe({
       next: () => {
         this.toggleToast();
         this.addProductForm.reset();
       },
       error: (err) => {
         console.log('err', err);
-        // this.toggleAddProductModal();
       },
       complete: () => {
         this.toggleAddProductModal();
