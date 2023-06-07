@@ -237,7 +237,9 @@ export class ProductsComponent implements OnInit {
     });
   }
   toggleCategoryFilterDDL() {
-    this.getCategories();
+    if (!this.showCategoryFilterDDL) {
+      this.getCategories();
+    }
     this.showCategoryFilterDDL = !this.showCategoryFilterDDL;
   }
   toggleAddProductModal() {
