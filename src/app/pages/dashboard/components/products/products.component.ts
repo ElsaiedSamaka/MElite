@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/core/services/categories.service';
 import { ColorsService } from 'src/core/services/colors.service';
 import { ProductsService } from 'src/core/services/products.service';
+import { SizesService } from 'src/core/services/sizes.service';
 
 @Component({
   selector: 'app-products',
@@ -14,6 +15,9 @@ export class ProductsComponent implements OnInit {
   products: any[];
   categories: any[] = [];
   colors: any[] = [];
+  colorName: string = 'white';
+  sizes: any[] = [];
+  sizeName: string = 'lg';
   categoryId: string = '';
   showCategoryFilterDDL: boolean = false;
   showAddProductModal: boolean = false;
@@ -22,7 +26,7 @@ export class ProductsComponent implements OnInit {
   showToast: boolean = false;
   productId: string = '';
   itemsToDisplay: any[] = [];
-  size: number = 2;
+  perPage: number = 3;
   currentPage = 0;
   totalPages: number = 0;
   totalItems: number = 0;
@@ -30,7 +34,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
-    private colorsService: ColorsService
+    private colorsService: ColorsService,
+    private sizesService: SizesService
   ) {}
 
   ngOnInit() {
@@ -44,7 +49,7 @@ export class ProductsComponent implements OnInit {
     this.productsService
       .getProducts(
         currentPage || this.currentPage,
-        size || this.size,
+        size || this.perPage,
         available
       )
       .subscribe((res) => {
@@ -52,7 +57,7 @@ export class ProductsComponent implements OnInit {
         this.totalItems = res['totalItems'];
         this.totalPages = res['totalPages'];
         this.currentPage = res['currentPage'];
-        this.itemsToDisplay = this.products.slice(0, this.size);
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
       });
   }
   getCategories(): void {
@@ -81,12 +86,25 @@ export class ProductsComponent implements OnInit {
       },
     });
   }
+  getSizes(): void {
+    this.sizesService.getAll().subscribe({
+      next: (sizes) => {
+        this.sizes = this.sizesService.sizes$.value;
+      },
+      error: (err) => {
+        console.log('err while returning sizes :', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
+  }
   getProductsByCategory(id: string): void {
     this.categoryId = id;
     this.productsService.getByCategory(id).subscribe({
       next: (res) => {
         this.products = res['rows'];
-        this.itemsToDisplay = this.products.slice(0, this.size);
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
       },
       error: (err) => {
         console.log('error', err);
@@ -107,6 +125,8 @@ export class ProductsComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
     product_img: new FormControl('', [Validators.required]),
+    colors: new FormControl(this.colorName, [Validators.required]),
+    sizes: new FormControl(this.sizeName, [Validators.required]),
   });
   editProductForm = new FormGroup({
     name: new FormControl('', [
@@ -143,7 +163,7 @@ export class ProductsComponent implements OnInit {
   }
   handleShowOnlyToggle() {
     this.available = this.showOnlyForm.controls['available'].value;
-    this.getProducts(this.currentPage, this.size, this.available);
+    this.getProducts(this.currentPage, this.perPage, this.available);
   }
   onFileChange(event) {
     if (event.target.files.length > 0) {
@@ -212,7 +232,7 @@ export class ProductsComponent implements OnInit {
         this.products = this.products.filter(
           (product) => product.id !== this.productId
         );
-        this.itemsToDisplay = this.products.slice(0, this.size);
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
       },
     });
   }
@@ -224,6 +244,9 @@ export class ProductsComponent implements OnInit {
     if (!this.showAddProductModal) {
       this.getCategories();
       this.getColors();
+      this.getSizes();
+      this.handleSizeChange();
+      this.handleColorChange();
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
@@ -241,6 +264,20 @@ export class ProductsComponent implements OnInit {
       description: product.description,
     });
   }
+  handleSizeChange() {
+    this.addProductForm.controls.sizes.valueChanges.subscribe({
+      next: (size) => {
+        this.sizeName = size;
+      },
+    });
+  }
+  handleColorChange() {
+    this.addProductForm.controls.colors.valueChanges.subscribe({
+      next: (color) => {
+        this.colorName = color;
+      },
+    });
+  }
   toggleToast() {
     this.showToast = !this.showToast;
     setTimeout(() => {
@@ -254,8 +291,8 @@ export class ProductsComponent implements OnInit {
     }
   }
   handleItemsLength(e) {
-    this.size = e.target.value;
-    this.getProducts(this.currentPage, this.size, this.available);
+    this.perPage = e.target.value;
+    this.getProducts(this.currentPage, this.perPage, this.available);
   }
 
   public onNext(): void {
