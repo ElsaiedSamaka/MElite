@@ -78,7 +78,6 @@ export class ProductsComponent implements OnInit {
         this.colors = this.colorsService.colors$.value.map(
           (colors) => colors.name
         );
-        console.log('colors', this.colors);
       },
       error: (err) => {
         console.log('err while returning colors :', err);
