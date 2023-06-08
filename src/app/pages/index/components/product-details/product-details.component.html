@@ -33,12 +33,12 @@
       <div
         class="absolute top-[50%] right-[5%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
       </div>
-      <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+      <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8  text-left">
         <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{product.name}}</h1>
       </div>
 
       <!-- Options -->
-      <div class="mt-4 lg:row-span-3 lg:mt-0">
+      <div class="mt-4 lg:row-span-3 lg:mt-0 ">
         <h2 class="sr-only">{{product.description}}</h2>
         <p class="text-3xl tracking-tight text-gray-900">${{product.price}}</p>
 
@@ -84,10 +84,10 @@
           </div>
         </div>
 
-        <form class="mt-10">
+        <form class="mt-10 ">
           <!-- Colors -->
           <div>
-            <h3 class="text-sm font-medium text-gray-900">Color</h3>
+            <h3 class="text-sm font-medium text-gray-900">الالوان المتاحه</h3>
 
             <fieldset class="mt-4">
               <legend class="sr-only">Choose a color</legend>
@@ -104,10 +104,7 @@
                   <span aria-hidden="true"
                     class="h-8 w-8 bg-white rounded-full border border-black border-opacity-10"></span>
                 </label>
-                <!--
-                          Active and Checked: "ring ring-offset-1"
-                          Not Active and Checked: "ring-2"
-                        -->
+            
                 <label
                   class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
                   <input type="radio" name="color-choice" value="Gray" class="sr-only"
@@ -116,27 +113,15 @@
                   <span aria-hidden="true"
                     class="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10"></span>
                 </label>
-                <!--
-                          Active and Checked: "ring ring-offset-1"
-                          Not Active and Checked: "ring-2"
-                        -->
-                <label
-                  class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
-                  <input type="radio" name="color-choice" value="Black" class="sr-only"
-                    aria-labelledby="color-choice-2-label">
-                  <span id="color-choice-2-label" class="sr-only">Black</span>
-                  <span aria-hidden="true"
-                    class="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"></span>
-                </label>
               </div>
             </fieldset>
           </div>
 
           <!-- Sizes -->
           <div class="mt-10">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-medium text-gray-900">Size</h3>
-              <a class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+            <div class="flex flex-row-reverse items-center justify-between">
+              <h3 class="text-sm font-medium text-gray-900">المقاس</h3>
+              <a class="text-sm font-medium text-indigo-600 hover:text-indigo-500">دليل المستخدم</a>
             </div>
 
             <fieldset class="mt-4">
@@ -246,8 +231,8 @@
 
           <button 
             class="add-to-cart-button mt-10 flex w-full items-center justify-center rounded-3xl border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" (click)=" postCartItem(product)">اضافة الى السلة</button>
-          <a routerLink="/index" class="font-medium text-lg  my-4  w-full inline-block hover:underline hover:bg-slate-300">
-            عودة للتصفح
+          <a routerLink="/index" class="inline-flex items-center font-medium text-lg  my-4 mr-auto  w-full hover:underline ">
+            متابعة التصفح
             <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
@@ -261,12 +246,12 @@
         <div>
           <h3 class="sr-only">Description</h3>
 
-          <div class="space-y-6">
+          <div class="space-y-6 text-left">
             <p class="text-base text-gray-900">{{product.description}}</p>
           </div>
         </div>
         <div class="mt-10">
-          <h2 class="text-sm font-medium text-gray-900">Details</h2>
+          <h2 class="text-lg font-semibold text-gray-900">حول المنتج</h2>
 
           <div class="mt-4 space-y-6">
             <p class="text-sm text-gray-600">[Hard Coded text] The 6-Pack includes two black, two white, and two heather gray Basic
