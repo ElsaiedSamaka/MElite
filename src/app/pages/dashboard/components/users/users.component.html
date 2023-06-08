@@ -17,7 +17,7 @@
               </div>
               <input type="text" id="email-search" formControlName="searchControl"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                placeholder="Search by email" required (change)="handleSearchOverUsers()">
+                placeholder="ابحث بالبريد الالكتروني للمستخدمين " required (change)="handleSearchOverUsers()">
             </div>
           </form>
         </div>
@@ -77,17 +77,17 @@
         </div>
       </div>
       <div class="overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 ">
+        <table class="w-full text-sm text-center text-gray-500 ">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
               <th scope="col" class="p-4">
 
               </th>
-              <th scope="col" class="px-4 py-3">User name</th>
-              <th scope="col" class="px-4 py-3">Email</th>
-              <th scope="col" class="px-4 py-3">Role</th>
-              <th scope="col" class="px-4 py-3">Created at</th>
-              <th scope="col" class="px-4 py-3">No. Orders</th>
+              <th scope="col" class="px-4 py-3">اسم المستخدم</th>
+              <th scope="col" class="px-4 py-3">البريد الالكتروني</th>
+              <th scope="col" class="px-4 py-3">الصلاحية</th>
+              <th scope="col" class="px-4 py-3">تاريخ الانشاء</th>
+              <th scope="col" class="px-4 py-3">عدد الطلبات</th>
               <th scope="col" class="px-4 py-3">
                 <span class="sr-only">Actions</span>
               </th>
@@ -119,7 +119,7 @@
                       d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z">
                     </path>
                   </svg>
-                  Active
+                  مفعل
                 </button>
                 <button type="button" *ngIf="!user.isActive" (click)="activeDeactiveUserById(user.id)"
                   class="text-gray-700 px-2 py-1 hover:text-gray-950 border border-gray-200 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
@@ -129,7 +129,7 @@
                       d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21">
                     </path>
                   </svg>
-                  Deactive
+                  معطل
                 </button>
               </td>
             </tr>
