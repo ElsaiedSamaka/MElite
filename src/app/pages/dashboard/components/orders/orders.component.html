@@ -36,8 +36,8 @@
                     #{{order.id}}
                   </td>
                   <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
-                    <b *ngFor="let product of productsPerOrder">
-                      {{order.products[product.orderId]?.name ? order.products[product.orderId]?.name : '' }}
+                    <b *ngFor="let product of order.products">
+                      {{product.name}}
                     </b>
                   </td>
                   <td class="px-6 py-4">

@@ -74,17 +74,16 @@
               </thead>
               <tbody class=" ">
                 <ng-container *ngIf="orders.length > 0; else noorders">
-                  <tr class=" border-b hover:bg-gray-50" *ngFor="let order of orders">
+                  <tr class=" border-b hover:bg-gray-50" *ngFor="let product of order.products">
                     <td class="w-32 p-4">
-                      <img [src]="order.products[0]?.product_img" [alt]="order.products[0]?.name">
-                      <img *ngIf="order.products[1]?.product_img" [src]="order.products[1]?.product_img" [alt]="order.products[1]?.name">
+                      <img [src]="product.product_img" [alt]="product.name">
                     </td>
                     <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
                       #{{order.id}}
                     </td>
                     <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
-                      <b *ngFor="let product of productsPerOrder">
-                        {{order.products[product.orderId]?.name ? order.products[product.orderId]?.name : '' }}
+                      <b *ngFor="let product of order.products">
+                        {{product.name}}
                       </b>
                     </td>
                     <td class="px-6 py-4">
