@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/core/services/categories.service';
 import { ColorsService } from 'src/core/services/colors.service';
 import { ProductsService } from 'src/core/services/products.service';
@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   products: any[];
   categories: any[] = [];
   colors: any[] = [];
-  colorName: string = 'white';
+  colorNames: any[] = [];
   sizes: any[] = [];
   sizeName: string = 'lg';
   categoryId: string = '';
@@ -76,7 +76,10 @@ export class ProductsComponent implements OnInit {
   getColors(): void {
     this.colorsService.getAll().subscribe({
       next: (colors) => {
-        this.colors = this.colorsService.colors$.value;
+        this.colors = this.colorsService.colors$.value.map(
+          (colors) => colors.name
+        );
+        console.log('colors', this.colors);
       },
       error: (err) => {
         console.log('err while returning colors :', err);
@@ -125,7 +128,7 @@ export class ProductsComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
     product_img: new FormControl('', [Validators.required]),
-    colors: new FormControl(this.colorName, [Validators.required]),
+    colors: new FormArray([]),
     sizes: new FormControl(this.sizeName, [Validators.required]),
   });
   editProductForm = new FormGroup({
@@ -248,7 +251,6 @@ export class ProductsComponent implements OnInit {
       this.getColors();
       this.getSizes();
       this.handleSizeChange();
-      this.handleColorChange();
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
@@ -273,13 +275,25 @@ export class ProductsComponent implements OnInit {
       },
     });
   }
-  handleColorChange() {
-    this.addProductForm.controls.colors.valueChanges.subscribe({
-      next: (color) => {
-        this.colorName = color;
-      },
-    });
+  handleColorChange(e: any) {
+    let colorArr = this.addProductForm.get('colors') as FormArray;
+    
+    if (e.target.checked) {
+      colorArr.push(new FormControl(e.target.value));
+      this.colorNames.push(e.target.value);
+    } else {
+      let i = 0;
+      colorArr.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          colorArr.removeAt(i);
+          this.colorNames.splice(i, 1);
+          return;
+        }
+        i++;
+      });
+    }
   }
+
   toggleToast() {
     this.showToast = !this.showToast;
     setTimeout(() => {

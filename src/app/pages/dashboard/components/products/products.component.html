@@ -81,13 +81,13 @@
                   <input type="checkbox" [checked]="categoryId === category.id" (change)="getProductsByCategory(category.id)"
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2 ">
                   <label for="apple" class="ml-2 text-sm font-medium text-gray-900 ">{{category.name}}
-                    </label>
+                  </label>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        </div>
+      </div>
       <!-- product table -->
       <div class="overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500">
@@ -95,11 +95,10 @@
             <tr>
               <th scope="col" class="px-4 py-3">Product name
                 <svg [appSort]="itemsToDisplay" data-order="desc" data-name="name" xmlns="http://www.w3.org/2000/svg"
-                  class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
-                    viewBox="0 0 320 512">
-                    <path
-                      d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                  </svg>
+                  class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                  <path
+                    d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                </svg>
               </th>
               <th scope="col" class="px-4 py-3">Category</th>
               <th scope="col" class="px-4 py-3">Stock</th>
@@ -107,11 +106,10 @@
               <th scope="col" class="px-4 py-3">Description</th>
               <th scope="col" class="px-4 py-3">Price
                 <svg [appSort]="itemsToDisplay" data-order="asc" data-name="price" xmlns="http://www.w3.org/2000/svg"
-                  class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor"
-                    viewBox="0 0 320 512">
-                    <path
-                      d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                  </svg>
+                  class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
+                  <path
+                    d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                </svg>
               </th>
               <th scope="col" class="px-4 py-3">
                 <span class="sr-only">Actions</span>
@@ -120,42 +118,42 @@
           </thead>
           <tbody>
             <ng-container *ngIf="itemsToDisplay.length > 0; else noproducts">
-            <tr class="border-b " *ngFor="let product of itemsToDisplay;">
-              <th scope="row" class="flex items-center px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                <img [src]="product.product_img" alt="product_img" class="w-auto h-8 mr-3">
-                {{product.name}}
-              </th>
-              <td class="px-4 py-3">{{product.category.name}}</td>
-              <td class="px-4 py-3">{{product.stock}}</td>
-              <td class="px-4 py-3">{{product.availability}}</td>
-              <td class="px-4 py-3">{{product.description}}</td>
-              <td class="px-4 py-3">${{product.price}}</td>
-              <!-- Actions  -->
-              <td class="flex items-center justify-center gap-x-2 ">
-                <button type="button" (click)="toggleEditProductModal(product)"
-                  class="text-blue-700 px-2 py-1 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
-                  <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10">
-                    </path>
-                  </svg>
-                  Edit
-                </button>
-                <button type="button" (click)="toggleDeleteProductModal(product)"
-                  class="text-red-700 px-2 py-1  hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
-                  <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
-                    </path>
-                  </svg>
-                  Delete
-                </button>
+              <tr class="border-b " *ngFor="let product of itemsToDisplay;">
+                <th scope="row" class="flex items-center px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
+                  <img [src]="product.product_img" alt="product_img" class="w-auto h-8 mr-3">
+                  {{product.name}}
+                </th>
+                <td class="px-4 py-3">{{product.category.name}}</td>
+                <td class="px-4 py-3">{{product.stock}}</td>
+                <td class="px-4 py-3">{{product.availability}}</td>
+                <td class="px-4 py-3">{{product.description}}</td>
+                <td class="px-4 py-3">${{product.price}}</td>
+                <!-- Actions  -->
+                <td class="flex items-center justify-center gap-x-2 ">
+                  <button type="button" (click)="toggleEditProductModal(product)"
+                    class="text-blue-700 px-2 py-1 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10">
+                      </path>
+                    </svg>
+                    Edit
+                  </button>
+                  <button type="button" (click)="toggleDeleteProductModal(product)"
+                    class="text-red-700 px-2 py-1  hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                      </path>
+                    </svg>
+                    Delete
+                  </button>
 
-              </td>
-              <!-- Actions  -->
-            </tr>
+                </td>
+                <!-- Actions  -->
+                </tr>
             </ng-container>
             <ng-template #noproducts>
               <tr>
@@ -179,7 +177,7 @@
             </ng-template>
           </tbody>
         </table>
-        </div>
+      </div>
       <!-- product table -->
       <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
         aria-label="Table navigation">
@@ -286,49 +284,46 @@
           </label>
           <input
             class="  w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 :text-gray-400 focus:outline-none :bg-gray-700 :border-gray-600 :placeholder-gray-400 "
-        (change)="onFileChange($event)" hidden accept="image/png, image/jpeg, image/jpg ,image/raw " maxlength="2097152" name="product_img" aria-describedby="file_input_help" id="product_img" type="file">
+            (change)="onFileChange($event)" hidden accept="image/png, image/jpeg, image/jpg ,image/raw "
+            maxlength="2097152" name="product_img" aria-describedby="file_input_help" id="product_img" type="file">
           <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG, Jpeg ,Raw (MAX. 2 Megabytes).</p>
         </div>
-    <!-- Sizes -->
-    <div class="flex flex-col">
-      <label class="text-sm font-semibold text-gray-900 mb-2"> المقاس</label>
-    
-      <fieldset class="mt-4">
-        <legend class="sr-only">Choose a size</legend>
-        <div class="grid grid-cols-4 gap-2">
-          <label
-          *ngFor="let size of sizes"
-          for="sizes"
-          [ngClass]="size.name == sizeName? 'ring-2 ring-offset-1 ring-gray-500':''"
-            class="group relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer  text-gray-900 shadow-sm ">
-            <input formControlName="sizes"  type="radio" id="sizes" name="sizes" [value]="size.name" class="">
-            <span class="" id="sizes">{{size.name}}</span>
-          </label>
+        <!-- Sizes -->
+        <div class="flex flex-col">
+          <label class="text-sm font-semibold text-gray-900 mb-2"> المقاس</label>
+        
+          <fieldset class="mt-4">
+            <legend class="sr-only">Choose a size</legend>
+            <div class="grid grid-cols-4 gap-2">
+              <label *ngFor="let size of sizes" for="sizes" [ngClass]="size.name == sizeName? 'ring-2 ring-offset-1 ring-gray-500':''"
+                class="group relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer  text-gray-900 shadow-sm ">
+                <input formControlName="sizes" type="radio" id="sizes" name="sizes" [value]="size.name" class="">
+                <span class="" id="sizes">{{size.name}}</span>
+                </label>
+                </div>
+                </fieldset>
+                </div>
+                <!-- Colors -->
+                <div class="flex flex-col  justify-center">
+                  <div class="flex flex-row-reverse justify-around items-center">
+                    <label class="text-sm font-semibold text-gray-900 mb-2  ml-auto mr-5"> اللون</label>
+                
+                    <fieldset class="mt-2 ml-5">
+                      <legend class="sr-only">Choose a color</legend>
+                      <span class="grid grid-cols-3 gap-2">
+                <label [for]="color"
+                  class="group relative flex items-center justify-center  cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2"
+                  *ngFor="let color of colors">
+                  <input type="checkbox" [name]="color" [id]="color" [value]="color" (change)="handleColorChange($event)" class="sr-only">
+                  <span aria-hidden="true"
+                    [ngClass]="(color=== 'black' || color=== 'black')? 'bg-'+color: 'bg-'+color+'-100'"
+                    class="h-8 w-8 rounded-full border border-black border-opacity-10"></span>
+                </label>
+              </span>
+            </fieldset>
+          </div>
+          <p class="flex bg-gray-100">selected: {{addProductForm.get('colors')?.value|json}}</p>
         </div>
-      </fieldset>
-    </div>
-    <!-- Colors -->
-    <div class="flex flex-col  justify-center">
-      <div class="flex flex-row-reverse justify-around items-center">
-        <label class="text-sm font-semibold text-gray-900 mb-2  ml-auto mr-5"> اللون</label>
-    
-        <fieldset class="mt-2 ml-5">
-          <legend class="sr-only">Choose a color</legend>
-          <span class="grid grid-cols-3 gap-2">
-            <label
-             [ngClass]="color.name == colorName? 'ring-2 ring-offset-1 ring-gray-500':''"
-              class="group relative flex items-center justify-center  cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2"
-              *ngFor="let color of colors">
-              <input formControlName="colors" type="checkbox" name="colors" class="">
-              <span class="sr-only">{{color.name}}</span>
-              <span aria-hidden="true"
-                [ngClass]="(color.name=== 'black' || color.name=== 'black')? 'bg-'+color.name: 'bg-'+color.name+'-500'"
-                class="h-8 w-8 rounded-full border border-black border-opacity-10"></span>
-            </label>
-          </span>
-        </fieldset>
-      </div>
-    </div>
       </div>
       <div class="flex flex-col p-2 border-2 border-gray-200 border-dashed border-t-0 w-full h-full rounded-b-3xl">
         <div class="flex justify-start">
