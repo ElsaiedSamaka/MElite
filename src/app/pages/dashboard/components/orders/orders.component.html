@@ -1,5 +1,24 @@
 <section class="border-2 border-dashed border-gray-200 rounded-3xl w-full p-3 sm:p-5 ">
-  
+  <div class="flex justify-end items-center space-x-5 p-5 ">
+    <div class="mr-auto">
+      <button type="submit"
+        class="inline-flex items-center py-2.5 px-4 ml-2 text-sm font-medium text-black bg-gray-200 rounded-3xl border border-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-black disabled:cursor-not-allowed disabled:bg-gray-300">
+        <svg aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>بحث
+      </button>
+    </div>
+    <div>
+      <input class="p-2 rounded-3xl" name="from-date" id="from-date" type="date" />
+      <label class="mx-1" for="from-date">التاريخ من</label>
+    </div>
+    <div>
+      <input class="p-2 rounded-3xl" name="to-date" id="to-date" type="date" />
+      <label class="mx-1" for="to-date">التاريخ الى</label>
+    </div>
+  </div>
   <div class="relative rounded-3xl border-2 border-dashed border-gray-200 mx-auto h-96 overflow-y-scroll">
     <table class="w-full text-sm text-left text-gray-500 ">
       <thead class=" text-xs text-gray-700 uppercase bg-gray-50 ">
