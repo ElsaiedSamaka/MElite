@@ -249,30 +249,43 @@
       <div
         class="p-5 mt-4 border-2 border-gray-200 border-dashed border-b-0 w-full h-full grid grid-rows-2 grid-cols-2 gap-2 justify-end rounded-t-3xl">
         <div class="flex flex-col">
-          <label class="text-sm font-semibold text-gray-900 mb-2">الفئة </label>
+          <label class="text-sm font-semibold text-gray-900 mb-2">
+            <span>*</span>
+            <span>الفئة</span>
+          </label>
           <select name="category" id="category" class="border border-gray-300 rounded-3xl p-2" formControlName="category">
             <option [value]="category.id" *ngFor="let category of categories">{{category.name}}</option>
           </select>
         </div>
         <div class="flex flex-col">
-          <label class="text-sm font-semibold text-gray-900 mb-2">الاسم</label>
+          <label class="text-sm font-semibold text-gray-900 mb-2">
+            <span>*</span>
+            <span>الاسم</span>
+          </label>
           <input formControlName="name" class="border border-gray-300 rounded-3xl p-2 text-right" />
         </div>
         <div class="flex flex-col">
-          <label class="text-sm font-semibold text-gray-900 mb-2">السعر</label>
+          <label class="text-sm font-semibold text-gray-900 mb-2">
+            <span>*</span>
+            <span>السعر</span>
+          </label>
           <input formControlName="price" class="border border-gray-300 rounded-3xl p-2 text-right" />
         </div>
         <div class="flex flex-col">
-          <label class="text-sm font-semibold text-gray-900 mb-2">العدد بالمخزن</label>
+          <label class="text-sm font-semibold text-gray-900 mb-2">
+            <span>*</span>
+            <span>متاح بالمخزن</span>
+          </label>
           <input formControlName="stock" class="border border-gray-300 rounded-3xl p-2 text-right" />
         </div>
         <div class="flex flex-col col-span-2">
           <label class="text-sm font-semibold text-gray-900 mb-2"> الوصف</label>
-          <textarea formControlName="description" class="border border-gray-300 rounded-3xl p-2 text-right"></textarea>
+          <textarea formControlName="description" class="border border-gray-300 rounded-3xl p-2 text-right" maxlength="100"
+            lang="ar" wrap="false" style="max-height: 100px;"></textarea>
         </div>
         <div class="flex flex-col col-span-2">
           <label
-            class=" w-full text-s p-4 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 :text-gray-400 focus:outline-none :bg-gray-700 :border-gray-600 :placeholder-gray-400 "
+            class="text-sm font-semibold text-gray-900 mb-2"
             for="product_img">
             <span><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true">
@@ -280,11 +293,12 @@
                   d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13">
                 </path>
               </svg></span>
+              <span>*</span>
             <span> رفع صورة للمنتج</span>
           </label>
           <input
-            class="  w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 :text-gray-400 focus:outline-none :bg-gray-700 :border-gray-600 :placeholder-gray-400 "
-            (change)="onFileChange($event)" hidden accept="image/png, image/jpeg, image/jpg ,image/raw "
+            class="  w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none p-2 "
+            (change)="onFileChange($event)"  accept="image/png, image/jpeg, image/jpg ,image/raw "
             maxlength="2097152" name="product_img" aria-describedby="file_input_help" id="product_img" type="file">
           <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG, Jpeg ,Raw (MAX. 2 Megabytes).</p>
         </div>

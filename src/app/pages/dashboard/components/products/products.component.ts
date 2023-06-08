@@ -125,8 +125,8 @@ export class ProductsComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
     product_img: new FormControl('', [Validators.required]),
-    colors: new FormArray([]),
-    sizes: new FormArray([]),
+    colors: new FormArray([], [Validators.required]),
+    sizes: new FormArray([], [Validators.required]),
   });
   editProductForm = new FormGroup({
     name: new FormControl('', [
