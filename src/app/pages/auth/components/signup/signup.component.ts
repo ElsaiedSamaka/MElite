@@ -25,16 +25,12 @@ export class SignupComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(15),
       ]),
-      email: new FormControl(
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(40),
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ]
-        // [this.uniqueEmail.validate]
-      ),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(40),
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -63,7 +59,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
   constructor(
     private matchPassword: MatchPassword,
-    // private uniqueEmail: UniqueEmail,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -85,8 +80,11 @@ export class SignupComponent implements OnInit {
           this.router.navigateByUrl('/index');
         },
         error: (err) => {
+          console.log('err while signing up', err);
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
+          } else if (err.error.message == 'Failed! Email is already in use!') {
+            this.authForm.setErrors({ alreadyUsedMailError: true });
           } else {
             this.authForm.setErrors({ unknownError: true });
           }
