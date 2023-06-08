@@ -12,7 +12,8 @@ import { MatchPassword } from 'src/core/validators/match-password';
 export class SignupComponent implements OnInit {
   showPassword: boolean = false;
   showPasswordConfirmation: boolean = false;
-
+  showToast: boolean = false;
+  toastMessage: string = '';
   authForm = new FormGroup(
     {
       firstname: new FormControl('', [
@@ -34,12 +35,12 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        Validators.maxLength(25),
+        Validators.maxLength(12),
       ]),
       passwordConfirmation: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        Validators.maxLength(25),
+        Validators.maxLength(12),
       ]),
       // TODO: Add country code
       // countrycode: new FormControl('', [
@@ -80,14 +81,17 @@ export class SignupComponent implements OnInit {
           this.router.navigateByUrl('/index');
         },
         error: (err) => {
-          console.log('err while signing up', err);
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
+            this.toastMessage = ' عفوا, يرجى التحقق من اتصال الانترنت';
           } else if (err.error.message == 'Failed! Email is already in use!') {
             this.authForm.setErrors({ alreadyUsedMailError: true });
+            this.toastMessage = 'البريد الالكتروني مستخدم بالفعل';
           } else {
             this.authForm.setErrors({ unknownError: true });
+            this.toastMessage = ' خطأ غير متوقع';
           }
+          this.toggleToast();
         },
       });
   }
@@ -96,5 +100,8 @@ export class SignupComponent implements OnInit {
   }
   togglePasswordConfirmation() {
     this.showPasswordConfirmation = !this.showPasswordConfirmation;
+  }
+  toggleToast() {
+    this.showToast = !this.showToast;
   }
 }
