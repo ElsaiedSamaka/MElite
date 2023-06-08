@@ -20,26 +20,26 @@
     </div>
   </div>
   <div class="relative rounded-3xl border-2 border-dashed border-gray-200 mx-auto h-96 overflow-y-scroll">
-    <table class="w-full text-sm text-left text-gray-500 ">
-      <thead class=" text-xs text-gray-700 uppercase bg-gray-50 ">
+    <table class="w-full text-sm text-center text-gray-500 ">
+      <thead class=" text-md text-gray-700 uppercase bg-gray-50 ">
         <tr>
           <th scope="col" class="px-6 py-3">
             <span class="sr-only">Image</span>
           </th>
           <th scope="col" class="px-6 py-3">
-            Order Id
+            مسلسل المنتج
           </th>
           <th scope="col" class="px-6 py-3">
-            Products List
+            قائمة المنتجات
           </th>
           <th scope="col" class="px-6 py-3">
-            Customer
+            العميل
           </th>
           <th scope="col" class="px-6 py-3">
-            Status
+            الحالة
           </th>
           <th scope="col" class="px-6 py-3 mx-1">
-            Action
+            الاجراء
           </th>
         </tr>
       </thead>
@@ -56,7 +56,7 @@
                   </td>
                   <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
                     <b *ngFor="let product of order.products">
-                      {{product.name}}
+                      {{product.name}},
                     </b>
                   </td>
                   <td class="px-6 py-4">
@@ -78,7 +78,7 @@
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                       </svg>
-                      Cancel
+                      الغاء
                     </button>
                     </td>
                     </tr>
