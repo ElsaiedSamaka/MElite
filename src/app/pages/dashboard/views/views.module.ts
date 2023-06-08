@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { InfoCardsComponent } from './info-cards/info-cards.component';
 import { LatesUsersCardComponent } from './lates-users-card/lates-users-card.component';
 import { LatestProductsCardComponent } from './latest-products-card/latest-products-card.component';
+import { OrdersGridComponent } from './orders-grid/orders-grid.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ProductsGridComponent } from './products-grid/products-grid.component';
 @NgModule({
@@ -16,6 +17,7 @@ import { ProductsGridComponent } from './products-grid/products-grid.component';
     LatesUsersCardComponent,
     FooterComponent,
     PaginationComponent,
+    OrdersGridComponent,
   ],
   exports: [
     InfoCardsComponent,
@@ -24,6 +26,7 @@ import { ProductsGridComponent } from './products-grid/products-grid.component';
     LatesUsersCardComponent,
     FooterComponent,
     PaginationComponent,
+    OrdersGridComponent,
   ],
 })
 export class ViewsModule {}
