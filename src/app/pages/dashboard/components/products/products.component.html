@@ -303,27 +303,35 @@
           <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG, Jpeg ,Raw (MAX. 2 Megabytes).</p>
         </div>
         <!-- Sizes -->
-        <div class="flex flex-col  p-1">
-          <label class="text-sm font-semibold text-gray-900 mb-2"> المقاس</label>
+        <div class="flex flex-col justify-center items-center p-1">
+          <div class="flex flex-row-reverse justify-around items-center mt-auto  w-full">
         
-          <fieldset class="mt-4">
+            <label class="text-sm font-semibold text-gray-900 mb-2">
+              <span>*</span>
+              <span>المقاس</span>
+            </label>
+            
+            <fieldset class="grid grid-cols-3 gap-2">
             <legend class="sr-only">Choose a size</legend>
-            <div class="grid grid-cols-4 gap-2">
+            <div class="flex flex-row-reverse justify-around items-center  ml-auto">
               <label *ngFor="let size of sizes" [for]="size"
-                class="group relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer  text-gray-900 shadow-sm ">
+                class="group relative  rounded-md border py-1 px-2 m-1 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer  text-gray-900 shadow-sm ">
                 <input type="checkbox" [id]="size" [name]="size" [value]="size" (change)="handleSizeChange($event)" class="sr-only">
                 <span class="" id="sizes">{{size}}</span>
                 </label>
                 </div>
                 </fieldset>
-          <p class="flex bg-gray-100">selected: {{addProductForm.get('sizes')?.value|json}}</p>
+              </div>
+              <p class="flex bg-gray-100 w-full mt-auto">selected: {{addProductForm.get('sizes')?.value|json}}</p>
 
                 </div>
                 <!-- Colors -->
                 <div class="flex flex-col  justify-center  p-1">
                   <div class="flex flex-row-reverse justify-around items-center">
-                    <label class="text-sm font-semibold text-gray-900 mb-2  ml-auto mr-5"> اللون</label>
-                
+                    <label class="text-sm font-semibold text-gray-900 mb-2  ml-auto mr-5">
+                      <span>*</span>
+                      <span>اللون</span>
+                    </label>
                     <fieldset class="mt-10 ml-5 ">
                       <legend class="sr-only">Choose a color</legend>
                       <span class="grid grid-cols-3 gap-2">
