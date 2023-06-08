@@ -319,7 +319,7 @@
              [ngClass]="color.name == colorName? 'ring-2 ring-offset-1 ring-gray-500':''"
               class="group relative flex items-center justify-center  cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2"
               *ngFor="let color of colors">
-              <input formControlName="colors" type="radio" name="colors" [value]="color.name" class="sr-only">
+              <input formControlName="colors" type="checkbox" name="colors" class="">
               <span class="sr-only">{{color.name}}</span>
               <span aria-hidden="true"
                 [ngClass]="(color.name=== 'black' || color.name=== 'black')? 'bg-'+color.name: 'bg-'+color.name+'-500'"
