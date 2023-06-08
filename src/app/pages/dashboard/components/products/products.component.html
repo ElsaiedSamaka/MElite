@@ -289,33 +289,35 @@
           <p class="mt-1 text-sm text-gray-500 " id="file_input_help">PNG, JPG, Jpeg ,Raw (MAX. 2 Megabytes).</p>
         </div>
         <!-- Sizes -->
-        <div class="flex flex-col">
+        <div class="flex flex-col  p-1">
           <label class="text-sm font-semibold text-gray-900 mb-2"> المقاس</label>
         
           <fieldset class="mt-4">
             <legend class="sr-only">Choose a size</legend>
             <div class="grid grid-cols-4 gap-2">
-              <label *ngFor="let size of sizes" for="sizes" [ngClass]="size.name == sizeName? 'ring-2 ring-offset-1 ring-gray-500':''"
+              <label *ngFor="let size of sizes" [for]="size"
                 class="group relative flex items-center justify-center rounded-md border py-1 px-2 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer  text-gray-900 shadow-sm ">
-                <input formControlName="sizes" type="radio" id="sizes" name="sizes" [value]="size.name" class="">
-                <span class="" id="sizes">{{size.name}}</span>
+                <input type="checkbox" [id]="size" [name]="size" [value]="size" (change)="handleSizeChange($event)" class="sr-only">
+                <span class="" id="sizes">{{size}}</span>
                 </label>
                 </div>
                 </fieldset>
+          <p class="flex bg-gray-100">selected: {{addProductForm.get('sizes')?.value|json}}</p>
+
                 </div>
                 <!-- Colors -->
-                <div class="flex flex-col  justify-center">
+                <div class="flex flex-col  justify-center  p-1">
                   <div class="flex flex-row-reverse justify-around items-center">
                     <label class="text-sm font-semibold text-gray-900 mb-2  ml-auto mr-5"> اللون</label>
                 
-                    <fieldset class="mt-2 ml-5">
+                    <fieldset class="mt-10 ml-5 ">
                       <legend class="sr-only">Choose a color</legend>
                       <span class="grid grid-cols-3 gap-2">
                 <label [for]="color"
-                  class="group relative flex items-center justify-center  cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2"
+                  class="group relative flex items-center justify-center cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2 "
                   *ngFor="let color of colors">
                   <input type="checkbox" [name]="color" [id]="color" [value]="color" (change)="handleColorChange($event)" class="sr-only">
-                  <span aria-hidden="true"
+                  <span
                     [ngClass]="(color=== 'black' || color=== 'black')? 'bg-'+color: 'bg-'+color+'-100'"
                     class="h-8 w-8 rounded-full border border-black border-opacity-10"></span>
                 </label>

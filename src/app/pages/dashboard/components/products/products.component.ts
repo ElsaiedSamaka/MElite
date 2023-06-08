@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit {
   categories: any[] = [];
   colors: any[] = [];
   sizes: any[] = [];
-  sizeName: string = 'lg';
   categoryId: string = '';
   showCategoryFilterDDL: boolean = false;
   showAddProductModal: boolean = false;
@@ -90,7 +89,7 @@ export class ProductsComponent implements OnInit {
   getSizes(): void {
     this.sizesService.getAll().subscribe({
       next: (sizes) => {
-        this.sizes = this.sizesService.sizes$.value;
+        this.sizes = this.sizesService.sizes$.value.map((sizes) => sizes.name);
       },
       error: (err) => {
         console.log('err while returning sizes :', err);
@@ -127,7 +126,7 @@ export class ProductsComponent implements OnInit {
     description: new FormControl('', [Validators.maxLength(2000)]),
     product_img: new FormControl('', [Validators.required]),
     colors: new FormArray([]),
-    sizes: new FormControl(this.sizeName, [Validators.required]),
+    sizes: new FormArray([]),
   });
   editProductForm = new FormGroup({
     name: new FormControl('', [
@@ -248,7 +247,6 @@ export class ProductsComponent implements OnInit {
       this.getCategories();
       this.getColors();
       this.getSizes();
-      this.handleSizeChange();
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
@@ -266,12 +264,20 @@ export class ProductsComponent implements OnInit {
       description: product.description,
     });
   }
-  handleSizeChange() {
-    this.addProductForm.controls.sizes.valueChanges.subscribe({
-      next: (size) => {
-        this.sizeName = size;
-      },
-    });
+  handleSizeChange(e: any) {
+    let sizeArr = this.addProductForm.get('sizes') as FormArray;
+    if (e.target.checked) {
+      sizeArr.push(new FormControl(e.target.value));
+    } else {
+      let i = 0;
+      sizeArr.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          sizeArr.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
   handleColorChange(e: any) {
     let colorArr = this.addProductForm.get('colors') as FormArray;
