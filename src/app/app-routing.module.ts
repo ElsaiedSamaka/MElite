@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/settings/settings.module').then((m) => m.SettingsModule),
   },
