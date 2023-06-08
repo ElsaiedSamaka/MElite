@@ -1,6 +1,6 @@
 <div class="relative group  rounded-3xl p-1 border-2 border-dashed">
   <a class="">
-  <span class="absolute left-0 z-30  px-4 py-4 rounded-full ">
+  <span class="absolute left-0 z-20  px-4 py-4 rounded-full ">
     <svg class="w-7 h-7 text-transparent hover:text-gray-500" (click)="toggleQuickViewModal(product)" fill="none"
       stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true">
@@ -19,7 +19,6 @@
   </div>
   <h4>{{product.description}}</h4>
   <div class="flex flex-row-reverse items-center justify-between gap-x-2">
-    <!-- [disabled]="checkIfCartItemExists(cartItems,product.id)" -->
     <button role="button" (click)="postCartItem(product)"
       class="w-full bg-gray-100 border px-4 py-2 rounded-full flex items-center justify-between hover:bg-gray-200 disabled:cursor-not-allowed">
       <svg class="w-5 h-5 " fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
@@ -138,41 +137,18 @@
                           Active and Checked: "ring ring-offset-1"
                           Not Active and Checked: "ring-2"
                         -->
-                      <label
-                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
-                        <input type="radio" name="color-choice" value="White" class="sr-only"
-                          aria-labelledby="color-choice-0-label">
-                        <span id="color-choice-0-label" class="sr-only">White</span>
-                        <span aria-hidden="true"
-                          class="h-8 w-8 bg-white rounded-full border border-black border-opacity-10"></span>
-                      </label>
-                      <!--
-                          Active and Checked: "ring ring-offset-1"
-                          Not Active and Checked: "ring-2"
-                        -->
-                      <label
-                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
-                        <input type="radio" name="color-choice" value="Gray" class="sr-only"
-                          aria-labelledby="color-choice-1-label">
-                        <span id="color-choice-1-label" class="sr-only">Gray</span>
-                        <span aria-hidden="true"
-                          class="h-8 w-8 bg-gray-200 rounded-full border border-black border-opacity-10"></span>
-                      </label>
-                      <!--
-                          Active and Checked: "ring ring-offset-1"
-                          Not Active and Checked: "ring-2"
-                        -->
-                      <label
-                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
-                        <input type="radio" name="color-choice" value="Black" class="sr-only"
-                          aria-labelledby="color-choice-2-label">
-                        <span id="color-choice-2-label" class="sr-only">Black</span>
-                        <span aria-hidden="true"
-                          class="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"></span>
-                      </label>
+                        <label [for]="color.name"
+                          class="group relative flex items-center justify-center cursor-pointer rounded-full ring-gray-100 ring-offset-purple-100  ring-2 "
+                          *ngFor="let color of product.colors">
+                          <input type="checkbox" [name]="color.name" [id]="color.name" [value]="color.name" (change)="handleColorChange($event)"
+                            class="sr-only">
+                          <span [ngClass]="(color.name=== 'black' || color.name=== 'black')? 'bg-'+color.name: 'bg-'+color.name+'-100'"
+                            class="h-8 w-8 rounded-full border border-black border-opacity-10"></span>
+                        </label>
                     </span>
                   </fieldset>
                 </div>
+          <p class="flex bg-gray-100">selected: {{productCardForm.get('colors')?.value|json}}</p>
 
                 <!-- Sizes -->
                 <div class="mt-10">
@@ -186,105 +162,22 @@
                     <div class="grid grid-cols-4 gap-4">
                       <!-- Active: "ring-2 ring-indigo-500" -->
                       <label
+                      [for]="size.name"
+                      *ngFor="let size of product.sizes" [for]="size.name"
                         class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="XXS" class="sr-only"
-                          aria-labelledby="size-choice-0-label">
-                        <span id="size-choice-0-label">XXS</span>
+                        <input type="checkbox" [name]="size.name" [id]="size.name" [value]="size.name" class="sr-only"
+                          (change)="handleSizeChange($event)">
+                        <span id="size-label">{{size.name}}</span>
                         <!--
                             Active: "border", Not Active: "border-2"
                             Checked: "border-indigo-500", Not Checked: "border-transparent"
                           -->
                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="XS" class="sr-only "
-                          aria-labelledby="size-choice-1-label">
-                        <span id="size-choice-1-label">XS</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="S" class="sr-only"
-                          aria-labelledby="size-choice-2-label">
-                        <span id="size-choice-2-label">S</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="M" class="sr-only"
-                          aria-labelledby="size-choice-3-label">
-                        <span id="size-choice-3-label">M</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="L" class="sr-only"
-                          aria-labelledby="size-choice-4-label">
-                        <span id="size-choice-4-label">L</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="XL" class="sr-only"
-                          aria-labelledby="size-choice-5-label">
-                        <span id="size-choice-5-label">XL</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-pointer bg-white text-gray-900 shadow-sm">
-                        <input type="radio" name="size-choice" value="XXL" class="sr-only"
-                          aria-labelledby="size-choice-6-label">
-                        <span id="size-choice-6-label">XXL</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
-                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                      </label>
-                      <!-- Active: "ring-2 ring-indigo-500" -->
-                      <label
-                        class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 cursor-not-allowed bg-gray-50 text-gray-200">
-                        <input type="radio" name="size-choice" value="XXXL" disabled class="sr-only"
-                          aria-labelledby="size-choice-7-label">
-                        <span id="size-choice-7-label">XXXL</span>
-                        <span aria-hidden="true"
-                          class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
-                          <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100"
-                            preserveAspectRatio="none" stroke="currentColor">
-                            <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
-                          </svg>
-                        </span>
                       </label>
                     </div>
                   </fieldset>
                 </div>
+          <p class="flex bg-gray-100">selected: {{productCardForm.get('sizes')?.value|json}}</p>
 
                 <button (click)="postCartItem(product)"
                   class="add-to-cart-button mt-10 flex w-full items-center justify-center rounded-3xl border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">اضافة

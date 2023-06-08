@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from 'src/core/services/cart.service';
 import { FavService } from 'src/core/services/fav.service';
 
@@ -8,7 +9,10 @@ import { FavService } from 'src/core/services/fav.service';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product: any;
+  @Input() product: any = {
+    colors: [],
+    sizes: [],
+  };
   showQuickViewModal: boolean = false;
   showToastMssg: boolean = false;
   productId: any;
@@ -19,6 +23,10 @@ export class ProductCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+  productCardForm = new FormGroup({
+    colors: new FormArray(this.product.colors, [Validators.required]),
+    sizes: new FormArray(this.product.sizes, [Validators.required]),
+  });
   postCartItem(product: any): void {
     this.product = product;
     // TODO: if the product already exist in the cart items update its quantity instead
@@ -58,7 +66,36 @@ export class ProductCardComponent implements OnInit {
       complete: () => {},
     });
   }
-
+  handleColorChange(e: any) {
+    let colorArr = this.productCardForm.get('colors') as FormArray;
+    if (e.target.checked) {
+      colorArr.push(new FormControl(e.target.value));
+    } else {
+      let i = 0;
+      colorArr.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          colorArr.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+  handleSizeChange(e: any) {
+    let sizeArr = this.productCardForm.get('sizes') as FormArray;
+    if (e.target.checked) {
+      sizeArr.push(new FormControl(e.target.value));
+    } else {
+      let i = 0;
+      sizeArr.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          sizeArr.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
   toggleQuickViewModal(product?: any) {
     this.showQuickViewModal = !this.showQuickViewModal;
     this.product = product;
