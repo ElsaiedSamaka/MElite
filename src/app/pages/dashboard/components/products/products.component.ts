@@ -15,7 +15,6 @@ export class ProductsComponent implements OnInit {
   products: any[];
   categories: any[] = [];
   colors: any[] = [];
-  colorNames: any[] = [];
   sizes: any[] = [];
   sizeName: string = 'lg';
   categoryId: string = '';
@@ -277,16 +276,14 @@ export class ProductsComponent implements OnInit {
   }
   handleColorChange(e: any) {
     let colorArr = this.addProductForm.get('colors') as FormArray;
-    
+
     if (e.target.checked) {
       colorArr.push(new FormControl(e.target.value));
-      this.colorNames.push(e.target.value);
     } else {
       let i = 0;
       colorArr.controls.forEach((item) => {
         if (item.value == e.target.value) {
           colorArr.removeAt(i);
-          this.colorNames.splice(i, 1);
           return;
         }
         i++;
