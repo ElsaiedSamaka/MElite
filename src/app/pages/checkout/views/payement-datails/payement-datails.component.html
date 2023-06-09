@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="flex items-center gap-x-3">
-      <button class="place-order-button  px-5 py-2.5 disabled:cursor-not-allowed" (click)="createOrder(cartItems)"
+      <button class="place-order-button  px-5 py-2.5 disabled:cursor-not-allowed" (click)="createOrder(latestCartItems)"
         [disabled]="cartItems.length <=0">
         تأكيد الطلب
       </button>

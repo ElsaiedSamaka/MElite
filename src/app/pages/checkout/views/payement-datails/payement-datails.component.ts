@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
@@ -6,11 +12,17 @@ import { OrdersService } from 'src/core/services/orders.service';
   templateUrl: './payement-datails.component.html',
   styleUrls: ['./payement-datails.component.css'],
 })
-export class PayementDatailsComponent implements OnInit {
+export class PayementDatailsComponent implements OnInit, OnChanges {
   @Input() cartItems: any = [];
+  latestCartItems: any[] = [];
   selectedCardID = 0;
 
   constructor(private ordersService: OrdersService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['cartItems']) {
+      this.latestCartItems = changes['cartItems'].currentValue;
+    }
+  }
 
   ngOnInit() {}
   createOrder(cartItems: any): void {
