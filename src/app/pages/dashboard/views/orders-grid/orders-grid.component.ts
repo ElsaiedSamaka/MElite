@@ -8,7 +8,6 @@ import { OrdersService } from 'src/core/services/orders.service';
 })
 export class OrdersGridComponent implements OnInit {
   orders: any[] = [];
-  productsPerOrder: any[] = [];
 
   constructor(private ordersService: OrdersService) {}
 

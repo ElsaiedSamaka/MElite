@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   ];
   selectedTabId = 2;
   orders: any[] = [];
-  productsPerOrder: any[] = [];
   totalPriceByOrder: any;
   cartItems: any[] = [];
   favProducts: any[] = [];
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit {
     this.ordersService.getOrdersOfCurrentUser().subscribe({
       next: (orders) => {
         this.orders = this.ordersService.orders$.value;
-        this.productPerOrder();
       },
       error: (err) => {
         console.log('error while retreiving user orders', err);
@@ -42,14 +40,7 @@ export class HomeComponent implements OnInit {
       complete: () => {},
     });
   }
-  productPerOrder(): void {
-    if (this.productsPerOrder.length > 0) {
-      this.productsPerOrder = this.orders?.map((order) => {
-        const products = order.products?.map((product) => product);
-        return { orderId: order.id, products };
-      });
-    }
-  }
+
   getTotalPriceByOrders(): void {
     this.totalPriceByOrder = this.orders?.map((order) => {
       const totalPrice = order.products.reduce(
