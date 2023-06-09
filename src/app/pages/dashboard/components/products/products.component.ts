@@ -21,7 +21,10 @@ export class ProductsComponent implements OnInit {
   showAddProductModal: boolean = false;
   showEditProductModal: boolean = false;
   showDeleteProductModal: boolean = false;
-  showToast: boolean = false;
+  showSucsessToast: boolean = false;
+  toastSucsessMessage: string = '';
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   productId: string = '';
   itemsToDisplay: any[] = [];
   perPage: number = 3;
@@ -178,10 +181,14 @@ export class ProductsComponent implements OnInit {
     if (this.addProductForm.invalid) return;
     this.productsService.post(model).subscribe({
       next: () => {
-        this.toggleToast();
+        this.toastSucsessMessage = 'تم انشاء المنتج بنجاح';
+        this.toggleSucsessToast();
         this.addProductForm.reset();
       },
       error: (err) => {
+        this.toastErrMessage =
+          err.message || 'عفوا , حدث خطأ اثناء انشاء المنتج';
+        this.toggleErrToast();
         console.log('err', err);
       },
       complete: () => {
@@ -200,10 +207,14 @@ export class ProductsComponent implements OnInit {
     if (this.editProductForm.invalid) return;
     this.productsService.put(this.productId, product).subscribe({
       next: () => {
-        this.toggleToast();
+        this.toastSucsessMessage = 'تم تعديل المنتج بنجاح';
+        this.toggleSucsessToast();
         this.editProductForm.reset();
       },
       error: (err) => {
+        this.toastErrMessage =
+          err.message || 'عفوا , حدث خطأ اثناء تحديث المنتج';
+        this.toggleErrToast();
         console.log('err', err);
       },
       complete: () => {
@@ -221,11 +232,14 @@ export class ProductsComponent implements OnInit {
   onDeleteProductSubmit() {
     this.productsService.deleteById(this.productId).subscribe({
       next: () => {
-        this.toggleToast();
+        this.toastSucsessMessage = 'تم حذف المنتج بنجاح';
+        this.toggleSucsessToast();
         this.toggleDeleteProductModal();
       },
       error: (err) => {
         this.toggleDeleteProductModal();
+        this.toastErrMessage = err.message || 'عفوا , حدث خطأ اثناء حذف المنتج';
+        this.toggleErrToast();
         console.log('err', err);
       },
       complete: () => {
@@ -296,11 +310,17 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  toggleToast() {
-    this.showToast = !this.showToast;
+  toggleSucsessToast() {
+    this.showSucsessToast = !this.showSucsessToast;
     setTimeout(() => {
-      this.showToast = false;
-    }, 3000);
+      this.showSucsessToast = false;
+    }, 4000);
+  }
+  toggleErrToast() {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
+    }, 4000);
   }
   toggleDeleteProductModal(product?) {
     this.showDeleteProductModal = !this.showDeleteProductModal;
