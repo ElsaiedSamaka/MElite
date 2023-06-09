@@ -26,8 +26,7 @@
       <ng-container *ngIf="orders.length > 0; else noorders">
         <tr class="border-b hover:bg-gray-50" *ngFor="let order of orders">
           <td class="w-20 p-2 flex gap-x-1">
-            <img [src]="order.products[0]?.product_img" alt="">
-            <img [src]="order.products[1]?.product_img" alt="">
+            <img *ngFor="let product of order.products" [src]="product.product_img" [alt]="product.name">
 
           </td>
           <td class="px-6 py-4 font-semibold text-gray-900 :text-white">
