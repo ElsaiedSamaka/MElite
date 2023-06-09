@@ -20,6 +20,10 @@ export class UsersComponent implements OnInit {
   showRoleDDL: boolean = false;
   showConfirmationModal: boolean = false;
   showUpdateUserModal: boolean = false;
+  showSucsessToast: boolean = false;
+  toastSucsessMessage: string = '';
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   currentPage = 1;
   totalPages: number = 0;
   perPage = 10;
@@ -77,8 +81,13 @@ export class UsersComponent implements OnInit {
       next: (res) => {
         this.editUserForm.reset();
         this.getUsers();
+        this.toastSucsessMessage = 'تم تحديث بيانات المستخدم بنجاح ';
+        this.toggleSucsessToast();
       },
       error: (err) => {
+        this.toastErrMessage =
+          err.message || 'عفوا , حدث خطأ اثناء تحديث بيانات المستخدم ';
+        this.toggleErrToast();
         console.log('err', err);
       },
       complete: () => {
@@ -98,6 +107,9 @@ export class UsersComponent implements OnInit {
         this.usersToDisplay = this.paginate(this.currentPage, this.perPage);
       },
       error: (err) => {
+        this.toastErrMessage =
+          err.message || 'خطأ غير متوفع اثناء جلب بيانات المستخدمين';
+        this.toggleErrToast();
         console.log('error', err);
       },
       complete: () => {
@@ -109,7 +121,6 @@ export class UsersComponent implements OnInit {
     this.roleId = id;
     this.usersService.getByRole(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.users = this.usersService.users$.value;
         this.usersToDisplay = this.paginate(this.currentPage, this.perPage);
       },
@@ -134,6 +145,8 @@ export class UsersComponent implements OnInit {
           this.usersToDisplay = this.usersService.users$.value;
         },
         error: (err) => {
+          this.toastErrMessage = err.message || 'خطأ غير متوقع';
+          this.toggleErrToast();
           console.log('error', err);
         },
         complete: () => {
@@ -154,8 +167,12 @@ export class UsersComponent implements OnInit {
     this.usersService.patch(id).subscribe({
       next: (res) => {
         this.getUsers();
+        this.toastSucsessMessage = 'عملية ناجحة';
+        this.toggleSucsessToast();
       },
       error: (err) => {
+        this.toastErrMessage = err.message || 'عفوا , حدث خطأ اثناء العملية ';
+        this.toggleErrToast();
         console.log('err', err);
       },
       complete: () => {
@@ -168,8 +185,14 @@ export class UsersComponent implements OnInit {
     this.usersService.deleteById(id).subscribe({
       next: (res) => {
         this.usersToDisplay = this.users.filter((user) => user.id !== res.id);
+        this.toastSucsessMessage = 'تم حذف المستخدم بنجاح';
+        this.toggleSucsessToast();
       },
       error: (err) => {
+        this.toastErrMessage =
+          err.message || 'عفوا , حدث خطأ اثناء حذف المستخدم';
+        this.toggleErrToast();
+        this.toggleConfirmationModal();
         console.log('err', err);
       },
       complete: () => {
@@ -216,6 +239,8 @@ export class UsersComponent implements OnInit {
           user = res;
         },
         error: (err) => {
+          this.toastErrMessage = err.message || 'خطأ غير متوقع';
+          this.toggleErrToast();
           console.log('err', err);
         },
         complete: () => {
@@ -231,6 +256,18 @@ export class UsersComponent implements OnInit {
         },
       });
     }
+  }
+  toggleSucsessToast() {
+    this.showSucsessToast = !this.showSucsessToast;
+    setTimeout(() => {
+      this.showSucsessToast = false;
+    }, 4000);
+  }
+  toggleErrToast() {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
+    }, 4000);
   }
   public onGoTo(page: number): void {
     this.currentPage = page;

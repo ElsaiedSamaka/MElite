@@ -300,3 +300,7 @@
     </form>
   </div>
 </app-modal>
+<!-- Toast -->
+<app-toast *ngIf="showErrToast" toastType="error" [toastMessage]="toastErrMessage"
+  (dismiss)="toggleErrToast()"></app-toast>
+<app-toast *ngIf="showSucsessToast" [toastMessage]="toastSucsessMessage" (dismiss)="toggleSucsessToast()"></app-toast>
