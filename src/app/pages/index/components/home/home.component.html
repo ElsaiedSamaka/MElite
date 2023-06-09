@@ -108,51 +108,23 @@
         <h2 class="text-2xl font-bold text-gray-900 ">مجموعات</h2>
   
         <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-          <div class="group relative">
+          <!-- category card  -->
+          <div class="group relative" *ngFor="let category of categories">
             <div
               class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg"
-                alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+              <img [src]="category.category_img" [alt]="category.name"
                 class="h-full w-full object-cover object-center">
             </div>
             <h3 class="mt-6 text-sm text-gray-500">
-              <a>
+              <a class="flex flex-row-reverse justify-between">
                 <span class="absolute inset-0"></span>
-                Mens
+              <span> {{category.name}}</span>
+              <span>منتج({{category.products.length}}) </span>
               </a>
             </h3>
-            <p class="text-base font-semibold text-gray-900">Mens and males products collection</p>
+            <p class="text-base font-semibold text-gray-900">{{category.description}}</p>
           </div>
-          <div class="group relative">
-            <div
-              class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg"
-                alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant."
-                class="h-full w-full object-cover object-center">
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a>
-                <span class="absolute inset-0"></span>
-                Womens
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">Womens and girls products collection</p>
-          </div>
-          <div class="group relative">
-            <div
-              class="relative h-80 w-full overflow-hidden rounded-3xl bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-              <img src="https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg"
-                alt="Collection of four insulated travel bottles on wooden shelf."
-                class="h-full w-full object-cover object-center">
-            </div>
-            <h3 class="mt-6 text-sm text-gray-500">
-              <a>
-                <span class="absolute inset-0"></span>
-                Kids
-              </a>
-            </h3>
-            <p class="text-base font-semibold text-gray-900">Kids products collection</p>
-          </div>
+          <!-- category card  -->
         </div>
       </div>
     </div>
