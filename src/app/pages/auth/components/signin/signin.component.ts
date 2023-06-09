@@ -12,7 +12,9 @@ import { AuthService } from 'src/core/services/auth.service';
 export class SigninComponent implements OnInit {
   loading$;
   showPassword: boolean = false;
-  showToastMssg: boolean = false;
+  showToast: boolean = false;
+  toastMessage: string = '';
+
   authForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -45,11 +47,15 @@ export class SigninComponent implements OnInit {
         error: (err) => {
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
+            this.toastMessage = ' عفوا, يرجى التحقق من اتصال الانترنت';
           } else if (err.message) {
             this.authForm.setErrors({ credentials: true });
+            this.toastMessage = ' البريد الالكتروني او كلمة المرور غير صحيحة';
           } else {
             this.authForm.setErrors({ unknownError: true });
+            this.toastMessage = ' خطأ غير متوقع';
           }
+          this.toggleToast();
         },
         complete: () => {
           this.router.navigateByUrl('/index');
@@ -59,5 +65,8 @@ export class SigninComponent implements OnInit {
   }
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+  toggleToast() {
+    this.showToast = !this.showToast;
   }
 }

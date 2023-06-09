@@ -106,17 +106,7 @@
               </span>
             </label>
           </div>
-          <div *ngIf="authForm.errors" class="col-span-6">
-            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors.credentials">
-              البريد الالكتروني او كلمة المرور غير صحيحة
-            </p>
-            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['noConnection']">
-              عفوا, يرجى التحقق من اتصال الانترنت
-            </p>
-            <p class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="authForm.errors['unknownError']">
-              خطأ غير متوقع
-            </p>
-          </div>
+          
           <div class="col-span-6">
             <button
               class="signin-button inline-block w-full shrink-0 rounded-md border border-green-600 bg-gradient-to-bl from-green-300 to-green-900  px-12 py-3 text-sm font-semibold text-white hover:text-gray-50 focus:outline-none active:text-white disabled:cursor-not-allowed"
@@ -139,3 +129,5 @@
     </main>
   </div>
   </section>
+<!-- Toast -->
+<app-toast *ngIf="showToast" toastType="error" [toastMessage]="toastMessage" (dismiss)="toggleToast()"></app-toast>
