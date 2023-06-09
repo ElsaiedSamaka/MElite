@@ -5,37 +5,46 @@
     <span class="mx-1 text-red-400">خدمة الدفع غير مدعومة بعد</span>
   </h3>
   <div class="grid grid-cols-3 gap-4  p-2">
-  <div class="col-span-3 lg:col-span-2 rounded-3xl ">
+  <div class="col-span-3 lg:col-span-2 rounded-3xl border-2 border-dashed p-2 bg-blue-200">
+    <p class="text-gray-700">عنوان الشحن </p>
     <div class="grid gap-4 mb-4 sm:grid-cols-2">
   
       <div>
-        <label for="card_num" class="block mb-2 text-sm font-medium text-gray-900 :text-white">* Card
-          No.</label>
-        <input type="number" name="card_num" id="card_num"
+        <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">
+          <span>*</span>
+          <span>مدينة</span>
+        </label>
+        <input type="number"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-          placeholder="name@company.com">
+          >
       </div>
       <div>
-        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 :text-white">*(Full name as
-          displayed
-          on card)</label>
-        <input type="text" name="username" id="username"
+        <label for="governorate" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
+          <span>*</span>
+          <span>محافظة</span>
+        </label>
+        <input type=""
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-          placeholder="ُYour Name On Credit Card">
+          >
       </div>
   
       <div>
-        <label for="Expiry-date" class="block mb-2 text-sm font-medium text-gray-900 =">Expiry date
+        <label for="street" class="block mb-2 text-sm font-medium text-gray-900 ">
+          <span>*</span>
+          <span>شارع</span>
         </label>
-        <input type="date" name="Expiry-date" id="Expiry-date"
+        <input name="street" id="street"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-          placeholder="12/24">
+          >
       </div>
       <div>
-        <label for="cvc" class="block mb-2 text-sm font-medium text-gray-900 :text-white">* CVC </label>
-        <input type="password" name="cvc" id="cvc"
+        <label for="neighborhood" class="block mb-2 text-sm font-medium text-gray-900 ">
+          <span>*</span>
+          <span>حي</span>
+        </label>
+        <input type="text"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500"
-          placeholder="••••">
+          >
       </div>
     </div>
     <div class="flex items-center gap-x-3">
@@ -118,9 +127,9 @@
             </button>
     </div>
     </div>
-    <div class="col-span-3 lg:col-span-1 rounded-3xl">
+    <div class="col-span-3 lg:col-span-1 rounded-3xl border-2 border-dashed p-2">
       <p class="text-gray-700">استخدم احدى البطاقات المحفوظة</p>
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center mt-4">
         <div (click)="onCardSelect(1)"
           [ngClass]="selectedCardID ===1?'transition-transform transform scale-110 border border-blue-300':''"
           class="w-56 h-36 m-auto  rounded-xl relative text-white  transition-transform transform hover:scale-110">
