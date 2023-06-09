@@ -78,7 +78,7 @@
           </div>
           <div class="col-span-6">
             <app-input [control]="authForm.get('password')" placeholder="********" [type]="showPassword ? 'text':'password'"
-              label="كلمة المرور" minlength="8" maxlength="18" required="true" pattern=".{8,}" title="8 حروف او اكثر">
+              label="كلمة المرور" minlength="8" maxlength="18" required="true"  title="8 حروف او اكثر">
               <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
                 stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                 (click)="togglePassword()" *ngIf="!showPassword" input-icon>
