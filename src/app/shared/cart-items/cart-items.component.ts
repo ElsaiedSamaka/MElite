@@ -11,12 +11,14 @@ export class CartItemsComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.getCartItems();
+      this.cartItems = this.cartService.items$.value;
+      console.log('cartItems [cart-itemscomponent]', this.cartItems);
   }
   getCartItems(): void {
     this.cartService.getUserCarts().subscribe({
       next: (cartItems) => {
         this.cartItems = this.cartService.items$.value;
+        console.log('cartItems [cart-itemscomponent]', this.cartItems);
       },
       error: (err) => {
         console.log('error while returning cart item', err);
@@ -48,10 +50,12 @@ export class CartItemsComponent implements OnInit {
     const updatedCartItem = {
       ...cartItem,
       quantity: cartItem.quantity + 1,
+      price: cartItem.price * (cartItem.quantity + 1),
     };
+    console.log('updatedCartItem', updatedCartItem);
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
-        this.getCartItems();
+        this.cartItems = this.cartService.items$.value;
       },
       error: (err) => {
         console.log('error while updateCartItem', err);
@@ -63,10 +67,13 @@ export class CartItemsComponent implements OnInit {
     const updatedCartItem = {
       ...cartItem,
       quantity: cartItem.quantity - 1,
+      price: cartItem.price * (cartItem.quantity - 1),
     };
+    console.log('updatedCartItem', updatedCartItem);
+
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
-         this.getCartItems();
+        this.cartItems = this.cartService.items$.value;
       },
       error: (err) => {
         console.log('error while updateCartItem', err);

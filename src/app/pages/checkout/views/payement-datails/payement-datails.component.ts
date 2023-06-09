@@ -1,10 +1,5 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/core/services/cart.service';
 import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
@@ -12,19 +7,20 @@ import { OrdersService } from 'src/core/services/orders.service';
   templateUrl: './payement-datails.component.html',
   styleUrls: ['./payement-datails.component.css'],
 })
-export class PayementDatailsComponent implements OnInit, OnChanges {
-  @Input() cartItems: any = [];
+export class PayementDatailsComponent implements OnInit {
+  cartItems: any = [];
   latestCartItems: any[] = [];
   selectedCardID = 0;
 
-  constructor(private ordersService: OrdersService) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['cartItems']) {
-      this.latestCartItems = changes['cartItems'].currentValue;
-    }
-  }
+  constructor(
+    private ordersService: OrdersService,
+    private cartService: CartService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartItems = this.cartService.items$.value;
+    console.log('payement-datails [cartItems]', this.cartItems);
+  }
   createOrder(cartItems: any): void {
     let order = cartItems.map((item) => {
       return {
@@ -33,8 +29,7 @@ export class PayementDatailsComponent implements OnInit, OnChanges {
         userId: item.userId,
         productIds: item.productId,
         quantity: item.quantity,
-        // TODO: make sure that the backend is setuped for this else remove it
-        price: item.product.price,
+        price: item.price,
       };
     });
     this.ordersService.post(order).subscribe({
