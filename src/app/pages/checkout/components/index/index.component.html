@@ -2,7 +2,7 @@
 <section class="mx-5 rounded-3xl mt-24 border-2 border-dashed border-gray-200">
   <div class="antialiased bg-gray-50 rounded-3xl">
     <main class="p-4  h-auto pt-20 relative">
-        <!-- animated blured divs -->
+      <!-- animated blured divs -->
       <div
         class="absolute top-[50%]  right-[5%] w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
       </div>
@@ -12,44 +12,84 @@
       <div
         class="absolute bottom-[4%] right-[4%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
       </div>
-        <!-- animated blured divs -->
+      <!-- animated blured divs -->
       <div class="grid grid-cols-3 gap-4 mb-4">
         <app-user-card class="col-span-full md:col-span-1"></app-user-card>
         <div class="col-span-3 min-h-full rounded-3xl border-gray-300  sm:col-span-2">
 
-        <!-- Cart Items -->
-        <app-cart-items></app-cart-items>
-        <!-- Cart Items -->
+          <!-- Cart Items -->
+          <app-cart-items></app-cart-items>
+          <!-- Cart Items -->
         </div>
       </div>
       <!-- Payement Datails Component -->
-      <app-payement-datails ></app-payement-datails>
+      <app-payement-datails></app-payement-datails>
       <!-- Payement Datails Component -->
-                </main>
-                </div>
-                </section>
-                <!-- Modals -->
-                <app-confirm-modal *ngIf="showConfirmationModal" (dismiss)="toggleConfirmationModal()">
-                  <div modal-header>
-                  </div>
-                  <div class="p-6 text-center" modal-body>
-                    <svg class="mx-auto mb-4 text-green-400 w-14 h-14 " fill="none" stroke="currentColor" stroke-width="1.5"
-                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z">
-                      </path>
-                    </svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 ">تم تأكيد طلب المنتجات بنجاح 🎉</h3>
-                  </div>
-                  <div modal-footer>
-                    <div class="flex p-5">
-                      <a routerLink="/index" role="button" (click)="toggleConfirmationModal()"
-                        class="mx-0.5 bg-gradient-to-bl from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br">
-                        عودة للرئيسية
-                      </a>
-                      <a routerLink="/profile" role="button" (click)="toggleConfirmationModal()"
-                        class="mx-0.5 bg-gradient-to-bl from-red-400 to-red-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br">متابعة
-                        طلباتي</a>
-                    </div>
-                  </div>
-                </app-confirm-modal>
+      <!-- Stepper Component -->
+      <div class="text-center rounded-3xl my-24 border-2 border-dashed border-gray-200">
+        <h1>Test Stepper</h1>
+        <ol
+          class="inline-flex flex-row-reverse justify-center items-center  p-3 my-2 space-x-2 text-sm font-medium text-center text-gray-500   rounded-3xl  sm:p-4 sm:space-x-4">
+          <li class="flex flex-row-reverse items-center text-blue-600 ">
+            <span class="flex items-center justify-center w-5 h-5 ml-2 text-xs border border-blue-600 rounded-full shrink-0 ">
+              1
+            </span>
+            بيانات <span class=" sm:inline-flex sm:ml-2">الدفع</span>
+      
+            <svg class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5">
+              </path>
+            </svg>
+          </li>
+          <li class="flex flex-row-reverse items-center">
+            <span
+              class="flex items-center justify-center w-5 h-5 ml-2 text-xs border border-gray-500 rounded-full shrink-0 :border-gray-400">
+              2
+            </span>
+            بيانات <span class="hidden sm:inline-flex sm:ml-2">الشحن</span>
+            <svg class="w-4 h-4 ml-2 sm:ml-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5">
+              </path>
+            </svg>
+          </li>
+          <li class="flex flex-row-reverse items-center">
+            <span
+              class="flex items-center justify-center w-5 h-5 ml-2 text-xs border border-gray-500 rounded-full shrink-0 :border-gray-400">
+              3
+            </span>
+            مراجعة الطلب
+          </li>
+        </ol>
+      
+      </div>
+      <!-- Stepper Component -->
+    </main>
+    </div>
+    </section>
+    <!-- Modals -->
+    <app-confirm-modal *ngIf="showConfirmationModal" (dismiss)="toggleConfirmationModal()">
+      <div modal-header>
+      </div>
+      <div class="p-6 text-center" modal-body>
+        <svg class="mx-auto mb-4 text-green-400 w-14 h-14 " fill="none" stroke="currentColor" stroke-width="1.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z">
+          </path>
+        </svg>
+        <h3 class="mb-5 text-lg font-normal text-gray-500 ">تم تأكيد طلب المنتجات بنجاح 🎉</h3>
+      </div>
+      <div modal-footer>
+        <div class="flex p-5">
+          <a routerLink="/index" role="button" (click)="toggleConfirmationModal()"
+            class="mx-0.5 bg-gradient-to-bl from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br">
+            عودة للرئيسية
+          </a>
+          <a routerLink="/profile" role="button" (click)="toggleConfirmationModal()"
+            class="mx-0.5 bg-gradient-to-bl from-red-400 to-red-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br">متابعة
+            طلباتي</a>
+        </div>
+      </div>
+    </app-confirm-modal>
