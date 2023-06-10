@@ -58,7 +58,9 @@ export class ProductsComponent implements OnInit {
         this.totalItems = res['totalItems'];
         this.totalPages = res['totalPages'];
         this.currentPage = res['currentPage'];
-        this.itemsToDisplay = this.products.slice(0, this.perPage).sort((a,b)=> b.id-a.id);
+        this.itemsToDisplay = this.products
+          .slice(0, this.perPage)
+          .sort((a, b) => b.id - a.id);
       });
   }
   getCategories(): void {
@@ -141,7 +143,6 @@ export class ProductsComponent implements OnInit {
     stock: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(2000)]),
-    product_img: new FormControl([Validators.required]),
   });
   showOnlyForm = new FormGroup({
     available: new FormControl('All'),
