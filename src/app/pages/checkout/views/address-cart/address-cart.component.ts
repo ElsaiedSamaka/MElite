@@ -30,11 +30,13 @@ export class AddressCartComponent implements OnInit {
     }
     this.addressService.post(this.addressForm.value).subscribe({
       next: (address) => {
-        this.isAddressFormSubmitted = true;
+        this.userAddress = address;
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
         this.toggleSucsessToast();
       },
       error: (err) => {
+        this.isAddressFormSubmitted = true;
+
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
         this.toggleErrToast();
       },

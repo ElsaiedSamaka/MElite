@@ -269,7 +269,7 @@ export class ProductsComponent implements OnInit {
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
-  toggleEditProductModal(product:any) {
+  toggleEditProductModal(product: any) {
     this.getCategories();
     this.showEditProductModal = !this.showEditProductModal;
     if (product) {
@@ -337,7 +337,13 @@ export class ProductsComponent implements OnInit {
     this.perPage = e.target.value;
     this.getProducts(this.currentPage, this.perPage, this.available);
   }
+  onPaste(event: ClipboardEvent) {
+    event.preventDefault();
+  }
 
+  onCopy(event: ClipboardEvent) {
+    event.preventDefault();
+  }
   public onNext(): void {
     if (this.currentPage === this.totalPages) return;
     if (this.currentPage < this.totalPages) {
