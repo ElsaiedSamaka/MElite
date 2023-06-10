@@ -9,7 +9,7 @@ import { OrdersService } from 'src/core/services/orders.service';
 })
 export class PayementDatailsComponent implements OnInit {
   cartItems: any = [];
-  latestCartItems: any[] = [];
+
   selectedCardID = 0;
 
   constructor(

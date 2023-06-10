@@ -11,14 +11,17 @@ export class CartItemsComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-      this.cartItems = this.cartService.items$.value;
-      console.log('cartItems [cart-itemscomponent]', this.cartItems);
+    this.cartItems = this.cartService.items$.value;
+    console.log('cartItems (oninit) [cart-itemscomponent]', this.cartItems);
   }
   getCartItems(): void {
     this.cartService.getUserCarts().subscribe({
       next: (cartItems) => {
         this.cartItems = this.cartService.items$.value;
-        console.log('cartItems [cart-itemscomponent]', this.cartItems);
+        console.log(
+          'cartItems (getCartItems) [cart-itemscomponent]',
+          this.cartItems
+        );
       },
       error: (err) => {
         console.log('error while returning cart item', err);
@@ -50,9 +53,8 @@ export class CartItemsComponent implements OnInit {
     const updatedCartItem = {
       ...cartItem,
       quantity: cartItem.quantity + 1,
-      price: cartItem.price * (cartItem.quantity + 1),
+      price: cartItem.product.price * cartItem.quantity,
     };
-    console.log('updatedCartItem', updatedCartItem);
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
         this.cartItems = this.cartService.items$.value;
@@ -67,9 +69,8 @@ export class CartItemsComponent implements OnInit {
     const updatedCartItem = {
       ...cartItem,
       quantity: cartItem.quantity - 1,
-      price: cartItem.price * (cartItem.quantity - 1),
+      price: cartItem.price - cartItem.product.price,
     };
-    console.log('updatedCartItem', updatedCartItem);
 
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
