@@ -1,6 +1,6 @@
 <div class="col-span-3 lg:col-span-2 rounded-3xl border-2 border-dashed p-2 ">
   <p class="text-gray-700">عنوان الشحن </p>
-  <ng-container *ngIf="!isAddressFormSubmitted; else not">
+  <ng-container>
     <form [formGroup]="addressForm" (ngSubmit)="onSubmit()"
     class="grid gap-4 mb-4 sm:grid-cols-2">
     <div>
@@ -53,54 +53,6 @@
   <!-- Actions  -->
   </form>
   </ng-container>
-  <ng-template #not>
-    <div class="grid gap-4 mb-4 sm:grid-cols-2">
-  <div>
-    <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">
-      <span>*</span>
-      <span>مدينة</span>
-    </label>
-    <label formControlName="city" type="text" name="city" id="city"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
-      {{userAddress.city}}
-    </label>
-  </div>
-  <div>
-    <label for="state" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
-      <span>*</span>
-      <span>محافظة</span>
-    </label>
-    <label formControlName="state" type="text" name="state" id="state"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
-    {{userAddress.state}}
-    </label>
-  </div>
-
-  <div>
-    <label for="street" class="block mb-2 text-sm font-medium text-gray-900 ">
-      <span>*</span>
-      <span>شارع</span>
-    </label>
-    <label formControlName="street" type="text" name="street" id="street"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
-    {{userAddress.street}}
-    </label>
-  </div>
-  <div>
-    <label for="neighborhood" class="block mb-2 text-sm font-medium text-gray-900 ">
-      <span>*</span>
-      <span>حي</span>
-    </label>
-    <label formControlName="neighborhood" type="text" name="neighborhood" id="neighborhood"
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
-    {{userAddress.neighborhood}}
-    </label>
-  </div>
-  <!-- Actions  -->
-
-  <!-- Actions  -->
-  </div></ng-template>
-
 </div>
 <!-- Toast -->
 <app-toast *ngIf="showErrToast" toastType="error" [toastMessage]="toastErrMessage"
