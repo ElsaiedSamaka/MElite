@@ -9,7 +9,7 @@ import { ViewsModule } from './views/views.module';
 @NgModule({
   imports: [
     CheckoutRoutingModule,
-    ReactiveFormsModule,
+    
     CommonModule,
     ViewsModule,
     SharedModule,

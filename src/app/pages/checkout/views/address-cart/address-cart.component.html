@@ -1,21 +1,20 @@
 <div class="col-span-3 lg:col-span-2 rounded-3xl border-2 border-dashed p-2 ">
   <p class="text-gray-700">عنوان الشحن </p>
-  <div class="grid gap-4 mb-4 sm:grid-cols-2">
-
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="grid gap-4 mb-4 sm:grid-cols-2">
     <div>
       <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">
         <span>*</span>
         <span>مدينة</span>
       </label>
-      <input type="number"
+      <input formControlName="city" type="text" name="city" id="city"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
     <div>
-      <label for="governorate" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
+      <label for="state" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
         <span>*</span>
         <span>محافظة</span>
       </label>
-      <input type=""
+      <input formControlName="state" type="text" name="state" id="state"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
 
@@ -24,7 +23,7 @@
         <span>*</span>
         <span>شارع</span>
       </label>
-      <input name="street" id="street"
+      <input formControlName="street" type="text" name="street" id="street"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
     <div>
@@ -32,15 +31,14 @@
         <span>*</span>
         <span>حي</span>
       </label>
-      <input type="text"
+      <input formControlName="neighborhood" type="text" name="neighborhood" id="neighborhood"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
-  </div>
   <!-- Actions  -->
   <div class="flex items-center gap-x-3">
-    <button
+    <button type="submit"
       class="mx-0.5 bg-gradient-to-bl from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br"
-      (click)="true">
+      >
       حفظ البيانات
     </button>
     <button
@@ -50,4 +48,6 @@
     </button>
   </div>
   <!-- Actions  -->
+  </form>
+
 </div>
