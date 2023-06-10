@@ -30,6 +30,7 @@ export class AddressCartComponent implements OnInit {
     }
     this.addressService.post(this.addressForm.value).subscribe({
       next: (address) => {
+        this.isAddressFormSubmitted = true;
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
         this.toggleSucsessToast();
       },
@@ -37,9 +38,7 @@ export class AddressCartComponent implements OnInit {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
         this.toggleErrToast();
       },
-      complete: () => {
-        this.isAddressFormSubmitted = true;
-      },
+      complete: () => {},
     });
   }
   getUserAddress(): void {
