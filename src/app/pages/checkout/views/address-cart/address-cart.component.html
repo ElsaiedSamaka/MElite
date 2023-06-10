@@ -43,7 +43,7 @@
     </button>
     <button
       class="mx-0.5 bg-gradient-to-bl from-red-400 to-red-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br"
-      (click)="true">
+      (click)="resetForm()">
       افراغ البيانات
     </button>
   </div>
@@ -51,3 +51,7 @@
   </form>
 
 </div>
+<!-- Toast -->
+<app-toast *ngIf="showErrToast" toastType="error" [toastMessage]="toastErrMessage"
+  (dismiss)="toggleErrToast()"></app-toast>
+<app-toast *ngIf="showSucsessToast" [toastMessage]="toastSucsessMessage" (dismiss)="toggleSucsessToast()"></app-toast>

@@ -9,6 +9,10 @@ import { AddressService } from 'src/core/services/address.service';
 })
 export class AddressCartComponent implements OnInit {
   userAddress: any;
+  showSucsessToast: boolean = false;
+  toastSucsessMessage: string = '';
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   constructor(private addressService: AddressService) {}
 
   ngOnInit() {}
@@ -23,17 +27,43 @@ export class AddressCartComponent implements OnInit {
       return;
     }
     this.addressService.post(this.addressForm.value).subscribe({
-      next: (address) => console.log(address),
-      error: (err) => console.log(err),
+      next: (address) => {
+        this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
+        this.toggleSucsessToast();
+      },
+      error: (err) => {
+        this.toastErrMessage = err.message || 'خطأ غير متوقع';
+        this.toggleErrToast();
+      },
       complete: () => console.log('complete'),
     });
     console.log(this.addressForm.value);
   }
   getUserAddress(): void {
     this.addressService.get().subscribe({
-      next: (address) => (this.userAddress = address),
-      error: (err) => console.log(err),
+      next: (address) => {
+        this.userAddress = address;
+      },
+      error: (err) => {
+        this.toastErrMessage = err.message || 'خطأ غير متوقع';
+        this.toggleErrToast();
+      },
       complete: () => console.log('complete'),
     });
+  }
+  resetForm() {
+    this.addressForm.reset();
+  }
+  toggleSucsessToast() {
+    this.showSucsessToast = !this.showSucsessToast;
+    setTimeout(() => {
+      this.showSucsessToast = false;
+    }, 4000);
+  }
+  toggleErrToast() {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
+    }, 4000);
   }
 }
