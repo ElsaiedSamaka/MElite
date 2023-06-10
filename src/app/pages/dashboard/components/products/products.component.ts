@@ -223,7 +223,7 @@ export class ProductsComponent implements OnInit {
         console.log('err', err);
       },
       complete: () => {
-        this.toggleEditProductModal();
+        this.toggleEditProductModal(product);
       },
     });
   }
@@ -269,7 +269,7 @@ export class ProductsComponent implements OnInit {
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
-  toggleEditProductModal(product?) {
+  toggleEditProductModal(product:any) {
     this.getCategories();
     this.showEditProductModal = !this.showEditProductModal;
     if (product) {
