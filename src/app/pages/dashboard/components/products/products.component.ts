@@ -58,7 +58,7 @@ export class ProductsComponent implements OnInit {
         this.totalItems = res['totalItems'];
         this.totalPages = res['totalPages'];
         this.currentPage = res['currentPage'];
-        this.itemsToDisplay = this.products.slice(0, this.perPage);
+        this.itemsToDisplay = this.products.slice(0, this.perPage).sort((a,b)=> b.id-a.id);
       });
   }
   getCategories(): void {
@@ -192,6 +192,10 @@ export class ProductsComponent implements OnInit {
         console.log('err', err);
       },
       complete: () => {
+        this.products = this.productsService.products$.value;
+        this.itemsToDisplay = this.products
+          .slice(0, this.perPage)
+          .sort((a, b) => b.id - a.id);
         this.toggleAddProductModal();
       },
     });
