@@ -1,6 +1,8 @@
-<div class=" border-2 border-dashed rounded-3xl border-gray-300 w-full col-span-full md:col-span-1 min-h-full">
-  <a class="flex flex-col items-center  rounded-3xl  md:flex-row min-h-full ">
-    <img class="object-cover w-full rounded-t-lg  md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="" alt="">
+<div class=" border-2 border-dashed rounded-3xl border-gray-300 w-full  min-h-full">
+  <a class="flex flex-col items-center  rounded-3xl  min-h-full ">
+    <img class="object-cover  rounded-t-lg  md:h-48 md:w-48 md:rounded-none md:rounded-l-lg"
+      [src]="user.user_img?user.user_img:'https://res.cloudinary.com/dwi0qvtbe/image/upload/v1686396538/users/%D8%B9%D8%A7%D8%AF%D9%84_%D8%A7%D9%85%D8%A7%D9%85_bjvrmb.jpg'"
+      [alt]="user.username">
     <div class="flex flex-col justify-between p-4 leading-normal text-left">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
         {{user?
