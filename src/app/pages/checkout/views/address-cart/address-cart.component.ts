@@ -13,6 +13,8 @@ export class AddressCartComponent implements OnInit {
   toastSucsessMessage: string = '';
   showErrToast: boolean = false;
   toastErrMessage: string = '';
+  isAddressFormSubmitted: boolean = false;
+
   constructor(private addressService: AddressService) {}
 
   ngOnInit() {}
@@ -35,7 +37,9 @@ export class AddressCartComponent implements OnInit {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
         this.toggleErrToast();
       },
-      complete: () => console.log('complete'),
+      complete: () => {
+        this.isAddressFormSubmitted = true;
+      },
     });
   }
   getUserAddress(): void {
