@@ -37,7 +37,6 @@ export class AddressCartComponent implements OnInit {
       },
       complete: () => console.log('complete'),
     });
-    console.log(this.addressForm.value);
   }
   getUserAddress(): void {
     this.addressService.get().subscribe({
