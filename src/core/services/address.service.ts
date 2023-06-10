@@ -8,6 +8,14 @@ import { ApiService } from './api.service';
 export class AddressService {
   address$ = new BehaviorSubject<any>(null);
   constructor(private apiService: ApiService) {}
+
+  get(): Observable<any> {
+    return this.apiService.get('/api/address/user-address').pipe(
+      tap((addresses) => {
+        this.address$.value.push(addresses[length - 1]);
+      })
+    );
+  }
   post(address: any): Observable<any> {
     return this.apiService.post('/api/address', address).pipe(
       tap((addedAddress) => {
