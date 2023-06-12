@@ -222,23 +222,23 @@
       <div
         class="p-5 mt-4 border-2 border-gray-200 border-dashed border-b-0 w-full h-full grid grid-rows-2 grid-cols-4 gap-2 justify-end rounded-t-3xl">
         <div class="flex flex-col col-span-2">
-          <label class="text-sm font-semibold text-gray-900 mb-2">الاسم الاخير</label>
-          <input formControlName="lastname" class="border border-gray-300 rounded-3xl p-2 text-right" />
+          <app-input [control]="editUserForm.get('lastname')" type="text" label="* الاسم الاخير" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
         <div class="flex flex-col col-span-2">
-          <label class="text-sm font-semibold text-gray-900 mb-2">الاسم الاول</label>
-          <input formControlName="firstname" class="border border-gray-300 rounded-3xl p-2 text-right" />
+          <app-input [control]="editUserForm.get('firstname')" type="text" label="* الاسم الاول" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
         <div class="flex flex-col col-span-2">
-          <label class="text-sm font-semibold text-gray-900 mb-2">البريد الالكتروني</label>
-          <input formControlName="email" class="border border-gray-300 rounded-3xl p-2 text-right" />
+          <app-input [control]="editUserForm.get('email')" type="email" label="* البريد الالكتروني" maxlength="20"
+            autofocus="true" required="true"></app-input>
         </div>
         <div class="flex col-span-2">
           <div class="flex flex-col w-full">
-          <label class="text-sm font-semibold text-gray-900 mb-2">رقم الجوال</label>
-          <input formControlName="phonenumber" class="border border-gray-300 rounded-3xl p-2 text-right" />
+          <app-input [control]="editUserForm.get('phonenumber')" type="tel" label="* رقم الجوال" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
-        <div class=" mt-8 ">
+        <div class=" mt-6">
           <!-- TODO: make sure that countrycode are loaded from the server -->
           <select formControlName="countrycode" name="countrycode" id="countrycode"
             class="border border-gray-300 rounded-3xl p-2 mx-1 w-12">
@@ -279,9 +279,7 @@
                   </li>
                 </ul>
               </div>
-              <!-- <select formControlName="role" name="role" id="role" class="border border-gray-300 rounded-3xl p-2">
-              <option [value]="role.id" *ngFor="let role of roles">{{role.name}}</option>
-            </select> -->
+            
           </div>
       </div>
       <div class="flex flex-col p-2 border-2 border-gray-200 border-dashed border-t-0 w-full h-full rounded-b-3xl">
