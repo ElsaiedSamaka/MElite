@@ -14,4 +14,10 @@ export class IndexComponent implements OnInit {
   toggleConfirmationModal(): void {
     this.showConfirmationModal = !this.showConfirmationModal;
   }
+  nextStep(e: any) {
+    console.log('e', e);
+  }
+  prevStep(e: any) {
+    console.log('e', e);
+  }
 }

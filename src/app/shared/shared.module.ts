@@ -13,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
+import { StepperComponent } from './stepper/stepper.component';
 import { ToastComponent } from './toast/toast.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
@@ -32,6 +33,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     CartComponent,
     CartItemsComponent,
     UserCardComponent,
+    StepperComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -47,6 +49,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     CartComponent,
     CartItemsComponent,
     UserCardComponent,
+    StepperComponent,
   ],
 })
 export class SharedModule {}
