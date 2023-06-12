@@ -100,6 +100,7 @@
               <th scope="col" class="px-4 py-3">الفئة</th>
               <th scope="col" class="px-4 py-3">العدد بالمخزن</th>
               <th scope="col" class="px-4 py-3">متاح</th>
+              <th scope="col" class="px-4 py-3">الالوان </th>
               <th scope="col" class="px-4 py-3">وصف المنتج</th>
               <th scope="col" class="px-4 py-3">السعر
                 <svg [appSort]="itemsToDisplay" data-order="asc" data-name="price" xmlns="http://www.w3.org/2000/svg"
@@ -123,6 +124,11 @@
                 <td class="px-4 py-3">{{product.category.name}}</td>
                 <td class="px-4 py-3">{{product.stock}}</td>
                 <td class="px-4 py-3">{{product.availability}}</td>
+                <td class="px-4 py-3 ">
+                  <span *ngFor="let color of product.colors"
+                    [ngClass]="(color.name=== 'black' || color.name=== 'black')? 'bg-'+color.name: 'bg-'+color.name+'-100'"
+                    class="h-8 w-8 inline-flex mx-1 rounded-full border border-black border-opacity-10"></span>
+                </td>
                 <td class="px-4 py-3">{{product.description}}</td>
                 <td class="px-4 py-3">${{product.price}}</td>
                 <!-- Actions  -->

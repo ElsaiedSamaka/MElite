@@ -42,7 +42,11 @@ export class ProductsService {
     return this.apiService.delete(`/api/products/${id}`);
   }
   post(product: any): Observable<any> {
-    return this.apiService.post('/api/products', product);
+    return this.apiService.post('/api/products', product).pipe(
+      tap((newProduct) => {
+        this.products$.value.push(newProduct);
+      })
+    );
   }
   put(id: string, product: any): Observable<any> {
     return this.apiService.put(`/api/products/${id}`, product);

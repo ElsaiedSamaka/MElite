@@ -182,6 +182,8 @@ export class ProductsComponent implements OnInit {
     if (this.addProductForm.invalid) return;
     this.productsService.post(model).subscribe({
       next: () => {
+        this.products = this.productsService.products$.value;
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
         this.toastSucsessMessage = 'تم انشاء المنتج بنجاح';
         this.toggleSucsessToast();
         this.addProductForm.reset();
@@ -269,7 +271,7 @@ export class ProductsComponent implements OnInit {
     }
     this.showAddProductModal = !this.showAddProductModal;
   }
-  toggleEditProductModal(product: any) {
+  toggleEditProductModal(product?: any) {
     this.getCategories();
     this.showEditProductModal = !this.showEditProductModal;
     if (product) {
