@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ViewsModule } from '../pages/checkout/views/views.module';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
 import { CartComponent } from './cart/cart.component';
@@ -14,12 +13,11 @@ import { ModalComponent } from './modal/modal.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { SortIconComponent } from './sort-icon/sort-icon.component';
-import { StepperComponent } from './stepper/stepper.component';
 import { ToastComponent } from './toast/toast.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
-  imports: [CommonModule, ViewsModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   declarations: [
     BreadcrumbComponent,
     InputComponent,
@@ -34,7 +32,6 @@ import { UserCardComponent } from './user-card/user-card.component';
     CartComponent,
     CartItemsComponent,
     UserCardComponent,
-    StepperComponent,
   ],
   exports: [
     BreadcrumbComponent,
@@ -50,7 +47,6 @@ import { UserCardComponent } from './user-card/user-card.component';
     CartComponent,
     CartItemsComponent,
     UserCardComponent,
-    StepperComponent,
   ],
 })
 export class SharedModule {}

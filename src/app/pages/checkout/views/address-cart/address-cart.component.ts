@@ -13,11 +13,13 @@ export class AddressCartComponent implements OnInit {
   toastSucsessMessage: string = '';
   showErrToast: boolean = false;
   toastErrMessage: string = '';
-  isSubmitted: boolean = false;
+  isSubmitted: boolean = true;
 
   constructor(private addressService: AddressService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isSubmitted = false;
+  }
   addressForm = new FormGroup({
     state: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
@@ -29,8 +31,7 @@ export class AddressCartComponent implements OnInit {
       return;
     }
     this.addressService.post(this.addressForm.value).subscribe({
-      next: (address) => {
-        this.userAddress = address;
+      next: () => {
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
         this.toggleSucsessToast();
         this.isSubmitted = true;
@@ -44,9 +45,7 @@ export class AddressCartComponent implements OnInit {
   }
   getUserAddress(): void {
     this.addressService.get().subscribe({
-      next: (address) => {
-        this.userAddress = address;
-      },
+      next: () => {},
       error: (err) => {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
         this.toggleErrToast();
