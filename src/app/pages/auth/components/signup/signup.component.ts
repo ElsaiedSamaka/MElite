@@ -103,5 +103,8 @@ export class SignupComponent implements OnInit {
   }
   toggleToast() {
     this.showToast = !this.showToast;
+     setTimeout(() => {
+       this.showToast = false;
+     }, 4000);
   }
 }

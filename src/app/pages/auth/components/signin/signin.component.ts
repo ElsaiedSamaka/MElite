@@ -48,9 +48,12 @@ export class SigninComponent implements OnInit {
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
             this.toastMessage = ' عفوا, يرجى التحقق من اتصال الانترنت';
-          } else if (err.message) {
+          } else if (err.error.message == 'Invalid Password!') {
             this.authForm.setErrors({ credentials: true });
             this.toastMessage = ' البريد الالكتروني او كلمة المرور غير صحيحة';
+          } else if (err.error.message == 'User not active') {
+            this.authForm.setErrors({ notActive: true });
+            this.toastMessage = 'لا يمكن تسجيل الدخول , المستخدم غير مفعل';
           } else {
             this.authForm.setErrors({ unknownError: true });
             this.toastMessage = ' خطأ غير متوقع';
@@ -68,5 +71,8 @@ export class SigninComponent implements OnInit {
   }
   toggleToast() {
     this.showToast = !this.showToast;
+     setTimeout(() => {
+       this.showToast = false;
+     }, 4000);
   }
 }
