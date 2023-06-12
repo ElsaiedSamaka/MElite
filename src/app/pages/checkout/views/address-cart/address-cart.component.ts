@@ -13,6 +13,7 @@ export class AddressCartComponent implements OnInit {
   toastSucsessMessage: string = '';
   showErrToast: boolean = false;
   toastErrMessage: string = '';
+  isSubmitted: boolean = false;
 
   constructor(private addressService: AddressService) {}
 
@@ -32,6 +33,7 @@ export class AddressCartComponent implements OnInit {
         this.userAddress = address;
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
         this.toggleSucsessToast();
+        this.isSubmitted = true;
       },
       error: (err) => {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';

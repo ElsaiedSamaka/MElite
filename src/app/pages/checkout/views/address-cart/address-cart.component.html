@@ -8,7 +8,7 @@
         <span>*</span>
         <span>مدينة</span>
       </label>
-      <input formControlName="city" type="text" name="city" id="city"
+      <input [disabled]="isSubmitted" formControlName="city" type="text" name="city" id="city"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
     <div>
@@ -16,7 +16,7 @@
         <span>*</span>
         <span>محافظة</span>
       </label>
-      <input formControlName="state" type="text" name="state" id="state"
+      <input [disabled]="isSubmitted" formControlName="state" type="text" name="state" id="state"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
 
@@ -25,7 +25,7 @@
         <span>*</span>
         <span>شارع</span>
       </label>
-      <input formControlName="street" type="text" name="street" id="street"
+      <input [disabled]="isSubmitted" formControlName="street" type="text" name="street" id="street"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
     <div>
@@ -33,7 +33,7 @@
         <span>*</span>
         <span>حي</span>
       </label>
-      <input formControlName="neighborhood" type="text" name="neighborhood" id="neighborhood"
+      <input [disabled]="isSubmitted" formControlName="neighborhood" type="text" name="neighborhood" id="neighborhood"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
   <!-- Actions  -->
