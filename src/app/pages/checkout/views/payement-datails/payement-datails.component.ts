@@ -10,7 +10,6 @@ import { OrdersService } from 'src/core/services/orders.service';
 export class PayementDatailsComponent implements OnInit {
   cartItems: any = [];
 
-  selectedCardID = 0;
 
   constructor(
     private ordersService: OrdersService,
@@ -40,11 +39,5 @@ export class PayementDatailsComponent implements OnInit {
       complete: () => {},
     });
   }
-  onCardSelect(id: any): void {
-    if (this.selectedCardID === id) {
-      this.selectedCardID = 0;
-    } else {
-      this.selectedCardID = id;
-    }
-  }
+  
 }

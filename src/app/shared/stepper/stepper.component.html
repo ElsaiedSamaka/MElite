@@ -1,4 +1,4 @@
-<div class="text-center rounded-3xl my-24 border-2 border-dashed border-gray-200">
+<div class="text-center rounded-3xl my-24  border-2 border-dashed border-gray-200">
   <h1>Test Stepper</h1>
   <ol
     class="inline-flex flex-row-reverse justify-center items-center  p-3 my-2 space-x-2 text-sm font-medium text-center text-gray-500   rounded-3xl  sm:p-4 sm:space-x-4">
@@ -21,14 +21,14 @@
   </ol>
   <div class="text-center rounded-3xl my-2 mx-5 border-2 border-dashed border-gray-200" [ngSwitch]="currentStepIndex">
     <div>
-      <div *ngSwitchCase="1">
-        <p>This is step 1</p>
+      <div class="p-5" *ngSwitchCase="1">
+        <app-payement-card></app-payement-card>
         <button (click)="nextStep()">Next</button>
 
       </div>
 
-      <div *ngSwitchCase="2">
-        <p>This is step 2</p>
+      <div class="p-5" *ngSwitchCase="2">
+        <app-address-cart></app-address-cart>
         <button (click)="nextStep()">Next</button>
         <button (click)="prevStep()">Back</button>
       </div>
