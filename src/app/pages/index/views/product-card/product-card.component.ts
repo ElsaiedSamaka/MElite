@@ -35,6 +35,7 @@ export class ProductCardComponent implements OnInit {
       productId: product.id,
       quantity: 1,
       price: product.price,
+      colors: this.productCardForm.get('colors').value.join(','),
     };
 
     this.cartService.post(cartItem).subscribe({

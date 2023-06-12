@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
       phonenumber: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        Validators.maxLength(15),
+        Validators.maxLength(11),
         Validators.pattern('^[0-9]*$'),
       ]),
     },
