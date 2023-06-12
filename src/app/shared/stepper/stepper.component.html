@@ -1,5 +1,9 @@
-<div class="text-center rounded-3xl my-24  border-2 border-dashed border-gray-200">
-  <h1>Test Stepper</h1>
+<div class="p-2 rounded-3xl my-24  border-2 border-dashed border-gray-200">
+  <h3>
+    <span class="mb-2 mx-1 text-lg font-semibold leading-none text-gray-900"> تفاصيل الطلب</span>
+    <span>.</span>
+    <span class="mx-1 text-red-400">خدمة الدفع غير مدعومة بعد</span>
+  </h3>
   <ol
     class="inline-flex flex-row-reverse justify-center items-center  p-3 my-2 space-x-2 text-sm font-medium text-center text-gray-500   rounded-3xl  sm:p-4 sm:space-x-4">
     <li class="flex flex-row-reverse items-center " [ngClass]="currentStepIndex == step.id?'text-blue-600 ':''"
@@ -23,14 +27,25 @@
     <div>
       <div class="p-5" *ngSwitchCase="1">
         <app-payement-card></app-payement-card>
-        <button (click)="nextStep()">Next</button>
-
+        <div class=" flex justify-start">
+          <button
+            class="mx-0.5 bg-gradient-to-bl  from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid
+                                                                                                            border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br disabled:cursor-not-allowed
+                                                                                                            disabled:from-gray-400 disabled:to-gray-400 "
+            (click)="nextStep()">التالي</button>
+        </div>
       </div>
 
       <div class="p-5" *ngSwitchCase="2">
         <app-address-cart></app-address-cart>
-        <button (click)="nextStep()">Next</button>
-        <button (click)="prevStep()">Back</button>
+        <div class=" flex justify-start">
+          <button
+            class="mx-0.5 bg-gradient-to-bl  from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid     border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br disabled:cursor-not-allowed  disabled:from-gray-400 disabled:to-gray-400 "
+            (click)="nextStep()">التالي</button>
+          <button
+            class="mx-0.5 bg-gradient-to-bl  from-gray-400 to-gray-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid   border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br disabled:cursor-not-allowed  disabled:from-gray-400 disabled:to-gray-400 "
+            (click)="prevStep()">السابق</button>
+        </div>
       </div>
       <div *ngSwitchCase="3">
         <p>This is step 3</p>
