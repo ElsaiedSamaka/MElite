@@ -21,12 +21,14 @@ export class StepperComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  ngOnInit() {
-    this.cartItems = this.cartService.items$.value;
-  }
+  ngOnInit() {}
   createOrder() {
+    this.cartItems = this.cartService.items$.value;
+    console.log('cartItems', this.cartItems);
     this.ordersService.post(this.cartItems).subscribe({
-      next: () => {},
+      next: (res) => {
+        console.log('res [create Order]', res);
+      },
       error: (err) => {
         console.log('err while creating an order', err);
       },
