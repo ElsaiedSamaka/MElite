@@ -1,6 +1,8 @@
 <div class="col-span-3 lg:col-span-1 rounded-3xl border-2 border-dashed p-2">
+<div class="grid grid-cols-12">
+  <div class="col-span-12 md:col-span-4  p-2 m-2 border-2 border-dashed rounded-3xl">
   <p class="text-gray-700 text-right">استخدم احدى البطاقات المحفوظة</p>
-  <div class="flex justify-center items-center mt-4">
+    <div class="flex justify-center items-center mt-4">
     <div (click)="onCardSelect(1)"
       [ngClass]="selectedCardID ===1?'transition-transform transform scale-110 border border-blue-300':''"
       class="w-56 h-36 m-auto  rounded-xl relative text-white  transition-transform transform hover:scale-110">
@@ -57,7 +59,6 @@
 
       </div>
     </div>
-
     <div (click)="onCardSelect(2)"
       [ngClass]="selectedCardID ===2?'transition-transform transform scale-110 border border-blue-300':''"
       class="w-56 h-36 m-auto  rounded-xl relative text-white  transition-transform transform hover:scale-110">
@@ -68,7 +69,7 @@
         <div class="flex justify-between">
           <div class="">
             <p class="font-normal text-left text-xs tracking-widest">
-              Elsayed El Mo
+              Ahemd Mohsen
             </p>
           </div>
           <img class="w-9 h-9" src="https://i.imgur.com/bbPHJVe.png" />
@@ -111,6 +112,55 @@
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-span-0  md:col-span-1 w-1 my-auto mx-auto">
+      <div class="flex flex-col items-center my-2">
+        <div class="h-14 w-0.5 bg-gray-500 inline-block"></div>
+        <b class="py-4 "> او</b>
+        <div class="h-14 w-0.5 bg-gray-500 inline-block"></div>
+      </div>
+    </div>
+    <div class="col-span-12 md:col-span-7  border-2 border-dashed rounded-3xl p-2 m-2">
+      <p class="text-gray-700 text-right">ادخل بيانات بطاقة الدفع</p>
+    
+      <form class="text-right grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+          <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>*</span>
+            <span>مدينة</span>
+          </label>
+          <input type="text" name="city" id="city"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
+        </div>
+        <div>
+          <label for="state" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
+            <span>*</span>
+            <span>محافظة</span>
+          </label>
+          <input type="text" name="state" id="state"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
+        </div>
+    
+        <div>
+          <label for="street" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>*</span>
+            <span>شارع</span>
+          </label>
+          <input type="text" name="street" id="street"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
+        </div>
+        <div>
+          <label for="neighborhood" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>*</span>
+            <span>حي</span>
+          </label>
+          <input type="text" name="neighborhood" id="neighborhood"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
+        </div>
+    
+      </form>
     </div>
   </div>
     <div class="flex items-center my-2">
