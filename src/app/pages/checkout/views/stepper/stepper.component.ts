@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/core/services/cart.service';
+import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
   selector: 'app-stepper',
@@ -12,10 +14,25 @@ export class StepperComponent implements OnInit {
     { id: 2, label: 'عنوان الشحن', description: 'This is step 2' },
     { id: 3, label: 'مراجعة الطلب', description: 'This is step 3' },
   ];
+  cartItems: any[] = [];
 
-  constructor() {}
+  constructor(
+    private ordersService: OrdersService,
+    private cartService: CartService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartItems = this.cartService.items$.value;
+  }
+  createOrder() {
+    this.ordersService.post(this.cartItems).subscribe({
+      next: () => {},
+      error: (err) => {
+        console.log('err while creating an order', err);
+      },
+      complete: () => {},
+    });
+  }
   nextStep() {
     this.currentStepIndex++;
     console.log(this.currentStepIndex);
