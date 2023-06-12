@@ -53,7 +53,7 @@ export class CartItemsComponent implements OnInit {
     const updatedCartItem = {
       ...cartItem,
       quantity: cartItem.quantity + 1,
-      price: cartItem.product.price * cartItem.quantity,
+      price: cartItem.product.price * (cartItem.quantity + 1),
     };
     this.cartService.put(id, updatedCartItem).subscribe({
       next: (updatedCartItem) => {
