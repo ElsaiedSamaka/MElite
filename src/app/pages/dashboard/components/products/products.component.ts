@@ -4,6 +4,7 @@ import { CategoriesService } from 'src/core/services/categories.service';
 import { ColorsService } from 'src/core/services/colors.service';
 import { ProductsService } from 'src/core/services/products.service';
 import { SizesService } from 'src/core/services/sizes.service';
+import { NotzeroNorNegative } from 'src/core/validators/notzero-nor-negative';
 
 @Component({
   selector: 'app-products',
@@ -36,7 +37,8 @@ export class ProductsComponent implements OnInit {
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private colorsService: ColorsService,
-    private sizesService: SizesService
+    private sizesService: SizesService,
+    private notzeroNorNegative: NotzeroNorNegative
   ) {}
 
   ngOnInit() {
@@ -127,7 +129,10 @@ export class ProductsComponent implements OnInit {
     ]),
     category: new FormControl('1', [Validators.required]),
     stock: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
+    price: new FormControl('', [
+      Validators.required,
+      this.notzeroNorNegative.validate,
+    ]),
     description: new FormControl('', [Validators.maxLength(2000)]),
     product_img: new FormControl('', [Validators.required]),
     colors: new FormArray([], [Validators.required]),

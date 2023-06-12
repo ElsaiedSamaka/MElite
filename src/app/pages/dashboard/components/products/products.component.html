@@ -263,10 +263,10 @@
 <app-input [control]="addProductForm.get('name')" type="email" label="* الاسم" maxlength="20" autofocus="true"
   required="true"></app-input>
 </div>
-
         <div class="flex flex-col">
-    <app-input [control]="addProductForm.get('price')" type="number" label="* السعر" maxlength="20" autofocus="true"
-      required="true"></app-input>
+          <app-input [control]="addProductForm.get('price')" type="number" label="* السعر" maxlength="20" autofocus="true"
+            required="true"></app-input>
+          <span class="text-xs">لا يقبل صفر او ارقام سالبة </span>
         </div>
         <div class="flex flex-col">
       <app-input [control]="addProductForm.get('stock')" type="number" label="* المتاح بالمخزن" maxlength="20" class="w-full"
@@ -275,7 +275,8 @@
         <div class="flex flex-col col-span-2">
           <label class="text-sm font-semibold text-gray-900 mb-2"> الوصف</label>
           <textarea formControlName="description" class="border border-gray-300 rounded-3xl p-2 text-right" maxlength="100"
-            lang="ar" wrap="false" placeholder="you will not be able to copy and paste on this text-area for some selly business need example, Try it yourself :)" (paste)="onPaste($event)" (copy)="onCopy($event)" style="max-height: 100px;"></textarea>
+            lang="ar" wrap="false" (paste)="onPaste($event)" (copy)="onCopy($event)" style="max-height: 100px;"></textarea>
+          <span class="text-xs">لا يقبل النسخ واللصق </span>
         </div>
         <div class="flex flex-col col-span-2">
           <label

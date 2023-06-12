@@ -21,5 +21,8 @@
     <p class=" text-sm text-white" *ngIf="control.errors['notEmailUnique']">
       هذا البريد الالكتروني مستخدم من قبل
     </p>
+      <p class=" text-sm text-white" *ngIf="control.errors['zeroOrNegative']">
+        لا يقبل صفر او ارقام سالبة
+      </p>
   </div>
 </div>
