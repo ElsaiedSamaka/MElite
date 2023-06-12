@@ -2,9 +2,9 @@
   <label class="block text-sm font-semibold text-gray-700">{{label}}</label>
     <ng-content selector="input-icon"></ng-content>
   <input [formControl]="control" [placeholder]="placeholder" [type]="type" [value]="value"
-    class="mt-1 rounded-3xl border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right" [size]="size" [maxlength]="maxlength" [minlength]="minlength" [required]="required" [disabled]="disabled" [pattern]="pattern" [autocomplete]="autocomplete" [autofocus]="autofocus" [title]="title"/>
+    class="mt-1 rounded-3xl border-2 border-gray-200 bg-white text-sm text-gray-700 p-2 text-right w-full" [ngClass]="control.invalid && showErrors() ? 'border-2 border-red-500':''" [size]="size" [maxlength]="maxlength" [minlength]="minlength" [required]="required" [disabled]="disabled" [pattern]="pattern" [autocomplete]="autocomplete" [autofocus]="autofocus" [title]="title"/>
   <div
-    class="absolute left-1/2 right-1/2 w-1/2 z-10 px-3 py-1 text-sm font-medium text-white bg-red-900 rounded-3xl shadow-sm tooltip"
+    class="absolute left-1/3 top-0 w-1/2 z-10 px-3 py-1 text-sm font-medium text-white bg-red-700 rounded-3xl shadow-sm tooltip"
     *ngIf="showErrors()">
     <p class="text-sm text-white" *ngIf="control.errors['required']">
       هذا الحقل مطلوب
@@ -16,7 +16,7 @@
       الحد الأقصى للحروف هو {{control.errors['maxlength'].requiredLength}}
     </p>
     <p class=" text-sm text-white" *ngIf="control.errors['pattern']">
-      البريد الالكتروني الذي تم ادخاله غير صالح
+      صيغة الادخال غير صحيحة
     </p>
     <p class=" text-sm text-white" *ngIf="control.errors['notEmailUnique']">
       هذا البريد الالكتروني مستخدم من قبل
