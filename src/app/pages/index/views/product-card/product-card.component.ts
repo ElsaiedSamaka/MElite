@@ -14,7 +14,10 @@ export class ProductCardComponent implements OnInit {
     sizes: [],
   };
   showQuickViewModal: boolean = false;
-  showToastMssg: boolean = false;
+  showWarnToast: boolean = false;
+  toastWarnMessage: string = '';
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   productId: any;
 
   constructor(
@@ -29,7 +32,7 @@ export class ProductCardComponent implements OnInit {
   });
   postCartItem(product: any): void {
     this.product = product;
-    // TODO: if the product already exist in the cart items update its quantity instead
+    // TODO: if the product already exist in the cart items return and do nothing
     // TODO: check the availablity of product and if it's not available will prevent posting cartItem
     let cartItem = {
       productId: product.id,
@@ -37,20 +40,32 @@ export class ProductCardComponent implements OnInit {
       price: product.price,
       colors: this.productCardForm.get('colors').value.join(','),
     };
-
-    this.cartService.post(cartItem).subscribe({
-      next: (cartItem) => {
-        // this.cartItems = this.cartService.items$.value;
-      },
-      error: (err) => {
-        console.log('error while posting cart item', err);
-        this.showQuickViewModal = false;
-        this.toggleToastMssg();
-      },
-      complete: () => {
-        this.showQuickViewModal = false;
-      },
-    });
+    if (!this.productAlreadyExistOnCart()) {
+      this.cartService.post(cartItem).subscribe({
+        next: (cartItem) => {
+          // this.cartItems = this.cartService.items$.value;
+        },
+        error: (err) => {
+          console.log('error while posting cart item', err);
+          this.showQuickViewModal = false;
+          this.toastWarnMessage = 'يلزم تسجيل الدخول';
+          this.toggleWarnToast();
+        },
+        complete: () => {
+          this.showQuickViewModal = false;
+        },
+      });
+    } else {
+      this.toastErrMessage = 'المنتج موجود بالفعل بالسلة';
+      this.toggleErrToast();
+    }
+  }
+  productAlreadyExistOnCart(): boolean {
+    let alreadyExist = this.cartService.items$.value.find(
+      (item) => item.productId == this.product.id
+    );
+    if (alreadyExist) return true;
+    return false;
   }
   favProduct(product: any): void {
     this.product = product;
@@ -59,7 +74,7 @@ export class ProductCardComponent implements OnInit {
     };
     this.favService.post(favItem).subscribe({
       next: (res) => {
-        if (res.authentication == false) this.toggleToastMssg();
+        if (res.authentication == false) this.toggleWarnToast();
       },
       error: (err) => {
         console.log('error while fav a product', err);
@@ -104,10 +119,16 @@ export class ProductCardComponent implements OnInit {
   dismissQuickViewModal() {
     this.showQuickViewModal = !this.showQuickViewModal;
   }
-  toggleToastMssg(): void {
-    this.showToastMssg = !this.showToastMssg;
+  toggleWarnToast(): void {
+    this.showWarnToast = !this.showWarnToast;
     setTimeout(() => {
-      this.showToastMssg = false;
+      this.showWarnToast = false;
+    }, 3000);
+  }
+  toggleErrToast(): void {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
     }, 3000);
   }
 }

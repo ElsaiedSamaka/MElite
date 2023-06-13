@@ -192,5 +192,7 @@
   </div>
 </div>
 <!-- Toast -->
-<app-toast *ngIf="showToastMssg" (dismiss)="toggleToastMssg()" toastType="warning"
-  toastMessage="يلزم تسجيل الدخول"></app-toast>
+<app-toast *ngIf="showWarnToast" (dismiss)="toggleWarnToast()" toastType="warning"
+  [toastMessage]="toastWarnMessage"></app-toast>
+<app-toast *ngIf="showErrToast" (dismiss)="toggleErrToast()" toastType="warning"
+    [toastMessage]="toastErrMessage"></app-toast>
