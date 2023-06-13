@@ -1,8 +1,8 @@
 <div class="p-2 rounded-3xl my-24  border-2 border-dashed border-gray-200">
   <h3>
-    <span class="mb-2 mx-1 text-lg font-semibold leading-none text-gray-900"> تفاصيل الطلب</span>
+    <span class="mb-2 mx-1 text-lg font-bold leading-none text-gray-900"> تفاصيل الطلب</span>
     <span>.</span>
-    <span class="mx-1 text-red-400">خدمة الدفع غير مدعومة بعد</span>
+    <span class="mx-1 text-red-500 font-semibold">خدمة الدفع غير مدعومة بعد</span>
   </h3>
   <ol
     class="inline-flex flex-row-reverse justify-center items-center  p-3 my-2 space-x-2 text-sm font-medium text-center text-gray-500   rounded-3xl  sm:p-4 sm:space-x-4">
@@ -10,10 +10,10 @@
       *ngFor="let step of steps">
       <ng-container>
         <span
-          class="flex items-center justify-center w-5 h-5 ml-2 text-xs border border-blue-600 rounded-full shrink-0 ">
+          class="flex items-center justify-center w-5 h-5 ml-2 text-xs border border-gray-600 rounded-full shrink-0 ">
           {{ step.id }}
         </span>
-        <span>{{ step.label }}</span>
+        <span class="font-semibold">{{ step.label }}</span>
         <svg class="w-4 h-4 ml-2 sm:ml-4" [ngClass]="currentStepIndex == step.id?'text-blue-600 ':''" fill="none"
           stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5">

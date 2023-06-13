@@ -24,12 +24,8 @@
         <p class="mb-3 font-normal text-gray-700 ">{{currentDate|date}}</p>
       </div>
       <div class="flex -space-x-4 mt-11">
-        <img class="w-10 h-10 border-2 border-white rounded-full bg-black"
-          src="" alt="">
-        <img class="w-10 h-10 border-2 border-white rounded-full bg-gray-200"
-          src="" alt="">
-        <img class="w-10 h-10 border-2 border-white rounded-full bg-black"
-          src="" alt="">
+        <img class="w-10 h-10 border-2 border-white rounded-full bg-black" *ngFor="let user_img of userImgs" [src]="user_img"
+          alt="">
         <a
           class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">+{{users.length}}</a>
       </div>

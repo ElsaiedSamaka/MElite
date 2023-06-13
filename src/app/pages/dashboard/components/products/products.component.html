@@ -88,7 +88,7 @@
       <!-- product table -->
       <div class="overflow-x-auto">
         <table class="w-full  text-center text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+          <thead class="text-base text-gray-700 uppercase bg-gray-50 ">
             <tr>
               <th scope="col" class="px-4 py-3">اسم المنتج
                 <svg [appSort]="itemsToDisplay" data-order="desc" data-name="name" xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-base">
             <ng-container *ngIf="itemsToDisplay.length > 0; else noproducts">
               <tr class="border-b " *ngFor="let product of itemsToDisplay;">
                 <th scope="row" class="flex items-center px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">

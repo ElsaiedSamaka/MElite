@@ -15,6 +15,7 @@ export class InfoCardsComponent implements OnInit {
   orders: any[] = this.ordersService.orders$.value;
   totalOrdersPrice: number = 0;
   users: any[] = this.usersService.users$.value;
+  userImgs: any[] = [];
   constructor(
     private userLoginsService: UserLoginsService,
     private usersService: UsersService,
@@ -26,6 +27,7 @@ export class InfoCardsComponent implements OnInit {
   ngOnInit() {
     this.getUsersLogins();
     this.getOrders();
+    this.getUsers();
   }
   getUsersLogins(): void {
     this.userLoginsService.getUsersLogins().subscribe({
@@ -36,6 +38,20 @@ export class InfoCardsComponent implements OnInit {
         console.log('err', err);
       },
       complete: () => {},
+    });
+  }
+  getUsers(): void {
+    this.usersService.getUsers().subscribe({
+      next: (res) => {
+        this.users = this.usersService.users$.value;
+        this.getUserImages();
+      },
+      error: (err) => {
+        console.log('error', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
     });
   }
   getOrders(): void {
@@ -60,5 +76,12 @@ export class InfoCardsComponent implements OnInit {
     totalPriceByOrder.forEach((order) => {
       this.totalOrdersPrice += order.totalPrice;
     });
+  }
+  getUserImages(): void {
+    this.userImgs = this.users
+      .map((user) => {
+        return user.user_img;
+      })
+      .slice(0, 3);
   }
 }

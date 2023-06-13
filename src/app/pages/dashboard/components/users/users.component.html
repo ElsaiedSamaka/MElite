@@ -78,7 +78,7 @@
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm text-center text-gray-500 ">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+          <thead class="text-base text-gray-700 uppercase bg-gray-50 ">
             <tr>
               <th scope="col" class="p-4">
 
@@ -93,7 +93,7 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-base">
             <ng-container *ngIf="usersToDisplay.length > 0; else nousers">
           <tr class="border-b " *ngFor="let user of usersToDisplay">
               <td class="w-4 px-4 py-3">
