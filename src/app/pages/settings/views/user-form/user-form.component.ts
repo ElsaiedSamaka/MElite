@@ -9,7 +9,7 @@ import { UsersService } from 'src/core/services/users.service';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  user: any;
+  user: any = this.authService.USER$.value;
   showErrToast: boolean = false;
   toastErrMessage: string = '';
   showSucsessToast: boolean = false;
@@ -20,7 +20,28 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.authService.USER$.value;
+    this.getUser();
+    this.userForm.patchValue({
+      firstname: this.user.firstname,
+      lastname: this.user.lastname,
+      email: this.user.email,
+      phonenumber: this.user.phonenumber,
+      countrycode: this.user.countrycode,
+      role: this.user.role.name,
+      active: this.user.isActive,
+    });
+    console.log('user [user-form component]', this.user);
+  }
+  getUser(): void {
+    this.usersService.getUser().subscribe({
+      next: (user) => {
+        this.user = this.authService.USER$.value;
+      },
+      error: (err) => {
+        console.log('error', err);
+      },
+      complete: () => {},
+    });
   }
   userForm = new FormGroup({
     firstname: new FormControl('', [

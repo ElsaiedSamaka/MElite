@@ -1,61 +1,54 @@
 <section class="bg-red-200">
   <div class=" px-4 py-8 mx-auto lg:py-16 ">
     <h2 class="mb-4 text-xl font-bold text-gray-900 "> تحديث المعلومات</h2>
-    <form>
+    <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit">
       <div class="grid gap-4 mb-4 sm:grid-cols-3 sm:gap-6 sm:mb-5">
         <div class="w-full ">
           <label for="perm" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الصلاحيات
           </label>
           <label type="text" name="perm" id="perm"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">{{userForm.get('role').value?userForm.get('role').value:''}}</label>
         </div>
         <div class="w-full ">
-          <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الاسم
-            الاخير</label>
-          <input type="text" name="lastname" id="lastname"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
+        <app-input [control]="userForm.get('lastname')" type="text" label="* الاسم الاخير" maxlength="20" autofocus="true"
+          required="true"></app-input>
         </div>
         <div class="w-full ">
-          <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الاسم
-            الاول</label>
-          <input type="text" name="firstname" id="firstname"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
+          <app-input [control]="userForm.get('firstname')" type="text" label="* الاسم الاول" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
         <div class="sm:col-span-3">
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">البريد الالكتروني
-          </label>
-          <input type="email" name="email" id="email"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
+          <app-input [control]="userForm.get('email')" type="email" label="* البريد الالكتروني" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
         <div class="w-full col-span-2">
-          <label for="phonenumber" class="block mb-2 text-sm font-medium text-gray-900 ">رقم الجوال</label>
-          <input type="number" name="phonenumber" id="phonenumber"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
+          <app-input [control]="userForm.get('phonenumber')" type="tel" label="* رقم الجوال" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 w-full">
           <label for="countrycode" class="block mb-2 text-sm font-medium text-gray-900  ">المعرف
             الدولي</label>
-          <select id="countrycode"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-            <option selected="">Electronics</option>
-            <option value="TV">TV/Monitors</option>
-            <option value="PC">PC</option>
-            <option value="GA">Gaming/Console</option>
-            <option value="PH">Phones</option>
+          <!-- TODO: make sure that countrycode are loaded from the server -->
+          <select formControlName="countrycode" name="countrycode" id="countrycode"
+            class="border border-gray-300 rounded-3xl p-2 mx-1 w-1/2">
+            <option [value]="20">20</option>
+            <option [value]="10">10</option>
+            <option value="30">30</option>
+            <option [value]="40">40</option>
           </select>
         </div>
         <div class="w-full col-span-1">
           <label for="updatedAt" class="block mb-2 text-sm font-medium text-gray-900 ">تاريخ اخر تحديث
           </label>
           <label name="updatedAt" id="updatedAt"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">{{user.updatedAt?(user?.updatedAt|date:'medium'):''}}</label>
         </div>
         <div class="w-full col-span-2">
           <label for="createdAt" class="block mb-2 text-sm font-medium text-gray-900 :text-white">تاريخ
             الانشاء
           </label>
           <label name="createdAt" id="createdAt"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">{{user.createdAt?(user?.createdAt|date:'medium'):''}}</label>
         </div>
       </div>
       <div class="flex items-center space-x-4">
