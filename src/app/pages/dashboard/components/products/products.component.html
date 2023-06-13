@@ -398,8 +398,8 @@
           <input formControlName="name" class="border border-gray-300 rounded-3xl p-2 text-right" />
         </div>
         <div class="flex flex-col">
-          <label class="text-sm font-semibold text-gray-900 mb-2">السعر</label>
-          <input formControlName="price" class="border border-gray-300 rounded-3xl p-2 text-right" />
+          <app-input [control]="editProductForm.get('price')" type="number" label="* السعر" maxlength="20" autofocus="true"
+            required="true"></app-input>
         </div>
         <div class="flex flex-col">
           <label class="text-sm font-semibold text-gray-900 mb-2">العدد بالمخزن</label>
