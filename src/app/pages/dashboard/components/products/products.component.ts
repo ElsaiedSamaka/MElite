@@ -33,6 +33,7 @@ export class ProductsComponent implements OnInit {
   totalPages: number = 0;
   totalItems: number = 0;
   available: any;
+  isAddProductFormSubmitted: boolean = false;
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
@@ -111,7 +112,9 @@ export class ProductsComponent implements OnInit {
     this.productsService.getByCategory(id).subscribe({
       next: (res) => {
         this.products = res['rows'];
-        this.itemsToDisplay = this.products.slice(0, this.perPage);
+        this.itemsToDisplay = this.products
+          .slice(0, this.perPage)
+          .sort((a, b) => b.id - a.id);
       },
       error: (err) => {
         console.log('error', err);
@@ -185,10 +188,13 @@ export class ProductsComponent implements OnInit {
   onAddProductSubmit() {
     let model = this.prepareForm();
     if (this.addProductForm.invalid) return;
+    this.isAddProductFormSubmitted = true;
     this.productsService.post(model).subscribe({
       next: () => {
         this.products = this.productsService.products$.value;
-        this.itemsToDisplay = this.products.slice(0, this.perPage);
+        this.itemsToDisplay = this.products
+          .slice(0, this.perPage)
+          .sort((a, b) => b.id - a.id);
         this.toastSucsessMessage = 'تم انشاء المنتج بنجاح';
         this.toggleSucsessToast();
         this.addProductForm.reset();
@@ -200,10 +206,9 @@ export class ProductsComponent implements OnInit {
         console.log('err', err);
       },
       complete: () => {
+        this.isAddProductFormSubmitted = false;
         this.products = this.productsService.products$.value;
-        this.itemsToDisplay = this.products
-          .slice(0, this.perPage)
-          .sort((a, b) => b.id - a.id);
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
         this.toggleAddProductModal();
       },
     });
