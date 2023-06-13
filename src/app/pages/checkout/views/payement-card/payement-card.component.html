@@ -122,41 +122,42 @@
         <div class="my-2 w-1/2 md:h-14 md:w-0.5 bg-gray-500 inline-block"></div>
       </div>
     </div>
-    <div class="col-span-12 md:col-span-7  border-2 border-dashed rounded-3xl p-2 m-2">
+    <div class="col-span-12 md:col-span-7  border-2 border-dashed rounded-3xl p-2.5 m-2">
       <p class="text-gray-700 text-right">ادخل بيانات بطاقة الدفع</p>
     
       <form class="text-right grid gap-4 mb-4 sm:grid-cols-2">
-        <div>
-          <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">
+        <div class="text-left">
+          <label for="card-name" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>Name</span>
             <span>*</span>
-            <span>مدينة</span>
           </label>
-          <input type="text" name="city" id="city"
+          <input type="text" name="card-name" id="card-name"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
+            <span class="text-xs"><strong> as written</strong> on payement card</span>
         </div>
-        <div>
-          <label for="state" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
+        <div class="text-left">
+          <label for="card-number" class="block mb-2 text-sm font-medium text-gray-900 :text-white">
+            <span>Card Number</span>
             <span>*</span>
-            <span>محافظة</span>
           </label>
-          <input type="text" name="state" id="state"
+          <input type="number" name="card-number" id="card-number"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
         </div>
     
-        <div>
-          <label for="street" class="block mb-2 text-sm font-medium text-gray-900 ">
+        <div class="text-left">
+          <label for="cvv" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>CVV</span>
             <span>*</span>
-            <span>شارع</span>
           </label>
-          <input type="text" name="street" id="street"
+          <input type="password" name="cvv" id="cvv"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
         </div>
-        <div>
-          <label for="neighborhood" class="block mb-2 text-sm font-medium text-gray-900 ">
+        <div class="text-left">
+          <label for="Expiry-date" class="block mb-2 text-sm font-medium text-gray-900 ">
+            <span>Expiry date</span>
             <span>*</span>
-            <span>حي</span>
           </label>
-          <input type="text" name="neighborhood" id="neighborhood"
+          <input type="date" name="Expiry-date" id="Expiry-date"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
         </div>
     
