@@ -29,7 +29,6 @@ export class UserFormComponent implements OnInit {
       phonenumber: this.user.phonenumber,
       countrycode: this.user.countrycode,
     });
-    console.log('user [user-form component]', this.user);
   }
   getUser(): void {
     this.usersService.getUser().subscribe({
@@ -78,8 +77,7 @@ export class UserFormComponent implements OnInit {
     };
     if (this.userForm.invalid) return;
     this.usersService.put(this.user.id, user).subscribe({
-      next: (res) => {
-        this.userForm.reset();
+      next: (user) => {
         this.toastSucsessMessage = 'تم تحديث البيانات بنجاح ';
         this.toggleSucsessToast();
         this.toggleUserForm();

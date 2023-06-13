@@ -10,7 +10,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">{{user.role.name}}</label>
         </div>
         <div class="w-full ">
-        <app-input [control]="userForm.get('lastname')" type="text" label="* الاسم الاخير" maxlength="20" autofocus="true"
+          <app-input [control]="userForm.get('lastname')" type="text" label="* الاسم الاخير" maxlength="20" autofocus="true"
           required="true"></app-input>
         </div>
         <div class="w-full ">
@@ -68,3 +68,7 @@
     </form>
   </div>
 </section>
+<!-- Toast -->
+<app-toast *ngIf="showErrToast" toastType="error" [toastMessage]="toastErrMessage"
+  (dismiss)="toggleErrToast()"></app-toast>
+<app-toast *ngIf="showSucsessToast" [toastMessage]="toastSucsessMessage" (dismiss)="toggleSucsessToast()"></app-toast>
