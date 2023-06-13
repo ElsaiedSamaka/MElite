@@ -40,7 +40,9 @@ export class UsersService {
     return this.apiService.delete(`/api/users/${id}`);
   }
   put(id: string, user: any): Observable<any> {
-    return this.apiService.put(`/api/users/${id}`, user);
+    return this.apiService.put(`/api/users/${id}`, user).pipe(
+      tap(updatedUser => this.authService.USER$.next(updatedUser))
+    );
   }
   patch(id: string): Observable<any> {
     return this.apiService.patch(`/api/users/${id}`);

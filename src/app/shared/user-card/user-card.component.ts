@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/core/services/auth.service';
 import { UsersService } from 'src/core/services/users.service';
 
 @Component({
@@ -17,10 +16,7 @@ export class UserCardComponent implements OnInit {
     },
   };
 
-  constructor(
-    private userService: UsersService,
-    private authService: AuthService
-  ) {}
+  constructor(private userService: UsersService) {}
 
   ngOnInit() {
     this.userService.getUser().subscribe({
