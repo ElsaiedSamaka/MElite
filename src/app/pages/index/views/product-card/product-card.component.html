@@ -194,5 +194,5 @@
 <!-- Toast -->
 <app-toast *ngIf="showWarnToast" (dismiss)="toggleWarnToast()" toastType="warning"
   [toastMessage]="toastWarnMessage"></app-toast>
-<app-toast *ngIf="showErrToast" (dismiss)="toggleErrToast()" toastType="warning"
+<app-toast *ngIf="showErrToast" (dismiss)="toggleErrToast()" toastType="error"
     [toastMessage]="toastErrMessage"></app-toast>

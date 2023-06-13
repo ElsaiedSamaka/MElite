@@ -83,6 +83,8 @@ export class ProductCardComponent implements OnInit {
           this.favProducts = this.favService.favProducts$.value;
         },
         error: (err) => {
+           this.toastErrMessage = err.message || 'خطأ غير متوقع';
+           this.toggleErrToast();
           console.log('error while fav a product', err);
         },
         complete: () => {},
