@@ -1,4 +1,4 @@
-<section class="bg-red-200">
+<section class="">
   <div class=" px-4 py-8 mx-auto lg:py-16 ">
     <h2 class="mb-4 text-xl font-bold text-gray-900 "> تحديث المعلومات</h2>
     <form [formGroup]="userForm" (ngSubmit)="onUserFormSubmit">
@@ -51,10 +51,18 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ">{{user.createdAt?(user?.createdAt|date:'medium'):''}}</label>
         </div>
       </div>
-      <div class="flex items-center space-x-4">
-        <button type="submit"
+      <div class="flex items-center space-x-4" [ngSwitch]="isSubmitted">
+        <button *ngSwitchCase="true" type="submit"
+          class="text-gray-400 bg-primary-700 border border-gray-400 hover:text-gray-800 hover:border-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">
+          حفظ
+        </button>
+        <button *ngSwitchCase="false"
           class="text-gray-400 bg-primary-700 border border-gray-400 hover:text-gray-800 hover:border-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">
           تحديث المعلومات
+        </button>
+        <button *ngSwitchDefault
+          class="text-gray-400 bg-primary-700 border border-gray-400 hover:text-gray-800 hover:border-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">
+          الافتراضي
         </button>
       </div>
     </form>

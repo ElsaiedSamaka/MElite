@@ -14,6 +14,7 @@ export class UserFormComponent implements OnInit {
   toastErrMessage: string = '';
   showSucsessToast: boolean = false;
   toastSucsessMessage: string = '';
+  isSubmitted: boolean = true;
   constructor(
     private usersService: UsersService,
     private authService: AuthService
@@ -44,31 +45,31 @@ export class UserFormComponent implements OnInit {
     });
   }
   userForm = new FormGroup({
-    firstname: new FormControl('', [
+    firstname: new FormControl({ value: '', disabled: this.isSubmitted }, [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    lastname: new FormControl('', [
+    lastname: new FormControl({ value: '', disabled: this.isSubmitted }, [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    email: new FormControl('', [
+    email: new FormControl({ value: '', disabled: this.isSubmitted }, [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(40),
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
-    countrycode: new FormControl(),
-    phonenumber: new FormControl('', [
+    countrycode: new FormControl({ value: '', disabled: this.isSubmitted }),
+    phonenumber: new FormControl({ value: '', disabled: this.isSubmitted }, [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(50),
       Validators.pattern('^[0-9]*$'),
     ]),
-    role: new FormControl(),
-    active: new FormControl(),
+    role: new FormControl({ value: '', disabled: this.isSubmitted }),
+    active: new FormControl({ value: '', disabled: this.isSubmitted }),
   });
   onUserFormSubmit(): void {
     const user = {
@@ -77,8 +78,6 @@ export class UserFormComponent implements OnInit {
       email: this.userForm.controls.email.value,
       countrycode: this.userForm.controls.countrycode.value,
       phonenumber: this.userForm.controls.phonenumber.value,
-      role: this.userForm.controls.role.value,
-      active: this.userForm.controls.active.value,
     };
     if (this.userForm.invalid) return;
     this.usersService.put(this.user.id, user).subscribe({
