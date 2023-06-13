@@ -28,8 +28,6 @@ export class UserFormComponent implements OnInit {
       email: this.user.email,
       phonenumber: this.user.phonenumber,
       countrycode: this.user.countrycode,
-      role: this.user.role.name,
-      active: this.user.isActive,
     });
     console.log('user [user-form component]', this.user);
   }
@@ -68,8 +66,6 @@ export class UserFormComponent implements OnInit {
       Validators.maxLength(50),
       Validators.pattern('^[0-9]*$'),
     ]),
-    role: new FormControl({ value: '', disabled: this.isSubmitted }),
-    active: new FormControl({ value: '', disabled: this.isSubmitted }),
   });
   onUserFormSubmit(): void {
     const user = {
@@ -78,6 +74,7 @@ export class UserFormComponent implements OnInit {
       email: this.userForm.controls.email.value,
       countrycode: this.userForm.controls.countrycode.value,
       phonenumber: this.userForm.controls.phonenumber.value,
+      roleId: this.user.roleId,
     };
     if (this.userForm.invalid) return;
     this.usersService.put(this.user.id, user).subscribe({
@@ -85,6 +82,7 @@ export class UserFormComponent implements OnInit {
         this.userForm.reset();
         this.toastSucsessMessage = 'تم تحديث البيانات بنجاح ';
         this.toggleSucsessToast();
+        this.toggleUserForm();
       },
       error: (err) => {
         this.toastErrMessage =
@@ -96,6 +94,22 @@ export class UserFormComponent implements OnInit {
         console.log('complete');
       },
     });
+  }
+  toggleUserForm(): void {
+    this.isSubmitted = !this.isSubmitted;
+    if (!this.isSubmitted) {
+      this.userForm.get('firstname').enable();
+      this.userForm.get('lastname').enable();
+      this.userForm.get('phonenumber').enable();
+      this.userForm.get('email').enable();
+      this.userForm.get('countrycode').enable();
+    } else {
+      this.userForm.get('firstname').disable();
+      this.userForm.get('lastname').disable();
+      this.userForm.get('phonenumber').disable();
+      this.userForm.get('email').disable();
+      this.userForm.get('countrycode').disable();
+    }
   }
   toggleSucsessToast() {
     this.showSucsessToast = !this.showSucsessToast;

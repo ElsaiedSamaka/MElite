@@ -73,7 +73,7 @@ export class UsersComponent implements OnInit {
       email: this.editUserForm.controls.email.value,
       countrycode: this.editUserForm.controls.countrycode.value,
       phonenumber: this.editUserForm.controls.phonenumber.value,
-      role: this.editUserForm.controls.role.value,
+      roleId: this.editUserForm.controls.role.value.id,
       active: this.editUserForm.controls.active.value,
     };
     if (this.editUserForm.invalid) return;
