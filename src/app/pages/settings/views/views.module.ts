@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewsComponent } from './views.component';
+import { NgModule } from '@angular/core';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ViewsComponent]
+  imports: [CommonModule],
+  declarations: [UserFormComponent],
+  exports: [UserFormComponent],
 })
-export class ViewsModule { }
+export class ViewsModule {}

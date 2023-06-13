@@ -16,75 +16,7 @@
           </div>
           <app-user-card class="col-span-full md:col-span-1"></app-user-card>
         <div class="col-span-3 border-2 border-dashed rounded-3xl border-gray-300  sm:col-span-2">
-          <section class="">
-            <div class=" px-4 py-8 mx-auto lg:py-16 ">
-              <h2 class="mb-4 text-xl font-bold text-gray-900 "> تحديث المعلومات</h2>
-              <form>
-                <div class="grid gap-4 mb-4 sm:grid-cols-3 sm:gap-6 sm:mb-5">
-                  <div class="w-full ">
-                    <label for="perm" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الصلاحيات
-                    </label>
-                    <label type="text" name="perm" id="perm"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
-                  </div>
-                  <div class="w-full ">
-                    <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الاسم
-                      الاخير</label>
-                    <input type="text" name="lastname" id="lastname"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-                  </div>
-                  <div class="w-full ">
-                    <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 :text-white">الاسم
-                      الاول</label>
-                    <input type="text" name="firstname" id="firstname"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-                  </div>
-                  <div class="sm:col-span-3">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">البريد الالكتروني
-                    </label>
-                    <input type="email" name="email" id="email"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-                  </div>
-                  <div class="w-full col-span-2">
-                    <label for="phonenumber" class="block mb-2 text-sm font-medium text-gray-900 ">رقم الجوال</label>
-                    <input type="number" name="phonenumber" id="phonenumber"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-                  </div>
-                  <div class="col-span-1">
-                    <label for="countrycode" class="block mb-2 text-sm font-medium text-gray-900  ">المعرف
-                      الدولي</label>
-                    <select id="countrycode"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500">
-                      <option selected="">Electronics</option>
-                      <option value="TV">TV/Monitors</option>
-                      <option value="PC">PC</option>
-                      <option value="GA">Gaming/Console</option>
-                      <option value="PH">Phones</option>
-                    </select>
-                  </div>
-                  <div class="w-full col-span-1">
-                    <label for="updatedAt" class="block mb-2 text-sm font-medium text-gray-900 ">تاريخ اخر تحديث
-                    </label>
-                    <label name="updatedAt" id="updatedAt"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
-                  </div>
-                  <div class="w-full col-span-2">
-                    <label for="createdAt" class="block mb-2 text-sm font-medium text-gray-900 :text-white">تاريخ
-                      الانشاء
-                    </label>
-                    <label name="createdAt" id="createdAt"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full p-5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-primary-500 :focus:border-primary-500"></label>
-                  </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <button type="submit"
-                    class="text-gray-400 bg-primary-700 border border-gray-400 hover:text-gray-800 hover:border-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">
-                    تحديث المعلومات
-                  </button>
-                </div>
-              </form>
-            </div>
-          </section>
+         <app-user-form></app-user-form>
         </div>
       </div>
       <div class="border-2 border-dashed rounded-3xl border-gray-300 :border-gray-600 h-96 mb-4">
