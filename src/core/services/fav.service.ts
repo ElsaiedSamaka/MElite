@@ -23,8 +23,8 @@ export class FavService {
       })
     );
   }
-  delete(favProductId: string): Observable<any> {
-    return this.apiService.delete(`/api/fav-products/${favProductId}`).pipe(
+  delete(id: string): Observable<any> {
+    return this.apiService.delete(`/api/fav-products/${id}`).pipe(
       tap((deletedFavProduct) => {
         let updatedFavProducts = this.favProducts$.value.filter(
           (favProduct) => favProduct.id !== deletedFavProduct.id

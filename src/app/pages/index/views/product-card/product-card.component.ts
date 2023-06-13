@@ -13,6 +13,8 @@ export class ProductCardComponent implements OnInit {
     colors: [],
     sizes: [],
   };
+  favProducts: any[] = [];
+  alreadyExistFavProduct;
   showQuickViewModal: boolean = false;
   showWarnToast: boolean = false;
   toastWarnMessage: string = '';
@@ -25,7 +27,9 @@ export class ProductCardComponent implements OnInit {
     private favService: FavService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.favProducts = this.favService.favProducts$.value;
+  }
   productCardForm = new FormGroup({
     colors: new FormArray(this.product.colors, [Validators.required]),
     sizes: new FormArray(this.product.sizes, [Validators.required]),
@@ -72,15 +76,35 @@ export class ProductCardComponent implements OnInit {
     let favItem = {
       productId: product.id,
     };
-    this.favService.post(favItem).subscribe({
-      next: (res) => {
-        if (res.authentication == false) this.toggleWarnToast();
-      },
-      error: (err) => {
-        console.log('error while fav a product', err);
-      },
-      complete: () => {},
-    });
+    if (!this.productAlreadyExistOnFav()) {
+      this.favService.post(favItem).subscribe({
+        next: (res) => {
+          if (res.authentication == false) this.toggleWarnToast();
+          this.favProducts = this.favService.favProducts$.value;
+        },
+        error: (err) => {
+          console.log('error while fav a product', err);
+        },
+        complete: () => {},
+      });
+    } else {
+      this.favService.delete(this.alreadyExistFavProduct.id).subscribe({
+        next: (res) => {
+          if (res.authentication == false) this.toggleWarnToast();
+        },
+        error: (err) => {
+          console.log('err unfav a product', err);
+        },
+        complete: () => {},
+      });
+    }
+  }
+  productAlreadyExistOnFav(): boolean {
+    this.alreadyExistFavProduct = this.favService.favProducts$.value.find(
+      (item) => item.productId == this.product.id
+    );
+    if (this.alreadyExistFavProduct) return true;
+    return false;
   }
   handleColorChange(e: any) {
     let colorArr = this.productCardForm.get('colors') as FormArray;
