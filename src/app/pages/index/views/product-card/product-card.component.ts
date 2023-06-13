@@ -93,6 +93,8 @@ export class ProductCardComponent implements OnInit {
           if (res.authentication == false) this.toggleWarnToast();
         },
         error: (err) => {
+          this.toastErrMessage = err.message || 'خطأ غير متوقع';
+          this.toggleErrToast();
           console.log('err unfav a product', err);
         },
         complete: () => {},
