@@ -8,7 +8,7 @@
         <span>*</span>
         <span>مدينة</span>
       </label>
-      <input [disabled]="(isAddressSubmitted |async) && addressForm.get('city')?.disable()" formControlName="city" type="text"
+      <input [disabled]="isAddressSubmitted && addressForm.get('city')?.disable()" formControlName="city" type="text"
         name="city"
         id="city"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
@@ -18,7 +18,7 @@
         <span>*</span>
         <span>محافظة</span>
       </label>
-      <input [disabled]="(isAddressSubmitted |async) && addressForm.get('state')?.disable()" formControlName="state"
+      <input [disabled]="isAddressSubmitted && addressForm.get('state')?.disable()" formControlName="state"
         type="text" name="state"
         id="state"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
@@ -29,7 +29,7 @@
         <span>*</span>
         <span>شارع</span>
       </label>
-      <input [disabled]="(isAddressSubmitted |async) && addressForm.get('street')?.disable()" formControlName="street"
+      <input [disabled]="isAddressSubmitted && addressForm.get('street')?.disable()" formControlName="street"
         type="text"
         name="street" id="street"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
@@ -39,16 +39,18 @@
         <span>*</span>
         <span>حي</span>
       </label>
-      <input [disabled]="(isAddressSubmitted|async) && addressForm.get('neighborhood')?.disable()"
+      <input [disabled]="isAddressSubmitted && addressForm.get('neighborhood')?.disable()"
         formControlName="neighborhood" type="text"
         name="neighborhood" id="neighborhood"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 :bg-gray-700 :border-gray-600 :placeholder-gray-400 :text-white :focus:ring-blue-500 :focus:border-blue-500">
     </div>
+  
   <!-- Actions  -->
   <div class="flex items-center gap-x-3">
+  
     <button type="submit"
       class="mx-0.5 bg-gradient-to-bl from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br disabled:cursor-not-allowed disabled:from-gray-400 disabled:to-gray-400 "
-      [disabled]="addressForm.invalid || (isAddressSubmitted|async)"
+      [disabled]="addressForm.invalid || isAddressSubmitted"
       >
       حفظ البيانات
     </button>
@@ -57,8 +59,12 @@
       (click)="resetForm()">
       افراغ البيانات
     </button>
+    
   </div>
   <!-- Actions  -->
+  <span class="text-xs text-left">we are using a shared data service to share the the state of <strong> isAddressSubmitted
+    </strong>between the two
+    sibling components the address-cart component and the stepper-component</span>
   </form>
   </ng-container>
 </div>

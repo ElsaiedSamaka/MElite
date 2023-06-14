@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
 import { AddressService } from 'src/core/services/address.service';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-address-cart',
@@ -14,12 +14,18 @@ export class AddressCartComponent implements OnInit {
   toastSucsessMessage: string = '';
   showErrToast: boolean = false;
   toastErrMessage: string = '';
-  isAddressSubmitted: BehaviorSubject<any> = new BehaviorSubject<boolean>(true);
+  isAddressSubmitted: boolean = true;
 
-  constructor(private addressService: AddressService) {}
+  constructor(
+    private addressService: AddressService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit() {
-    this.isAddressSubmitted.next(false);
+    this.dataService.isAddressSubmitted$.next(false);
+    this.dataService.isAddressSubmitted$.subscribe((value) => {
+      this.isAddressSubmitted = value;
+    });
   }
   addressForm = new FormGroup({
     state: new FormControl('', [Validators.required]),
@@ -31,8 +37,7 @@ export class AddressCartComponent implements OnInit {
     if (this.addressForm.invalid) {
       return;
     }
-    this.isAddressSubmitted.next(true);
-
+    this.dataService.isAddressSubmitted$.next(true);
     this.addressService.post(this.addressForm.value).subscribe({
       next: (address) => {
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
@@ -59,8 +64,13 @@ export class AddressCartComponent implements OnInit {
     this.addressForm.reset();
   }
   toggleAddressForm(): void {
-    this.isAddressSubmitted.next(!this.isAddressSubmitted.value);
-    if (!this.isAddressSubmitted.value) {
+    this.dataService.isAddressSubmitted$.next(
+      !this.dataService.isAddressSubmitted$.value
+    );
+    this.dataService.isAddressSubmitted$.subscribe((value) => {
+      this.isAddressSubmitted = value;
+    });
+    if (!this.isAddressSubmitted) {
       this.addressForm.get('state').enable();
       this.addressForm.get('city').enable();
       this.addressForm.get('neighborhood').enable();

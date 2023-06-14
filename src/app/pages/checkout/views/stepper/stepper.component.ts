@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/core/services/cart.service';
 import { OrdersService } from 'src/core/services/orders.service';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-stepper',
@@ -15,13 +16,19 @@ export class StepperComponent implements OnInit {
     { id: 3, label: 'مراجعة الطلب', description: 'This is step 3' },
   ];
   cartItems: any[] = [];
+  isAddressSubmitted: boolean = false;
 
   constructor(
     private ordersService: OrdersService,
-    private cartService: CartService
+    private cartService: CartService,
+    private dataService: DataService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataService.isAddressSubmitted$.subscribe((value) => {
+      this.isAddressSubmitted = value;
+    });
+  }
   createOrder() {
     this.cartItems = this.cartService.items$.value;
     this.ordersService.post(this.cartItems).subscribe({
