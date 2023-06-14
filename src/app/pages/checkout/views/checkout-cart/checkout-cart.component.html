@@ -41,7 +41,12 @@
               </div>
             </td>
             <td class="px-6 py-4 font-semibold text-gray-900">
+            <ng-container *ngIf="item.colors.length > 0; else nocolors">
               <p class="inline mx-1" *ngFor="let color of item.colors">{{color.name}}</p>
+              </ng-container>
+              <ng-template #nocolors>
+                <p>N/A</p>
+              </ng-template>
             </td>
             <td class="px-6 py-4 font-semibold text-gray-900 ">
               ${{item.price ? item.price :"N/A"}}
