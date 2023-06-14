@@ -24,7 +24,6 @@ export class StepperComponent implements OnInit {
   ngOnInit() {}
   createOrder() {
     this.cartItems = this.cartService.items$.value;
-    console.log('cartItems', this.cartItems);
     this.ordersService.post(this.cartItems).subscribe({
       next: (res) => {
         console.log('res [create Order]', res);

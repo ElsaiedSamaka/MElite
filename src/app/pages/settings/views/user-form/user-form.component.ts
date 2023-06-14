@@ -42,24 +42,24 @@ export class UserFormComponent implements OnInit {
     });
   }
   userForm = new FormGroup({
-    firstname: new FormControl({ value: '', disabled: this.isSubmitted }, [
+    firstname: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    lastname: new FormControl({ value: '', disabled: this.isSubmitted }, [
+    lastname: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
     ]),
-    email: new FormControl({ value: '', disabled: this.isSubmitted }, [
+    email: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(40),
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
-    countrycode: new FormControl({ value: '', disabled: this.isSubmitted }),
-    phonenumber: new FormControl({ value: '', disabled: this.isSubmitted }, [
+    countrycode: new FormControl(''),
+    phonenumber: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(50),

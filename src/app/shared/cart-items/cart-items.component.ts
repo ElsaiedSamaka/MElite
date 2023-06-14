@@ -12,16 +12,11 @@ export class CartItemsComponent implements OnInit {
 
   ngOnInit() {
     this.cartItems = this.cartService.items$.value;
-    console.log('cartItems (oninit) [cart-itemscomponent]', this.cartItems);
   }
   getCartItems(): void {
     this.cartService.getUserCarts().subscribe({
       next: (cartItems) => {
         this.cartItems = this.cartService.items$.value;
-        console.log(
-          'cartItems (getCartItems) [cart-itemscomponent]',
-          this.cartItems
-        );
       },
       error: (err) => {
         console.log('error while returning cart item', err);

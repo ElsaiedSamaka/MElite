@@ -30,15 +30,16 @@ export class AddressCartComponent implements OnInit {
     if (this.addressForm.invalid) {
       return;
     }
+    this.isSubmitted = true;
+
     this.addressService.post(this.addressForm.value).subscribe({
-      next: () => {
+      next: (address) => {
         this.toastSucsessMessage = 'تم حفظ البيانات بنجاح';
         this.toggleSucsessToast();
-        this.isSubmitted = true;
+        this.toggleAddressForm();
       },
       error: (err) => {
-        this.toastErrMessage = err.message || 'خطأ غير متوقع';
-        this.toggleErrToast();
+        console.log('but why?', err);
       },
       complete: () => {},
     });
@@ -55,6 +56,20 @@ export class AddressCartComponent implements OnInit {
   }
   resetForm() {
     this.addressForm.reset();
+  }
+  toggleAddressForm(): void {
+    this.isSubmitted = !this.isSubmitted;
+    if (!this.isSubmitted) {
+      this.addressForm.get('state').enable();
+      this.addressForm.get('city').enable();
+      this.addressForm.get('neighborhood').enable();
+      this.addressForm.get('street').enable();
+    } else {
+      this.addressForm.get('state').disable();
+      this.addressForm.get('city').disable();
+      this.addressForm.get('neighborhood').disable();
+      this.addressForm.get('street').disable();
+    }
   }
   toggleSucsessToast() {
     this.showSucsessToast = !this.showSucsessToast;
