@@ -90,7 +90,7 @@
       </div>
       <div modal-footer>
         <div class="flex p-5">
-          <a routerLink="/index" role="button" (click)="toggleConfirmationModal()"
+          <a [routerLink]="['/index']" role="button" (click)="toggleConfirmationModal()"
             class="mx-0.5 bg-gradient-to-bl from-blue-400 to-blue-700 inline-block px-5 py-2 my-1 text-white font-semibold border-solid border-2 border-gray-200 rounded-3xl shadow-inner hover:bg-gradient-to-br">
             عودة للرئيسية
           </a>
