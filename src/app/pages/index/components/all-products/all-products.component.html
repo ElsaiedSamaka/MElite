@@ -82,14 +82,18 @@
     <main class="p-4 md:ml-64 h-auto ">
         <!-- animated blured divs -->
         <div
-          class="absolute top-[10%] left-[10%] w-72 h-72 rounded-full bg-red-500 mix-blend-multiply filter blur-3xl">
+          class="absolute top-[1%]  right-[15%] w-24 h-40 rounded-full bg-[#252A34] mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
         </div>
         <div
-          class="absolute top-[25%] right-8 w-72 h-72 rounded-full bg-gray-500 mix-blend-multiply filter blur-3xl ">
+          class="absolute top-[15%] right-[11%]  w-40 h-40 rounded-full bg-[#08D9D6] mix-blend-multiply filter blur-3xl animation-delay-4000">
         </div>
         <div
-          class="absolute top-[50%] right-[8%] w-72 h-72 rounded-full bg-pink-500 mix-blend-multiply filter blur-3xl ">
+          class="absolute top-[25%] right-[17%] w-60 h-60 rounded-full bg-[#FF2E63] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
         </div>
+        <div
+          class="absolute top-[35%] right-[14%]  w-40 h-40 rounded-full bg-[#EAEAEA] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+        </div>
+        <!-- animated blured divs -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
         <ng-container *ngIf="products.length >0; else noproductsfound">
             <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>

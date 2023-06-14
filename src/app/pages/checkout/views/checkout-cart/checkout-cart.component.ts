@@ -11,7 +11,7 @@ export class CheckoutCartComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.cartItems = this.cartService.items$.value;
+    this.getCartItems();
   }
   getCartItems(): void {
     this.cartService.getUserCarts().subscribe({
@@ -51,7 +51,7 @@ export class CheckoutCartComponent implements OnInit {
       price: cartItem.product.price * (cartItem.quantity + 1),
     };
     this.cartService.put(id, updatedCartItem).subscribe({
-      next: (updatedCartItem) => {
+      next: async (updatedCartItem) => {
         this.cartItems = this.cartService.items$.value;
       },
       error: (err) => {
@@ -68,7 +68,7 @@ export class CheckoutCartComponent implements OnInit {
     };
 
     this.cartService.put(id, updatedCartItem).subscribe({
-      next: (updatedCartItem) => {
+      next: async (updatedCartItem) => {
         this.cartItems = this.cartService.items$.value;
       },
       error: (err) => {
