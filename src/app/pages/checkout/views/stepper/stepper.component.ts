@@ -17,7 +17,9 @@ export class StepperComponent implements OnInit {
   ];
   cartItems: any[] = [];
   isAddressSubmitted: boolean = false;
-
+  showConfirmationModal: boolean = true;
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   constructor(
     private ordersService: OrdersService,
     private cartService: CartService,
@@ -33,9 +35,11 @@ export class StepperComponent implements OnInit {
     this.cartItems = this.cartService.items$.value;
     this.ordersService.post(this.cartItems).subscribe({
       next: (res) => {
-        console.log('res [create Order]', res);
+        this.toggleConfirmationModal();
       },
       error: (err) => {
+        this.toastErrMessage = err.message || 'عذرا, حدث خطأ اثناء انشاء الطلب';
+        this.toggleErrToast();
         console.log('err while creating an order', err);
       },
       complete: () => {},
@@ -49,5 +53,14 @@ export class StepperComponent implements OnInit {
   prevStep() {
     this.currentStepIndex--;
     console.log(this.currentStepIndex);
+  }
+  toggleConfirmationModal(): void {
+    this.showConfirmationModal = !this.showConfirmationModal;
+  }
+  toggleErrToast(): void {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
+    }, 3000);
   }
 }

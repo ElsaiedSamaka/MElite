@@ -6,15 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  showConfirmationModal: boolean = false;
   constructor() {}
 
   ngOnInit() {}
 
-  toggleConfirmationModal(): void {
-    this.showConfirmationModal = !this.showConfirmationModal;
-  }
-  nextStep(e: any) {
+ extStep(e: any) {
     console.log('e', e);
   }
   prevStep(e: any) {
