@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { AddressService } from 'src/core/services/address.service';
 
 @Component({
@@ -13,12 +14,12 @@ export class AddressCartComponent implements OnInit {
   toastSucsessMessage: string = '';
   showErrToast: boolean = false;
   toastErrMessage: string = '';
-  isSubmitted: boolean = true;
+  isAddressSubmitted: BehaviorSubject<any> = new BehaviorSubject<boolean>(true);
 
   constructor(private addressService: AddressService) {}
 
   ngOnInit() {
-    this.isSubmitted = false;
+    this.isAddressSubmitted.next(false);
   }
   addressForm = new FormGroup({
     state: new FormControl('', [Validators.required]),
@@ -30,7 +31,7 @@ export class AddressCartComponent implements OnInit {
     if (this.addressForm.invalid) {
       return;
     }
-    this.isSubmitted = true;
+    this.isAddressSubmitted.next(true);
 
     this.addressService.post(this.addressForm.value).subscribe({
       next: (address) => {
@@ -58,8 +59,8 @@ export class AddressCartComponent implements OnInit {
     this.addressForm.reset();
   }
   toggleAddressForm(): void {
-    this.isSubmitted = !this.isSubmitted;
-    if (!this.isSubmitted) {
+    this.isAddressSubmitted.next(!this.isAddressSubmitted.value);
+    if (!this.isAddressSubmitted.value) {
       this.addressForm.get('state').enable();
       this.addressForm.get('city').enable();
       this.addressForm.get('neighborhood').enable();
