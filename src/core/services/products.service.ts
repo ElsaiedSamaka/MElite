@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -18,6 +18,11 @@ export class ProductsService {
       .pipe(
         tap((res) => {
           this.products$.next(res.products);
+        }),
+        catchError((err) => {
+          // handle error and return a more specific error message
+          const errorMessage = err?.error?.message ?? 'An error occurred.';
+          return throwError(errorMessage);
         })
       );
   }
@@ -25,6 +30,11 @@ export class ProductsService {
     return this.apiService.get('/api/products/get-all').pipe(
       tap((res) => {
         this.products$.next(res);
+      }),
+      catchError((err) => {
+        // handle error and return a more specific error message
+        const errorMessage = err?.error?.message ?? 'An error occurred.';
+        return throwError(errorMessage);
       })
     );
   }
@@ -35,6 +45,11 @@ export class ProductsService {
     return this.apiService.get(`/api/products/by-category/${id}`).pipe(
       tap((res) => {
         this.products$.next(res);
+      }),
+      catchError((err) => {
+        // handle error and return a more specific error message
+        const errorMessage = err?.error?.message ?? 'An error occurred.';
+        return throwError(errorMessage);
       })
     );
   }
@@ -45,11 +60,22 @@ export class ProductsService {
     return this.apiService.post('/api/products', product).pipe(
       tap((newProduct) => {
         this.products$.value.push(newProduct);
+      }),
+      catchError((err) => {
+        // handle error and return a more specific error message
+        const errorMessage = err?.error?.message ?? 'An error occurred.';
+        return throwError(errorMessage);
       })
     );
   }
   put(id: string, product: any): Observable<any> {
-    return this.apiService.put(`/api/products/${id}`, product);
+    return this.apiService.put(`/api/products/${id}`, product).pipe(
+      catchError((err) => {
+        // handle error and return a more specific error message
+        const errorMessage = err?.error?.message ?? 'An error occurred.';
+        return throwError(errorMessage);
+      })
+    );
   }
   filter(filter: string): Observable<any[]> {
     // TODO: make sure the backend is ready for this
