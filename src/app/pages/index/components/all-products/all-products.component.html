@@ -74,27 +74,87 @@
                   </div>
                   </div>
                   </div>
+                  <div class=" px-2 py-6 border-t border-gray-400 ">
+                    <h3 class=" -my-3 flow-root">
+                      <!-- Expand/collapse section button -->
+                      <button type="button" (click)="collapseColors()"
+                        class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
+                        aria-controls="filter-section-mobile-0" aria-expanded="false">
+                        <span class="font-medium text-gray-900">اللون</span>
+                        <span class=" flex items-center">
+                          <!-- Expand icon, show/hide based on section open state. -->
+                          <svg *ngIf="!showColorFilter" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path
+                              d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                          </svg>
+                          <!-- Collapse icon, show/hide based on section open state. -->
+                          <svg *ngIf="showColorFilter" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </span>
+                      </button>
+                    </h3>
+                    <!-- Filter section, show/hide based on section state. -->
+                    <div class="pt-2 px-2 bg-red-100" id="filter-section-mobile-0" *ngIf="showColorFilter">
+                      <div class="space-y-6">
+                        <div class="flex items-center">
+                          colors
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" px-2 py-6 border-t border-gray-400 ">
+                    <h3 class=" -my-3 flow-root">
+                      <!-- Expand/collapse section button -->
+                      <button type="button" (click)="collapseSizes()"
+                        class="flex flex-row-reverse w-full items-center justify-between py-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 "
+                        aria-controls="filter-section-mobile-0" aria-expanded="false">
+                        <span class="font-medium text-gray-900">المقاس</span>
+                        <span class=" flex items-center">
+                          <!-- Expand icon, show/hide based on section open state. -->
+                          <svg *ngIf="!showSizeFilter" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path
+                              d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                          </svg>
+                          <!-- Collapse icon, show/hide based on section open state. -->
+                          <svg *ngIf="showSizeFilter" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </span>
+                      </button>
+                    </h3>
+                    <!-- Filter section, show/hide based on section state. -->
+                    <div class="pt-2 px-2 bg-blue-200" id="filter-section-mobile-0" *ngIf="showSizeFilter">
+                      <div class="space-y-6">
+                        <div class="flex items-center">
+                          size
+                        </div>
+                        </div>
+                        </div>
+                  </div>
                   </form>
       </div>
 
     </aside>
 
     <main class="p-4 md:ml-64 h-auto ">
-        <!-- animated blured divs -->
-        <div
-          class="absolute top-[1%]  right-[15%] w-24 h-40 rounded-full bg-[#252A34] mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
-        </div>
-        <div
-          class="absolute top-[15%] right-[11%]  w-40 h-40 rounded-full bg-[#08D9D6] mix-blend-multiply filter blur-3xl animation-delay-4000">
-        </div>
-        <div
-          class="absolute top-[25%] right-[17%] w-60 h-60 rounded-full bg-[#FF2E63] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
-        </div>
-        <div
-          class="absolute top-[35%] right-[14%]  w-40 h-40 rounded-full bg-[#EAEAEA] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
-        </div>
-        <!-- animated blured divs -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+            <!-- animated blured divs -->
+            <div
+              class="fixed top-[1%]  right-[15%] w-24 h-40 rounded-full bg-[#252A34] mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+            </div>
+            <div
+              class="fixed top-[15%] right-[11%]  w-40 h-40 rounded-full bg-[#08D9D6] mix-blend-multiply filter blur-3xl animation-delay-4000">
+            </div>
+            <div
+              class="fixed top-[25%] right-[17%] w-60 h-60 rounded-full bg-[#FF2E63] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+            </div>
+            <div
+              class="fixed top-[35%] right-[14%]  w-40 h-40 rounded-full bg-[#EAEAEA] mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+            </div>
+            <!-- animated blured divs -->
         <ng-container *ngIf="products.length >0; else noproductsfound">
             <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
         </ng-container>

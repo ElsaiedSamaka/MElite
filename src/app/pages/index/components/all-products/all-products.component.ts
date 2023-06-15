@@ -13,6 +13,8 @@ export class AllProductsComponent implements OnInit {
   categoryId: string = '';
   showCategoryFilterDDL: boolean = false;
   showPriceSlider: boolean = false;
+  showColorFilter: boolean = false;
+  showSizeFilter: boolean = false;
 
   constructor(
     private productsService: ProductsService,
@@ -60,5 +62,11 @@ export class AllProductsComponent implements OnInit {
   }
   collapsePrice(): void {
     this.showPriceSlider = !this.showPriceSlider;
+  }
+  collapseColors(): void {
+    this.showColorFilter = !this.showColorFilter;
+  }
+  collapseSizes(): void {
+    this.showSizeFilter = !this.showSizeFilter;
   }
 }
