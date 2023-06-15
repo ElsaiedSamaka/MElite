@@ -17,7 +17,7 @@ export class StepperComponent implements OnInit {
   ];
   cartItems: any[] = [];
   isAddressSubmitted: boolean = false;
-  showConfirmationModal: boolean = true;
+  showConfirmationModal: boolean = false;
   showErrToast: boolean = false;
   toastErrMessage: string = '';
   constructor(
