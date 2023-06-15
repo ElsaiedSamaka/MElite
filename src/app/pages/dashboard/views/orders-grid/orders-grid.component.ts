@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OrdersService } from 'src/core/services/orders.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { OrdersService } from 'src/core/services/orders.service';
   styleUrls: ['./orders-grid.component.css'],
 })
 export class OrdersGridComponent implements OnInit {
-  orders: any[] = [];
+ @Input() orders: any[] = [];
 
   constructor(private ordersService: OrdersService) {}
 
