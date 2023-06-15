@@ -36,6 +36,7 @@ export class OrdersComponent implements OnInit {
   getOrders(): void {
     const startDate = this.orderForm.get('startDate').value;
     const endDate = this.orderForm.get('endDate').value;
+    if (startDate == '' && endDate == '') return;
     this.ordersService.getOrdersByDate(startDate, endDate).subscribe({
       next: (orders) => {
         this.orders = orders;
