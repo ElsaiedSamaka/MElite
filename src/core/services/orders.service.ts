@@ -16,6 +16,15 @@ export class OrdersService {
       })
     );
   }
+  getOrdersByDate(startDate: string, endDate: string): Observable<any[]> {
+    return this.apiService
+      .get(`/api/orders/by-date?startDate=${startDate}&endDate=${endDate}`)
+      .pipe(
+        tap((orders) => {
+          this.orders$.next(orders);
+        })
+      );
+  }
   getOrdersByUser(userId: string): Observable<any[]> {
     return this.apiService.get(`/api/orders/by-user/${userId}`).pipe(
       tap((orders) => {

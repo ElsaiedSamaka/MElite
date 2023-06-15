@@ -1,5 +1,5 @@
 <section class="border-2 border-dashed border-gray-200 rounded-3xl w-full p-3 sm:p-5 ">
-  <div class="flex justify-end items-center space-x-5 p-5 ">
+  <form [formGroup]="orderForm" (ngSubmit)="getOrders()" class="flex justify-end items-center space-x-5 p-5 ">
     <div class="mr-auto">
       <button type="submit"
         class="inline-flex items-center py-2.5 px-4 ml-2 text-sm font-medium text-black bg-gray-200 rounded-3xl border border-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-black disabled:cursor-not-allowed disabled:bg-gray-300">
@@ -11,15 +11,15 @@
       </button>
     </div>
     <div>
-      <input class="p-2 rounded-3xl" name="to-date" id="to-date" type="date" />
-      <label class="mx-1" for="to-date">التاريخ الى</label>
+      <input class="p-2 rounded-3xl" type="date" name="endDate" id="endDate" formControlName="endDate" />
+      <label class="mx-1" for="endDate">التاريخ الى</label>
       </div>
       <div>
-      <input class="p-2 rounded-3xl" name="from-date" id="from-date" type="date" />
-      <label class="mx-1" for="from-date">التاريخ من</label>
+      <input class="p-2 rounded-3xl" type="date" name="startDate" id="startDate" formControlName="startDate" />
+      <label class="mx-1" for="startDate">التاريخ من</label>
     </div>
     
-  </div>
+  </form>
   <!-- <div class="relative rounded-3xl border-2 border-dashed border-gray-200 mx-auto h-96 overflow-y-scroll">
     <table class="w-full text-sm text-center text-gray-500 ">
       <thead class=" text-md text-gray-700 uppercase bg-gray-50 ">
