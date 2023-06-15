@@ -6,22 +6,22 @@
   <div
     class="absolute left-1/4 -top-3 w-1/2 z-10 px-3 py-1 text-sm font-medium border-2 border-red-500 text-red-500 rounded-3xl shadow-sm backdrop-blur-3xl tooltip"
     *ngIf="showErrors()">
-    <p class="text-sm text-white text-center" *ngIf="control.errors['required']">
+    <p class="text-sm  text-center" *ngIf="control.errors['required']">
       هذا الحقل مطلوب
     </p>
-    <p class=" text-sm text-white text-center" *ngIf="control.errors['minlength']">
+    <p class=" text-sm  text-center" *ngIf="control.errors['minlength']">
       الحد الأدنى للحروف هو {{control.errors['minlength'].requiredLength}}
     </p>
-    <p class="text-sm text-white text-center" *ngIf="control.errors['maxlength']">
+    <p class="text-sm  text-center" *ngIf="control.errors['maxlength']">
       الحد الأقصى للحروف هو {{control.errors['maxlength'].requiredLength}}
     </p>
-    <p class=" text-sm text-white text-center" *ngIf="control.errors['pattern']">
+    <p class=" text-sm  text-center" *ngIf="control.errors['pattern']">
       صيغة الادخال غير صحيحة
     </p>
-    <p class=" text-sm text-white text-center" *ngIf="control.errors['notEmailUnique']">
+    <p class=" text-sm  text-center" *ngIf="control.errors['notEmailUnique']">
       هذا البريد الالكتروني مستخدم من قبل
     </p>
-      <p class=" text-sm text-white text-center" *ngIf="control.errors['zeroOrNegative']">
+      <p class=" text-sm  text-center" *ngIf="control.errors['zeroOrNegative']">
         لا يقبل صفر او ارقام سالبة
       </p>
   </div>
