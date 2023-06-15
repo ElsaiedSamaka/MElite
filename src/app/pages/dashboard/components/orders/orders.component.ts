@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrdersService } from 'src/core/services/orders.service';
+import { EndDateRange } from 'src/core/validators/end-date-range';
+import { StartDateRange } from 'src/core/validators/start-date-range';
 
 @Component({
   selector: 'app-orders',
@@ -13,16 +15,24 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private startDateRange: StartDateRange,
+    private endDateRange: EndDateRange
   ) {}
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group({
-      startDate: [''],
-      endDate: [''],
-    });
+    this.orderForm = this.formBuilder.group(
+      {
+        startDate: [''],
+        endDate: [''],
+      },
+      { validators: [this.startDateRange.validate, this.endDateRange.validate] }
+    );
   }
-
+  showErrors() {
+    const { dirty, touched, errors } = this.orderForm;
+    return dirty && touched && errors;
+  }
   getOrders(): void {
     const startDate = this.orderForm.get('startDate').value;
     const endDate = this.orderForm.get('endDate').value;
