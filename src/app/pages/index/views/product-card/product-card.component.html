@@ -161,7 +161,6 @@
                   <fieldset class="mt-4">
                     <legend class="sr-only">Choose a size</legend>
                     <div class="grid grid-cols-4 gap-4">
-                      <!-- Active: "ring-2 ring-indigo-500" -->
                       <label
                       [for]="size.name"
                       *ngFor="let size of product.sizes" [for]="size.name"
@@ -169,10 +168,6 @@
                         <input type="checkbox" [name]="size.name" [id]="size.name" [value]="size.name" class="sr-only"
                           (change)="handleSizeChange($event)">
                         <span id="size-label">{{size.name}}</span>
-                        <!--
-                            Active: "border", Not Active: "border-2"
-                            Checked: "border-indigo-500", Not Checked: "border-transparent"
-                          -->
                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
                       </label>
                     </div>
