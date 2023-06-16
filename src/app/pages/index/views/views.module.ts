@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductReviewsComponent } from './product-reviews/product-reviews.component';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, RouterModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule],
   declarations: [ProductCardComponent, ProductReviewsComponent],
   exports: [ProductCardComponent, ProductReviewsComponent],
 })
