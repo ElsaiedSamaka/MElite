@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-reviews',
   templateUrl: './product-reviews.component.html',
-  styleUrls: ['./product-reviews.component.css']
+  styleUrls: ['./product-reviews.component.css'],
 })
 export class ProductReviewsComponent implements OnInit {
+  @Input() reviews: any[] = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
