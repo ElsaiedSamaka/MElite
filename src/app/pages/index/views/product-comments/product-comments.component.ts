@@ -10,6 +10,12 @@ import { ReviewsService } from 'src/core/services/reviews.service';
 export class ProductCommentsComponent implements OnInit {
   @Input() reviews: any[] = [];
   @Input() productId: string = '';
+  showCommentActions: boolean = false;
+  articleIndex;
+  showWarnToast: boolean = false;
+  toastWarnMessage: string = '';
+  showErrToast: boolean = false;
+  toastErrMessage: string = '';
   constructor(private reviewsService: ReviewsService) {}
 
   ngOnInit() {}
@@ -32,9 +38,13 @@ export class ProductCommentsComponent implements OnInit {
         this.reviews = this.reviewsService.reviews$.value;
       },
       error: (err) => {
+        this.toastErrMessage = err.message || 'خطأ غير متوقع';
+        this.toggleErrToast();
         console.log('error', err);
       },
-      complete: () => {},
+      complete: () => {
+        this.reviewForm.reset();
+      },
     });
   }
   updatedReview(id: string, review: any): void {
@@ -42,5 +52,21 @@ export class ProductCommentsComponent implements OnInit {
   }
   deleteReview(id: string): void {
     // this.reviewsService.deleteById(id)
+  }
+  toggleCommentActions(i: string): void {
+    this.articleIndex = i;
+    this.showCommentActions = !this.showCommentActions;
+  }
+  toggleWarnToast(): void {
+    this.showWarnToast = !this.showWarnToast;
+    setTimeout(() => {
+      this.showWarnToast = false;
+    }, 3000);
+  }
+  toggleErrToast(): void {
+    this.showErrToast = !this.showErrToast;
+    setTimeout(() => {
+      this.showErrToast = false;
+    }, 3000);
   }
 }

@@ -21,8 +21,8 @@
         </button>
       </form>
       <div class="max-h-96 overflow-y-auto">
-        <article class="p-6 mb-6 text-base bg-white rounded-3xl " *ngFor="let review of reviews">
-          <footer class="flex justify-between items-center mb-2">
+        <article class="p-6 mb-6 text-base bg-white rounded-3xl " *ngFor="let review of reviews;let i = index">
+          <footer class="flex justify-between items-center mb-2 ">
             <div class="flex items-center">
               <p class="inline-flex items-center mr-3 text-sm text-gray-900 :text-white"><img
                   class="mr-2 w-6 h-6 rounded-full" [src]="review.user.user_img"
@@ -30,7 +30,8 @@
               <p class="text-sm text-gray-600 :text-gray-400"><time pubdate datetime="2022-02-08"
                   title="February 8th, 2022">{{review.createdAt|date}}</time></p>
             </div>
-            <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
+            <div class="relative">
+              <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" (click)="toggleCommentActions(i)"
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 :bg-gray-900 :hover:bg-gray-700 :focus:ring-gray-600"
               type="button">
               <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -42,8 +43,8 @@
               <span class="sr-only">Comment settings</span>
             </button>
             <!-- Dropdown menu -->
-            <div id="dropdownComment1"
-              class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow :bg-gray-700 :divide-gray-600">
+            <div id="dropdownComment1" *ngIf="articleIndex == i && showCommentActions"
+              class="absolute -left-24 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow ">
               <ul class="py-1 text-sm text-gray-700 :text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
                 <li>
                   <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Edit</a>
@@ -55,6 +56,7 @@
                   <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Report</a>
                 </li>
               </ul>
+            </div>
             </div>
           </footer>
           <p class="text-gray-500 :text-gray-400">{{review.review}}</p>
@@ -126,3 +128,8 @@
     </div>
   </section>
 </div>
+<!-- Toast -->
+<app-toast *ngIf="showWarnToast" (dismiss)="toggleWarnToast()" toastType="warning"
+  [toastMessage]="toastWarnMessage"></app-toast>
+<app-toast *ngIf="showErrToast" (dismiss)="toggleErrToast()" toastType="error"
+  [toastMessage]="toastErrMessage"></app-toast>
