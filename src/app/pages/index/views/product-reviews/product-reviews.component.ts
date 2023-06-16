@@ -19,6 +19,5 @@ export class ProductReviewsComponent implements OnInit {
     this.average = this.sum / this.reviews.length;
     this.ratedStars = Array.from({ length: this.average }, (_, i) => i + 1);
     this.unratedStars = [...Array(5 - this.ratedStars.length).keys()];
-    console.log(this.ratedStars);
   }
 }

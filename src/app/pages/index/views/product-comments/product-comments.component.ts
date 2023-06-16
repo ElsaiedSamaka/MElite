@@ -27,7 +27,6 @@ export class ProductCommentsComponent implements OnInit {
   });
   onSubmit(): void {
     if (this.reviewForm.invalid) return;
-    console.log('reviewForm', this.reviewForm.value);
     let review = {
       productId: this.productId,
       rating: this.reviewForm.controls.rating.value,
@@ -56,6 +55,9 @@ export class ProductCommentsComponent implements OnInit {
   }
   deleteReview(id: string): void {
     // this.reviewsService.deleteById(id)
+  }
+  createRange(number: number) {
+    return Array.from({ length: number }, (_, i) => i);
   }
   toggleCommentActions(i: string): void {
     this.articleIndex = i;
