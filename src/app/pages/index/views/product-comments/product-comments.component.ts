@@ -25,6 +25,7 @@ export class ProductCommentsComponent implements OnInit {
   });
   onSubmit(): void {
     if (this.reviewForm.invalid) return;
+    console.log('reviewForm', this.reviewForm.value);
     let review = {
       productId: this.productId,
       rating: this.reviewForm.controls.rating.value,
