@@ -1,4 +1,4 @@
-<div class="py-10  lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16  lg:pt-6">
+<div class="py-5   lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16  lg:pt-6">
   <section class=" py-8 lg:py-16">
     <div class=" mx-auto px-4">
       <div class="mb-6 ">
@@ -9,10 +9,10 @@
       </div>
       <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="mb-6 flex flex-col">
         <div
-          class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 ">
+          class="py-2 px-4 mb-4 bg-white rounded-3xl border border-gray-200 ">
           <label for="review" class="sr-only">Your comment</label>
           <textarea formControlName="review" id="review" rows="6"
-            class="px-0 text-right w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none :text-white :placeholder-gray-400 :bg-gray-800"
+            class="px-0 text-right w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none "
             placeholder="اضف تعليقك.." required></textarea>
         </div>
         <button type="submit"
@@ -20,7 +20,7 @@
           اضافة مراجعة
         </button>
       </form>
-      <div class="max-h-64 overflow-y-auto">
+      <div class="max-h-96 overflow-y-auto">
         <article class="p-6 mb-6 text-base bg-white rounded-3xl " *ngFor="let review of reviews">
           <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
@@ -66,17 +66,19 @@
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
                 </path>
               </svg>
-              Reply
+              رد
             </button>
           </div>
+          <span class="text-xs inline-flex w-full text-gray-400 mr-auto">Replying functionality is yet todo </span>
         </article>
-        <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-3xl ">
+        <!-- TODO: add reply functionality -->
+        <article class="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-3xl hidden">
           <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
               <p class="inline-flex items-center mr-3 text-sm text-gray-900 :text-white"><img
-                  class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  alt="Jese Leos">Jese Leos</p>
-              <p class="text-sm text-gray-600 :text-gray-400"><time pubdate datetime="2022-02-12"
+                  class="mr-2 w-6 h-6 rounded-full" src=""
+                  alt="">ahmed saad</p>
+              <p class="text-sm text-gray-600 "><time pubdate datetime="2022-02-12"
                   title="February 12th, 2022">Feb. 12, 2022</time></p>
             </div>
             <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2"
