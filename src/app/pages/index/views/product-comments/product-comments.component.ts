@@ -18,7 +18,9 @@ export class ProductCommentsComponent implements OnInit {
   toastErrMessage: string = '';
   constructor(private reviewsService: ReviewsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.reviews.sort((a, b) => b.id - a.id);
+  }
   reviewForm = new FormGroup({
     rating: new FormControl(),
     review: new FormControl(''),
@@ -37,6 +39,7 @@ export class ProductCommentsComponent implements OnInit {
     this.reviewsService.post(review).subscribe({
       next: (review) => {
         this.reviews.push(review);
+        this.reviews.sort((a, b) => b.id - a.id);
       },
       error: (err) => {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
