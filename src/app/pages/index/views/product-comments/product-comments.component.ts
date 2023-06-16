@@ -14,15 +14,14 @@ export class ProductCommentsComponent implements OnInit {
 
   ngOnInit() {}
   reviewForm = new FormGroup({
-    rating: new FormControl(''),
+    rating: new FormControl(),
     review: new FormControl(''),
   });
   onSubmit(): void {
     if (this.reviewForm.invalid) return;
     let review = {
       productId: this.productId,
-      // rating: this.reviewForm.controls.rating.value,
-      rating: 1,
+      rating: this.reviewForm.controls.rating.value,
       review: this.reviewForm.controls.review.value,
     };
     this.postReview(review);
