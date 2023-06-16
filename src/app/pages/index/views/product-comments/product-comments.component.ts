@@ -36,7 +36,7 @@ export class ProductCommentsComponent implements OnInit {
   postReview(review: any): void {
     this.reviewsService.post(review).subscribe({
       next: (review) => {
-        this.reviews = this.reviewsService.reviews$.value;
+        this.reviews.push(review);
       },
       error: (err) => {
         this.toastErrMessage = err.message || 'خطأ غير متوقع';
@@ -44,7 +44,7 @@ export class ProductCommentsComponent implements OnInit {
         console.log('error', err);
       },
       complete: () => {
-        this.reviewForm.reset();
+        this.reviewForm.controls.review.reset();
       },
     });
   }
