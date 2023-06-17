@@ -1,7 +1,7 @@
 <header
   class="flex flex-nowrap flex-row-reverse items-center fixed top-2 right-3 left-3 py-5 z-20 backdrop-blur-xl shadow-md rounded-3xl border">
   <nav class="w-full flex items-center justify-between mx-auto px-2 sm:flex sm:items-center sm:justify-between" aria-label="Global">
-    <ng-container *ngIf="signedin$">
+    <ng-container *ngIf="signedin$ |async">
       <div class="flex flex-row-reverse items-left justify-center gap-2 mt-5 ml-5 hover:text-gray-400"
         (click)="toggleNavDropdown()">
         {{user?.username || ' مستخدم مجهول'}}
@@ -67,7 +67,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="!signedin$ ">
+    <ng-container *ngIf="!(signedin$ |async)">
       <div class="flex gap-2">
         <a role="button" routerLink="/"
           class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm px-5 py-2.5 text-center ">تسجيل
