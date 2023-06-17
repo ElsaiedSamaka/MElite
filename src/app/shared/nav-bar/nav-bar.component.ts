@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/core/services/auth.service';
 
 @Component({
@@ -11,15 +10,15 @@ export class NavBarComponent implements OnInit {
   user: any;
   showNavDropdown = false;
   showCartDropdown = false;
-  signedin$: BehaviorSubject<boolean>;
+  signedin$: boolean = false;
 
-  constructor(private authService: AuthService) {
-    this.signedin$ = authService.signedin$;
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.checkAuth().subscribe((res) => {
+      this.signedin$ = this.authService.signedin$.value;
+    });
     this.user = this.authService.USER$.value;
-    this.authService.checkAuth().subscribe(() => {});
   }
   toggleNavDropdown() {
     this.showNavDropdown = !this.showNavDropdown;
