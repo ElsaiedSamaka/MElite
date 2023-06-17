@@ -192,12 +192,9 @@ export class ProductsComponent implements OnInit {
     this.productsService.post(model).subscribe({
       next: () => {
         this.products = this.productsService.products$.value;
-        this.itemsToDisplay = this.products
-          .slice(0, this.perPage)
-          .sort((a, b) => b.id - a.id);
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
         this.toastSucsessMessage = 'تم انشاء المنتج بنجاح';
         this.toggleSucsessToast();
-        this.addProductForm.reset();
       },
       error: (err) => {
         this.toastErrMessage =
@@ -210,6 +207,7 @@ export class ProductsComponent implements OnInit {
         this.products = this.productsService.products$.value;
         this.itemsToDisplay = this.products.slice(0, this.perPage);
         this.toggleAddProductModal();
+        this.addProductForm.reset();
       },
     });
   }
