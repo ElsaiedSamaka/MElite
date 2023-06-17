@@ -89,11 +89,8 @@ export class AuthService {
   }
 
   googleLogin() {
-    return this.http.get(`${this.api_url}/api/auth/google`).pipe(
-      tap(() => {
-        this.signedin$.next(true);
-      })
-    );
+    window.location.href = `${this.api_url}/api/auth/google`;
+    this.signedin$.next(true);
   }
   facebookLogin() {
     return this.http.get(`${this.api_url}/api/auth/facebook`).pipe(
