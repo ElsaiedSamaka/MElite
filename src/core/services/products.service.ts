@@ -70,6 +70,10 @@ export class ProductsService {
   }
   put(id: string, product: any): Observable<any> {
     return this.apiService.put(`/api/products/${id}`, product).pipe(
+      tap((updatedProduct) => {
+        const index = this.products$.value.findIndex((r) => r.id === id);
+        this.products$.value.splice(index, 1, updatedProduct);
+      }),
       catchError((err) => {
         // handle error and return a more specific error message
         const errorMessage = err?.error?.message ?? 'An error occurred.';

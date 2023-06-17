@@ -222,9 +222,10 @@ export class ProductsComponent implements OnInit {
     if (this.editProductForm.invalid) return;
     this.productsService.put(this.productId, product).subscribe({
       next: () => {
+        this.products = this.productsService.products$.value;
+        this.itemsToDisplay = this.products.slice(0, this.perPage);
         this.toastSucsessMessage = 'تم تعديل المنتج بنجاح';
         this.toggleSucsessToast();
-        this.editProductForm.reset();
       },
       error: (err) => {
         this.toastErrMessage =
@@ -233,6 +234,7 @@ export class ProductsComponent implements OnInit {
         console.log('err', err);
       },
       complete: () => {
+        this.editProductForm.reset();
         this.toggleEditProductModal(product);
       },
     });
