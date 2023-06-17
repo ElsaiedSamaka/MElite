@@ -9,7 +9,13 @@ export class ReviewsService {
   reviews$ = new BehaviorSubject<any[]>([]);
 
   constructor(private apiService: ApiService) {}
-
+  get(id: string): Observable<any[]> {
+    return this.apiService.get(`/api/reviews/${id}`).pipe(
+      tap((reviews) => {
+        this.reviews$.next(reviews);
+      })
+    );
+  }
   deleteById(id: string): Observable<any> {
     return this.apiService.delete(`/api/reviews/${id}`).pipe(
       tap((deletedReview) => {
@@ -30,7 +36,7 @@ export class ReviewsService {
   put(id: string, review: any): Observable<any> {
     return this.apiService.put(`/api/reviews/${id}`, review).pipe(
       tap((updatedReview) => {
-        const index = this.reviews$.value.indexOf(id);
+        const index = this.reviews$.value.findIndex((r) => r.id === id);
         this.reviews$.value.splice(index, 1, updatedReview);
       })
     );

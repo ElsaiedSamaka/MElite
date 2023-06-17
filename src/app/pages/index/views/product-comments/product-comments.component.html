@@ -92,7 +92,7 @@
                       {{review.user.createdAt|date}}</time></p>
             </div>
             <div class="relative">
-              <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" (click)="toggleCommentActions(i)"
+              <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" (click)="toggleCommentActions(review.id)"
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 :bg-gray-900 :hover:bg-gray-700 :focus:ring-gray-600"
               type="button">
               <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -104,11 +104,11 @@
               <span class="sr-only">Comment settings</span>
             </button>
             <!-- Dropdown menu -->
-            <div id="dropdownComment1" *ngIf="articleIndex == i && showCommentActions"
+            <div id="dropdownComment1" *ngIf="reviewId == review.id && showCommentActions"
               class="absolute -left-24 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow ">
               <ul class="py-1 text-sm text-gray-700 :text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
                 <li>
-                  <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Edit</a>
+                  <button (click)="editReview(review.id,review)" class="block w-full py-2 px-4 hover:bg-gray-100">تعديل</button>
                 </li>
                 <li>
                   <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Remove</a>
@@ -218,3 +218,5 @@
   [toastMessage]="toastWarnMessage"></app-toast>
 <app-toast *ngIf="showErrToast" (dismiss)="toggleErrToast()" toastType="error"
   [toastMessage]="toastErrMessage"></app-toast>
+  <app-toast *ngIf="showSuccessToast" (dismiss)="toggleSuccessToast()" toastType="success"
+    [toastMessage]="toastSuccessMessage"></app-toast>
