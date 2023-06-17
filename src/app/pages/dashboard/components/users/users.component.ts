@@ -206,7 +206,6 @@ export class UsersComponent implements OnInit {
     this.rolesService.getRoles().subscribe({
       next: (res) => {
         this.roles = res;
-        console.log('roles', res);
       },
       error: (err) => {
         console.log('err', err);
@@ -225,6 +224,9 @@ export class UsersComponent implements OnInit {
     if (this.showRoleDDL) {
       this.getRoles();
     }
+  }
+  handleRoleSelection(value: any) {
+    this.toggleRolesDDL();
   }
   toggleConfirmationModal() {
     this.showConfirmationModal = !this.showConfirmationModal;

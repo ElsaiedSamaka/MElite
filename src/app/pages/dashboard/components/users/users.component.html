@@ -69,7 +69,8 @@
                 <li class="flex items-center " *ngFor="let role of roles">
                   <input id="apple" type="checkbox" [checked]="roleId === role.id" [value]="role.id" (change)="getUsersByRole(role.id)"
                     class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2 ">
-                  <label for="apple" class="ml-2 text-sm font-medium text-gray-900 ">{{role.name}} ({{role.users.length}}) </label>
+                  <label for="apple" class="ml-2 text-sm font-medium text-gray-900 ">{{role.name}}
+                    ({{role.users.length}}) </label>
                 </li>
               </ul>
             </div>
@@ -95,44 +96,44 @@
           </thead>
           <tbody class="text-base">
             <ng-container *ngIf="usersToDisplay.length > 0; else nousers">
-          <tr class="border-b " *ngFor="let user of usersToDisplay">
-              <td class="w-4 px-4 py-3">
-                <div class="flex items-center">
-                  <input id="checkbox-table-search-1" type="checkbox"
-                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 :focus:ring-primary-600 focus:ring-2"
-                    [checked]="selecteduserId === user.id" (click)="handleUserSelection(user.id)">
-                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                </div>
-              </td>
-              <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">{{user.username}}
-              </th>
-              <td class="px-4 py-3">{{user.email}}</td>
-              <td class="px-4 py-3">{{user.role? user.role.name : "Null"}}</td>
-              <td class="px-4 py-3">{{user.createdAt | date :'medium'}}</td>
-              <td class="px-4 py-3">{{user.orders.length}}</td>
-              <td class=" py-3 flex items-center justify-center gap-x-2">
-                <button type="button" *ngIf="user.isActive" (click)="activeDeactiveUserById(user.id)"
-                  class="text-green-700 px-2 py-1 border hover:border-gray-400  focus:ring-4 focus:outline-none focus:ring-green-300 font-medium hover:bg-gray-200 rounded-3xl text-sm text-center inline-flex items-center">
-                  <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z">
-                    </path>
-                  </svg>
-                  مفعل
-                </button>
-                <button type="button" *ngIf="!user.isActive" (click)="activeDeactiveUserById(user.id)"
-                  class="text-gray-700 px-2 py-1 hover:text-gray-950 border border-gray-200 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
-                  <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21">
-                    </path>
-                  </svg>
-                  معطل
-                </button>
-              </td>
-            </tr>
+              <tr class="border-b " *ngFor="let user of usersToDisplay">
+                <td class="w-4 px-4 py-3">
+                  <div class="flex items-center">
+                    <input id="checkbox-table-search-1" type="checkbox"
+                      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 :focus:ring-primary-600 focus:ring-2"
+                      [checked]="selecteduserId === user.id" (click)="handleUserSelection(user.id)">
+                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                  </div>
+                </td>
+                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">{{user.username}}
+                </th>
+                <td class="px-4 py-3">{{user.email}}</td>
+                <td class="px-4 py-3">{{user.role? user.role.name : "Null"}}</td>
+                <td class="px-4 py-3">{{user.createdAt | date :'medium'}}</td>
+                <td class="px-4 py-3">{{user.orders.length}}</td>
+                <td class=" py-3 flex items-center justify-center gap-x-2">
+                  <button type="button" *ngIf="user.isActive" (click)="activeDeactiveUserById(user.id)"
+                    class="text-green-700 px-2 py-1 border hover:border-gray-400  focus:ring-4 focus:outline-none focus:ring-green-300 font-medium hover:bg-gray-200 rounded-3xl text-sm text-center inline-flex items-center">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z">
+                      </path>
+                    </svg>
+                    مفعل
+                  </button>
+                  <button type="button" *ngIf="!user.isActive" (click)="activeDeactiveUserById(user.id)"
+                    class="text-gray-700 px-2 py-1 hover:text-gray-950 border border-gray-200 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm text-center inline-flex items-center">
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M11.412 15.655L9.75 21.75l3.745-4.012M9.257 13.5H3.75l2.659-2.849m2.048-2.194L14.25 2.25 12 10.5h8.25l-4.707 5.043M8.457 8.457L3 3m5.457 5.457l7.086 7.086m0 0L21 21">
+                      </path>
+                    </svg>
+                    معطل
+                  </button>
+                </td>
+              </tr>
             </ng-container>
             <ng-template #nousers>
               <tr>
@@ -235,52 +236,54 @@
         </div>
         <div class="flex col-span-2">
           <div class="flex flex-col w-full">
-          <app-input [control]="editUserForm.get('phonenumber')" type="tel" label="* رقم الجوال" maxlength="20" autofocus="true"
-            required="true"></app-input>
-        </div>
-        <div class=" mt-6">
-          <!-- TODO: make sure that countrycode are loaded from the server -->
-          <select formControlName="countrycode" name="countrycode" id="countrycode"
-            class="border border-gray-300 rounded-3xl p-2 mx-1 w-12">
-            <option [value]="20">20</option>
-            <option [value]="10">10</option>
-            <option value="30">30</option>
-            <option [value]="40">40</option>
-          </select>
+            <app-input [control]="editUserForm.get('phonenumber')" type="tel" label="* رقم الجوال" maxlength="20" autofocus="true"
+              required="true"></app-input>
+            </div>
+            <div class=" mt-6">
+              <!-- TODO: make sure that countrycode are loaded from the server -->
+              <select formControlName="countrycode" name="countrycode" id="countrycode"
+                class="border border-gray-300 rounded-3xl p-2 mx-1 w-12">
+                <option [value]="20">20</option>
+                <option [value]="10">10</option>
+                <option value="30">30</option>
+                <option [value]="40">40</option>
+              </select>
           </div>
         </div>
         <div class="flex flex-row-reverse items-center mt-5 mr-auto col-span-2">
           <label class="text-sm font-semibold text-gray-900 mb-2 ml-2"> مفعل </label>
-        
+
           <label class="switch">
             <input formControlName="active" type="checkbox">
             <span class="slider"></span>
           </label>
           <label class="text-sm font-semibold text-gray-900 mb-2 mr-2"> معطل </label>
         </div>
-      <div class="flex flex-col col-span-2 mt-4">
-        <button (click)="toggleRolesDDL()"
-          class="text-black bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm px-4 py-2.5 text-center inline-flex items-center "
-              type="button"> الصلاحيات
-              <svg class="w-4 h-4 ml-auto" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg></button>
-              <!-- Dropdown menu -->
-              <div *ngIf="showRoleDDL" class="z-10 w-1/3 bg-white divide-y divide-gray-100 rounded-3xl shadow absolute -bottom-[5%]">
-                <ul class="p-3 space-y-1 text-sm text-gray-700 :text-gray-200">
-                  <li *ngFor="let role of roles">
-                    <div class="flex items-center p-2 rounded hover:bg-gray-100 :hover:bg-gray-600">
-                      <input id="role" type="radio" [value]="role" formControlName="role" name="role"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 :focus:ring-blue-600 :ring-offset-gray-700 :focus:ring-offset-gray-700 focus:ring-2 :bg-gray-600 :border-gray-500">
-                      <label for="role" class="w-full ml-2 text-sm font-medium text-gray-900 rounded :text-gray-300">{{role.name}}
-                      </label>
-                    </div>
+        <div class="flex flex-col col-span-2 mt-4">
+          <button (click)="toggleRolesDDL()"
+            class="text-black bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-3xl text-sm px-4 py-2.5 text-center inline-flex items-center "
+            type="button"> الصلاحيات
+            <svg class="w-4 h-4 ml-auto" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg></button>
+          <!-- Dropdown menu -->
+          <div *ngIf="showRoleDDL"
+            class="z-10 w-1/3 bg-white divide-y divide-gray-100 rounded-3xl shadow absolute -bottom-[5%]">
+            <ul class="p-3 space-y-1 text-sm text-gray-700 :text-gray-200">
+              <li *ngFor="let role of roles">
+                <div class="flex items-center p-2 rounded hover:bg-gray-100 :hover:bg-gray-600">
+                  <input id="role" type="radio" [value]="role" formControlName="role" name="role"
+                    (change)="handleRoleSelection($event)"
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                  <label for="role" class="w-full ml-2 text-sm font-medium text-gray-900 rounded :text-gray-300">{{role.name}}
+                  </label>
+                  </div>
                   </li>
-                </ul>
-              </div>
-            
-          </div>
+                  </ul>
+                  </div>
+                  
+                  </div>
       </div>
       <div class="flex flex-col p-2 border-2 border-gray-200 border-dashed border-t-0 w-full h-full rounded-b-3xl">
         <div class="flex justify-start">
@@ -290,8 +293,7 @@
           </button>
           <button type="submit"
             class="inline-block bg-black shrink-0 rounded-3xl mx-1 px-6 py-1 text-sm font-semibold text-white hover:text-gray-50 focus:outline-none active:text-white disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
-            [disabled]="editUserForm.invalid"
-            >
+            [disabled]="editUserForm.invalid">
             تأكيد
           </button>
         </div>
