@@ -95,6 +95,9 @@ export class SignupComponent implements OnInit {
         },
       });
   }
+  loginWithGoogle() {
+    window.location.href = 'http://localhost:3000/api/auth/google';
+  }
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
@@ -103,8 +106,8 @@ export class SignupComponent implements OnInit {
   }
   toggleToast() {
     this.showToast = !this.showToast;
-     setTimeout(() => {
-       this.showToast = false;
-     }, 4000);
+    setTimeout(() => {
+      this.showToast = false;
+    }, 4000);
   }
 }
