@@ -108,14 +108,12 @@
               class="absolute -left-24 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow ">
               <ul class="py-1 text-sm text-gray-700 :text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
                 <li>
-                  <button (click)="editReview(review.id,review)" class="block w-full py-2 px-4 hover:bg-gray-100">تعديل</button>
+                  <a (click)="editReview(review.id,review)" class="block w-full py-2 px-4 hover:bg-gray-100">تعديل</a>
                 </li>
                 <li>
-                  <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Remove</a>
+                  <a (click)="deleteReview(review.id)" class="block py-2 px-4 hover:bg-gray-100 ">حذف</a>
                 </li>
-                <li>
-                  <a class="block py-2 px-4 hover:bg-gray-100 :hover:bg-gray-600 :hover:text-white">Report</a>
-                </li>
+                
               </ul>
             </div>
             </div>

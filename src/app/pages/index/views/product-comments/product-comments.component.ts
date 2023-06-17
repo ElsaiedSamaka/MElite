@@ -97,7 +97,19 @@ export class ProductCommentsComponent implements OnInit {
     });
   }
   deleteReview(id: string): void {
-    // this.reviewsService.deleteById(id)
+    this.reviewsService.deleteById(id).subscribe({
+      next: (res) => {
+        this.reviews = this.reviewsService.reviews$.value;
+        this.toastSuccessMessage = 'تم حذف المراجعة بنجاح';
+        this.toggleSuccessToast();
+      },
+      error: (err) => {
+        this.toastErrMessage = err.message || 'خطأ غير متوقع';
+        this.toggleErrToast();
+        console.log('error', err);
+      },
+      complete: () => {},
+    });
   }
   createRange(number: number) {
     return Array.from({ length: number }, (_, i) => i);
