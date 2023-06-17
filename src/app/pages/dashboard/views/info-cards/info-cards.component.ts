@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/core/services/orders.service';
 import { UserLoginsService } from 'src/core/services/user-logins.service';
@@ -19,7 +20,8 @@ export class InfoCardsComponent implements OnInit {
   constructor(
     private userLoginsService: UserLoginsService,
     private usersService: UsersService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private http: HttpClient
   ) {
     this.getTotalPriceByOrders();
   }
@@ -83,5 +85,33 @@ export class InfoCardsComponent implements OnInit {
         return user.user_img;
       })
       .slice(0, 3);
+  }
+  // downloadPdf() {
+  //   const url = 'http://localhost:3000/api/user-logins/download';
+  //   this.http.get(url, { responseType: 'blob' }).subscribe((response: any) => {
+  //     const blob = new Blob([response], { type: 'application/pdf' });
+  //     const downloadUrl = window.URL.createObjectURL(blob);
+  //     const link = document.createElement('a');
+  //     link.href = downloadUrl;
+  //     link.download = 'user_logins.pdf';
+  //     link.click();
+  //   });
+  // }
+  printPdf() {
+    const url = 'http://localhost:3000/api/user-logins/download';
+    this.http.get(url, { responseType: 'blob' }).subscribe((response: any) => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(blob);
+      const printWindow = window.open(fileURL);
+
+      // Wait for the print window to finish loading
+      printWindow.onload = () => {
+        // Call the print method of the print window
+        printWindow.print();
+
+        // Clean up the temporary URL object
+        URL.revokeObjectURL(fileURL);
+      };
+    });
   }
 }
