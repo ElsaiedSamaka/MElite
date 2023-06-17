@@ -42,24 +42,24 @@ export class UsersComponent implements OnInit {
     firstname: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(15),
+      Validators.maxLength(20),
     ]),
     lastname: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(15),
+      Validators.maxLength(20),
     ]),
     email: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
-      Validators.maxLength(40),
+      Validators.maxLength(80),
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
     countrycode: new FormControl(),
     phonenumber: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(50),
+      Validators.maxLength(20),
       Validators.pattern('^[0-9]*$'),
     ]),
     role: new FormControl(),

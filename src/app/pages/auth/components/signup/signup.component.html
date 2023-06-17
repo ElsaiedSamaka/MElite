@@ -75,16 +75,16 @@
           </div>
           
           <div class="col-span-3 mx-auto">
-            <app-input [control]="authForm.get('lastname')" placeholder="الاسم الاخير" type="text" label="" size="25" maxlength="15"
+            <app-input [control]="authForm.get('lastname')" placeholder="الاسم الاخير" type="text" label="" size="25" maxlength="20"
               autofocus="true" required="true"></app-input>
           </div>
           <div class="col-span-3 mx-auto">
             <app-input [control]="authForm.get('firstname')" placeholder="الاسم الاول" type="email" label="" size="25"
-              maxlength="15" autofocus="true" required="true"></app-input>
+              maxlength="20" autofocus="true" required="true"></app-input>
           </div>
           <div class="col-span-4 mx-auto">
             <app-input [control]="authForm.get('email')" placeholder="البريد الالكتروني" type="email" label="" size="37"
-              maxlength="25" autofocus="true" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></app-input>
+              maxlength="80" autofocus="true" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></app-input>
           </div>
           <div class="col-span-2 mx-auto">
             <app-input [control]="authForm.get('phonenumber')" placeholder=" رقم الجوال" type="email" label="" size="12"
@@ -92,7 +92,7 @@
           </div>
           <div class="col-span-6 mx-auto">
             <app-input [control]="authForm.get('password')" placeholder="كلمة المرور" [type]="showPassword ? 'text':'password'"
-              label="" minlength="8" maxlength="18" required="true" pattern=".{8,}" title="8 حروف او اكثر" size="60">
+              label="" minlength="8" maxlength="25" required="true" pattern=".{8,}" title="8 حروف او اكثر" size="60">
               <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
                 stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                 (click)="togglePassword()" *ngIf="!showPassword" input-icon>
@@ -112,7 +112,7 @@
           </div>
             <div class="col-span-6 mx-auto">
               <app-input [control]="authForm.get('passwordConfirmation')" placeholder="كلمة المرور التأكيدية"
-                [type]="showPassword ? 'text':'password'" label="" minlength="8" maxlength="12" required="true" pattern=".{8,}"
+                [type]="showPassword ? 'text':'password'" label="" minlength="8" maxlength="25" required="true" pattern=".{8,}"
                 title="8 حروف او اكثر" size="60">
               <svg class="absolute left-10 bottom-3 text-gray-400 hover:text-gray-900" fill="none" stroke="currentColor"
                 stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
