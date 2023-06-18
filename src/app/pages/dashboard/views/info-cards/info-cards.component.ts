@@ -86,17 +86,17 @@ export class InfoCardsComponent implements OnInit {
       })
       .slice(0, 3);
   }
-  // downloadPdf() {
-  //   const url = 'http://localhost:3000/api/user-logins/download';
-  //   this.http.get(url, { responseType: 'blob' }).subscribe((response: any) => {
-  //     const blob = new Blob([response], { type: 'application/pdf' });
-  //     const downloadUrl = window.URL.createObjectURL(blob);
-  //     const link = document.createElement('a');
-  //     link.href = downloadUrl;
-  //     link.download = 'user_logins.pdf';
-  //     link.click();
-  //   });
-  // }
+  downloadPdf() {
+    const url = 'http://localhost:3000/api/orders/download';
+    this.http.get(url, { responseType: 'blob' }).subscribe((response: any) => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'orders.pdf';
+      link.click();
+    });
+  }
   printPdf() {
     const url = 'http://localhost:3000/api/user-logins/download';
     this.http.get(url, { responseType: 'blob' }).subscribe((response: any) => {
