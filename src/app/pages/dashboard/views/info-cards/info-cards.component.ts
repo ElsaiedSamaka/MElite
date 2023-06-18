@@ -22,9 +22,7 @@ export class InfoCardsComponent implements OnInit {
     private usersService: UsersService,
     private ordersService: OrdersService,
     private http: HttpClient
-  ) {
-    this.getTotalPriceByOrders();
-  }
+  ) {}
 
   ngOnInit() {
     this.getUsersLogins();
@@ -59,7 +57,8 @@ export class InfoCardsComponent implements OnInit {
   getOrders(): void {
     this.ordersService.getAll().subscribe({
       next: (res) => {
-        this.orders = res;
+        this.orders = this.ordersService.orders$.value;
+        this.getTotalPriceByOrders();
       },
       error: (err) => {
         console.log('err while retrieve orders', err);
