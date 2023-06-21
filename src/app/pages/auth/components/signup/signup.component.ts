@@ -78,6 +78,7 @@ export class SignupComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
+           localStorage.setItem('token', response.token);
           this.router.navigateByUrl('/index');
         },
         error: (err) => {

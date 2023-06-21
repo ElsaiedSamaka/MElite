@@ -76,10 +76,14 @@ export class AuthService {
   // we will send the user's credentials to the server
   signin(email: string, password: string) {
     return this.http
-      .post<any>(`${this.api_url}/api/auth/signin`, {
-        email: email,
-        password: password,
-      })
+      .post<any>(
+        `${this.api_url}/api/auth/signin`,
+        {
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      )
       .pipe(
         tap((user) => {
           this.signedin$.next(true);
