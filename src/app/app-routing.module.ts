@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGaurd } from 'src/core/guards/AdminGaurd.guard';
+import { AuthGuard } from 'src/core/guards/AuthGaurd.guard';
 
 const routes: Routes = [
   {
     path: 'inbox',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/inbox/inbox.module').then((m) => m.InboxModule),
   },
@@ -16,8 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // canLoad: [AuthGuard],
-    // canActivate: [AdminGaurd],
+    canLoad: [AuthGuard],
+    canActivate: [AdminGaurd],
     loadChildren: () =>
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -25,19 +27,19 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/profile/profile.module').then((m) => m.ProfileModule),
   },
   {
     path: 'settings',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/settings/settings.module').then((m) => m.SettingsModule),
   },
   {
     path: 'checkout',
-    // canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/checkout/cart.module').then((m) => m.CheckoutModule),
   },
