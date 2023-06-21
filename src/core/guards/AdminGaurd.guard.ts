@@ -24,7 +24,7 @@ export class AdminGaurd implements CanActivate {
     | Promise<boolean | UrlTree> {
     return this.authservice.USER$.pipe(
       tap((USER) => {
-        if (USER.role.name === 'admin') {
+        if (USER.role.name === 'admin' || USER.role === 3) {
           return true;
         } else {
           this.router.navigate(['/noperm']);
