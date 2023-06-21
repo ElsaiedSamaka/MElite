@@ -49,7 +49,7 @@ export class AuthService {
       .pipe(
         tap((res) => {
           this.signedin$.next(true);
-          this.USER$.next(res.user);
+          this.USER$.next(res.newUser);
         })
       );
   }
@@ -87,7 +87,7 @@ export class AuthService {
       .pipe(
         tap((res) => {
           this.signedin$.next(true);
-          this.USER$.next(res.user);
+          this.USER$.next(res.existing_user);
         })
       );
   }
