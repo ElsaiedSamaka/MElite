@@ -43,7 +43,9 @@ export class SigninComponent implements OnInit {
     this.authService
       .signin(this.authForm.value.email!, this.authForm.value.password!)
       .subscribe({
-        next: (res) => {},
+        next: (response) => {
+          localStorage.setItem('token', response.token);
+        },
         error: (err) => {
           if (!err.status) {
             this.authForm.setErrors({ noConnection: true });
