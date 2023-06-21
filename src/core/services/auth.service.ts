@@ -47,9 +47,9 @@ export class AuthService {
         { withCredentials: true }
       )
       .pipe(
-        tap((user) => {
+        tap((res) => {
           this.signedin$.next(true);
-          this.USER$.next(user);
+          this.USER$.next(res.user);
         })
       );
   }
@@ -85,9 +85,9 @@ export class AuthService {
         { withCredentials: true }
       )
       .pipe(
-        tap((user) => {
+        tap((res) => {
           this.signedin$.next(true);
-          this.USER$.next(user);
+          this.USER$.next(res.user);
         })
       );
   }
