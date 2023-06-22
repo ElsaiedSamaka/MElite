@@ -11,6 +11,7 @@ export class SignoutComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
   ngOnInit() {
     this.authService.signout().subscribe(() => {
+           localStorage.setItem('token', '');
       this.router.navigateByUrl('/');
     });
   }
